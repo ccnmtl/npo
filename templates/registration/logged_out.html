@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block hometabclass %} class="active"{% endblock %}
+
+{% block content_div_class %}
+{% ifnotequal module.label "Overview" %} class="content_one_column"{% endifnotequal %}
+{% endblock %}
+
+{% block content %}
+
+<h1>You have successfully logged off.</h1>
+
+<p>You can <a href="/">log in</a> again.</p>
+
+<div style="height: 220px;"></div>
+
+{% endblock %}
+
+{% block content-nav %}{% endblock %}

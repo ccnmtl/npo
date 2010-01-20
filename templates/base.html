@@ -2,17 +2,18 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
 	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
-	<title>npo: {% block title %}{% endblock %}</title>
-	<link rel="stylesheet" href="/site_media/css/main.css" media="screen" />
-	<link rel="stylesheet" href="/site_media/css/print.css" media="print" />
+	<link rel="shortcut icon" href="/site_media/img/favicon.ico" type="image/x-icon" />
+	<link rel="stylesheet" href="/site_media/css/main.css" media="all" />
 	<!--[if IE 6]>
 	<link rel="stylesheet" href="/site_media/css/main_ie6_1col.css" media="screen" />
 	<![endif]-->
-	<link rel="shortcut icon" href="/site_media/img/favicon.ico" type="image/x-icon" />
+	<!--[if lt IE 7]><script src="http://ccnmtl.columbia.edu/remote/alerts/browser/ienosupport.js" type="text/javascript" language="javascript"></script><link rel="stylesheet" href="http://ccnmtl.columbia.edu/remote/alerts/browser/ienosupport.css" type="text/css" media="all" /><![endif]-->
 	{% block css %}{% endblock %}
 	{% block js %}{% endblock %}
 	{% block feeds %}{% endblock %}
+	<title>Network Planner Online - {% block title %}{% endblock %}</title>
 </head>
+
 <body class="one_column {% block widthtype %}fixed{% endblock %}">
 {% comment %}
 ###### FOR WIDTH TYPE--
@@ -22,15 +23,16 @@
    all time in flatpages templates
 {% endcomment %}
 
-<div id="container">
+<div id="page">
 
 
 {% block masthead %}
 	<!-- ###### Site banner ###### -->
 	<div id="header">
-		<!-- Project title/logo --><h1 id="logo_project"><a href="./" title="Project Title: Project Django"><span>Project Title: Project Django </span></a></h1>	
+		<!-- Project title/logo --><h1 id="logo_project"><a href="./" title="Network Planner Online"><span>Network Planner Online</span></a></h1>	
+		<!-- Project description --><h2 id="desc_project" class="visualhide"><span>This is the project description</span></h2>	
 		{% block standardnav %}
-		<ul id="standardnav">
+		<!-- Standard navigation --><ul id="standard_navigation">
 			<li><a href="#">About</a></li>
 			<li><a href="#">Help</a></li>
 			<li><a href="#">Contact</a></li>
@@ -41,35 +43,32 @@
 {% endblock %}
 
 	<!-- ###### Don't touch this ###### -->
-	<div class="visualclear"></div>
+	<div class="visualclear"></div><!-- Clearing div -->
 	
 
 {% block primarynav %}
-	<!-- ###### Primary navigation ###### -->
-	<div id="primarynav">
-		<div class="encase" id="{% block navalignment %}leftside{% endblock %}">
-{% comment %}
-###### FOR ALIGNMENT OF TABS on the primary navigation--
-   leftside : all tabs aligning to the left, login to the right
-   rightside :  all tabs aligning to the right, login to the left
-{% endcomment %}
-
-			{% block primarynavtabs %}
-			<ul>
-				<li><a href="#">Item 1</a></li>
-				<li><a href="#">Item 2</a></li>
-				<li><a href="#">Item 3</a></li>
-				<li><a href="#">Item 4</a></li>
-			</ul><!-- id="primarynavtabs" -->
-			{% endblock %}
+	<!-- ###### globalnavs ###### -->
+	<div id="globalnav">
+		<div id="breadcrumbs">{% block breadcrumbs %}{% endblock %}</div>
+		
+		{% comment %} not using this now{% block primarynavtabs %}{% endblock %} {% endcomment %}
 			
-			{% block usernav %}{% endblock %}
+		{% block usernav %}
+		<ul class="usernav">
+			{% if user.username %}<li>{% if user.first_name %}{{user.first_name}}
+			{{user.last_name}}{% else %}{{ user.username }}{% endif %}</li>{% endif %}
+			{% if user.username %}<li id="logout"><a href="/accounts/logout/">LOG OUT</a></li>{% endif %}
+		</ul><!-- ul class="usernav" -->
+		{% endblock %}
 
-		</div><!-- id="leftside/rightside" -->
-	</div><!-- id="primarynav" -->
+	</div><!-- id="globalnav" -->
 {% endblock %}
 
-{% comment %} not using this now <div id="breadcrumbs">{% block breadcrumbs %}{% endblock %}</div> {% endcomment %}
+	<!-- ###### Error banner for IE 7 users ###### -->
+	<!--[if lt IE 7]><div id="browserwarning"></div><![endif]-->
+
+
+
 
 
 	<!-- ###### Page: Sidebars and Content ###### -->
@@ -81,7 +80,7 @@
 			<div id="squish"><!-- Don't touch this div -->
 				<div class="block">
 					{% block pagetitle %}{% endblock %}
-				
+
 					{% block content %}{% endblock %}
 
 				<!-- ###### Don't touch this ###### -->
@@ -94,18 +93,16 @@
 
 		<!-- ###### Don't touch this ###### -->
 		<div class="visualclear"></div>
-	
+			
+		{% block footer %}
+			<!-- ###### Footer ###### -->
+			<div id="footer">
+			<p class="printonly"><br /><img src="/site_media/img/logo_ccnmtl_sidebar.gif" class="printonly" /></p>
+			</div><!-- id="footer" -->
+		{% endblock %}
+
+
 	</div><!-- id="pagebody" -->
-
-
-{% block footer %}
-	<!-- ###### Footer ###### -->
-	<div id="footer">
-	<p class="printonly"><br /><img src="/site_media/img/logo_ccnmtl_sidebar.gif" class="printonly" /></p>
-	</div><!-- id="footer" -->
-{% endblock %}
-
-
-</div><!-- id="container" -->
+</div><!-- id="page" -->
 </body>
 </html>

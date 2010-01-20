@@ -1,22 +1,41 @@
 {% extends "base.html" %}
+{% block title %}Welcome{% endblock %}
+{% block pagetitle %}<h1>Welcome to Network Planner Online</h1>{% endblock %}
+
 {% block content %}
-{% if form.has_errors %}
-<p>Your username and password didn't match. Please try again.</p>
-{% endif %}
-<form method="get" action="{{ wind_base }}login">
-<input type="hidden" name="service" value="{{ wind_service }}" />
-<input type="hidden" name="destination" value="http://{{ request.get_host }}/accounts/windlogin/?next={{ next }}" />
-<p>If you have a Columbia UNI, you already have an account and can
-login through WIND with it</p>
-<input type="submit" value="Here" />
-</form>
-<p>otherwise: </p>
-<form method="post" action=".">
-<table>
-<tr><td><label for="id_username">Username:</label></td><td>{{ form.username }}</td></tr>
-<tr><td><label for="id_password">Password:</label></td><td>{{ form.password }}</td></tr>
-</table>
-<input type="submit" value="login" />
-<input type="hidden" name="next" value="{{ next }}" />
-</form>
+
+
+<div class="loginbox">
+	<div class="boxtop"></div>
+	<h2>Log in to Network Planner...</h2>
+	{% if form.has_errors %}
+	<p class="alert">Your username and password didn't match. Please try again.</p>
+	<hr />
+	{% endif %}
+	{% comment %}{% if user.username %}
+		<p class="alert">You are already logged in.<br />You may <a href="/home/">pick up where you left off</a>.</p>
+	{% else %}{% endcomment %}
+	<h3 style="margin-top: 10px;">For Columbia users:</h3>
+		<form method="get" action="{{ wind_base }}login">
+			<input type="hidden" name="service" value="{{ wind_service }}" />
+			<input type="hidden" name="destination" value="http://{{ request.get_host }}/accounts/windlogin/?next={{ next }}" />
+			<input type="submit" value="Log in with Columbia UNI" class="regButton" />
+		</form>
+	<hr />
+	<h3>For all other users:</h3>
+	<form method="post" action=".">
+	<table border="0" cellspacing="0" cellpadding="0">
+	<tr><td><label for="id_username">Username:</label></td><td>{{ form.username }}</td></tr>
+	<tr><td><label for="id_password">Password:</label></td><td>{{ form.password }}</td></tr>
+	<tr><td>&nbsp;</td><td style="text-align:right"><input type="submit" value="Log in" class="regButton" /></td></tr>
+	</table>
+	<input type="hidden" name="next" value="{{ next }}" />
+	</form>
+	{% comment %}{% endif %}{% endcomment %}
+	<div class="boxbottom"></div>
+</div><!-- div class="loginbox" -->
+
+<p>
+Intro text go here.  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque felis mauris, auctor at laoreet ac, commodo id est. Sed lobortis viverra tellus, placerat dapibus nisi accumsan vel. Donec consequat turpis id lorem sodales convallis. Nam at massa ligula. Cras turpis nisl, tristique eu pellentesque non, ullamcorper quis mauris. Aliquam augue nunc, laoreet non pharetra ac, feugiat sed tortor. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Proin non ligula eget massa tristique consequat non quis nisl. Etiam mattis, enim nec bibendum eleifend, diam arcu consectetur dui, ut vehicula mi tortor ac est. Pellentesque convallis lectus ut eros rutrum adipiscing. Mauris eleifend euismod arcu, ac scelerisque dui rhoncus nec. Ut nec lectus et orci condimentum placerat ac vitae nulla. Aliquam erat volutpat. Etiam eget ipsum augue. Phasellus rutrum egestas tellus, ac pulvinar ipsum ultricies vel. Vestibulum facilisis ornare tellus, ut pretium urna posuere vitae. Donec a augue id nulla tempor bibendum eget vel mi. Ut placerat ipsum lacus, ut aliquam mi. Nullam dictum venenatis enim eu egestas.
+</p>
 {% endblock %}
