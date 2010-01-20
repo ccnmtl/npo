@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block title %}Welcome{% endblock %}
 {% block pagetitle %}<h1>Welcome to Network Planner Online</h1>{% endblock %}
-
+{% block baseurl %}/accounts/login/?next=/{% endblock %}
 {% block content %}
 
 
@@ -12,9 +12,9 @@
 	<p class="alert">Your username and password didn't match. Please try again.</p>
 	<hr />
 	{% endif %}
-	{% comment %}{% if user.username %}
-		<p class="alert">You are already logged in.<br />You may <a href="/home/">pick up where you left off</a>.</p>
-	{% else %}{% endcomment %}
+	{% if user.username %}
+		<p class="alert">You are already logged in.<br />You may pick up where you left off.</p>
+	{% else %}
 	<h3 style="margin-top: 10px;">For Columbia users:</h3>
 		<form method="get" action="{{ wind_base }}login">
 			<input type="hidden" name="service" value="{{ wind_service }}" />
@@ -31,7 +31,7 @@
 	</table>
 	<input type="hidden" name="next" value="{{ next }}" />
 	</form>
-	{% comment %}{% endif %}{% endcomment %}
+	{% endif %}
 	<div class="boxbottom"></div>
 </div><!-- div class="loginbox" -->
 
