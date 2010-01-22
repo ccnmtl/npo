@@ -12,6 +12,7 @@ from backend import request as backend_request
 SAMPLE_PATH = "sample_data"
 import os
 from simplejson import loads
+from models import Case
 
 class rendered_with(object):
     def __init__(self, template_name):
@@ -30,7 +31,8 @@ class rendered_with(object):
 @login_required
 @rendered_with('npo/index.html')
 def index(request):
-    return dict()
+    cases = Case.objects.filter(owner=request.user)
+    return dict(cases=cases)
 
 @login_required
 @rendered_with('npo/run.html')
