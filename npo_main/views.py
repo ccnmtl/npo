@@ -50,14 +50,28 @@ def create_case(request):
                                    )
         # here's where we would actually kick off the job
         # to the backend
-        case.run()
+        case.run(request.get_host())
         return HttpResponseRedirect("/")
-    return dict()
+    return dict(cases=Case.objects.filter(owner=request.user))
 
 @login_required
 @rendered_with('npo/case.html')
 def case(request,id):
     case = get_object_or_404(Case,id=id)
+    if request.method == "POST":
+        # this should be Roy's backend sending us some results
+        if case.status() == "started":
+            # save results to stage 1
+            case.stage_one_output = loads(request.POST.get('json','{}'))
+        if case.status() == "stage 1":
+            case.stage_two_output = loads(request.POST.get('json','{}'))
+        case.save()
+
+        if case.status() == "complete":
+            # umm. someone's POSTing but it's already complete
+            pass
+
+        return HttpResponse("ok")
     return dict(case=case)
 
 @login_required
