@@ -7,7 +7,7 @@ from backend import expand_param_names
 from backend import request as backend_request
 SAMPLE_PATH = "sample_data"
 import os
-from simplejson import loads
+from simplejson import loads, dumps
 from models import Case
 
 class rendered_with(object):
@@ -34,9 +34,23 @@ def index(request):
 @rendered_with('npo/create_case.html')
 def create_case(request):
     if request.method == "POST":
+
+        # start with params from sample data (see import above)
+        # now, for each parameter that we get from the request,
+        # we override those
+        #
+        # if request.POST.has_key("networkModelName"):
+        #     params["networkModelName"] = request.POST["networkModelName"]
+        # 
+        # or something similar. You get the idea.
+
         case = Case.objects.create(name=request.POST['title'],
                                    owner=request.user,
-                                   parameters=str(request.POST))
+                                   parameters=dumps(params),
+                                   )
+        # here's where we would actually kick off the job
+        # to the backend
+        case.run()
         return HttpResponseRedirect("/")
     return dict()
 

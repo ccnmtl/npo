@@ -14,6 +14,10 @@ class Case(models.Model):
     stage_one_output = models.TextField(blank=True,default="")
     stage_two_output = models.TextField(blank=True,default="")
 
+    @models.permalink
+    def get_absolute_url(self):
+        return ('npo_main.views.case',[str(self.id)])
+
     def status(self):
         if self.stage_two_output != "":
             return "complete"
@@ -21,3 +25,9 @@ class Case(models.Model):
             return "stage 1"
         else:
             return "started"
+
+    def run(self):
+        # this is where we tell the backend that we'd like
+        # it to process these parameters and hit us back later
+        # with a result
+        pass
