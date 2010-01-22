@@ -26,8 +26,8 @@
     <tbody> 
       {% for case in cases %}
       <tr class="{% cycle 'even' 'odd' %}"> 
-	<td><input type="checkbox" /></td> 
-	<td><a href="summary.html" title="View summary of output for this case">Case {{case.name}}</a></td> 
+	<td><input type="checkbox" name="case_{{case.id}}" /></td> 
+	<td><a href="/case/{{case.id}}/" title="View summary of output for this case">Case {{case.name}}</a></td> 
 	<td class="center_aligned"><a href="#" class="downloadfiles" title="Click to download output files for this case"><span>Download files</span></a></td> 
       </tr> 
       {% endfor %}

@@ -17,6 +17,8 @@ urlpatterns = patterns('',
                        (r'^uploads/(?P<path>.*)$','django.views.static.serve',{'document_root' : settings.MEDIA_ROOT}),
 
                        (r'^$','npo_main.views.index'),
+                       (r'^case/(?P<id>\d+)/$','npo_main.views.case'),
+                       (r'^case/(?P<id>\d+)/delete/$','npo_main.views.delete_case'),
                        (r'^case/create/$','npo_main.views.create_case'),
                        (r'^run/$','npo_main.views.run'),
                        

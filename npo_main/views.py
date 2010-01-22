@@ -2,10 +2,6 @@ from django.template import RequestContext
 from django.http import HttpResponse, HttpResponseRedirect, HttpRequest
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render_to_response, get_object_or_404
-from django import forms
-from datetime import datetime
-from django.template.defaultfilters import slugify
-import simplejson
 from sample_data.params import params
 from backend import expand_param_names
 from backend import request as backend_request
@@ -43,6 +39,19 @@ def create_case(request):
                                    parameters=str(request.POST))
         return HttpResponseRedirect("/")
     return dict()
+
+@login_required
+@rendered_with('npo/case.html')
+def case(request,id):
+    case = get_object_or_404(Case,id=id)
+    return dict(case=case)
+
+@login_required
+def delete_case(request,id):
+    case = get_object_or_404(Case,id=id)
+    case.delete()
+    return HttpResponseRedirect("/")
+
 
 @login_required
 @rendered_with('npo/run.html')
