@@ -209,6 +209,14 @@ label
 	font-size: 120%;
 }
 
+.label
+{
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 120%;
+}
+
 
 /* ########## Blocks style definitions ########## */
 #page
@@ -704,7 +712,7 @@ ul.usernav li#logout a
 	font: bold 1em Arial, Helvetica, Verdana, "Lucida Grande", Lucida, sans-serif !important;
 }
 
-.loginbox .alert
+.loginbox .alert, .alert
 {
 	margin: 0 0 10px 10px !important;
 	padding: 0 !important;
@@ -812,6 +820,19 @@ ul.usernav li#logout a
 	background: url('../img/icons.png') 0px -63px no-repeat;
 }
 
+.sticky_notes
+{
+	display: block;
+	width: 400px;
+	margin: 10px 0;
+	padding: 5px;
+	border: 0;
+	font-size: 11px;
+	font-style: italic;
+	line-height: 150%;
+	background-color: #ff9;
+}
+
 .paramsetheader
 {
 	width: 827px;
@@ -824,7 +845,7 @@ ul.usernav li#logout a
 	font-size: 14px;
 }
 
-.paramblock
+.pageblock
 {
 	margin: 0 0 0 1.5em;
 	padding: 0.5em 0 1em 0;
@@ -1087,7 +1108,7 @@ ul.tabbernav li.tabberactive a:hover
 	border: 1px solid #690;
 }
 
-.parametergroup label
+.parametergroup label, .parametergroup .label
 {
 	font-size: 100%;
 }
@@ -1190,9 +1211,45 @@ ul.tabbernav li.tabberactive a:hover
 	border-top: 0;
 }
 
-.parametersubgroup label
+.parametersubgroup label, .parametergroup .label
 {
 	font-size: 100%;
+}
+
+.paramatersave
+{
+	display: block;
+	margin: 1em 0;
+	padding: 0;
+	border: 0;
+	border: 1px solid #ccc;
+}
+
+.run_progress
+{
+	margin-right: 0;
+	margin-bottom: 1em;
+	padding: 0 0 0 25px;
+	background: url('../img/spinner.gif') 2px 6px no-repeat;
+	line-height: 30px;
+}
+
+.run_done
+{
+	margin-right: 0;
+	margin-bottom: 1em;
+	padding: 0 0 0 25px;
+	background: url('../img/icons.png') 0px -152px no-repeat;
+	line-height: 30px;
+}
+
+.run_error
+{
+	margin-right: 0;
+	margin-bottom: 1em;
+	padding: 0 0 0 25px;
+	background: url('../img/icons.png') 0px -122px no-repeat;
+	line-height: 30px;
 }
 
 /* ########## Layout aide ########## */
@@ -1239,4 +1296,13 @@ ul.tabbernav li.tabberactive a:hover
 
 .center_aligned { text-align: center; }
 
+.inline
+{
+	display: inline;
+}
+
+.block
+{
+	display: block;
+}
 
