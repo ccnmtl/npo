@@ -35,6 +35,16 @@ def index(request):
     return dict(cases=cases)
 
 @login_required
+@rendered_with('npo/create_case.html')
+def create_case(request):
+    if request.method == "POST":
+        case = Case.objects.create(name=request.POST['title'],
+                                   owner=request.user,
+                                   parameters=str(request.POST))
+        return HttpResponseRedirect("/")
+    return dict()
+
+@login_required
 @rendered_with('npo/run.html')
 def run(request):
     demographics = open(os.path.join(SAMPLE_PATH,"demographics.csv")).read()
