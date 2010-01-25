@@ -889,76 +889,36 @@
 		
 		<!-- ***  BEGIN TAB DIV *** --> 
 		
-		<div class="tabbertab" title="Low voltage"><!-- System: Low voltage --> 
+		<div class="tabbertab" title="Grid"><!-- System: Grid -->
 		  
 		  <div class="pageblock plain"> 
-		    <div class="instructions">Low voltage (mini-grid + grid) distribution network to connect households and institutions.</div><!-- class="instructions" --> 
+		    <div class="instructions">
+		    Grid is Transformers + Household Connections + Medium Voltage Extension<br />
+			<ul>
+				<li>Connecting household and institutions within demand node with LV line wiring, internal household wiring, and MV-to-LV transformers. </li>
+				<li>Extending MV line from existing distribution network to MV-to-LV transformer </li>
+			</ul>
+		    </div><!-- class="instructions" --> 
 		  </div><!-- class="pageblock" --> 
 		  
-		  <h2 class="medium">Mini-grid</h2> 
-		  
 		  <div class="pageblock"> 
-		    <div class="ptitle w200"><label for="xyzxyzxyz">Low-voltage line cost per meter:</label></div><!-- ptitle --> 
-		    <div class="pfield"><input name="xyzxyzxyz" id="xyzxyzxyz" class="form_text" type="text" size="10" maxlength="128" /> $/m</div><!-- pfield --> 
+		    <div class="ptitle w200"><label for="xyzxyzxyz">Electricity cost per kilowatt-hour:</label></div><!-- ptitle --> 
+		    <div class="pfield"><input name="xyzxyzxyz" id="xyzxyzxyz" class="form_text" type="text" size="10" maxlength="128" /> $/kWh</div><!-- pfield --> 
 		    <div class="visualclear"></div> 
 		  </div><!-- class="pageblock" --> 
 		  
 		  <div class="pageblock"> 
-		    <div class="ptitle w200"><label for="xyzxyzxyz">Low-voltage line lifetime:</label></div><!-- ptitle --> 
-		    <div class="pfield"><input name="xyzxyzxyz" id="xyzxyzxyz" class="form_text" type="text" size="10" maxlength="128" /> years</div><!-- pfield --> 
+		    <div class="ptitle w200"><label for="xyzxyzxyz">Transmission and distribution loss factor<br />(as fraction of grid system demand):</label></div><!-- ptitle --> 
+		    <div class="pfield"><input name="xyzxyzxyz" id="xyzxyzxyz" class="form_text" type="text" size="10" maxlength="128" /><div class="instructions">(e.g. 0.02 for 2%)</div></div><!-- pfield --> 
 		    <div class="visualclear"></div> 
-		  </div><!-- class="pageblock" --> 
+		  </div><!-- class="pageblock" -->
 		  
-		  <div class="pageblock"> 
-		    <div class="ptitle w200"><label for="xyzxyzxyz">Low-voltage O&amp;M cost in dollars per meter :</label></div><!-- ptitle --> 
-		    <div class="pfield"><input name="xyzxyzxyz" id="xyzxyzxyz" class="form_text" type="text" size="10" maxlength="128" /> $/m</div><!-- pfield --> 
-		    <div class="visualclear"></div> 
-		  </div><!-- class="pageblock" --> 
+		  <h2 class="medium">Grid: Transformers</h2>
 		  
+		  <h3 class="smaller">Transformer in Low Voltage Network</h3> 
+		  		  
 		  <div class="pageblock"> 
-		    <div class="ptitle w200"><label for="xyzxyzxyz">Title:</label></div><!-- ptitle --> 
-		    <div class="pfield"><input name="xyzxyzxyz" id="xyzxyzxyz" class="form_text" type="text" size="10" maxlength="128" /></div><!-- pfield --> 
-		    <div class="visualclear"></div> 
-		  </div><!-- class="pageblock" --> 
-		  
-		  <div class="pageblock"> 
-		    <div class="ptitle w200"><label for="xyzxyzxyz">Title:</label></div><!-- ptitle --> 
-		    <div class="pfield"><input name="xyzxyzxyz" id="xyzxyzxyz" class="form_text" type="text" size="10" maxlength="128" /></div><!-- pfield --> 
-		    <div class="visualclear"></div> 
-		  </div><!-- class="pageblock" --> 
-		  
-		  <div class="pageblock"> 
-		    <div class="ptitle w200"><label for="xyzxyzxyz">Title:</label></div><!-- ptitle --> 
-		    <div class="pfield"><input name="xyzxyzxyz" id="xyzxyzxyz" class="form_text" type="text" size="10" maxlength="128" /></div><!-- pfield --> 
-		    <div class="visualclear"></div> 
-		  </div><!-- class="pageblock" --> 
-		  
-		  <div class="pageblock"> 
-		    <div class="ptitle w200"><label for="xyzxyzxyz">Title:</label></div><!-- ptitle --> 
-		    <div class="pfield"><input name="xyzxyzxyz" id="xyzxyzxyz" class="form_text" type="text" size="10" maxlength="128" /></div><!-- pfield --> 
-		    <div class="visualclear"></div> 
-		  </div><!-- class="pageblock" --> 
-		  
-		  <div class="pageblock"> 
-		    <div class="ptitle w200"><label for="xyzxyzxyz">Title:</label></div><!-- ptitle --> 
-		    <div class="pfield"><input name="xyzxyzxyz" id="xyzxyzxyz" class="form_text" type="text" size="10" maxlength="128" /></div><!-- pfield --> 
-		    <div class="visualclear"></div> 
-		  </div><!-- class="pageblock" --> 
-		  
-		  <div class="pageblock"> 
-		    <div class="ptitle w200"><label for="xyzxyzxyz">Title:</label></div><!-- ptitle --> 
-		    <div class="pfield"><input name="xyzxyzxyz" id="xyzxyzxyz" class="form_text" type="text" size="10" maxlength="128" /></div><!-- pfield --> 
-		    <div class="visualclear"></div> 
-		  </div><!-- class="pageblock" --> 
-		  
-		  <div class="pageblock"> 
-		    <div class="ptitle w200"><label for="xyzxyzxyz">Title:</label></div><!-- ptitle --> 
-		    <div class="pfield"><input name="xyzxyzxyz" id="xyzxyzxyz" class="form_text" type="text" size="10" maxlength="128" /></div><!-- pfield --> 
-		    <div class="visualclear"></div> 
-		  </div><!-- class="pageblock" --> 
-		  
-		  <div class="pageblock"> 
-		    <div class="ptitle w200"><label for="xyzxyzxyz">Title:</label></div><!-- ptitle --> 
+		    <div class="ptitle w200"><label for="xyzxyzxyz">Available transformer system sizes:</label></div><!-- ptitle --> 
 		    <div class="pfield"> 
 		      <table class="veryplain"> 
 			<tbody> 
@@ -980,13 +940,139 @@
 			      </select> 
 			    </td> 
 			  </tr> 
+			  <tr> 
+			    <td class="veryplain" colspan="2"> 
+			      <div class="instructions">Standard units for transformer<br />system sizes are represented in kVA; kVA=kW*Power Factor</div><!-- class="instructions" --> 
+			    </td> 
+			  </tr> 
 			</tbody> 
 		    </table></div><!-- pfield --> 
 		    <div class="visualclear"></div> 
 		  </div><!-- class="pageblock" --> 
 		  
+		  <div class="pageblock"> 
+		    <div class="ptitle w200"><label for="xyzxyzxyz">Transformer cost per kilowatt:</label></div><!-- ptitle --> 
+		    <div class="pfield"><input name="xyzxyzxyz" id="xyzxyzxyz" class="form_text" type="text" size="10" maxlength="128" /> $/kW</div><!-- pfield --> 
+		    <div class="visualclear"></div> 
+		  </div><!-- class="pageblock" --> 
+		  
+		  <h3 class="smaller">Transformer Replacement</h3> 
+		  		  
+		  <div class="pageblock"> 
+		    <div class="ptitle w200"><label for="xyzxyzxyz">Transformer lifetime:</label></div><!-- ptitle --> 
+		    <div class="pfield"><input name="xyzxyzxyz" id="xyzxyzxyz" class="form_text" type="text" size="10" maxlength="128" /> years</div><!-- pfield --> 
+		    <div class="visualclear"></div> 
+		  </div><!-- class="pageblock" --> 
+		  
+		  <h3 class="smaller">Operation and Maintenance (O&#38;M)</h3> 
+		  		  
+		  <div class="pageblock"> 
+		    <div class="ptitle w200"><label for="xyzxyzxyz">Transformer O&#38;M cost factor<br />(as fraction of transformer cost):</label></div><!-- ptitle --> 
+		    <div class="pfield"><input name="xyzxyzxyz" id="xyzxyzxyz" class="form_text" type="text" size="10" maxlength="128" /><div class="instructions">(e.g. 0.02 for 2%)</div></div><!-- pfield --> 
+		    <div class="visualclear"></div> 
+		  </div><!-- class="pageblock" --> 
+		  
+		  <h2 class="medium">Grid: Household Connections</h2>
+		  
+		  <h3 class="smaller">Household Connections to Low Voltage Network</h3> 
+		  		  
+		  <div class="pageblock"> 
+		    <div class="ptitle w200"><label for="xyzxyzxyz">Equipment cost per household<br />e.g. energy meters, internal wiring, etc.:</label></div><!-- ptitle --> 
+		    <div class="pfield"><input name="xyzxyzxyz" id="xyzxyzxyz" class="form_text" type="text" size="10" maxlength="128" /> $/HH</div><!-- pfield --> 
+		    <div class="visualclear"></div> 
+		  </div><!-- class="pageblock" --> 
+		  
+		  <div class="pageblock"> 
+		    <div class="ptitle w200"><label for="xyzxyzxyz">Installation cost per household<br />e.g. installation of energy meters, internal wiring, etc.:</label></div><!-- ptitle --> 
+		    <div class="pfield"><input name="xyzxyzxyz" id="xyzxyzxyz" class="form_text" type="text" size="10" maxlength="128" /> $/HH</div><!-- pfield --> 
+		    <div class="visualclear"></div> 
+		  </div><!-- class="pageblock" --> 
+		  
+		  <div class="pageblock"> 
+		    <div class="ptitle w200"><label for="xyzxyzxyz">Service cost per household<br />(annual flat fee for service):</label></div><!-- ptitle --> 
+		    <div class="pfield"><input name="xyzxyzxyz" id="xyzxyzxyz" class="form_text" type="text" size="10" maxlength="128" /> $/HH</div><!-- pfield --> 
+		    <div class="visualclear"></div> 
+		  </div><!-- class="pageblock" --> 
+		  
+		  <h3 class="smaller">Operation and Maintenance (O&#38;M)</h3> 
+		  		  
+		  <div class="pageblock"> 
+		    <div class="ptitle w200"><label for="xyzxyzxyz">Equipment O&#38;M cost factor<br />(as fraction of equipment cost):</label></div><!-- ptitle --> 
+		    <div class="pfield"><input name="xyzxyzxyz" id="xyzxyzxyz" class="form_text" type="text" size="10" maxlength="128" /><div class="instructions">(e.g. 0.02 for 2%)</div></div><!-- pfield --> 
+		    <div class="visualclear"></div> 
+		  </div><!-- class="pageblock" --> 
+		  
+		  <div class="pageblock"> 
+		    <div class="ptitle w200"><label for="xyzxyzxyz">Service O&#38;M cost factor<br />(as fraction of service cost):</label></div><!-- ptitle --> 
+		    <div class="pfield"><input name="xyzxyzxyz" id="xyzxyzxyz" class="form_text" type="text" size="10" maxlength="128" /><div class="instructions">(e.g. 0.02 for 2%)</div></div><!-- pfield --> 
+		    <div class="visualclear"></div> 
+		  </div><!-- class="pageblock" --> 
+		  
+		  <h2 class="medium">Grid: Medium Voltage Extension</h2>
+		  
+		  <h3 class="smaller">Medium Voltage Lines</h3> 
+		  		  
+		  <div class="pageblock"> 
+		    <div class="ptitle w200"><label for="xyzxyzxyz">Medium Voltage Line cost per meter:</label></div><!-- ptitle --> 
+		    <div class="pfield"><input name="xyzxyzxyz" id="xyzxyzxyz" class="form_text" type="text" size="10" maxlength="128" /> $/m</div><!-- pfield --> 
+		    <div class="visualclear"></div> 
+		  </div><!-- class="pageblock" --> 
+		  
+		  <h3 class="smaller">Medium Voltage Lines Replacement</h3> 
+		  		  
+		  <div class="pageblock"> 
+		    <div class="ptitle w200"><label for="xyzxyzxyz">Medium Voltage Line Lifetime:</label></div><!-- ptitle --> 
+		    <div class="pfield"><input name="xyzxyzxyz" id="xyzxyzxyz" class="form_text" type="text" size="10" maxlength="128" /> years</div><!-- pfield --> 
+		    <div class="visualclear"></div> 
+		  </div><!-- class="pageblock" --> 
+		  
+		  <h3 class="smaller">Operation and Maintenance (O&#38;M)</h3> 
+		  		  
+		  <div class="pageblock"> 
+		    <div class="ptitle w200"><label for="xyzxyzxyz">Medium Voltage Line O&#38;M cost factor<br />(as fraction of Medium Voltage Line cost):</label></div><!-- ptitle --> 
+		    <div class="pfield"><input name="xyzxyzxyz" id="xyzxyzxyz" class="form_text" type="text" size="10" maxlength="128" /><div class="instructions">(e.g. 0.02 for 2%)</div></div><!-- pfield --> 
+		    <div class="visualclear"></div> 
+		  </div><!-- class="pageblock" --> 
+		  
 		  <div class="visualclear"></div> 
-		</div><!-- tabbertab  Low voltage --> 
+		</div><!-- tabbertab Grid -->
+		
+		
+		
+		<!-- ***  BEGIN TAB DIV *** --> 
+		
+		<div class="tabbertab" title="Low voltage distribution"><!-- System: Low voltage distribution --> 
+		  
+		  <div class="pageblock plain"> 
+		    <div class="instructions">Low voltage (mini-grid + grid) distribution network to connect households and institutions.</div><!-- class="instructions" --> 
+		  </div><!-- class="pageblock" --> 
+		  
+		  <h3 class="smaller">Low Voltage Lines</h3> 
+		  		  
+		  <div class="pageblock"> 
+		    <div class="ptitle w200"><label for="xyzxyzxyz">Low-voltage line cost per meter:</label></div><!-- ptitle --> 
+		    <div class="pfield"><input name="xyzxyzxyz" id="xyzxyzxyz" class="form_text" type="text" size="10" maxlength="128" /> $/m</div><!-- pfield --> 
+		    <div class="visualclear"></div> 
+		  </div><!-- class="pageblock" --> 
+		  
+		  <h3 class="smaller">Low Voltage Lines Replacement</h3> 
+		  		  
+		  <div class="pageblock"> 
+		    <div class="ptitle w200"><label for="xyzxyzxyz">Low-voltage line lifetime:</label></div><!-- ptitle --> 
+		    <div class="pfield"><input name="xyzxyzxyz" id="xyzxyzxyz" class="form_text" type="text" size="10" maxlength="128" /> years</div><!-- pfield --> 
+		    <div class="visualclear"></div> 
+		  </div><!-- class="pageblock" --> 
+		  
+		  <h3 class="smaller">Operation and Maintenance (O&#38;M)</h3> 
+		  		  
+		  <div class="pageblock"> 
+		    <div class="ptitle w200"><label for="xyzxyzxyz">Low-voltage O&amp;M cost in dollars per meter :</label></div><!-- ptitle --> 
+		    <div class="pfield"><input name="xyzxyzxyz" id="xyzxyzxyz" class="form_text" type="text" size="10" maxlength="128" /> $/m</div><!-- pfield --> 
+		    <div class="visualclear"></div> 
+		  </div><!-- class="pageblock" --> 
+		  
+		  <div class="visualclear"></div> 
+		</div><!-- tabbertab  Low voltage distribution --> 
 		
 		<!-- ***  END TAB DIV *** --> 
 		
