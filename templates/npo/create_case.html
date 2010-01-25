@@ -39,8 +39,10 @@
     <select id="selectParamSet" class="form_select" onchange="toggleParam(this.options[selectedIndex].value);reset()"> 
       <option value="" selected="selected">Choose a parameter set...</option> 
       <option value="paramset0">Default set</option> 
-      <option value="paramset1">Saved modified set 1</option> 
-      <option value="paramset2">Saved modified set 2</option> 
+      {% for case in cases %}
+      <option value="saved_case_{{case.id}}">Saved Case: {{case.name}}</option> 
+      <!-- need to match these in the divs as well... -->
+      {% endfor %}
     </select> 
 						
     <div class="parameterset" id="paramset0"> 

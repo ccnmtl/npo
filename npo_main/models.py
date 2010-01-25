@@ -3,13 +3,13 @@ from django.contrib.auth.models import User
 from datetime import datetime
 #from django.contrib.contenttypes.models import ContentType
 #from django.contrib.contenttypes import generic
-#from django.utils import simplejson as json
+from django.utils.simplejson import loads
 
 class Case(models.Model):
     name = models.CharField(max_length=256,default="",blank=True)
     owner = models.ForeignKey(User)
-    created = models.DateTimeField(default=datetime.now)
-    updated = models.DateTimeField(default=datetime.now)
+    created = models.DateTimeField(default=datetime.now,auto_now_add=True)
+    updated = models.DateTimeField(default=datetime.now,auto_now=True)
     parameters = models.TextField(blank=True,default="")
     stage_one_output = models.TextField(blank=True,default="")
     stage_two_output = models.TextField(blank=True,default="")
@@ -26,8 +26,9 @@ class Case(models.Model):
         else:
             return "started"
 
-    def run(self):
+    def run(self,host):
         # this is where we tell the backend that we'd like
         # it to process these parameters and hit us back later
         # with a result
-        pass
+        params = loads(self.parameters)
+        return
