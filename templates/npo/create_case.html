@@ -1127,15 +1127,30 @@
   </div><!-- class="pageblock" Case Parameters --> 
   
   
-  <div class="pageblock"> 
-    <h3>Network Model</h3> 
-    <label for="model_name">Model name:</label><br /> 
-    <select id="model_name" class="form_select"> 
-      <option value="" selected="selected">Select...</option> 
-      <option>modified-kruskal</option> 
-    </select> 
-    
-  </div><!-- class="pageblock" Load Base Data --> 
+	<div class="pageblock">
+		<h3>Network Model</h3>
+	
+		<div class="pageblock">
+		<span class="label">Model name:</span> &nbsp;&nbsp;<b>Modified-Kruskal</b>
+		</div><!-- class="pageblock" Model Name -->
+		
+		<h3 class="smaller">Algorithm</h3> 
+		  
+		<div class="pageblock"> 
+			<div class="ptitle"><label for="xyzxyzxyz">Search radius:</label></div><!-- ptitle --> 
+			<div class="pfield"><input name="xyzxyzxyz" id="xyzxyzxyz" class="form_text" type="text" size="10" maxlength="128" /> meters</div><!-- pfield --> 
+			<div class="visualclear"></div> 
+		</div><!-- class="pageblock" --> 
+	
+		<h3 class="smaller">Network</h3> 
+		  
+		<div class="pageblock plain"> 
+			<div class="ptitle"><label for="xyzxyzxyz">Minimum node count:</label></div><!-- ptitle --> 
+			<div class="pfield"><input name="xyzxyzxyz" id="xyzxyzxyz" class="form_text" type="text" size="10" maxlength="128" /></div><!-- pfield --> 
+			<div class="visualclear"></div> 
+		</div><!-- class="pageblock" --> 
+	
+	</div><!-- class="pageblock" Network Model -->
   
   <div class="pageblock"> 
     <input type="submit" value="Run case" class="regButton" /> 
