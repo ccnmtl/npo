@@ -1,4 +1,5 @@
-params = dict(
+from collections import defaultdict
+params = defaultdict(defaultdict,
     metricModelName="mvMax",
     metric = {
         "demand" : {

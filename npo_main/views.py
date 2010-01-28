@@ -9,6 +9,7 @@ SAMPLE_PATH = "sample_data"
 import os
 from simplejson import loads, dumps
 from models import Case
+from collections import defaultdict
 
 class rendered_with(object):
     def __init__(self, template_name):
@@ -38,11 +39,20 @@ def create_case(request):
         # start with params from sample data (see import above)
         # now, for each parameter that we get from the request,
         # we override those
-        #
-        # if request.POST.has_key("networkModelName"):
-        #     params["networkModelName"] = request.POST["networkModelName"]
-        # 
-        # or something similar. You get the idea.
+
+        # the params we don't want to copy over
+        SKIP_PARAMS = ["title","xyzxyzxyz"]
+
+        for key in request.POST.keys():
+            if key in SKIP_PARAMS:
+                continue
+
+            parts = key.split(">")
+            plevel = params
+            for p in parts[:-1]:
+                p = p.replace("_"," ")
+                plevel = plevel[p]
+            plevel[parts[-1].replace("_"," ")] = request.POST[key]
 
         case = Case.objects.create(name=request.POST['title'],
                                    owner=request.user,

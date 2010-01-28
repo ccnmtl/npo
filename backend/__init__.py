@@ -7,7 +7,7 @@ from sample_data.params import params
 SAMPLE_PATH = "sample_data"
 BACKEND_URL = "http://october.mech.columbia.edu/jobs"
 
-def request(params,demographics,networks):
+def request(params,demographics,networks,async=True):
     params["sync"] = "1" # tell it we want our results NOW!
     files = {
         "network > network > existing network path" : {
@@ -17,8 +17,10 @@ def request(params,demographics,networks):
             "file" : demographics, "filename" : "demographics.csv",
             },
         }
-    results = POST(BACKEND_URL,params,files=files,async=False)
-    return results
+    if async:
+        POST(BACKEND_URL,params,files=files,async=True)
+    else:
+        return POST(BACKEND_URL,params,files=files,async=False)
 
 def _exp_names(d,parents):
     """ see expand_param_names() below """

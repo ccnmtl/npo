@@ -4,6 +4,12 @@ from datetime import datetime
 #from django.contrib.contenttypes.models import ContentType
 #from django.contrib.contenttypes import generic
 from django.utils.simplejson import loads
+#from sample_data.params import params
+from backend import expand_param_names
+from backend import request as backend_request
+SAMPLE_PATH = "sample_data"
+import os
+
 
 class Case(models.Model):
     name = models.CharField(max_length=256,default="",blank=True)
@@ -31,4 +37,9 @@ class Case(models.Model):
         # it to process these parameters and hit us back later
         # with a result
         params = loads(self.parameters)
-        return
+        demographics = open(os.path.join(SAMPLE_PATH,"demographics.csv")).read()
+        networks = open(os.path.join(SAMPLE_PATH,"networks.zip")).read()
+        #results = backend_request(expand_param_names(params),demographics,networks,async=False)
+        #self.stage_one_output = results
+        #self.stage_two_output = results
+        #self.save()
