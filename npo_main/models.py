@@ -7,7 +7,7 @@ from django.utils.simplejson import loads
 #from sample_data.params import params
 from backend import expand_param_names
 from backend import request as backend_request
-SAMPLE_PATH = "sample_data"
+from django.conf import settings
 import os
 
 
@@ -37,8 +37,8 @@ class Case(models.Model):
         # it to process these parameters and hit us back later
         # with a result
         params = loads(self.parameters)
-        demographics = open(os.path.join(SAMPLE_PATH,"demographics.csv")).read()
-        networks = open(os.path.join(SAMPLE_PATH,"networks.zip")).read()
+        demographics = open(os.path.join(settings.SAMPLE_PATH,"demographics.csv")).read()
+        networks = open(os.path.join(settings.SAMPLE_PATH,"networks.zip")).read()
 
         params['callback_url'] = "http://" + host + "/api" + self.get_absolute_url()
 
