@@ -18,6 +18,7 @@ urlpatterns = patterns('',
 
                        (r'^$','npo_main.views.index'),
                        (r'^case/(?P<id>\d+)/$','npo_main.views.case',{},"view-case"),
+                       (r'^api/case/(?P<id>\d+)/$','npo_main.views.case_callback',{},"case-callback"),
                        (r'^case/(?P<id>\d+)/delete/$','npo_main.views.delete_case'),
                        (r'^case/create/$','npo_main.views.create_case'),
                        (r'^run/$','npo_main.views.run'),

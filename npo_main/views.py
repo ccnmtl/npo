@@ -64,8 +64,8 @@ def create_case(request):
         return HttpResponseRedirect("/")
     return dict(cases=Case.objects.filter(owner=request.user))
 
-@rendered_with('npo/case.html')
-def case(request,id):
+
+def case_callback(request,id):
     case = get_object_or_404(Case,id=id)
     if request.method == "POST":
         # this should be Roy's backend sending us some results
@@ -81,6 +81,12 @@ def case(request,id):
             pass
 
         return HttpResponse("ok")
+    return HttpResponse("this requires a POST")
+
+@login_required
+@rendered_with('npo/case.html')
+def case(request,id):
+    case = get_object_or_404(Case,id=id)
     return dict(case=case)
 
 @login_required

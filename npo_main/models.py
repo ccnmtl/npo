@@ -40,7 +40,7 @@ class Case(models.Model):
         demographics = open(os.path.join(SAMPLE_PATH,"demographics.csv")).read()
         networks = open(os.path.join(SAMPLE_PATH,"networks.zip")).read()
 
-        params['callback_url'] = "http://" + host + self.get_absolute_url()
+        params['callback_url'] = "http://" + host + "/api" + self.get_absolute_url()
 
         params = expand_param_names(params)
         results = backend_request(params,demographics,networks,async=False)
