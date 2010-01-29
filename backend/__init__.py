@@ -2,7 +2,7 @@ from restclient import POST
 from pprint import pprint
 import os
 from simplejson import loads
-from sample_data.params import params
+from params import params
 
 SAMPLE_PATH = "sample_data"
 BACKEND_URL = "http://october.mech.columbia.edu/jobs"
@@ -26,7 +26,7 @@ def _exp_names(d,parents):
     """ see expand_param_names() below """
     results = []
     for (k,v) in d.iteritems():
-        if type(v) == type("s"):
+        if type(v) == type("s") or type(v) == type(u"s"):
             full_key = " > ".join(parents + [k])
             results.append((full_key,v))
         else:
@@ -44,5 +44,6 @@ if __name__ == "__main__":
     demographics = open(os.path.join(SAMPLE_PATH,"demographics.csv")).read()
     networks = open(os.path.join(SAMPLE_PATH,"networks.zip")).read()
     params = expand_param_names(params)
-    results = loads(request(params,demographics,networks))
+    r = request(params,demographics,networks,async=False)
+    results = loads(r)
     pprint(results)
