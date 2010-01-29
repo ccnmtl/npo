@@ -2,7 +2,7 @@ from restclient import POST
 from pprint import pprint
 import os
 from simplejson import loads
-from params import params
+from sample_data.params import params
 
 SAMPLE_PATH = "sample_data"
 BACKEND_URL = "http://october.mech.columbia.edu/jobs"
