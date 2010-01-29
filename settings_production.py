@@ -8,3 +8,4 @@ MEDIA_ROOT = '/var/www/npo/uploads/'
 
 DEBUG = False
 TEMPLATE_DEBUG = DEBUG
+SAMPLE_PATH = "/var/www/npo/npo/sample_data/"

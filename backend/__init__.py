@@ -4,7 +4,8 @@ import os
 from simplejson import loads
 from sample_data.params import params
 
-SAMPLE_PATH = "sample_data"
+from django.conf import settings
+SAMPLE_PATH = settings.SAMPLE_PATH
 BACKEND_URL = "http://october.mech.columbia.edu/jobs"
 
 def request(params,demographics,networks,async=True):

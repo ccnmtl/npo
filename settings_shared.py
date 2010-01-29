@@ -73,6 +73,8 @@ INSTALLED_APPS = (
     'npo_main',
 )
 
+SAMPLE_PATH = "sample_data"
+
 THUMBNAIL_SUBDIR = "thumbs"
 EMAIL_SUBJECT_PREFIX = "[npo] "
 EMAIL_HOST = 'localhost'
