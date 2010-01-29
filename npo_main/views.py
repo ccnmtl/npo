@@ -64,7 +64,6 @@ def create_case(request):
         return HttpResponseRedirect("/")
     return dict(cases=Case.objects.filter(owner=request.user))
 
-@login_required
 @rendered_with('npo/case.html')
 def case(request,id):
     case = get_object_or_404(Case,id=id)
