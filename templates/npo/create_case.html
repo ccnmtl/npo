@@ -2229,7 +2229,11 @@
 		  
 		<div class="pageblock"> 
 			<div class="ptitle"><label for="network>algorithm>search_radius_in_meters">Search radius:</label></div><!-- ptitle --> 
-			<div class="pfield"><input name="network>algorithm>search_radius_in_meters" id="network>algorithm>search_radius_in_meters" class="form_text" type="text" size="10" maxlength="128" /> meters</div><!-- pfield --> 
+			<div class="pfield">
+<input name="network>algorithm>search_radius_in_meters"
+       id="network>algorithm>search_radius_in_meters"
+       class="form_text" type="text" size="10" value="{{defaults.network.algorithm.search_radius_in_meters}}"
+maxlength="128" /> meters</div><!-- pfield --> 
 			<div class="visualclear"></div> 
 		</div><!-- class="pageblock" --> 
 	
@@ -2237,7 +2241,14 @@
 		  
 		<div class="pageblock plain"> 
 			<div class="ptitle"><label for="network>algorithm>minimum_node_count_per_subnetwork">Minimum node count:</label></div><!-- ptitle --> 
-			<div class="pfield"><input name="network>algorithm>minimum_node_count_per_subnetwork" id="network>algorithm>minimum_node_count_per_subnetwork" class="form_text" type="text" size="10" maxlength="128" /></div><!-- pfield --> 
+			<div class="pfield"><input name="network>algorithm>minimum_node_count_per_subnetwork" 
+id="network>algorithm>minimum_node_count_per_subnetwork"
+						   class="form_text"
+						   type="text"
+						   size="10"
+						   maxlength="128" 
+						   value="{{defaults.network.algorithm.minimum_node_count_per_subnetwork}}"
+/></div><!-- pfield --> 
 			<div class="visualclear"></div> 
 		</div><!-- class="pageblock" --> 
 	

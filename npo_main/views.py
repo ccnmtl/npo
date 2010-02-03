@@ -64,7 +64,10 @@ def create_case(request):
         # to the backend
         case.run(request.get_host())
         return HttpResponseRedirect("/")
-    return dict(cases=Case.objects.filter(owner=request.user))
+    defaults = params
+    defaults["network"]["algorithm"]["minimum_node_count_per_subnetwork"] = 2
+    defaults["network"]["algorithm"]["search_radius_in_meters"] = 2500
+    return dict(cases=Case.objects.filter(owner=request.user),defaults=defaults)
 
 
 def case_callback(request,id):
