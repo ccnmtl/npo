@@ -10,6 +10,9 @@ from backend import request as backend_request
 from django.conf import settings
 import os
 
+datasets = dict(default=("demographics.csv","networks.zip"),
+                leona=("LeonaVillages.zip","LeonaNetworks.zip"),
+    )
 
 class Case(models.Model):
     name = models.CharField(max_length=256,default="",blank=True)
@@ -37,8 +40,11 @@ class Case(models.Model):
         # it to process these parameters and hit us back later
         # with a result
         params = loads(self.parameters)
-        demographics = open(os.path.join(settings.SAMPLE_PATH,"demographics.csv")).read()
-        networks = open(os.path.join(settings.SAMPLE_PATH,"networks.zip")).read()
+        print "using dataset: %s" % params['dataset']
+        (demographicsfile,networksfile) = datasets[params['dataset']]
+        del params['dataset']
+        demographics = open(os.path.join(settings.SAMPLE_PATH,demographicsfile)).read()
+        networks = open(os.path.join(settings.SAMPLE_PATH,networksfile)).read()
 
         params['callback_url'] = "http://" + host + "/api" + self.get_absolute_url()
 

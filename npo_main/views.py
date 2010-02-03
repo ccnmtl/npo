@@ -41,7 +41,7 @@ def create_case(request):
         # we override those
 
         # the params we don't want to copy over
-        SKIP_PARAMS = ["title","xyzxyzxyz"]
+        SKIP_PARAMS = ["title","xyzxyzxyz","dataset"]
 
         for key in request.POST.keys():
             if key in SKIP_PARAMS:
@@ -53,6 +53,8 @@ def create_case(request):
                 p = p.replace("_"," ")
                 plevel = plevel[p]
             plevel[parts[-1].replace("_"," ")] = request.POST[key]
+
+        params["dataset"] = request.POST.get("dataset","default")
 
         case = Case.objects.create(name=request.POST['title'],
                                    owner=request.user,
