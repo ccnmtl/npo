@@ -132,8 +132,5 @@ params = defaultdict(defaultdict,
             "minimum node count per subnetwork" : "2",
             "search radius in meters" : "2500",
             },
-#        "network" : {
-#            "densification unit length in meters" : "50",
-#            },
         }
     )
