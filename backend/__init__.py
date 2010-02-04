@@ -8,14 +8,14 @@ from django.conf import settings
 SAMPLE_PATH = settings.SAMPLE_PATH
 BACKEND_URL = "http://october.mech.columbia.edu/jobs"
 
-def request(params,demographics,networks,async=True):
+def request(params,demographics,networks,async=True,demographics_extension="zip"):
     params["sync"] = "1" # tell it we want our results NOW!
     files = {
         "network > network > existing network path" : {
             'file' : networks, 'filename' : "networks.zip",
             },
         "demographicDatabase" : {
-            "file" : demographics, "filename" : "demographics.csv",
+            "file" : demographics, "filename" : "demographics." + demographics_extension,
             },
         }
     if async:

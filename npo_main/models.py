@@ -40,16 +40,18 @@ class Case(models.Model):
         # it to process these parameters and hit us back later
         # with a result
         params = loads(self.parameters)
-        print "using dataset: %s" % params['dataset']
         (demographicsfile,networksfile) = datasets[params['dataset']]
         del params['dataset']
         demographics = open(os.path.join(settings.SAMPLE_PATH,demographicsfile)).read()
         networks = open(os.path.join(settings.SAMPLE_PATH,networksfile)).read()
 
+        demographics_extension = demographicsfile.split(".")[-1].lower()
+
         params['callback_url'] = "http://" + host + "/api" + self.get_absolute_url()
 
         params = expand_param_names(params)
-        results = backend_request(params,demographics,networks,async=False)
+        results = backend_request(params,demographics,networks,async=False,
+                                  demographics_extension=demographics_extension)
         self.stage_one_output = results
         self.stage_two_output = results
         self.save()
