@@ -11,11 +11,11 @@
 </div><!-- class="create_case" --> 
 				
 {% if cases %}
-<form method="get"> 
+<form method="post" action="/bulk/"> 
   <div class="cases_actions"> 
     <input type="button" value="Compare summaries" class="regButton" /> 
     or
-    <input type="button" value="Delete" class="regButton" /> 
+    <input type="submit" name="delete" value="Delete" class="regButton" /> 
   </div> 
   
   <table border="0" cellspacing="0" cellpadding="0"> 

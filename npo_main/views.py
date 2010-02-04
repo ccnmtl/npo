@@ -32,6 +32,19 @@ def index(request):
     return dict(cases=cases)
 
 @login_required
+def bulk(request):
+    if request.method == "POST":
+        if request.POST.get("delete","") != "":
+            for k in request.POST.keys():
+                if k.startswith("case_"):
+                    caseid = k.split("_")[1]
+                    case = Case.objects.get(id=caseid)
+                    case.delete()
+        # compare not handled yet
+        # it'll be a redirect to another view
+    return HttpResponseRedirect("/")
+
+@login_required
 @rendered_with('npo/create_case.html')
 def create_case(request):
     if request.method == "POST":
