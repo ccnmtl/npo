@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load get %}
 {% block title %}Create A New Case{% endblock %}
 {% block breadcrumbs %}<a href="/">HOME</a> &gt; CREATE A NEW CASE{% endblock %}
 
@@ -2232,7 +2233,7 @@
 			<div class="pfield">
 <input name="network>algorithm>search_radius_in_meters"
        id="network>algorithm>search_radius_in_meters"
-       class="form_text" type="text" size="10" value="{{defaults.network.algorithm.search_radius_in_meters}}"
+       class="form_text" type="text" size="10" value="{{defaults.network.algorithm|get:"search radius in meters"}}"
 maxlength="128" /> meters</div><!-- pfield --> 
 			<div class="visualclear"></div> 
 		</div><!-- class="pageblock" --> 
@@ -2247,7 +2248,7 @@ id="network>algorithm>minimum_node_count_per_subnetwork"
 						   type="text"
 						   size="10"
 						   maxlength="128" 
-						   value="{{defaults.network.algorithm.minimum_node_count_per_subnetwork}}"
+						   value="{{defaults.network.algorithm|get:"minimum node count per subnetwork"}}"
 /></div><!-- pfield --> 
 			<div class="visualclear"></div> 
 		</div><!-- class="pageblock" --> 

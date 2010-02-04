@@ -65,8 +65,6 @@ def create_case(request):
         case.run(request.get_host())
         return HttpResponseRedirect("/")
     defaults = params
-    defaults["network"]["algorithm"]["minimum_node_count_per_subnetwork"] = 2
-    defaults["network"]["algorithm"]["search_radius_in_meters"] = 2500
     return dict(cases=Case.objects.filter(owner=request.user),defaults=defaults)
 
 
