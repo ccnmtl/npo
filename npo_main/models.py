@@ -40,7 +40,7 @@ class Case(models.Model):
         # it to process these parameters and hit us back later
         # with a result
         params = loads(self.parameters)
-        (demographicsfile,networksfile) = datasets[params['dataset']]
+        (demographicsfile,networksfile) = datasets[params.get('dataset','default')]
         del params['dataset']
         demographics = open(os.path.join(settings.SAMPLE_PATH,demographicsfile)).read()
         networks = open(os.path.join(settings.SAMPLE_PATH,networksfile)).read()
