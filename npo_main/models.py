@@ -23,6 +23,9 @@ class Case(models.Model):
     stage_one_output = models.TextField(blank=True,default="")
     stage_two_output = models.TextField(blank=True,default="")
 
+    def parameters_dict(self):
+        return loads(self.parameters)
+
     @models.permalink
     def get_absolute_url(self):
         return ('npo_main.views.case',[str(self.id)])
