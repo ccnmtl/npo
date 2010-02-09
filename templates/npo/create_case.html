@@ -41,7 +41,7 @@
     <label for="case_title">Case parameters:</label><br /> 
     <div class="instructions">Select a parameter set</div><!-- class="instructions" --> 
     
-    <select id="selectParamSet" class="form_select" onchange="toggleParam(this.options[selectedIndex].value);reset()"> 
+    <select id="selectParamSet" name="selected-param-set" class="form_select" onchange="toggleParam(this.options[selectedIndex].value);"> 
       <option value="" selected="selected">Choose a parameter set...</option> 
       <option value="paramset-0">Default set</option> 
       <option value="paramset-leona">Default Leona set</option> 
@@ -137,7 +137,7 @@ id="network>algorithm>minimum_node_count_per_subnetwork"
   
   <div class="pageblock"> 
     <input type="submit" value="Run case" class="regButton" /> 
-    <input type="button" value="Run case without saving paramenter set" class="regButton" /> 
+    <input type="button" value="Run case without saving parameter set" class="regButton" /> 
   </div><!-- class="pageblock" Load Base Data --> 
   
   

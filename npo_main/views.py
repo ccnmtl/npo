@@ -58,7 +58,16 @@ def create_case(request):
         # the params we don't want to copy over
         SKIP_PARAMS = ["title","xyzxyzxyz","dataset"]
 
+        selected_paramset = request.POST['selected-param-set'] + "-"
+
         for key in request.POST.keys():
+            # ignore fields not from the selected paramset
+            if not key.startswith(selected_paramset):
+                continue 
+
+            fullkey = key
+            key = key[len(selected_paramset):] # strip the prefix
+
             if key in SKIP_PARAMS:
                 continue
 
@@ -67,7 +76,7 @@ def create_case(request):
             for p in parts[:-1]:
                 p = p.replace("_"," ")
                 plevel = plevel[p]
-            plevel[parts[-1].replace("_"," ")] = request.POST[key]
+            plevel[parts[-1].replace("_"," ")] = request.POST[fullkey]
 
         params["dataset"] = request.POST.get("dataset","default")
 
