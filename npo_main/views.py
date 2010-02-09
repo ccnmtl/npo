@@ -3,6 +3,8 @@ from django.http import HttpResponse, HttpResponseRedirect, HttpRequest
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render_to_response, get_object_or_404
 from sample_data.params import params
+from sample_data.leona import params as params_leona
+from sample_data.kenya import params as params_kenya
 from backend import expand_param_names
 from backend import request as backend_request
 SAMPLE_PATH = "sample_data"
@@ -78,7 +80,8 @@ def create_case(request):
         case.run(request.get_host())
         return HttpResponseRedirect("/")
     defaults = params
-    return dict(cases=Case.objects.filter(owner=request.user),defaults=defaults)
+    return dict(cases=Case.objects.filter(owner=request.user),defaults=defaults,
+                leona=params_leona,kenya=params_kenya)
 
 
 def case_callback(request,id):

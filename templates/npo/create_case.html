@@ -44,12 +44,24 @@
     <select id="selectParamSet" class="form_select" onchange="toggleParam(this.options[selectedIndex].value);reset()"> 
       <option value="" selected="selected">Choose a parameter set...</option> 
       <option value="paramset-0">Default set</option> 
+      <option value="paramset-leona">Default Leona set</option> 
+      <option value="paramset-kenya">Default Kenya set</option> 
       {% for case in cases %}
       <option value="paramset-{{case.id}}">Saved Case: {{case.name}}</option> 
       <!-- need to match these in the divs as well... -->
       {% endfor %}
     </select> 
 
+
+{% with "leona" as paramsetid %}
+{% with "Default Leona set" as paramsettitle %}
+{% with leona as params %}
+{% include "npo/paramset_form.html" %}  
+{% endwith %}
+{% endwith %}    
+{% endwith %}
+
+    
 {% with "0" as paramsetid %}
 {% with "Default set" as paramsettitle %}
 {% with defaults as params %}
@@ -57,24 +69,19 @@
 {% endwith %}
 {% endwith %}    
 {% endwith %}
-      
-      <div class="paramatersave"> 
-	<p class="alert">Warning: You have made changes to this parameter set</p> 
-	
-	<div> 
-	  
-	  <label for="xyzxyzxyz">Save this set as:</label> 
-	  <input name="xyzxyzxyz" id="xyzxyzxyz" class="form_text" type="text" size="20" maxlength="128" /> <input type="button" value="Save" class="regButton" /> 
-	</div> 
-	
-	<div style="margin-top: 2em;"> 
-	  <input type="button" value="Save" class="regButton" /> <input type="button" value="Save as:" class="regButton" /> <input name="xyzxyzxyz" id="xyzxyzxyz" class="form_text" type="text" size="20" maxlength="128" /> 
-	</div> 
-	
-      </div><!-- class="paramatersave" --> 
 
-    <div class="visualclear"></div> 
-  </div><!-- class="pageblock" Case Parameters --> 
+
+
+{% with "kenya" as paramsetid %}
+{% with "Default Kenya set" as paramsettitle %}
+{% with kenya as params %}
+{% include "npo/paramset_form.html" %}  
+{% endwith %}
+{% endwith %}    
+{% endwith %}
+
+
+
 
 
 {% for case in cases %}  
@@ -86,7 +93,9 @@
 {% endwith %}
 {% endwith %}
 {% endfor %}
-    <div class="visualclear"></div> 
+
+
+
   </div><!-- class="pageblock" Case Parameters --> 
 
   

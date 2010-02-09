@@ -136,6 +136,6 @@ params = defaultdict(defaultdict,
     )
 
 # not accounted for (i don't know what to call them):
-elasticity of electricity demand
-
-medium voltage stuff
+# elasticity of electricity demand
+# 
+# medium voltage stuff
