@@ -993,8 +993,15 @@
 		  </div><!-- class="pageblock" --> 
 		  
 		  <div class="pageblock"> 
-		    <div class="ptitle w200"><label for="xyzxyzxyz">Electricity cost per kilowatt-hour:</label></div><!-- ptitle --> 
-		    <div class="pfield"><input name="paramset-{{paramsetid}}-xyzxyzxyz" id="xyzxyzxyz" class="form_text" type="text" size="10" maxlength="128" /> $/kWh</div><!-- pfield --> 
+		    <div class="ptitle
+		    w200"><label for="paramset-{{paramsetid}}-metric>system_grid>electricity_cost_per_kilowatt-hour">Electricity cost per kilowatt-hour:</label></div><!-- ptitle --> 
+		    <div class="pfield"><input name="paramset-{{paramsetid}}-metric>system_grid>electricity_cost_per_kilowatt-hour"
+					       id="paramset-{{paramsetid}}-metric>system_grid>electricity_cost_per_kilowatt-hour"
+					       class="form_text"
+					       type="text" size="10"
+					       maxlength="128" 
+					       value="{{params.metric|get:"system grid"|get:"electricity cost per kilowatt-hour"}}"
+					       /> $/kWh</div><!-- pfield --> 
 		    <div class="visualclear"></div> 
 		  </div><!-- class="pageblock" --> 
 		  
