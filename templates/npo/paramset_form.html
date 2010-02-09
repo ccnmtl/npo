@@ -1006,8 +1006,14 @@
 		  </div><!-- class="pageblock" --> 
 		  
 		  <div class="pageblock"> 
-		    <div class="ptitle w200"><label for="xyzxyzxyz">Transmission and distribution loss factor<br />(as fraction of grid system demand):</label></div><!-- ptitle --> 
-		    <div class="pfield"><input name="paramset-{{paramsetid}}-xyzxyzxyz" id="xyzxyzxyz" class="form_text" type="text" size="10" maxlength="128" /><div class="instructions">(e.g. 0.02 for 2%)</div></div><!-- pfield --> 
+		    <div class="ptitle w200"><label for="paramset-{{paramsetid}}-metric>system_grid>distribution_loss_as_fraction_of_system_demand">Transmission and distribution loss factor<br />(as fraction of grid system demand):</label></div><!-- ptitle --> 
+		    <div class="pfield"><input name="paramset-{{paramsetid}}-metric>system_grid>distribution_loss_as_fraction_of_system_demand"
+					       id="paramset-{{paramsetid}}-metric>system_grid>distribution_loss_as_fraction_of_system_demand"
+					       class="form_text"
+					       type="text" size="10"
+					       maxlength="128" 
+					       value="{{params.metric|get:"system grid"|get:"distribution loss as fraction of system demand"}}"
+					       /><div class="instructions">(e.g. 0.02 for 2%)</div></div><!-- pfield --> 
 		    <div class="visualclear"></div> 
 		  </div><!-- class="pageblock" -->
 		  
