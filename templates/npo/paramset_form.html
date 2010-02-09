@@ -1068,7 +1068,13 @@
 		  		  
 		  <div class="pageblock"> 
 		    <div class="ptitle w200"><label for="xyzxyzxyz">Equipment cost per household<br />e.g. energy meters, internal wiring, etc.:</label></div><!-- ptitle --> 
-		    <div class="pfield"><input name="paramset-{{paramsetid}}-xyzxyzxyz" id="xyzxyzxyz" class="form_text" type="text" size="10" maxlength="128" /> $/HH</div><!-- pfield --> 
+		    <div class="pfield"><input name="paramset-{{paramsetid}}-metric>system_grid>equipment_cost_per_household" 
+					       id="paramset-{{paramsetid}}-metric>system_grid>equipment_cost_per_household"
+					       class="form_text"
+					       type="text" size="10"
+					       maxlength="128" 
+					       value="{{params.metric|get:"system grid"|get:"equipment cost per household"}}"
+					       /> $/HH</div><!-- pfield --> 
 		    <div class="visualclear"></div> 
 		  </div><!-- class="pageblock" --> 
 		  
