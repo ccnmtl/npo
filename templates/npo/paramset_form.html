@@ -1177,8 +1177,14 @@
 		  <h3 class="smaller">Medium Voltage Lines Replacement</h3> 
 		  		  
 		  <div class="pageblock"> 
-		    <div class="ptitle w200"><label for="xyzxyzxyz">Medium Voltage Line Lifetime:</label></div><!-- ptitle --> 
-		    <div class="pfield"><input name="paramset-{{paramsetid}}-xyzxyzxyz" id="xyzxyzxyz" class="form_text" type="text" size="10" maxlength="128" /> years</div><!-- pfield --> 
+		    <div class="ptitle w200"><label for="paramset-{{paramsetid}}-metric>system_grid>material_and_labor_lifetime_in_years">Medium Voltage Line Lifetime:</label></div><!-- ptitle --> 
+		    <div class="pfield"><input name="paramset-{{paramsetid}}-metric>system_grid>material_and_labor_lifetime_in_years"
+					       id="paramset-{{paramsetid}}-metric>system_grid>material_and_labor_lifetime_in_years"
+					       class="form_text"
+					       type="text" size="10"
+					       maxlength="128" 
+					       value="{{params.metric|get:"system grid"|get:"material and labor lifetime in years"}}"					       
+					       /> years</div><!-- pfield --> 
 		    <div class="visualclear"></div> 
 		  </div><!-- class="pageblock" --> 
 		  
