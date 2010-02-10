@@ -1163,8 +1163,14 @@
 		  <h3 class="smaller">Medium Voltage Lines</h3> 
 		  		  
 		  <div class="pageblock"> 
-		    <div class="ptitle w200"><label for="xyzxyzxyz">Medium Voltage Line cost per meter:</label></div><!-- ptitle --> 
-		    <div class="pfield"><input name="paramset-{{paramsetid}}-xyzxyzxyz" id="xyzxyzxyz" class="form_text" type="text" size="10" maxlength="128" /> $/m</div><!-- pfield --> 
+		    <div class="ptitle w200"><label for="paramset-{{paramsetid}}-metric>system_grid>material_and_labor_cost_in_dollars_per_meter_of_grid_extension">Medium Voltage Line cost per meter:</label></div><!-- ptitle --> 
+		    <div class="pfield"><input name="paramset-{{paramsetid}}-metric>system_grid>material_and_labor_cost_in_dollars_per_meter_of_grid_extension"
+					       id="paramset-{{paramsetid}}-metric>system_grid>material_and_labor_cost_in_dollars_per_meter_of_grid_extension"
+					       class="form_text"
+					       type="text" size="10"
+					       maxlength="128" 
+					       value="{{params.metric|get:"system grid"|get:"material and labor cost in dollars per meter of grid extension"}}"
+					       /> $/m</div><!-- pfield --> 
 		    <div class="visualclear"></div> 
 		  </div><!-- class="pageblock" --> 
 		  
