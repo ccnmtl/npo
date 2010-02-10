@@ -26,6 +26,28 @@ class Case(models.Model):
     def parameters_dict(self):
         return loads(self.parameters)
 
+    def output_dict(self):
+        return loads(self.stage_one_output)
+
+    def geojson(self):
+        return self.output_dict().get('geojson')
+
+    def node_stats(self):
+        return self.output_dict()['statistics']['node']
+
+    def mean_lon(self):
+        return self.node_stats()['mean longitude']
+    def mean_lat(self):
+        return self.node_stats()['mean latitude']
+    def min_lon(self):
+        return self.node_stats()['minimum longitude']
+    def min_lat(self):
+        return self.node_stats()['minimum latitude']
+    def max_lon(self):
+        return self.node_stats()['maximum longitude']
+    def max_lat(self):
+        return self.node_stats()['maximum latitude']
+
     @models.permalink
     def get_absolute_url(self):
         return ('npo_main.views.case',[str(self.id)])
@@ -59,3 +81,6 @@ class Case(models.Model):
         self.stage_one_output = results
         self.stage_two_output = results
         self.save()
+
+from django.contrib import admin
+admin.site.register(Case)
