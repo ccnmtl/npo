@@ -990,8 +990,14 @@
 		  <h3 class="smaller">Operation and Maintenance (O&#38;M)</h3> 
 		  
 		  <div class="pageblock"> 
-		    <div class="ptitle w200"><label for="xyzxyzxyz">Total hours diesel generator is in operation in a year:</label></div><!-- ptitle --> 
-		    <div class="pfield"><input name="paramset-{{paramsetid}}-xyzxyzxyz" id="xyzxyzxyz" class="form_text" type="text" size="10" maxlength="128" /> h/yr</div><!-- pfield --> 
+		    <div class="ptitle w200"><label for="paramset-{{paramsetid}}-metric>system_diesel>fuel_hours_per_year">Total hours diesel generator is in operation in a year:</label></div><!-- ptitle --> 
+		    <div class="pfield"><input name="paramset-{{paramsetid}}-metric>system_diesel>fuel_hours_per_year"
+					       id="paramset-{{paramsetid}}-metric>system_diesel>fuel_hours_per_year"
+					       class="form_text"
+					       type="text" size="10"
+					       maxlength="128" 
+					       value="{{params.metric|get:"system diesel"|get:"fuel hours per year"}}"
+					       /> h/yr</div><!-- pfield --> 
 		    <div class="visualclear"></div> 
 		  </div><!-- class="pageblock" --> 
 		  
