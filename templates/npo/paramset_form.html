@@ -976,8 +976,14 @@
 		  </div><!-- class="pageblock" --> 
 		  
 		  <div class="pageblock"> 
-		    <div class="ptitle w200"><label for="xyzxyzxyz">Fuel liters consumed per kilowatt-hour:</label></div><!-- ptitle --> 
-		    <div class="pfield"><input name="paramset-{{paramsetid}}-xyzxyzxyz" id="xyzxyzxyz" class="form_text" type="text" size="10" maxlength="128" /> L/kWh</div><!-- pfield --> 
+		    <div class="ptitle w200"><label for="paramset-{{paramsetid}}-metric>system_diesel>fuel_liters_consumed_per_kilowatt-hour">Fuel liters consumed per kilowatt-hour:</label></div><!-- ptitle --> 
+		    <div class="pfield"><input name="paramset-{{paramsetid}}-metric>system_diesel>fuel_liters_consumed_per_kilowatt-hour"
+					       id="paramset-{{paramsetid}}-metric>system_diesel>fuel_liters_consumed_per_kilowatt-hour"
+					       class="form_text"
+					       type="text" size="10"
+					       maxlength="128" 
+					       value="{{params.metric|get:"system diesel"|get:"fuel liters consumed per kilowatt-hour"}}"
+					       /> L/kWh</div><!-- pfield --> 
 		    <div class="visualclear"></div> 
 		  </div><!-- class="pageblock" --> 
 		  
