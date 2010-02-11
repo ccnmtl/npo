@@ -1002,8 +1002,14 @@
 		  </div><!-- class="pageblock" --> 
 		  
 		  <div class="pageblock"> 
-		    <div class="ptitle w200"><label for="xyzxyzxyz">Diesel Generator O&amp;M cost factor<br />(as fraction of Diesel Generator cost):</label></div><!-- ptitle --> 
-		    <div class="pfield"><input name="paramset-{{paramsetid}}-xyzxyzxyz" id="xyzxyzxyz" class="form_text" type="text" size="10" maxlength="128" /><div class="instructions">(e.g. 0.25 for 25%)</div></div><!-- pfield --> 
+		    <div class="ptitle w200"><label for="paramset-{{paramsetid}}-metric>system_diesel>operations_and_maintenance_cost_as_fraction_of_engine_cost">Diesel Generator O&amp;M cost factor<br />(as fraction of Diesel Generator cost):</label></div><!-- ptitle --> 
+		    <div class="pfield"><input name="paramset-{{paramsetid}}-metric>system_diesel>operations_and_maintenance_cost_as_fraction_of_engine_cost"
+					       id="paramset-{{paramsetid}}-metric>system_diesel>operations_and_maintenance_cost_as_fraction_of_engine_cost"
+					       class="form_text"
+					       type="text" size="10"
+					       maxlength="128" 
+					       value="{{params.metric|get:"system diesel"|get:"operations and maintenance cost as fraction of engine cost"}}"
+					       /><div class="instructions">(e.g. 0.25 for 25%)</div></div><!-- pfield --> 
 		    <div class="visualclear"></div> 
 		  </div><!-- class="pageblock" --> 
 		  
