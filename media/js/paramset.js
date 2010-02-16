@@ -21,4 +21,17 @@ function toggleParam(showID) {
 
 }
 
+function select_all (s) {
+    for (i=0; i<s.length; i++)
+        s.options[i].selected = 1;
+}
+
+function selectAllMulties() {
+  var multiselects = getElementsByTagAndClassName("select","form_multiselect");
+  for (var i=0; i<multiselects.length; i++) {
+    select_all(multiselects[i]);
+    alert("selected all for " + multiselects[i].name);
+  }
+}
+
 addLoadEvent(hideAllParamSet)

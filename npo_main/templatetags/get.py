@@ -19,3 +19,15 @@ def get( dict, key, default = '' ):
     return dict.get(key,default)
   except:
     return default
+
+@register.filter
+def getlist(dict, key, default = None):
+    """ this is for simple list parameters (like "available engine sizes").
+    fetches the parameters and splits it on whitespace, returning a list
+    """
+    if default is None:
+        default = ""
+    try:
+        return dict.get(key,default).split(" ")
+    except:
+        return []
