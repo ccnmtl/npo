@@ -27,26 +27,29 @@ class Case(models.Model):
         return loads(self.parameters)
 
     def output_dict(self):
-        return loads(self.stage_one_output)
+        try:
+            return loads(self.stage_one_output)
+        except:
+            return dict()
 
     def geojson(self):
-        return self.output_dict().get('geojson')
+        return self.output_dict().get('geojson','')
 
     def node_stats(self):
-        return self.output_dict()['statistics']['node']
+        return self.output_dict().get('statistics',dict()).get('node',dict())
 
     def mean_lon(self):
-        return self.node_stats()['mean longitude']
+        return self.node_stats().get('mean longitude',None)
     def mean_lat(self):
-        return self.node_stats()['mean latitude']
+        return self.node_stats().get('mean latitude',None)
     def min_lon(self):
-        return self.node_stats()['minimum longitude']
+        return self.node_stats().get('minimum longitude',None)
     def min_lat(self):
-        return self.node_stats()['minimum latitude']
+        return self.node_stats().get('minimum latitude',None)
     def max_lon(self):
-        return self.node_stats()['maximum longitude']
+        return self.node_stats().get('maximum longitude',None)
     def max_lat(self):
-        return self.node_stats()['maximum latitude']
+        return self.node_stats().get('maximum latitude',None)
 
     @models.permalink
     def get_absolute_url(self):
