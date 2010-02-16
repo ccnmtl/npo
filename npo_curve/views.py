@@ -9,4 +9,4 @@ def curve(request):
     dpi = int(request.GET.get('dpi', '500'))
     title = request.GET.get('title', '')
     data = get_curve(x, y, 1.5, dpi, xl, yl, title)
-    return HttpResponse(data, content_type="image/xyz")
+    return HttpResponse(data, content_type="image/jpeg")
