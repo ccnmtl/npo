@@ -175,7 +175,11 @@
 			</tbody> 
 		      </table> 
 		    </div><!-- pfield --> 
-		    <div class="pmore"><div style="border: 1px solid #999; width:200px; height:100px; float: left;">Placeholder for plotting of these points</div></div><!-- pmore --> 
+
+		    {% with "household" as type %}
+		    {% include "npo/paramset_form_plot.html" %}
+		    {% endwith %}
+		    
 		    <div class="visualclear"></div> 
 		    
 		    <div class="ptitle w150"><span class="label">Demand curve type :</span></div><!-- ptitle --> 
@@ -260,7 +264,11 @@
 			</tbody> 
 		      </table> 
 		    </div><!-- pfield --> 
-		    <div class="pmore"><div style="border: 1px solid #999; width:200px; height:100px; float: left;">Placeholder for plotting of these points</div></div><!-- pmore --> 
+
+		    {% with "productive" as type %}
+		    {% include "npo/paramset_form_plot.html" %}
+		    {% endwith %}
+
 		    <div class="visualclear"></div> 
 		    
 		    <div class="ptitle w150"><span class="label">Demand curve type :</span></div><!-- ptitle --> 
@@ -389,7 +397,11 @@
 			</tbody> 
 		      </table> 
 		    </div><!-- pfield --> 
-		    <div class="pmore"><div style="border: 1px solid #999; width:200px; height:100px; float: left;">Placeholder for plotting of these points</div></div><!-- pmore --> 
+
+		    {% with "social" as type %}
+		    {% include "npo/paramset_form_plot.html" %}
+		    {% endwith %}
+		    
 		    <div class="visualclear"></div> 
 		    
 		    <div class="ptitle w150"><span class="label">Demand curve type :</span></div><!-- ptitle --> 
@@ -447,7 +459,11 @@
 			</tbody> 
 		      </table> 
 		    </div><!-- pfield --> 
-		    <div class="pmore"><div style="border: 1px solid #999; width:200px; height:100px; float: left;">Placeholder for plotting of these points</div></div><!-- pmore --> 
+
+		    {% with "health" as type %}
+		    {% include "npo/paramset_form_plot.html" %}
+		    {% endwith %}
+
 		    <div class="visualclear"></div> 
 		    <div class="ptitle w150"><span class="label">Count curve type:</span></div><!-- ptitle --> 
 		    <div class="pfield"><b>Logistic</b></div><!-- pfield --> 
@@ -505,7 +521,11 @@
 			</tbody> 
 		      </table> 
 		    </div><!-- pfield --> 
-		    <div class="pmore"><div style="border: 1px solid #999; width:200px; height:100px; float: left;">Placeholder for plotting of these points</div></div><!-- pmore --> 
+
+		    {% with "education" as type %}
+		    {% include "npo/paramset_form_plot.html" %}
+		    {% endwith %}
+		    
 		    <div class="visualclear"></div> 
 		    
 		    <div class="ptitle w150"><span class="label">Count curve type:</span></div><!-- ptitle --> 
@@ -564,7 +584,11 @@
 			</tbody> 
 		      </table> 
 		    </div><!-- pfield --> 
-		    <div class="pmore"><div style="border: 1px solid #999; width:200px; height:100px; float: left;">Placeholder for plotting of these points</div></div><!-- pmore --> 
+
+		    {% with "commercial" as type %}
+		    {% include "npo/paramset_form_plot.html" %}
+		    {% endwith %}
+
 		    <div class="visualclear"></div> 
 		    
 		    <div class="ptitle w150"><span class="label">Count curve type:</span></div><!-- ptitle --> 
@@ -623,7 +647,11 @@
 			</tbody> 
 		      </table> 
 		    </div><!-- pfield --> 
-		    <div class="pmore"><div style="border: 1px solid #999; width:200px; height:100px; float: left;">Placeholder for plotting of these points</div></div><!-- pmore --> 
+
+		    {% with "lighting" as type %}
+		    {% include "npo/paramset_form_plot.html" %}
+		    {% endwith %}
+		    
 		    <div class="visualclear"></div> 
 		    
 		    <div class="ptitle w150"><span class="label">Count curve type:</span></div><!-- ptitle --> 

@@ -8,6 +8,26 @@
 <script src="/site_media/js/paramset.js" type="text/javascript" language="javascript"></script> 
 <script src="/site_media/js/tabber.js" type="text/javascript" language="javascript"></script> 
 <!--[if lt IE 7]><script src="http://ccnmtl.columbia.edu/remote/alerts/browser/ienosupport.js" type="text/javascript" language="javascript"></script><link rel="stylesheet" href="http://ccnmtl.columbia.edu/remote/alerts/browser/ienosupport.css" type="text/css" media="all" /><![endif]--> 
+
+<script type="text/javascript">
+var plot = function(insertInto, paramsFrom) {
+  div = document.getElementById(insertInto);
+  
+  div.innerHTML = "";
+  // pull from form fields, when they exist
+  var params = "x=500&x=1000&x=5000&x=10000&y=0.12&y=0.70&y=2.44&y=12.76";
+
+  params += "&dpi=40";
+  var img = MochiKit.DOM.IMG({"src": "http://hotdog.ccnmtl.columbia.edu/curve?" + params,
+                              "width": div.style.width, "height": div.style.height
+            });
+
+  MochiKit.DOM.appendChildNodes(div, img);
+
+  return false;
+};
+</script>
+
 {% endblock %}
 
 {% block content %}
