@@ -939,7 +939,7 @@
 		  <h3 class="smaller">Diesel Generators</h3> 
 		  
 		  <div class="pageblock"> 
-		    <div class="ptitle w200"><label for="xyzxyzxyz">Available diesel generator system sizes:</label></div><!-- ptitle --> 
+		    <div class="ptitle w200"><label for="paramset-{{paramsetid}}-metric>system_diesel>system_sizes">Available diesel generator system sizes:</label></div><!-- ptitle --> 
 		    <div class="pfield"> 
 		      <table class="veryplain"> 
 			<tbody> 
@@ -951,13 +951,30 @@
 			  <tr> 
 			    <td class="veryplain" style="text-align: right;"> 
 			      <!-- <input name="paramset-{{paramsetid}}-xyzxyzxyz" id="xyzxyzxyz" class="form_text" type="text" size="5" maxlength="128" /> --> 
-			      <input name="paramset-{{paramsetid}}-xyzxyzxyz" id="xyzxyzxyz" class="form_text" type="text" type="text" size="9" maxlength="128"  value="Enter value" onFocus="clearText(this)" onBlur="clearText(this)" /> 
-			      <input type="button" value="Add &#187;" class="regButton" /> 
+			      <input id="input-paramset-{{paramsetid}}-metric>system_diesel>system_sizes" 
+				     class="form_text" type="text"
+			      type="text" size="9" maxlength="128"  
+				     value="Enter value" onFocus="this.value=''" /> 
+			      <input type="button" value="Add &#187;"
+			      class="regButton" 
+				     onclick="AddListItem('paramset-{{paramsetid}}-metric>system_diesel>system_sizes')"/> 
 			      <hr style="margin: 5px 0;" /> 
-			      <input type="button" value="&#171; Remove" class="regButton" /> 
+			      <input type="button" value="&#171; Remove" 
+				     onclick="RemoveListItems('paramset-{{paramsetid}}-metric>system_diesel>system_sizes')"
+				     class="regButton" /> 
 			    </td> 
 			    <td class="veryplain"> 
-			      <select size="5" multiple="multiple" class="form_multiselect w100"> 
+			      <select id="select-paramset-{{paramsetid}}-metric>system_diesel>system_sizes"
+				      name="paramset-{{paramsetid}}-metric>system_diesel>system_sizes"
+				      size="5" multiple="multiple"
+				      class="form_multiselect w100"> 
+				{% with "system diesel" as system %}
+                                {% with "system sizes" as key %}
+                                {% for o in params.metric|get:system|getlist:key %}
+                                <option value="{{o}}">{{o}}</option>
+                                {% endfor %}
+                                {% endwith %}
+                                {% endwith %}
 			      </select> 
 			    </td> 
 			  </tr> 
