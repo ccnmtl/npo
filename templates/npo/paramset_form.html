@@ -871,7 +871,7 @@
 		  <h3 class="smaller">Diesel generators</h3> 
 		  
 		  <div class="pageblock"> 
-		    <div class="ptitle w200"><label for="xyzxyzxyz">Available diesel generator system size:</label></div><!-- ptitle --> 
+		    <div class="ptitle w200"><label for="paramset-{{paramsetid}}-metric>system_photovoltaic>system_sizes">Available diesel generator system size:</label></div><!-- ptitle --> 
 		    <div class="pfield"> 
 		      <table class="veryplain"> 
 			<tbody> 
@@ -883,13 +883,31 @@
 			  <tr> 
 			    <td class="veryplain" style="text-align: right;"> 
 			      <!-- <input name="paramset-{{paramsetid}}-xyzxyzxyz" id="xyzxyzxyz" class="form_text" type="text" size="5" maxlength="128" /> --> 
-			      <input name="paramset-{{paramsetid}}-xyzxyzxyz" id="xyzxyzxyz" class="form_text" type="text" type="text" size="9" maxlength="128"  value="Enter value" onFocus="clearText(this)" onBlur="clearText(this)" /> 
-			      kW <input type="button" value="Add &#187;" class="regButton" /> 
+			      <input 
+			      id="input-paramset-{{paramsetid}}-metric>system_photovoltaic>system_sizes" 
+				     class="form_text" type="text"
+			      type="text" size="9" maxlength="128"  
+				     value="Enter value" onFocus="this.value=''" /> 
+			      kW <input type="button" value="Add &#187;" class="regButton" 
+					onclick="AddListItem('paramset-{{paramsetid}}-metric>system_photovoltaic>system_sizes')"
+					/> 
 			      <hr style="margin: 5px 0;" /> 
-			      <input type="button" value="&#171; Remove" class="regButton" /> 
+			      <input type="button" value="&#171; Remove" class="regButton" 
+				     onclick="RemoveListItems('paramset-{{paramsetid}}-metric>system_photovoltaic>system_sizes')"/> 
 			    </td> 
 			    <td class="veryplain"> 
-			      <select size="5" multiple="multiple" class="form_multiselect w100"> 
+			      <select size="5" 
+				      name="paramset-{{paramsetid}}-metric>system_photovoltaic>system_sizes"
+				      id="select-paramset-{{paramsetid}}-metric>system_photovoltaic>system_sizes"
+				      multiple="multiple"
+				      class="form_multiselect w100"> 
+				{% with "system photovoltaic" as system %}
+                                {% with "system sizes" as key %}
+                                {% for o in params.metric|get:system|getlist:key %}
+                                <option value="{{o}}">{{o}}</option>
+                                {% endfor %}
+				{% endwith %}
+                                {% endwith %}
 			      </select> 
 			    </td> 
 			  </tr> 
@@ -1118,7 +1136,7 @@
 		  <h3 class="smaller">Transformer in Low Voltage Network</h3> 
 		  		  
 		  <div class="pageblock"> 
-		    <div class="ptitle w200"><label for="">Available transformer system sizes:</label></div><!-- ptitle --> 
+		    <div class="ptitle w200"><label for="select-paramset-{{paramsetid}}-metric>system_grid>system_sizes">Available transformer system sizes:</label></div><!-- ptitle --> 
 		    <div class="pfield"> 
 		      <table class="veryplain"> 
 			<tbody> 
