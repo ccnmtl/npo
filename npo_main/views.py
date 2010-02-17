@@ -76,10 +76,9 @@ def create_case(request):
             for p in parts[:-1]:
                 p = p.replace("_"," ")
                 plevel = plevel[p]
-            plevel[parts[-1].replace("_"," ")] = request.POST[fullkey]
+            plevel[parts[-1].replace("_"," ")] = " ".join(request.POST.getlist(fullkey))
 
         params["dataset"] = request.POST.get("dataset","default")
-
         case = Case.objects.create(name=request.POST['title'],
                                    owner=request.user,
                                    parameters=dumps(params),
