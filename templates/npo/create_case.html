@@ -11,17 +11,28 @@
 
 <script type="text/javascript">
 var plot = function(insertInto, paramsFrom) {
-  div = document.getElementById(insertInto);
+  var div = document.getElementById(insertInto);
   
-  div.innerHTML = "";
-  // pull from form fields, when they exist
-  var params = "x=500&x=1000&x=5000&x=10000&y=0.12&y=0.70&y=2.44&y=12.76";
+  var table = document.getElementById(paramsFrom);
 
-  var img = MochiKit.DOM.IMG({"src": "http://hotdog.ccnmtl.columbia.edu/curve?" + params + "&dpi=40",
+  div.innerHTML = "";
+
+  var xs = MochiKit.Selector.findChildElements(table, ["td:first-child input"]);
+  var ys = MochiKit.Selector.findChildElements(table, ["td:last-child input"]);
+
+  var params = "";
+  for( x=0; x<xs.length; ++x ) {
+    params += "x=" + xs[x].value + "&";
+  }
+  for( y=0; y<ys.length; ++y ) {
+    params += "y=" + ys[y].value + "&";
+  }
+
+  var img = MochiKit.DOM.IMG({"src": "http://hotdog.ccnmtl.columbia.edu/curve?" + params + "dpi=40",
                               "width": div.style.width, "height": div.style.height
             });
 
-  var link = MochiKit.DOM.A({"href": "http://hotdog.ccnmtl.columbia.edu/curve?" + params + "&dpi=100",
+  var link = MochiKit.DOM.A({"href": "http://hotdog.ccnmtl.columbia.edu/curve?" + params + "dpi=100",
                              "target": "_blank"
             });
 
