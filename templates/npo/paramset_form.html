@@ -127,9 +127,12 @@
 		  
 		  <div class="pageblock"> 
 		    <div class="ptitle w150"><label for="xyzxyzxyz">Household demand curve:</label></div><!-- ptitle --> 
+
+		    {% with "household" as type %}
+
 		    <div class="pfield"> 
-		      <table class="veryplain"> 
-			<theader> 
+		      <table id="table-demand-{{type}}" class="veryplain"> 
+			<thead>
 			  <tr> 
 			    <td class="veryplain"> 
 			      Population
@@ -138,7 +141,7 @@
 			      Scaling factor
 			    </td> 
 			  </tr> 
-			</theader> 
+			</thead> 
 			<tbody> 
 			  <tr> 
 			    <td class="veryplain"> 
@@ -176,7 +179,6 @@
 		      </table> 
 		    </div><!-- pfield --> 
 
-		    {% with "household" as type %}
 		    {% include "npo/paramset_form_plot.html" %}
 		    {% endwith %}
 		    
@@ -216,9 +218,12 @@
 		  
 		  <div class="pageblock"> 
 		    <div class="ptitle w150"><label for="xyzxyzxyz">Productive demand curve:</label></div><!-- ptitle --> 
+
+		    {% with "productive" as type %}
+
 		    <div class="pfield"> 
-		      <table class="veryplain"> 
-			<theader> 
+		      <table id="table-demand-{{type}}" class="veryplain"> 
+			<thead> 
 			  <tr> 
 			    <td class="veryplain"> 
 			      Population
@@ -227,7 +232,7 @@
 			      Scaling factor
 			    </td> 
 			  </tr> 
-			</theader> 
+			</thead> 
 			<tbody> 
 			  <tr> 
 			    <td class="veryplain"> 
@@ -265,7 +270,6 @@
 		      </table> 
 		    </div><!-- pfield --> 
 
-		    {% with "productive" as type %}
 		    {% include "npo/paramset_form_plot.html" %}
 		    {% endwith %}
 
@@ -349,9 +353,12 @@
 		  
 		  <div class="pageblock"> 
 		    <div class="ptitle w150"><label for="xyzxyzxyz">Social infrastructure demand curve:</label></div><!-- ptitle --> 
+
+		    {% with "social" as type %}
+
 		    <div class="pfield"> 
-		      <table class="veryplain"> 
-			<theader> 
+		      <table id="table-demand-{{type}}" class="veryplain"> 
+			<thead> 
 			  <tr> 
 			    <td class="veryplain"> 
 			      Population
@@ -360,7 +367,7 @@
 			      Scaling factor
 			    </td> 
 			  </tr> 
-			</theader> 
+			</thead> 
 			<tbody> 
 			  <tr> 
 			    <td class="veryplain"> 
@@ -398,7 +405,6 @@
 		      </table> 
 		    </div><!-- pfield --> 
 
-		    {% with "social" as type %}
 		    {% include "npo/paramset_form_plot.html" %}
 		    {% endwith %}
 		    
@@ -411,9 +417,12 @@
 		  
 		  <div class="pageblock"> 
 		    <div class="ptitle w150"><label for="xyzxyzxyz">Health infrastructure count:</label></div><!-- ptitle --> 
+
+		    {% with "health" as type %}
+
 		    <div class="pfield"> 
-		      <table class="veryplain"> 
-			<theader> 
+		      <table id="table-demand-{{type}}" class="veryplain"> 
+			<thead> 
 			  <tr> 
 			    <td class="veryplain"> 
 			      Population
@@ -422,7 +431,7 @@
 			      Count
 			    </td> 
 			  </tr> 
-			</theader> 
+			</thead> 
 			<tbody> 
 			  <tr> 
 			    <td class="veryplain"> 
@@ -460,7 +469,6 @@
 		      </table> 
 		    </div><!-- pfield --> 
 
-		    {% with "health" as type %}
 		    {% include "npo/paramset_form_plot.html" %}
 		    {% endwith %}
 
@@ -473,9 +481,12 @@
 		  
 		  <div class="pageblock"> 
 		    <div class="ptitle w150"><label for="xyzxyzxyz">Education infrastructure count:</label></div><!-- ptitle --> 
-		    <div class="pfield"> 
+
+		    {% with "education" as type %}
+
+		    <div id="table-demand-{{type}}" class="pfield"> 
 		      <table class="veryplain"> 
-			<theader> 
+			<thead> 
 			  <tr> 
 			    <td class="veryplain"> 
 			      Population
@@ -484,7 +495,7 @@
 			      Count
 			    </td> 
 			  </tr> 
-			</theader> 
+			</thead> 
 			<tbody> 
 			  <tr> 
 			    <td class="veryplain"> 
@@ -522,7 +533,6 @@
 		      </table> 
 		    </div><!-- pfield --> 
 
-		    {% with "education" as type %}
 		    {% include "npo/paramset_form_plot.html" %}
 		    {% endwith %}
 		    
@@ -536,9 +546,12 @@
 		  
 		  <div class="pageblock"> 
 		    <div class="ptitle w150"><label for="xyzxyzxyz">Commercial infrastructure count:</label></div><!-- ptitle --> 
+
+		    {% with "commercial" as type %}
+
 		    <div class="pfield"> 
-		      <table class="veryplain"> 
-			<theader> 
+		      <table id="table-demand-{{type}}" class="veryplain"> 
+			<thead> 
 			  <tr> 
 			    <td class="veryplain"> 
 			      Population
@@ -547,7 +560,7 @@
 			      Count
 			    </td> 
 			  </tr> 
-			</theader> 
+			</thead> 
 			<tbody> 
 			  <tr> 
 			    <td class="veryplain"> 
@@ -585,7 +598,6 @@
 		      </table> 
 		    </div><!-- pfield --> 
 
-		    {% with "commercial" as type %}
 		    {% include "npo/paramset_form_plot.html" %}
 		    {% endwith %}
 
@@ -599,9 +611,12 @@
 		  
 		  <div class="pageblock"> 
 		    <div class="ptitle w150"><label for="xyzxyzxyz">Public lighting demand curve:</label></div><!-- ptitle --> 
-		    <div class="pfield"> 
+
+		    {% with "lighting" as type %}
+
+		    <div id="table-demand-{{type}}" class="pfield"> 
 		      <table class="veryplain"> 
-			<theader> 
+			<thead> 
 			  <tr> 
 			    <td class="veryplain"> 
 			      Population
@@ -610,7 +625,7 @@
 			      Scaling factor
 			    </td> 
 			  </tr> 
-			</theader> 
+			</thead> 
 			<tbody> 
 			  <tr> 
 			    <td class="veryplain"> 
@@ -648,7 +663,6 @@
 		      </table> 
 		    </div><!-- pfield --> 
 
-		    {% with "lighting" as type %}
 		    {% include "npo/paramset_form_plot.html" %}
 		    {% endwith %}
 		    
