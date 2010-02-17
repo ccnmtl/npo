@@ -77,7 +77,11 @@ def create_case(request):
                 p = p.replace("_"," ")
                 plevel = plevel[p]
             plevel[parts[-1].replace("_"," ")] = request.POST[fullkey]
+            print fullkey
+            if 'sizes' in fullkey:
+                print fullkey, request.POST[fullkey]
 
+        print str(params['metric']['system grid']['system sizes'])
         params["dataset"] = request.POST.get("dataset","default")
 
         case = Case.objects.create(name=request.POST['title'],

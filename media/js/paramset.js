@@ -27,10 +27,57 @@ function select_all (s) {
 }
 
 function selectAllMulties() {
+  alert("in selectallmulties");
   var multiselects = getElementsByTagAndClassName("select","form_multiselect");
   for (var i=0; i<multiselects.length; i++) {
     select_all(multiselects[i]);
     alert("selected all for " + multiselects[i].name);
+  }
+}
+
+function insensitiveSort(a,b) {
+  string = a + b
+  a = a.toLowerCase()
+  b = b.toLowerCase()
+  if (a < b) return -1;
+  if (a > b) return 1;
+  return 0;
+}
+
+function numOrdA(a, b){ return (a-b); }
+function numOrdD(a, b){ return (b-a); }
+
+function AddListItem(id) {
+  var from = $("input-" + id);
+  var to = $("select-" + id);
+
+  var tbox = new Array();
+
+  for (var i=0; i<to.length; i++) {
+    if (to.options[i].value == -1) continue;
+    tbox[i] = to.options[i].text;
+  }
+  tbox.push(from.value);
+  tbox.sort(numOrdA);
+
+  for (i=0; i<tbox.length; i++)
+    to[i] = new Option(tbox[i], tbox[i]);
+  from.value = "";
+}
+
+function RemoveListItems(id) {
+  var from = $("select-" + id);
+  var newarr = new Array();
+
+  var j=0;
+  for (var i=0; i<from.length; i++) {
+    if (from.options[i].selected) continue;
+    newarr[j++] = from.options[i].text;
+  }
+
+  from.length = 0;
+  for (i=0; i<newarr.length; i++) {
+    from[i] = new Option(newarr[i],newarr[i]);
   }
 }
 

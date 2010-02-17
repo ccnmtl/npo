@@ -1116,16 +1116,19 @@
 			  <tr> 
 			    <td class="veryplain" style="text-align: right;"> 
 			      <input 
-				     id="paramset-{{paramsetid}}-metric>system_grid>system_sizes" 
+				     id="input-paramset-{{paramsetid}}-metric>system_grid>system_sizes" 
 				     class="form_text" type="text"
-			      size="9" maxlength="128"  
-				     value="Enter value" onFocus="clearText(this)" onBlur="clearText(this)" /> 
-			      <input type="button" value="Add &#187;" class="regButton" /> 
+			      size="9" maxlength="128" value="Enter value" /> 
+			      <input type="button" value="Add &#187;"
+			      class="regButton" 
+				     onclick="AddListItem('paramset-{{paramsetid}}-metric>system_grid>system_sizes')"/> 
 			      <hr style="margin: 5px 0;" /> 
-			      <input type="button" value="&#171; Remove" class="regButton" /> 
+			      <input type="button" value="&#171; Remove" class="regButton" 
+				     onclick="RemoveListItems('paramset-{{paramsetid}}-metric>system_grid>system_sizes')"/> 
 			    </td> 
 			    <td class="veryplain"> 
 			      <select size="5" multiple="multiple"
+				     id="select-paramset-{{paramsetid}}-metric>system_grid>system_sizes" 
 				      name="paramset-{{paramsetid}}-metric>system_grid>system_sizes"
 			      class="form_multiselect w100"> 
 				{% with "system grid" as system %}
