@@ -31,3 +31,18 @@ def getlist(dict, key, default = None):
         return dict.get(key,default).split(" ")
     except:
         return []
+
+@register.filter
+def get_tuples(dict,key):
+  """the params dictionary stores demand curve parameters as something like:
+
+500 0.2
+1000 0.59
+5000 1.53
+10000 2.5
+
+we need to return it as a list of tuples so the template can interate over it """
+  try:
+    return [l.split(" ") for l in dict.get(key,"").split("\n")]
+  except:
+    return []
