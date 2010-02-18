@@ -41,7 +41,7 @@ def get_tuples(dict,key):
 5000 1.53
 10000 2.5
 
-we need to return it as a list of tuples so the template can interate over it """
+we need to return it as a list of tuples so the template can iterate over it """
   try:
     return [l.split(" ") for l in dict.get(key,"").split("\n")]
   except:
