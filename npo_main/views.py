@@ -13,6 +13,10 @@ from simplejson import loads, dumps
 from models import Case
 from collections import defaultdict
 
+class recursivedefaultdict(defaultdict): 
+    def __init__(self): 
+        self.default_factory = type(self) 
+
 class rendered_with(object):
     def __init__(self, template_name):
         self.template_name = template_name
@@ -60,6 +64,10 @@ def create_case(request):
 
         selected_paramset = request.POST['selected-param-set'] + "-"
 
+        # we need this to handle curve parameters
+        curves = recursivedefaultdict()
+        curveparams = dict() # map fullkey -> key list
+
         for key in request.POST.keys():
             # ignore fields not from the selected paramset
             if not key.startswith(selected_paramset):
@@ -73,10 +81,30 @@ def create_case(request):
 
             parts = key.split(">")
             plevel = params
+            clevel = curves
             for p in parts[:-1]:
                 p = p.replace("_"," ")
                 plevel = plevel[p]
-            plevel[parts[-1].replace("_"," ")] = " ".join(request.POST.getlist(fullkey))
+                clevel = clevel[p]
+
+            # special case for "curve" parameters
+            if "__x__" in parts[-1] or "__y__" in parts[-1]:
+                (k,xy,n) = parts[-1].split("__")
+                k = k.replace("_"," ")
+                curve = clevel[k]
+                curve[k][int(n)][xy] = request.POST[fullkey]
+                fk = fullkey.split("__")[0] # we only want the beginning
+                curveparams[fk] = parts[:-1] + [k]
+            else:
+                # it's not a curve so we can just save it
+                plevel[parts[-1].replace("_"," ")] = " ".join(request.POST.getlist(fullkey))
+
+        # now we have to go back and flatten out the curve params into single text fields
+        for k in curveparams.keys():
+            path = curveparams[k]
+            curve = reduce(lambda x,y: x.get(y),[p.replace("_"," ") for p in path],curves)
+            s = "\n".join(["%s %s" % (curve[n]["x"],curve[n]["y"]) for n in sorted(curve.keys())])
+            params[k] = s
 
         params["dataset"] = request.POST.get("dataset","default")
         case = Case.objects.create(name=request.POST['title'],
