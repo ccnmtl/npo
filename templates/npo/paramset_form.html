@@ -443,7 +443,7 @@
 		  
 		  
 		  <div class="pageblock"> 
-		    <div class="ptitle w150"><label for="xyzxyzxyz">Education infrastructure count:</label></div><!-- ptitle --> 
+		    <div class="ptitle w150"><label for="paramset-{{paramsetid}}-metric>demand_education>count_curve_points_(population_and_count)">Education infrastructure count:</label></div><!-- ptitle --> 
 
 		    {% with "education" as type %}
 
@@ -460,38 +460,29 @@
 			  </tr> 
 			</thead> 
 			<tbody> 
+			    {% with "demand education" as section %}
+			    {% with "count curve points (population and count)" as key %}
+			    {% for x,y in params.metric|get:section|get_tuples:key %}
 			  <tr> 
 			    <td class="veryplain"> 
-			      <input name="paramset-{{paramsetid}}-xyzxyzxyz" id="xyzxyzxyz" class="form_text" type="text" size="10" maxlength="128" /> 
+			      <input name="paramset-{{paramsetid}}-metric>demand_education>count_curve_points_(population_and_count)__x__{{forloop.counter0}}"
+			      id="paramset-{{paramsetid}}-metric>demand_education>count_curve_points_(population_and_count)__x__{{forloop.counter0}}" class="form_text"
+			      type="text" size="10" 
+				     value="{{x}}"
+				     maxlength="128" /> 
 			    </td> 
 			    <td class="veryplain"> 
-			      <input name="paramset-{{paramsetid}}-xyzxyzxyz" id="xyzxyzxyz" class="form_text" type="text" size="10" maxlength="128" /> 
+			      <input name="paramset-{{paramsetid}}-metric>demand_education>count_curve_points_(population_and_count)__y__{{forloop.counter0}}"
+			      id="paramset-{{paramsetid}}-metric>demand_education>count_curve_points_(population_and_count)__y__{{forloop.counter0}}" class="form_text"
+			      type="text" size="10" maxlength="128" 
+				     value="{{y}}"
+				     /> 
 			    </td> 
 			  </tr> 
-			  <tr> 
-			    <td class="veryplain"> 
-			      <input name="paramset-{{paramsetid}}-xyzxyzxyz" id="xyzxyzxyz" class="form_text" type="text" size="10" maxlength="128" /> 
-			    </td> 
-			    <td class="veryplain"> 
-			      <input name="paramset-{{paramsetid}}-xyzxyzxyz" id="xyzxyzxyz" class="form_text" type="text" size="10" maxlength="128" /> 
-			    </td> 
-			  </tr> 
-			  <tr> 
-			    <td class="veryplain"> 
-			      <input name="paramset-{{paramsetid}}-xyzxyzxyz" id="xyzxyzxyz" class="form_text" type="text" size="10" maxlength="128" /> 
-			    </td> 
-			    <td class="veryplain"> 
-			      <input name="paramset-{{paramsetid}}-xyzxyzxyz" id="xyzxyzxyz" class="form_text" type="text" size="10" maxlength="128" /> 
-			    </td> 
-			  </tr> 
-			  <tr> 
-			    <td class="veryplain"> 
-			      <input name="paramset-{{paramsetid}}-xyzxyzxyz" id="xyzxyzxyz" class="form_text" type="text" size="10" maxlength="128" /> 
-			    </td> 
-			    <td class="veryplain"> 
-			      <input name="paramset-{{paramsetid}}-xyzxyzxyz" id="xyzxyzxyz" class="form_text" type="text" size="10" maxlength="128" /> 
-			    </td> 
-			  </tr> 
+			  {% endfor %}
+			  {% endwith %}
+			  {% endwith %}
+
 			</tbody> 
 		      </table> 
 		    </div><!-- pfield --> 
