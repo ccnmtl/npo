@@ -700,8 +700,14 @@
 		  <h3 class="smaller">Photovoltaic Systems</h3> 
 		  
 		  <div class="pageblock"> 
-		    <div class="ptitle w200"><label for="xyzxyzxyz">Available panel system sizes:</label></div><!-- ptitle --> 
-		    <div class="pfield"><input name="paramset-{{paramsetid}}-xyzxyzxyz" id="xyzxyzxyz" class="form_text" type="text" size="10" maxlength="128" /> kW</div><!-- pfield --> 
+		    <div class="ptitle w200"><label for="paramset-{{paramsetid}}-metric>system_photovoltaic>system_sizes">Available panel system sizes:</label></div><!-- ptitle --> 
+		    <div class="pfield"><input name="paramset-{{paramsetid}}-metric>system_photovoltaic>system_sizes"
+					       id="paramset-{{paramsetid}}-metric>system_photovoltaic>system_sizes"
+					       class="form_text"
+					       type="text" size="10"
+					       maxlength="128" 
+					       value="{{params.metric|get:"system photovoltaic"|get:"system sizes"}}"
+					       /> kW</div><!-- pfield --> 
 		    <div class="visualclear"></div> 
 		  </div><!-- class="pageblock" --> 
 		  
