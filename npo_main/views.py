@@ -111,12 +111,19 @@ def create_case(request):
             s = "\n".join(["%s %s" % (curve[n]["x"],curve[n]["y"]) for n in sorted(curve.keys())])
             params[k] = s
 
+        keys_to_delete = [key for key in params.keys() 
+                          if key.startswith(selected_paramset)
+                          and (key.endswith("_(population_and_count)")
+                               or key.endswith("_(population_and_factor)"))]
+        for key in keys_to_delete:
+            del params[key]
         
         params["dataset"] = request.POST.get("dataset","default")
         case = Case.objects.create(name=request.POST['title'],
                                    owner=request.user,
                                    parameters=dumps(params),
                                    )
+
         # here's where we would actually kick off the job
         # to the backend
         case.run(request.get_host())
