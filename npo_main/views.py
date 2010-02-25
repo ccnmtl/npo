@@ -92,7 +92,7 @@ def create_case(request):
                 (k,xy,n) = parts[-1].split("__")
                 k = k.replace("_"," ")
                 curve = clevel[k]
-                curve[k][int(n)][xy] = request.POST[fullkey]
+                curve[int(n)][xy] = request.POST[fullkey]
                 fk = fullkey.split("__")[0] # we only want the beginning
                 curveparams[fk] = parts[:-1] + [k]
             else:
@@ -102,15 +102,28 @@ def create_case(request):
         # now we have to go back and flatten out the curve params into single text fields
         for k in curveparams.keys():
             path = curveparams[k]
-            curve = reduce(lambda x,y: x.get(y),[p.replace("_"," ") for p in path],curves)
+            path2 = [p.replace('_', ' ') for p in path]
+
+            curve = curves
+            for key in path2:
+                curve = curve[key]
+            
             s = "\n".join(["%s %s" % (curve[n]["x"],curve[n]["y"]) for n in sorted(curve.keys())])
             params[k] = s
 
+        keys_to_delete = [key for key in params.keys() 
+                          if key.startswith(selected_paramset)
+                          and (key.endswith("_(population_and_count)")
+                               or key.endswith("_(population_and_factor)"))]
+        for key in keys_to_delete:
+            del params[key]
+        
         params["dataset"] = request.POST.get("dataset","default")
         case = Case.objects.create(name=request.POST['title'],
                                    owner=request.user,
                                    parameters=dumps(params),
                                    )
+
         # here's where we would actually kick off the job
         # to the backend
         case.run(request.get_host())
