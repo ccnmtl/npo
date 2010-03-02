@@ -19,7 +19,7 @@ params = defaultdict(defaultdict,
 1000 0.70
 5000 2.44
 10000 12.76""",
-            "count curve type" : "logistic",
+            "commercial facility count curve type" : "logistic",
             "unit demand per commercial facility in kilowatt-hours per year" : "500",
             },
         "demand education" : {
