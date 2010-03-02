@@ -77,7 +77,7 @@ params = defaultdict(defaultdict,
             "mean household size (urban)" : "7.5",
             "mean interhousehold distance in meters" : "25",
             "rural urban threshold" : "5000",
-            "yearly growth rate" : "0.02",
+            "population growth rate per year" : "0.02",
             },
         "system" : {
             "low voltage line cost in dollars per meter" : "10",
