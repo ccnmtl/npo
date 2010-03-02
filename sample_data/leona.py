@@ -5,6 +5,7 @@ params = defaultdict(defaultdict,
     metric = {
         "finance" : {
             "economic growth rate per year" : "0.06",
+            "elasticity of electricity demand" : "0.015",
             },
         "demand" : {
             "fraction of total demand during peak hours (rural)" : "0.4",
