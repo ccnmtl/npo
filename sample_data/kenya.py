@@ -72,6 +72,7 @@ params = defaultdict(defaultdict,
             
             },
         "demographics" : {
+            "population count" : "100",
             "mean household size (rural)" : "5.2",
             "mean household size (urban)" : "4",
             "mean interhousehold distance in meters" : "50",
