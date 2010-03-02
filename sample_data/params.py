@@ -14,7 +14,7 @@ params = defaultdict(defaultdict,
             "fraction of total demand during peak hours (urban)" : "0.4",
             "peak electrical usage hours per year" : "1460",
             },
-        "demand commercial" : {
+        "demand (social infrastructure)" : {
             "count curve points (population and count)" : """500 0.12
 1000 0.70
 5000 2.44
