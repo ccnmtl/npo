@@ -39,7 +39,7 @@ params = defaultdict(defaultdict,
             "unit demand in kilowatts per year" : "10000",
             },
         "demand (household)" : {
-            "demand curve points (population and factor)" : """500 1
+            "demand curve points (population and multiplier)" : """500 1
 1000 1.506
 5000 6.164
 10000 11.5""",
@@ -47,7 +47,7 @@ params = defaultdict(defaultdict,
             "household unit demand per household in kilowatt-hours per year" : "100",
             },
         "demand institution" : {
-            "demand curve points (population and factor)" : """500 1
+            "demand curve points (population and multiplier)" : """500 1
 1000 1.5
 5000 2.25
 10000 3.375""",
@@ -63,7 +63,7 @@ params = defaultdict(defaultdict,
             "unit demand in kilowatts per year" : "102",
             },
         "demand production" : {
-            "demand curve points (population and factor)" : """500 1
+            "demand curve points (population and multiplier)" : """500 1
 1000 3.0614
 5000 3.5716
 10000 5.1023""",

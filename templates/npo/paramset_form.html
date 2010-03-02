@@ -151,7 +151,7 @@
 		  </div><!-- class="pageblock" --> 
 		  
 		  <div class="pageblock"> 
-		    <div class="ptitle w150"><label for="paramset-{{paramsetid}}-metric>demand_(household)>demand_curve_points_(population_and_factor)">Household demand curve:</label></div><!-- ptitle --> 
+		    <div class="ptitle w150"><label for="paramset-{{paramsetid}}-metric>demand_(household)>demand_curve_points_(population_and_multiplier)">Household demand curve:</label></div><!-- ptitle --> 
 
 		    {% with "household" as type %}
 
@@ -169,19 +169,19 @@
 			</thead> 
 			<tbody> 
 			    {% with "demand (household)" as section %}
-			    {% with "demand curve points (population and factor)" as key %}
+			    {% with "demand curve points (population and multiplier)" as key %}
 			    {% for x,y in params.metric|get:section|get_tuples:key %}
 			  <tr> 
 			    <td class="veryplain"> 
-			      <input name="paramset-{{paramsetid}}-metric>demand_(household)>demand_curve_points_(population_and_factor)__x__{{forloop.counter0}}"
-			      id="paramset-{{paramsetid}}-metric>demand_(household)>demand_curve_points_(population_and_factor)__x__{{forloop.counter0}}" class="form_text"
+			      <input name="paramset-{{paramsetid}}-metric>demand_(household)>demand_curve_points_(population_and_multiplier)__x__{{forloop.counter0}}"
+			      id="paramset-{{paramsetid}}-metric>demand_(household)>demand_curve_points_(population_and_multiplier)__x__{{forloop.counter0}}" class="form_text"
 			      type="text" size="10" 
 				     value="{{x}}"
 				     maxlength="128" /> 
 			    </td> 
 			    <td class="veryplain"> 
-			      <input name="paramset-{{paramsetid}}-metric>demand_(household)>demand_curve_points_(population_and_factor)__y__{{forloop.counter0}}"
-			      id="paramset-{{paramsetid}}-metric>demand_(household)>demand_curve_points_(population_and_factor)__y__{{forloop.counter0}}" class="form_text"
+			      <input name="paramset-{{paramsetid}}-metric>demand_(household)>demand_curve_points_(population_and_multiplier)__y__{{forloop.counter0}}"
+			      id="paramset-{{paramsetid}}-metric>demand_(household)>demand_curve_points_(population_and_multiplier)__y__{{forloop.counter0}}" class="form_text"
 			      type="text" size="10" maxlength="128" 
 				     value="{{y}}"
 				     /> 
@@ -232,7 +232,7 @@
 		  </div><!-- class="pageblock" --> 
 		  
 		  <div class="pageblock"> 
-		    <div class="ptitle w150"><label for="paramset-{{paramsetid}}-metric>demand_production>demand_curve_points_(population_and_factor)">Productive demand curve:</label></div><!-- ptitle --> 
+		    <div class="ptitle w150"><label for="paramset-{{paramsetid}}-metric>demand_production>demand_curve_points_(population_and_multiplier)">Productive demand curve:</label></div><!-- ptitle --> 
 
 		    {% with "productive" as type %}
 
@@ -250,19 +250,19 @@
 			</thead> 
 			<tbody> 
 			    {% with "demand production" as section %}
-			    {% with "demand curve points (population and factor)" as key %}
+			    {% with "demand curve points (population and multiplier)" as key %}
 			    {% for x,y in params.metric|get:section|get_tuples:key %}
 			  <tr> 
 			    <td class="veryplain"> 
-			      <input name="paramset-{{paramsetid}}-metric>demand_production>demand_curve_points_(population_and_factor)__x__{{forloop.counter0}}"
-			      id="paramset-{{paramsetid}}-metric>demand_production>demand_curve_points_(population_and_factor)__x__{{forloop.counter0}}" class="form_text"
+			      <input name="paramset-{{paramsetid}}-metric>demand_production>demand_curve_points_(population_and_multiplier)__x__{{forloop.counter0}}"
+			      id="paramset-{{paramsetid}}-metric>demand_production>demand_curve_points_(population_and_multiplier)__x__{{forloop.counter0}}" class="form_text"
 			      type="text" size="10" 
 				     value="{{x}}"
 				     maxlength="128" /> 
 			    </td> 
 			    <td class="veryplain"> 
-			      <input name="paramset-{{paramsetid}}-metric>demand_production>demand_curve_points_(population_and_factor)__y__{{forloop.counter0}}"
-			      id="paramset-{{paramsetid}}-metric>demand_production>demand_curve_points_(population_and_factor)__y__{{forloop.counter0}}" class="form_text"
+			      <input name="paramset-{{paramsetid}}-metric>demand_production>demand_curve_points_(population_and_multiplier)__y__{{forloop.counter0}}"
+			      id="paramset-{{paramsetid}}-metric>demand_production>demand_curve_points_(population_and_multiplier)__y__{{forloop.counter0}}" class="form_text"
 			      type="text" size="10" maxlength="128" 
 				     value="{{y}}"
 				     /> 
@@ -358,7 +358,7 @@
 		  
 		  
 		  <div class="pageblock"> 
-		    <div class="ptitle w150"><label for="paramset-{{paramsetid}}-metric>demand_institution>demand_curve_points_(population_and_factor)">Social infrastructure demand curve:</label></div><!-- ptitle --> 
+		    <div class="ptitle w150"><label for="paramset-{{paramsetid}}-metric>demand_institution>demand_curve_points_(population_and_multiplier)">Social infrastructure demand curve:</label></div><!-- ptitle --> 
 
 		    {% with "social" as type %}
 
@@ -376,19 +376,19 @@
 			</thead> 
 			<tbody> 
 			    {% with "demand institution" as section %}
-			    {% with "demand curve points (population and factor)" as key %}
+			    {% with "demand curve points (population and multiplier)" as key %}
 			    {% for x,y in params.metric|get:section|get_tuples:key %}
 			  <tr> 
 			    <td class="veryplain"> 
-			      <input name="paramset-{{paramsetid}}-metric>demand_institution>demand_curve_points_(population_and_factor)__x__{{forloop.counter0}}"
-			      id="paramset-{{paramsetid}}-metric>demand_institution>demand_curve_points_(population_and_factor)__x__{{forloop.counter0}}" class="form_text"
+			      <input name="paramset-{{paramsetid}}-metric>demand_institution>demand_curve_points_(population_and_multiplier)__x__{{forloop.counter0}}"
+			      id="paramset-{{paramsetid}}-metric>demand_institution>demand_curve_points_(population_and_multiplier)__x__{{forloop.counter0}}" class="form_text"
 			      type="text" size="10" 
 				     value="{{x}}"
 				     maxlength="128" /> 
 			    </td> 
 			    <td class="veryplain"> 
-			      <input name="paramset-{{paramsetid}}-metric>demand_institution>demand_curve_points_(population_and_factor)__y__{{forloop.counter0}}"
-			      id="paramset-{{paramsetid}}-metric>demand_institution>demand_curve_points_(population_and_factor)__y__{{forloop.counter0}}" class="form_text"
+			      <input name="paramset-{{paramsetid}}-metric>demand_institution>demand_curve_points_(population_and_multiplier)__y__{{forloop.counter0}}"
+			      id="paramset-{{paramsetid}}-metric>demand_institution>demand_curve_points_(population_and_multiplier)__y__{{forloop.counter0}}" class="form_text"
 			      type="text" size="10" maxlength="128" 
 				     value="{{y}}"
 				     /> 
