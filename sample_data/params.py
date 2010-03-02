@@ -3,6 +3,9 @@ from collections import defaultdict
 params = defaultdict(defaultdict,
     metricModelName="mvMax",
     metric = {
+        "finance" : {
+            "economic growth rate per year" : "0.06",
+            },
         "demand" : {
             "fraction of total demand during peak hours (rural)" : "0.4",
             "fraction of total demand during peak hours (urban)" : "0.4",
