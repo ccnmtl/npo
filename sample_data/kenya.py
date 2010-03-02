@@ -71,7 +71,7 @@ params = defaultdict(defaultdict,
             "productive unit demand per household in kilowatt-hours per year" : "19.5",
             
             },
-        "people" : {
+        "demographics" : {
             "mean household size (rural)" : "5.2",
             "mean household size (urban)" : "4",
             "mean interhousehold distance in meters" : "50",
