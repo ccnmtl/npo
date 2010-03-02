@@ -62,7 +62,7 @@ params = defaultdict(defaultdict,
             "count curve type" : "logistic",
             "unit demand in kilowatts per year" : "102",
             },
-        "demand production" : {
+        "demand (productive)" : {
             "demand curve points (population and multiplier)" : """500 1
 1000 3.0614
 5000 3.5716
