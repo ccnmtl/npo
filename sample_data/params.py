@@ -9,9 +9,9 @@ params = defaultdict(defaultdict,
             "yearly interest rate" : "0.10",
             "time horizon in years" : "10",
             },
-        "demand" : {
-            "fraction of total demand during peak hours (rural)" : "0.4",
-            "fraction of total demand during peak hours (urban)" : "0.4",
+        "demand (peak)" : {
+            "fraction of nodal demand occurring during peak hours (rural)" : "0.4",
+            "fraction of nodal demand occurring during peak hours (urban)" : "0.4",
             "peak electrical usage hours per year" : "1460",
             },
         "demand (social infrastructure)" : {
@@ -76,7 +76,7 @@ params = defaultdict(defaultdict,
             "mean household size (rural)" : "9.6",
             "mean household size (urban)" : "7.5",
             "mean interhousehold distance in meters" : "100",
-            "rural urban threshold" : "5000",
+            "urban_population_threshold" : "5000",
             "population growth rate per year" : "0.023",
             },
         "system" : {
