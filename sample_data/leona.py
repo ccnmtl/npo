@@ -6,6 +6,7 @@ params = defaultdict(defaultdict,
         "finance" : {
             "economic growth rate per year" : "0.06",
             "elasticity of electricity demand" : "0.015",
+            "yearly interest rate" : "0.10",
             },
         "demand" : {
             "fraction of total demand during peak hours (rural)" : "0.4",
@@ -68,9 +69,6 @@ params = defaultdict(defaultdict,
             "demand curve type" : "logistic",
             "unit demand in kilowatts per year" : "19.5",
             
-            },
-        "money" : {
-            "yearly interest rate" : "0.10",
             },
         "people" : {
             "mean household size (rural)" : "9.6",
