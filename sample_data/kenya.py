@@ -7,6 +7,7 @@ params = defaultdict(defaultdict,
             "economic growth rate per year" : "0.06",
             "elasticity of electricity demand" : "0.015",
             "yearly interest rate" : "0.10",
+            "time horizon in years" : "10",
             },
         "demand" : {
             "fraction of total demand during peak hours (rural)" : "0.4",
@@ -123,9 +124,6 @@ params = defaultdict(defaultdict,
             },
         "system photovoltaic diesel" : {
             "system sizes" : "2 4 6 12 19 32 70 100 150 200 400 500 750 1000",
-            },
-        "time" : {
-            "time horizon in years" : "10",
             },
         },
     networkModelName = "modified-kruskal",
