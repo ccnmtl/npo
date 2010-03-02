@@ -68,7 +68,7 @@ params = defaultdict(defaultdict,
 5000 3.57
 10000 5.10""",
             "demand curve type" : "logistic",
-            "unit demand in kilowatts per year" : "19.5",
+            "productive unit demand per household in kilowatt-hours per year" : "19.5",
             
             },
         "people" : {
