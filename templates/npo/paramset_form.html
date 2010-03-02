@@ -542,19 +542,19 @@
 			</thead> 
 			<tbody> 
 			    {% with "demand (social infrastructure)" as section %}
-			    {% with "count curve points (population and count)" as key %}
+			    {% with "commercial facility count curve points (population and facility count)" as key %}
 			    {% for x,y in params.metric|get:section|get_tuples:key %}
 			  <tr> 
 			    <td class="veryplain"> 
-			      <input name="paramset-{{paramsetid}}-metric>demand_(social_infrastructure)>count_curve_points_(population_and_count)__x__{{forloop.counter0}}"
-			      id="paramset-{{paramsetid}}-metric>demand_(social_infrastructure)>count_curve_points_(population_and_count)__x__{{forloop.counter0}}" class="form_text"
+			      <input name="paramset-{{paramsetid}}-metric>demand_(social_infrastructure)>commercial_facility_count_curve_points_(population_and_facility_count)__x__{{forloop.counter0}}"
+			      id="paramset-{{paramsetid}}-metric>demand_(social_infrastructure)>commercial_facility_count_curve_points_(population_and_facility_count)__x__{{forloop.counter0}}" class="form_text"
 			      type="text" size="10" 
 				     value="{{x}}"
 				     maxlength="128" /> 
 			    </td> 
 			    <td class="veryplain"> 
-			      <input name="paramset-{{paramsetid}}-metric>demand_(social_infrastructure)>count_curve_points_(population_and_count)__y__{{forloop.counter0}}"
-			      id="paramset-{{paramsetid}}-metric>demand_(social_infrastructure)>count_curve_points_(population_and_count)__y__{{forloop.counter0}}" class="form_text"
+			      <input name="paramset-{{paramsetid}}-metric>demand_(social_infrastructure)>commercial_facility_count_curve_points_(population_and_facility_count)__y__{{forloop.counter0}}"
+			      id="paramset-{{paramsetid}}-metric>demand_(social_infrastructure)>commercial_facility_count_curve_points_(population_and_facility_count)__y__{{forloop.counter0}}" class="form_text"
 			      type="text" size="10" maxlength="128" 
 				     value="{{y}}"
 				     /> 
