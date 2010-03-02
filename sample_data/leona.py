@@ -78,10 +78,10 @@ params = defaultdict(defaultdict,
             "urban_population_threshold" : "5000",
             "population growth rate per year" : "0.02",
             },
-        "system" : {
-            "low voltage line cost in dollars per meter" : "10",
+        "distribution" : {
+            "low voltage line cost per meter" : "10",
             "low voltage line lifetime in years" : "10",
-            "low voltage line operations and maintenance cost in dollars per meter" : "1",
+            "low voltage line operations and maintenance cost per meter" : "1",
             },
         "system diesel" : {
             "engine cost per kilowatt" : "150",
