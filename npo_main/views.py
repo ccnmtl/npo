@@ -174,7 +174,7 @@ def run(request):
 
 ### outputs
 
-from calc import get_nodes
+from backend.calc import get_nodes
 def node_output():
     # load a sample json output for now
     # eventually we should get this from the stored case output
@@ -185,7 +185,7 @@ def time_horizon():
     # likewise the time horizon should be retrieved from the case input, i think
     return 11
 
-from calc import urban_rural_population_totals as ur
+from backend.calc import urban_rural_population_totals as ur
 @rendered_with('npo/output/population.html')
 def pop(request, id):
 
@@ -198,7 +198,7 @@ def pop(request, id):
     results['years'] = range(horizon)
     return results
 
-from calc import demand_totals
+from backend.calc import demand_totals
 @rendered_with("npo/output/demand.html")
 def demand(request, id):
     horizon = time_horizon()
