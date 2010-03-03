@@ -50,7 +50,6 @@ params = defaultdict(defaultdict,
 1000 1.5
 5000 2.25
 10000 3.375""",
-            "unit demand in kilowatts per year" : "1000",
             },
         "demand lighting" : {
             "count curve points (population and count)" : """500 1
