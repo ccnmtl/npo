@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% load get %}
+
+{% block content %}
+
+<canvas id="graph" width="500" height="350"></canvas>
+
+<table id="data">
+  <caption>Change in urban/rural population over time</caption>
+  <thead>
+    <tr>
+      <th scope="col">Year</th>
+      <th scope="col">Urban population (total)</th>
+      <th scope="col">Rural population (total)</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for year in years %}
+    <tr>
+      <th scope="row">{{year}}</td>
+      <td>{{urban|getitem:year}}</td>
+      <td>{{rural|getitem:year}}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+{% include "bluff.html" %}
+
+{% endblock %}

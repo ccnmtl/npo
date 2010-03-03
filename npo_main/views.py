@@ -163,7 +163,6 @@ def delete_case(request,id):
     case.delete()
     return HttpResponseRedirect("/")
 
-
 @login_required
 @rendered_with('npo/run.html')
 def run(request):
@@ -172,3 +171,10 @@ def run(request):
     results = loads(backend_request(expand_param_names(params),demographics,networks))
     return dict(results=results)
 
+@rendered_with('npo/output/population.html')
+def pop(request, id):
+    from calc import urban_rural_population_totals as ur
+    x = ur(11)
+    results = x()
+    results['years'] = range(11)
+    return results
