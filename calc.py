@@ -43,8 +43,11 @@ class demand_totals(object):
 from simplejson import loads
 import os
 def load():
-    from django.conf import settings
-    data_path = settings.SAMPLE_PATH
+    try:
+        from django.conf import settings
+        data_path = settings.SAMPLE_PATH
+    except:
+        data_path = "./sample_data"
     x = open(os.path.join(data_path, 'output.json')).read()
     y = loads(x)
     return y
@@ -109,36 +112,8 @@ class Node(object):
         key = key % type
         return float(x[key])
 
-import code
-from pprint import pprint as pp
-
-from webob import Request, Response
-import paste.httpserver
-
-class webapp(object):
-    def __call__(self, environ, start_response):
-        req = Request(environ)
-        path = req.path_info.strip('/')
-        return getattr(self, path)(req)(environ, start_response)
-
-    def pop(self, req):
-        results = urban_rural_population_totals(time_horizon=11)()
-        urban = results['urban']
-        rural = results['rural']
-        urban = ','.join(str(x) for x in urban)
-        #rural = ','.join(str(x) for x in rural)
-        #src += urban# + '|' + rural
-        other_src = "http://chart.apis.google.com/chart?cht=lc&chs=200x125&chd=t:40,60,60,45,47,75,70,72"
-        html = """
-<html><head>
-o
-</head><body>
-
-"""
-        return Response(html)
-
-import sys
-if len(sys.argv) == 1:
+if __name__ == '__main__':
+    import code
+    from pprint import pprint as pp
     code.interact(local=locals())
-elif sys.argv[1] == 'serve':
-    paste.httpserver.serve(webapp())
+
