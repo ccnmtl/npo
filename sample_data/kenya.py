@@ -3,26 +3,31 @@ from collections import defaultdict
 params = defaultdict(defaultdict,
     metricModelName="mvMax",
     metric = {
-        "demand" : {
-            "fraction of total demand during peak hours (rural)" : "0.4",
-            "fraction of total demand during peak hours (urban)" : "0.4",
+        "finance" : {
+            "economic growth rate per year" : "0.06",
+            "elasticity of electricity demand" : "0.015",
+            "yearly interest rate" : "0.10",
+            "time horizon in years" : "10",
+            },
+        "demand (peak)" : {
+            "fraction of nodal demand occurring during peak hours (rural)" : "0.4",
+            "fraction of nodal demand occurring during peak hours (urban)" : "0.4",
             "peak electrical usage hours per year" : "1460",
             },
-        "demand commercial" : {
-            "count curve points (population and count)" : """500 1.2
+        "demand (social infrastructure)" : {
+            "commercial facility count curve points (population and facility count)" : """500 1.2
 1000 7
 5000 24.4
 10000 127.6""",
-            "count curve type" : "logistic",
-            "unit demand in kilowatts per year" : "500",
-            },
-        "demand education" : {
-            "count curve points (population and count)" : """500 2
+            "commercial facility count curve type" : "logistic",
+            "unit demand per commercial facility in kilowatt-hours per year" : "500",
+            "education facility count curve points (population and facility count)" : """500 2
 1000 5.9
 5000 15.3
 10000 25""",
-            "count curve type" : "logistic",
-            "unit demand in kilowatts per year" : "438",
+            "education facility count curve type" : "logistic",
+            "unit demand per education facility in kilowatt-hours per year" : "438",
+
             },
         "demand health" : {
             "count curve points (population and count)" : """500 1.6
@@ -32,16 +37,16 @@ params = defaultdict(defaultdict,
             "count curve type" : "logistic",
             "unit demand in kilowatts per year" : "10000",
             },
-        "demand household" : {
-            "demand curve points (population and factor)" : """500 1
+        "demand (household)" : {
+            "demand curve points (population and multiplier)" : """500 1
 1000 1.56
 5000 6.16
 10000 11.5""",
             "demand curve type" : "logistic",
-            "unit demand in kilowatts per year" : "100",
+            "household unit demand per household in kilowatt-hours per year" : "100",
             },
         "demand institution" : {
-            "demand curve points (population and factor)" : """500 1
+            "demand curve points (population and multiplier)" : """500 1
 1000 1.5
 5000 2.25
 10000 3.375""",
@@ -56,41 +61,40 @@ params = defaultdict(defaultdict,
             "count curve type" : "logistic",
             "unit demand in kilowatts per year" : "102",
             },
-        "demand production" : {
-            "demand curve points (population and factor)" : """500 1
+        "demand (productive)" : {
+            "demand curve points (population and multiplier)" : """500 1
 1000 3.06
 5000 3.57
 10000 5.10""",
             "demand curve type" : "logistic",
-            "unit demand in kilowatts per year" : "19.5",
+            "productive unit demand per household in kilowatt-hours per year" : "19.5",
             
             },
-        "money" : {
-            "yearly interest rate" : "0.10",
-            },
-        "people" : {
+        "demographics" : {
+            "population count" : "100",
             "mean household size (rural)" : "5.2",
             "mean household size (urban)" : "4",
             "mean interhousehold distance in meters" : "50",
-            "rural urban threshold" : "5000",
-            "yearly growth rate" : "0.02",
+            "urban_population_threshold" : "5000",
+            "population growth rate per year" : "0.02",
             },
-        "system" : {
-            "low voltage line cost in dollars per meter" : "10",
+        "distribution" : {
+            "low voltage line cost per meter" : "10",
             "low voltage line lifetime in years" : "10",
-            "low voltage line operations and maintenance cost in dollars per meter" : "1",
+            "low voltage line operations and maintenance cost per meter" : "1",
             },
-        "system diesel" : {
-            "engine cost per kilowatt" : "150",
-            "engine installation cost as fraction of engine cost" : "0.25",
-            "engine lifetime in years" : "5",
-            "equipment cost per household" : "50",
-            "equipment operations and maintenance cost as fraction of equipment cost" : "0.0",
-            "fuel cost per liter" : "1.08",
-            "fuel hours per year" : "8760",
-            "fuel liters consumed per kilowatt-hour" : "0.5",
-            "operations and maintenance cost as fraction of engine cost" : "0.05",
-            "system sizes" : "6 12 19 32 70 100 150 200 400 500 750 1000",
+        "system (mini-grid)" : {
+            "distribution loss per system kilowatt" : "0.15",
+            "diesel generator cost per diesel system kilowatt" : "150",
+            "diesel generator installation cost as fraction of diesel generator cost" : "0.25",
+            "diesel generator lifetime in years" : "5",
+            "diesel equipment cost per household" : "50",
+            "diesel generator operations and maintenance cost per year as fraction of diesel generator cost" : "0.0",
+            "diesel fuel cost per liter" : "1.08",
+            "diesel generator hours of operation per year" : "8760",
+            "diesel fuel liters consumed per kilowatt-hour" : "0.5",
+            "diesel equipment operations and maintenance cost per year as fraction of diesel equipment cost" : "0.05",
+            "available system capacities (diesel generator)" : "6 12 19 32 70 100 150 200 400 500 750 1000",
             },
         "system grid" : {
             "distribution loss as fraction of system demand" : "0.15",
@@ -121,9 +125,6 @@ params = defaultdict(defaultdict,
             },
         "system photovoltaic diesel" : {
             "system sizes" : "2 4 6 12 19 32 70 100 150 200 400 500 750 1000",
-            },
-        "time" : {
-            "time horizon in years" : "10",
             },
         },
     networkModelName = "modified-kruskal",

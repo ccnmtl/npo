@@ -10,23 +10,48 @@
 	  <div class="tabbertab" title="Financing"> 
 	    
 	    <div class="pageblock"> 
-	      <div class="ptitle w150"><label for="paramset-{{paramsetid}}-metric>time>time_horizon_in_years">Time horizon:</label></div><!-- ptitle --> 
-	      <div class="pfield"><input name="paramset-{{paramsetid}}-metric>time>time_horizon_in_years"
-					 id="paramset-{{paramsetid}}-metric>time>time_horizon_in_years" 
+	      <div class="ptitle w150"><label for="paramset-{{paramsetid}}-metric>finance>time_horizon_in_years">Time horizon:</label></div><!-- ptitle --> 
+	      <div class="pfield"><input name="paramset-{{paramsetid}}-metric>finance>time_horizon_in_years"
+					 id="paramset-{{paramsetid}}-metric>finance>time_horizon_in_years" 
 					 class="form_text" type="text"
 					 size="10" maxlength="128" 
-					 value="{{params.metric.time|get:"time horizon in years"}}"
+					 value="{{params.metric.finance|get:"time horizon in years"}}"
 					 /> year(s)</div><!-- pfield --> 
 	      <div class="visualclear"></div> 
 	    </div><!-- class="pageblock" --> 
-	    
+
 	    <div class="pageblock"> 
-	      <div class="ptitle w150"><label for="paramset-{{paramsetid}}-metric>money>yearly_interest_rate">Annual interest rate:</label></div><!-- ptitle --> 
-	      <div class="pfield"><input name="paramset-{{paramsetid}}-metric>money>yearly_interest_rate"
-					 id="paramset-{{paramsetid}}-metric>money>yearly_interest_rate" 
+	      <div class="ptitle
+	      w150"><label for="paramset-{{paramsetid}}-metric>finance>economic_growth_rate_per_year">Economic Growth Rate Per Year:</label></div><!-- ptitle --> 
+	      <div class="pfield"><input name="paramset-{{paramsetid}}-metric>finance>economic_growth_rate_per_year"
+					 id="paramset-{{paramsetid}}-metric>finance>economic_growth_rate_per_year" 
 					 class="form_text" type="text"
 					 size="10" maxlength="128" 
-					 value="{{params.metric.money|get:"yearly interest rate"}}"
+					 value="{{params.metric.finance|get:"economic growth rate per year"}}"
+					 /> </div><!-- pfield --> 
+	      <div class="visualclear"></div> 
+	    </div><!-- class="pageblock" --> 
+
+	    <div class="pageblock"> 
+	      <div class="ptitle
+	      w150"><label for="paramset-{{paramsetid}}-metric>finance>elasticity_of_electricity_demand">Elasticity of Electricity Demand:</label></div><!-- ptitle --> 
+	      <div class="pfield"><input name="paramset-{{paramsetid}}-metric>finance>elasticity_of_electricity_demand"
+					 id="paramset-{{paramsetid}}-metric>finance>elasticity_of_electricity_demand" 
+					 class="form_text" type="text"
+					 size="10" maxlength="128" 
+					 value="{{params.metric.finance|get:"elasticity of electricity demand"}}"
+					 /> </div><!-- pfield --> 
+	      <div class="visualclear"></div> 
+	    </div><!-- class="pageblock" --> 
+
+	    
+	    <div class="pageblock"> 
+	      <div class="ptitle w150"><label for="paramset-{{paramsetid}}-metric>finance>yearly_interest_rate">Annual interest rate:</label></div><!-- ptitle --> 
+	      <div class="pfield"><input name="paramset-{{paramsetid}}-metric>finance>yearly_interest_rate"
+					 id="paramset-{{paramsetid}}-metric>finance>yearly_interest_rate" 
+					 class="form_text" type="text"
+					 size="10" maxlength="128" 
+					 value="{{params.metric.finance|get:"yearly interest rate"}}"
 					 /><div class="instructions">(e.g. 0.02 for 2%)</div></div><!-- pfield --> 
 	      <div class="visualclear"></div> 
 	    </div><!-- class="pageblock" --> 
@@ -41,59 +66,73 @@
 	    
 	    
 	    <div class="pageblock"> 
-	      <div class="ptitle w200"><label for="paramset-{{paramsetid}}-metric>people>yearly_growth_rate">Annual population growth rate:</label></div><!-- ptitle --> 
-	      <div class="pfield"><input name="paramset-{{paramsetid}}-metric>people>yearly_growth_rate"
-					 id="paramset-{{paramsetid}}-metric>people>yearly_growth_rate"
+	      <div class="ptitle w200"><label for="paramset-{{paramsetid}}-metric>demographics>population_growth_rate_per_year">Annual population growth rate:</label></div><!-- ptitle --> 
+	      <div class="pfield"><input name="paramset-{{paramsetid}}-metric>demographics>population_growth_rate_per_year"
+					 id="paramset-{{paramsetid}}-metric>demographics>population_growth_rate_per_year"
 					 class="form_text" type="text"
 					 size="10" maxlength="128" 
-					 value="{{params.metric.people|get:"yearly growth rate"}}"
+					 value="{{params.metric.demographics|get:"population growth rate per year"}}"
 					 /><div class="instructions">(e.g. 0.02 for 2%)</div></div><!-- pfield --> 
 	      <div class="visualclear"></div> 
 	    </div><!-- class="pageblock" --> 
 	    
 	    <div class="pageblock"> 
-	      <div class="ptitle w200"><label for="paramset-{{paramsetid}}-metric>people>mean_household_size_(rural)">Mean household size (rural):</label></div><!-- ptitle --> 
-	      <div class="pfield"><input name="paramset-{{paramsetid}}-metric>people>mean_household_size_(rural)"
-					 id="paramset-{{paramsetid}}-metric>people>mean_household_size_(rural)"
+	      <div class="ptitle w200"><label for="paramset-{{paramsetid}}-metric>demographics>mean_household_size_(rural)">Mean household size (rural):</label></div><!-- ptitle --> 
+	      <div class="pfield"><input name="paramset-{{paramsetid}}-metric>demographics>mean_household_size_(rural)"
+					 id="paramset-{{paramsetid}}-metric>demographics>mean_household_size_(rural)"
 					 class="form_text" type="text"
 					 size="10" maxlength="128" 
-					 value="{{params.metric.people|get:"mean household size (rural)"}}"
+					 value="{{params.metric.demographics|get:"mean household size (rural)"}}"
 					 /> person(s)</div><!-- pfield --> 
 	      <div class="visualclear"></div> 
 	    </div><!-- class="pageblock" --> 
 	    
 	    <div class="pageblock"> 
-	      <div class="ptitle w200"><label for="paramset-{{paramsetid}}-metric>people>mean_household_size_(urban)">Mean household size (urban):</label></div><!-- ptitle --> 
-	      <div class="pfield"><input name="paramset-{{paramsetid}}-metric>people>mean_household_size_(urban)"
-					 id="paramset-{{paramsetid}}-metric>people>mean_household_size_(urban)"
+	      <div class="ptitle w200"><label for="paramset-{{paramsetid}}-metric>demographics>mean_household_size_(urban)">Mean household size (urban):</label></div><!-- ptitle --> 
+	      <div class="pfield"><input name="paramset-{{paramsetid}}-metric>demographics>mean_household_size_(urban)"
+					 id="paramset-{{paramsetid}}-metric>demographics>mean_household_size_(urban)"
 					 class="form_text" type="text"
 					 size="10" maxlength="128" 
-					 value="{{params.metric.people|get:"mean household size (urban)"}}"
+					 value="{{params.metric.demographics|get:"mean household size (urban)"}}"
 					 /> person(s)</div><!-- pfield --> 
 	      <div class="visualclear"></div> 
 	    </div><!-- class="pageblock" --> 
 	    
 	    <div class="pageblock"> 
-	      <div class="ptitle w200"><label for="paramset-{{paramsetid}}-metric>people>rural_urban_threshold">Urban population threshold:</label></div><!-- ptitle --> 
-	      <div class="pfield"><input name="paramset-{{paramsetid}}-metric>people>rural_urban_threshold"
-					 id="paramset-{{paramsetid}}-metric>people>rural_urban_threshold"
+	      <div class="ptitle w200"><label for="paramset-{{paramsetid}}-metric>demographics>urban_population_threshold">Urban population threshold:</label></div><!-- ptitle --> 
+	      <div class="pfield"><input name="paramset-{{paramsetid}}-metric>demographics>urban_population_threshold"
+					 id="paramset-{{paramsetid}}-metric>demographics>urban_population_threshold"
 					 class="form_text" type="text"
 					 size="10" maxlength="128" 
-					 value="{{params.metric.people|get:"rural urban threshold"}}"
+					 value="{{params.metric.demographics|get:"urban population threshold"}}"
 					 /> person(s)<div class="instructions">(minimum population of community when considered urban)</div></div><!-- pfield --> 
 	      <div class="visualclear"></div> 
 	    </div><!-- class="pageblock" --> 
 	    
 	    <div class="pageblock"> 
-	      <div class="ptitle w200"><label for="paramset-{{paramsetid}}-metric>people>mean_interhousehold_distance_in_meters">Mean interhousehold distance:</label></div><!-- ptitle --> 
-	      <div class="pfield"><input name="paramset-{{paramsetid}}-metric>people>mean_interhousehold_distance_in_meters"
-					 id="paramset-{{paramsetid}}-metric>people>mean_interhousehold_distance_in_meters"
+	      <div class="ptitle w200"><label for="paramset-{{paramsetid}}-metric>demographics>mean_interhousehold_distance_in_meters">Mean interhousehold distance:</label></div><!-- ptitle --> 
+	      <div class="pfield"><input name="paramset-{{paramsetid}}-metric>demographics>mean_interhousehold_distance_in_meters"
+					 id="paramset-{{paramsetid}}-metric>demographics>mean_interhousehold_distance_in_meters"
 					 class="form_text" type="text"
 					 size="10" maxlength="128" 
-					 value="{{params.metric.people|get:"mean interhousehold distance in meters"}}"
+					 value="{{params.metric.demographics|get:"mean interhousehold distance in meters"}}"
 					 /> meters</div><!-- pfield --> 
 	      <div class="visualclear"></div> 
 	    </div><!-- class="pageblock" --> 
+
+	    <div class="pageblock"> 
+	      <div class="ptitle
+	      w200"><label for="paramset-{{paramsetid}}-metric>demographics>population_count">Population Count:</label></div><!-- ptitle --> 
+	      <div class="pfield"><input name="paramset-{{paramsetid}}-metric>demographics>population_count"
+					 id="paramset-{{paramsetid}}-metric>demographics>population_count"
+					 class="form_text" type="text"
+					 size="10" maxlength="128" 
+					 value="{{params.metric.demographics|get:"population_count"}}"
+					 /> meters</div><!-- pfield --> 
+	      <div class="visualclear"></div> 
+	    </div><!-- class="pageblock" --> 
+
+
 	  </div><!-- tabbertab Demographics --> 
 	  
 	  <!-- ***  END TAB DIV *** --> 
@@ -114,19 +153,19 @@
 		  </div><!-- class="pageblock" --> 
 		  
 		  <div class="pageblock"> 
-		    <div class="ptitle w150"><label for="paramset-{{paramsetid}}-metric>demand_household>unit_demand_in_kilowatts_per_year">Base household unit demand:</label></div><!-- ptitle --> 
-		    <div class="pfield"><input name="paramset-{{paramsetid}}-metric>demand_household>unit_demand_in_kilowatts_per_year"
-					       id="paramset-{{paramsetid}}-metric>demand_household>unit_demand_in_kilowatts_per_year"
+		    <div class="ptitle w150"><label for="paramset-{{paramsetid}}-metric>demand_(household)>household_unit_demand_per_household_in_kilowatt-hours_per_year">Base household unit demand:</label></div><!-- ptitle --> 
+		    <div class="pfield"><input name="paramset-{{paramsetid}}-metric>demand_(household)>household_unit_demand_per_household_in_kilowatt-hours_per_year"
+					       id="paramset-{{paramsetid}}-metric>demand_(household)>household_unit_demand_per_household_in_kilowatt-hours_per_year"
 					       class="form_text"
 					       type="text" size="10"
 					       maxlength="128" 
-					       value="{{params.metric|get:"demand household"|get:"unit demand in kilowatts per year"}}"
+					       value="{{params.metric|get:"demand (household)"|get:"household unit demand per household in kilowatt-hours per year"}}"
 					       /> kW/year <div class="instructions">(per household)</div></div><!-- pfield --> 
 		    <div class="visualclear"></div> 
 		  </div><!-- class="pageblock" --> 
 		  
 		  <div class="pageblock"> 
-		    <div class="ptitle w150"><label for="paramset-{{paramsetid}}-metric>demand_household>demand_curve_points_(population_and_factor)">Household demand curve:</label></div><!-- ptitle --> 
+		    <div class="ptitle w150"><label for="paramset-{{paramsetid}}-metric>demand_(household)>demand_curve_points_(population_and_multiplier)">Household demand curve:</label></div><!-- ptitle --> 
 
 		    {% with "household" as type %}
 
@@ -143,20 +182,20 @@
 			  </tr> 
 			</thead> 
 			<tbody> 
-			    {% with "demand household" as section %}
-			    {% with "demand curve points (population and factor)" as key %}
+			    {% with "demand (household)" as section %}
+			    {% with "demand curve points (population and multiplier)" as key %}
 			    {% for x,y in params.metric|get:section|get_tuples:key %}
 			  <tr> 
 			    <td class="veryplain"> 
-			      <input name="paramset-{{paramsetid}}-metric>demand_household>demand_curve_points_(population_and_factor)__x__{{forloop.counter0}}"
-			      id="paramset-{{paramsetid}}-metric>demand_household>demand_curve_points_(population_and_factor)__x__{{forloop.counter0}}" class="form_text"
+			      <input name="paramset-{{paramsetid}}-metric>demand_(household)>demand_curve_points_(population_and_multiplier)__x__{{forloop.counter0}}"
+			      id="paramset-{{paramsetid}}-metric>demand_(household)>demand_curve_points_(population_and_multiplier)__x__{{forloop.counter0}}" class="form_text"
 			      type="text" size="10" 
 				     value="{{x}}"
 				     maxlength="128" /> 
 			    </td> 
 			    <td class="veryplain"> 
-			      <input name="paramset-{{paramsetid}}-metric>demand_household>demand_curve_points_(population_and_factor)__y__{{forloop.counter0}}"
-			      id="paramset-{{paramsetid}}-metric>demand_household>demand_curve_points_(population_and_factor)__y__{{forloop.counter0}}" class="form_text"
+			      <input name="paramset-{{paramsetid}}-metric>demand_(household)>demand_curve_points_(population_and_multiplier)__y__{{forloop.counter0}}"
+			      id="paramset-{{paramsetid}}-metric>demand_(household)>demand_curve_points_(population_and_multiplier)__y__{{forloop.counter0}}" class="form_text"
 			      type="text" size="10" maxlength="128" 
 				     value="{{y}}"
 				     /> 
@@ -195,19 +234,19 @@
 		  </div><!-- class="pageblock" --> 
 		  
 		  <div class="pageblock"> 
-		    <div class="ptitle w150"><label for="paramset-{{paramsetid}}-metric>demand_production>unit_demand_in_kilowatts_per_year">Base productive unit demand:</label></div><!-- ptitle --> 
-		    <div class="pfield"><input name="paramset-{{paramsetid}}-metric>demand_production>unit_demand_in_kilowatts_per_year"
-					       id="paramset-{{paramsetid}}-metric>demand_production>unit_demand_in_kilowatts_per_year"
+		    <div class="ptitle w150"><label for="paramset-{{paramsetid}}-metric>demand_(productive)>productive_unit_demand_per_household_in_kilowatt-hours_per_year">Base productive unit demand:</label></div><!-- ptitle --> 
+		    <div class="pfield"><input name="paramset-{{paramsetid}}-metric>demand_(productive)>productive_unit_demand_per_household_in_kilowatt-hours_per_year"
+					       id="paramset-{{paramsetid}}-metric>demand_(productive)>productive_unit_demand_per_household_in_kilowatt-hours_per_year"
 					       class="form_text"
 					       type="text" size="10"
 					       maxlength="128" 
-					       value="{{params.metric|get:"demand production"|get:"unit demand in kilowatts per year"}}"
+					       value="{{params.metric|get:"demand (productive)"|get:"productive unit demand per household in kilowatt-hours per year"}}"
 					       /> kW/year<div class="instructions">(per household)</div></div><!-- pfield --> 
 		    <div class="visualclear"></div> 
 		  </div><!-- class="pageblock" --> 
 		  
 		  <div class="pageblock"> 
-		    <div class="ptitle w150"><label for="paramset-{{paramsetid}}-metric>demand_production>demand_curve_points_(population_and_factor)">Productive demand curve:</label></div><!-- ptitle --> 
+		    <div class="ptitle w150"><label for="paramset-{{paramsetid}}-metric>demand_(productive)>demand_curve_points_(population_and_multiplier)">Productive demand curve:</label></div><!-- ptitle --> 
 
 		    {% with "productive" as type %}
 
@@ -224,20 +263,20 @@
 			  </tr> 
 			</thead> 
 			<tbody> 
-			    {% with "demand production" as section %}
-			    {% with "demand curve points (population and factor)" as key %}
+			    {% with "demand (productive)" as section %}
+			    {% with "demand curve points (population and multiplier)" as key %}
 			    {% for x,y in params.metric|get:section|get_tuples:key %}
 			  <tr> 
 			    <td class="veryplain"> 
-			      <input name="paramset-{{paramsetid}}-metric>demand_production>demand_curve_points_(population_and_factor)__x__{{forloop.counter0}}"
-			      id="paramset-{{paramsetid}}-metric>demand_production>demand_curve_points_(population_and_factor)__x__{{forloop.counter0}}" class="form_text"
+			      <input name="paramset-{{paramsetid}}-metric>demand_(productive)>demand_curve_points_(population_and_multiplier)__x__{{forloop.counter0}}"
+			      id="paramset-{{paramsetid}}-metric>demand_(productive)>demand_curve_points_(population_and_multiplier)__x__{{forloop.counter0}}" class="form_text"
 			      type="text" size="10" 
 				     value="{{x}}"
 				     maxlength="128" /> 
 			    </td> 
 			    <td class="veryplain"> 
-			      <input name="paramset-{{paramsetid}}-metric>demand_production>demand_curve_points_(population_and_factor)__y__{{forloop.counter0}}"
-			      id="paramset-{{paramsetid}}-metric>demand_production>demand_curve_points_(population_and_factor)__y__{{forloop.counter0}}" class="form_text"
+			      <input name="paramset-{{paramsetid}}-metric>demand_(productive)>demand_curve_points_(population_and_multiplier)__y__{{forloop.counter0}}"
+			      id="paramset-{{paramsetid}}-metric>demand_(productive)>demand_curve_points_(population_and_multiplier)__y__{{forloop.counter0}}" class="form_text"
 			      type="text" size="10" maxlength="128" 
 				     value="{{y}}"
 				     /> 
@@ -296,25 +335,25 @@
 		  </div><!-- class="pageblock" --> 
 		  
 		  <div class="pageblock"> 
-		    <div class="ptitle w150"><label for="paramset-{{paramsetid}}-metric>demand_education>unit_demand_in_kilowatts_per_year">Base education unit demand:</label></div><!-- ptitle --> 
-		    <div class="pfield"><input name="paramset-{{paramsetid}}-metric>demand_education>unit_demand_in_kilowatts_per_year"
-					       id="paramset-{{paramsetid}}-metric>demand_education>unit_demand_in_kilowatts_per_year"
+		    <div class="ptitle w150"><label for="paramset-{{paramsetid}}-metric>demand_(social_infrastructure)>unit_demand_per_education_facility_in_kilowatt-hours_per_year">Base education unit demand:</label></div><!-- ptitle --> 
+		    <div class="pfield"><input name="paramset-{{paramsetid}}-metric>demand_(social_infrastructure)>unit_demand_per_education_facility_in_kilowatt-hours_per_year"
+					       id="paramset-{{paramsetid}}-metric>demand_(social_infrastructure)>unit_demand_per_education_facility_in_kilowatt-hours_per_year"
 					       class="form_text"
 					       type="text" size="10"
 					       maxlength="128" 
-					       value="{{params.metric|get:"demand education"|get:"unit demand in kilowatts per year"}}"
+					       value="{{params.metric|get:"demand (social infrastructure)"|get:"unit demand per education facility in kilowatt-hours per year"}}"
 					       /> kW/year<div class="instructions">(per education facility)</div></div><!-- pfield --> 
 		    <div class="visualclear"></div> 
 		  </div><!-- class="pageblock" --> 
 		  
 		  <div class="pageblock"> 
-		    <div class="ptitle w150"><label for="paramset-{{paramsetid}}-metric>demand_commercial>unit_demand_in_kilowatts_per_year">Base commercial unit demand:</label></div><!-- ptitle --> 
-		    <div class="pfield"><input name="paramset-{{paramsetid}}-metric>demand_commercial>unit_demand_in_kilowatts_per_year"
-					       id="paramset-{{paramsetid}}-metric>demand_commercial>unit_demand_in_kilowatts_per_year"
+		    <div class="ptitle w150"><label for="paramset-{{paramsetid}}-metric>demand_(social_infrastructure)>unit_demand_per_commercial_facility_in_kilowatt-hours_per_year">Base commercial unit demand:</label></div><!-- ptitle --> 
+		    <div class="pfield"><input name="paramset-{{paramsetid}}-metric>demand_(social_infrastructure)>unit_demand_per_commercial_facility_in_kilowatt-hours_per_year"
+					       id="paramset-{{paramsetid}}-metric>demand_(social_infrastructure)>unit_demand_per_commercial_facility_in_kilowatt-hours_per_year"
 					       class="form_text"
 					       type="text" size="10"
 					       maxlength="128" 
-					       value="{{params.metric|get:"demand commercial"|get:"unit demand in kilowatts per year"}}"
+					       value="{{params.metric|get:"demand (social infrastructure)"|get:"unit demand per commercial facility in kilowatt-hours per year"}}"
 					       /> kW/year<div class="instructions">(per commercial facility)</div></div><!-- pfield --> 
 		    <div class="visualclear"></div> 
 		  </div><!-- class="pageblock" --> 
@@ -333,7 +372,7 @@
 		  
 		  
 		  <div class="pageblock"> 
-		    <div class="ptitle w150"><label for="paramset-{{paramsetid}}-metric>demand_institution>demand_curve_points_(population_and_factor)">Social infrastructure demand curve:</label></div><!-- ptitle --> 
+		    <div class="ptitle w150"><label for="paramset-{{paramsetid}}-metric>demand_institution>demand_curve_points_(population_and_multiplier)">Social infrastructure demand curve:</label></div><!-- ptitle --> 
 
 		    {% with "social" as type %}
 
@@ -351,19 +390,19 @@
 			</thead> 
 			<tbody> 
 			    {% with "demand institution" as section %}
-			    {% with "demand curve points (population and factor)" as key %}
+			    {% with "demand curve points (population and multiplier)" as key %}
 			    {% for x,y in params.metric|get:section|get_tuples:key %}
 			  <tr> 
 			    <td class="veryplain"> 
-			      <input name="paramset-{{paramsetid}}-metric>demand_institution>demand_curve_points_(population_and_factor)__x__{{forloop.counter0}}"
-			      id="paramset-{{paramsetid}}-metric>demand_institution>demand_curve_points_(population_and_factor)__x__{{forloop.counter0}}" class="form_text"
+			      <input name="paramset-{{paramsetid}}-metric>demand_institution>demand_curve_points_(population_and_multiplier)__x__{{forloop.counter0}}"
+			      id="paramset-{{paramsetid}}-metric>demand_institution>demand_curve_points_(population_and_multiplier)__x__{{forloop.counter0}}" class="form_text"
 			      type="text" size="10" 
 				     value="{{x}}"
 				     maxlength="128" /> 
 			    </td> 
 			    <td class="veryplain"> 
-			      <input name="paramset-{{paramsetid}}-metric>demand_institution>demand_curve_points_(population_and_factor)__y__{{forloop.counter0}}"
-			      id="paramset-{{paramsetid}}-metric>demand_institution>demand_curve_points_(population_and_factor)__y__{{forloop.counter0}}" class="form_text"
+			      <input name="paramset-{{paramsetid}}-metric>demand_institution>demand_curve_points_(population_and_multiplier)__y__{{forloop.counter0}}"
+			      id="paramset-{{paramsetid}}-metric>demand_institution>demand_curve_points_(population_and_multiplier)__y__{{forloop.counter0}}" class="form_text"
 			      type="text" size="10" maxlength="128" 
 				     value="{{y}}"
 				     /> 
@@ -443,7 +482,7 @@
 		  
 		  
 		  <div class="pageblock"> 
-		    <div class="ptitle w150"><label for="paramset-{{paramsetid}}-metric>demand_education>count_curve_points_(population_and_count)">Education infrastructure count:</label></div><!-- ptitle --> 
+		    <div class="ptitle w150"><label for="paramset-{{paramsetid}}-metric>demand_(social_infrastructure)>education_facility_count_curve_points_(population_and_facility_count)">Education infrastructure count:</label></div><!-- ptitle --> 
 
 		    {% with "education" as type %}
 
@@ -460,20 +499,20 @@
 			  </tr> 
 			</thead> 
 			<tbody> 
-			    {% with "demand education" as section %}
-			    {% with "count curve points (population and count)" as key %}
+			    {% with "demand (social infrastructure)" as section %}
+			    {% with "education facility count curve points (population and facility count)" as key %}
 			    {% for x,y in params.metric|get:section|get_tuples:key %}
 			  <tr> 
 			    <td class="veryplain"> 
-			      <input name="paramset-{{paramsetid}}-metric>demand_education>count_curve_points_(population_and_count)__x__{{forloop.counter0}}"
-			      id="paramset-{{paramsetid}}-metric>demand_education>count_curve_points_(population_and_count)__x__{{forloop.counter0}}" class="form_text"
+			      <input name="paramset-{{paramsetid}}-metric>demand_(social_infrastructure)>education_facility_count_curve_points_(population_and_facility_count)__x__{{forloop.counter0}}"
+			      id="paramset-{{paramsetid}}-metric>demand_(social_infrastructure)>education_facility_count_curve_points_(population_and_facility_count)__x__{{forloop.counter0}}" class="form_text"
 			      type="text" size="10" 
 				     value="{{x}}"
 				     maxlength="128" /> 
 			    </td> 
 			    <td class="veryplain"> 
-			      <input name="paramset-{{paramsetid}}-metric>demand_education>count_curve_points_(population_and_count)__y__{{forloop.counter0}}"
-			      id="paramset-{{paramsetid}}-metric>demand_education>count_curve_points_(population_and_count)__y__{{forloop.counter0}}" class="form_text"
+			      <input name="paramset-{{paramsetid}}-metric>demand_(social_infrastructure)>education_facility_count_curve_points_(population_and_facility_count)__y__{{forloop.counter0}}"
+			      id="paramset-{{paramsetid}}-metric>demand_(social_infrastructure)>education_facility_count_curve_points_(population_and_facility_count)__y__{{forloop.counter0}}" class="form_text"
 			      type="text" size="10" maxlength="128" 
 				     value="{{y}}"
 				     /> 
@@ -499,7 +538,7 @@
 		  
 		  
 		  <div class="pageblock"> 
-		    <div class="ptitle w150"><label for="paramset-{{paramsetid}}-metric>demand_commercial>count_curve_points_(population_and_count)">Commercial infrastructure count:</label></div><!-- ptitle --> 
+		    <div class="ptitle w150"><label for="paramset-{{paramsetid}}-metric>demand_(social_infrastructure)>count_curve_points_(population_and_count)">Commercial infrastructure count:</label></div><!-- ptitle --> 
 
 		    {% with "commercial" as type %}
 
@@ -516,20 +555,20 @@
 			  </tr> 
 			</thead> 
 			<tbody> 
-			    {% with "demand commercial" as section %}
-			    {% with "count curve points (population and count)" as key %}
+			    {% with "demand (social infrastructure)" as section %}
+			    {% with "commercial facility count curve points (population and facility count)" as key %}
 			    {% for x,y in params.metric|get:section|get_tuples:key %}
 			  <tr> 
 			    <td class="veryplain"> 
-			      <input name="paramset-{{paramsetid}}-metric>demand_commercial>count_curve_points_(population_and_count)__x__{{forloop.counter0}}"
-			      id="paramset-{{paramsetid}}-metric>demand_commercial>count_curve_points_(population_and_count)__x__{{forloop.counter0}}" class="form_text"
+			      <input name="paramset-{{paramsetid}}-metric>demand_(social_infrastructure)>commercial_facility_count_curve_points_(population_and_facility_count)__x__{{forloop.counter0}}"
+			      id="paramset-{{paramsetid}}-metric>demand_(social_infrastructure)>commercial_facility_count_curve_points_(population_and_facility_count)__x__{{forloop.counter0}}" class="form_text"
 			      type="text" size="10" 
 				     value="{{x}}"
 				     maxlength="128" /> 
 			    </td> 
 			    <td class="veryplain"> 
-			      <input name="paramset-{{paramsetid}}-metric>demand_commercial>count_curve_points_(population_and_count)__y__{{forloop.counter0}}"
-			      id="paramset-{{paramsetid}}-metric>demand_commercial>count_curve_points_(population_and_count)__y__{{forloop.counter0}}" class="form_text"
+			      <input name="paramset-{{paramsetid}}-metric>demand_(social_infrastructure)>commercial_facility_count_curve_points_(population_and_facility_count)__y__{{forloop.counter0}}"
+			      id="paramset-{{paramsetid}}-metric>demand_(social_infrastructure)>commercial_facility_count_curve_points_(population_and_facility_count)__y__{{forloop.counter0}}" class="form_text"
 			      type="text" size="10" maxlength="128" 
 				     value="{{y}}"
 				     /> 
@@ -626,33 +665,34 @@
 		  </div><!-- class="pageblock" --> 
 		  
 		  <div class="pageblock"> 
-		    <div class="ptitle w200"><label for="paramset-{{paramsetid}}-metric>demand>fraction_of_total_demand_during_peak_hours_(rural)">Fraction of total demand during peak hours (rural):</label></div><!-- ptitle --> 
-		    <div class="pfield"><input name="paramset-{{paramsetid}}-metric>demand>fraction_of_total_demand_during_peak_hours_(rural)"
-					       id="paramset-{{paramsetid}}-metric>demand>fraction_of_total_demand_during_peak_hours_(rural)"
+		    <div class="ptitle
+		    w200"><label for="paramset-{{paramsetid}}-metric>demand_(peak)>fraction_of_nodal_demand_occurring_during_peak_hours_(rural)">Fraction of total demand during peak hours (rural):</label></div><!-- ptitle --> 
+		    <div class="pfield"><input name="paramset-{{paramsetid}}-metric>demand_(peak)>fraction_of_nodal_demand_occurring_during_peak_hours_(rural)"
+					       id="paramset-{{paramsetid}}-metric>demand_(peak)>fraction_of_nodal_demand_occurring_during_peak_hours_(rural)"
 					       class="form_text"
 					       type="text" size="10"
 					       maxlength="128" 
-					       value="{{params.metric.demand|get:"fraction of total demand during peak hours (rural)"}}"
+					       value="{{params.metric.demand|get:"fraction of nodal demand occurring during peak hours (rural)"}}"
 					       /><div class="instructions">(e.g. 0.02 for 2%)</div></div><!-- pfield --> 
 		    <div class="visualclear"></div> 
 		  </div><!-- class="pageblock" --> 
 		  
 		  <div class="pageblock"> 
-		    <div class="ptitle w200"><label for="paramset-{{paramsetid}}-metric>demand>fraction_of_total_demand_during_peak_hours_(urban)">Fraction of total demand during peak hours (urban):</label></div><!-- ptitle --> 
-		    <div class="pfield"><input name="paramset-{{paramsetid}}-metric>demand>fraction_of_total_demand_during_peak_hours_(urban)"
-					       id="paramset-{{paramsetid}}-metric>demand>fraction_of_total_demand_during_peak_hours_(urban)"
+		    <div class="ptitle w200"><label for="paramset-{{paramsetid}}-metric>demand_(peak)>fraction_of_nodal_demand_occurring_during_peak_hours_(urban)">Fraction of total demand during peak hours (urban):</label></div><!-- ptitle --> 
+		    <div class="pfield"><input name="paramset-{{paramsetid}}-metric>demand_(peak)>fraction_of_nodal_demand_occurring_during_peak_hours_(urban)"
+					       id="paramset-{{paramsetid}}-metric>demand_(peak)>fraction_of_nodal_demand_occurring_during_peak_hours_(urban)"
 					       class="form_text"
 					       type="text" size="10"
 					       maxlength="128" 
-					       value="{{params.metric.demand|get:"fraction of total demand during peak hours (urban)"}}"
+					       value="{{params.metric.demand|get:"fraction of nodal demand occurring during peak hours (urban)"}}"
 					       /><div class="instructions">(e.g. 0.02 for 2%)</div></div><!-- pfield --> 
 		    <div class="visualclear"></div> 
 		  </div><!-- class="pageblock" --> 
 		  
 		  <div class="pageblock"> 
-		    <div class="ptitle w200"><label for="paramset-{{paramsetid}}-metric>demand>peak_electrical_usage_hours_per_year">Annual peak usage hours:</label></div><!-- ptitle --> 
-		    <div class="pfield"><input name="paramset-{{paramsetid}}-metric>demand>peak_electrical_usage_hours_per_year"
-					       id="paramset-{{paramsetid}}-metric>demand>peak_electrical_usage_hours_per_year"
+		    <div class="ptitle w200"><label for="paramset-{{paramsetid}}-metric>demand_(peak)>peak_electrical_usage_hours_per_year">Annual peak usage hours:</label></div><!-- ptitle --> 
+		    <div class="pfield"><input name="paramset-{{paramsetid}}-metric>demand_(peak)>peak_electrical_usage_hours_per_year"
+					       id="paramset-{{paramsetid}}-metric>demand_(peak)>peak_electrical_usage_hours_per_year"
 					       class="form_text"
 					       type="text" size="10"
 					       maxlength="128" 
@@ -880,7 +920,7 @@
 		  <h3 class="smaller">Diesel Generators</h3> 
 		  
 		  <div class="pageblock"> 
-		    <div class="ptitle w200"><label for="paramset-{{paramsetid}}-metric>system_diesel>system_sizes">Available diesel generator system sizes:</label></div><!-- ptitle --> 
+		    <div class="ptitle w200"><label for="paramset-{{paramsetid}}-metric>system_(mini-grid)>available_system_capacities_(diesel_generator)">Available diesel generator system sizes:</label></div><!-- ptitle --> 
 		    <div class="pfield"> 
 		      <table class="veryplain"> 
 			<tbody> 
@@ -891,25 +931,25 @@
 			  </tr> 
 			  <tr> 
 			    <td class="veryplain" style="text-align: right;"> 
-			      <input id="input-paramset-{{paramsetid}}-metric>system_diesel>system_sizes" 
+			      <input id="input-paramset-{{paramsetid}}-metric>system_(mini-grid)>available_system_capacities_(diesel_generator)" 
 				     class="form_text" type="text"
 			      type="text" size="9" maxlength="128"  
 				     value="Enter value" onFocus="this.value=''" /> 
 			      <input type="button" value="Add &#187;"
 			      class="regButton" 
-				     onclick="AddListItem('paramset-{{paramsetid}}-metric>system_diesel>system_sizes')"/> 
+				     onclick="AddListItem('paramset-{{paramsetid}}-metric>system_(mini-grid)>available_system_capacities_(diesel_generator)')"/> 
 			      <hr style="margin: 5px 0;" /> 
 			      <input type="button" value="&#171; Remove" 
-				     onclick="RemoveListItems('paramset-{{paramsetid}}-metric>system_diesel>system_sizes')"
+				     onclick="RemoveListItems('paramset-{{paramsetid}}-metric>system_(mini-grid)>available_system_capacities_(diesel_generator)')"
 				     class="regButton" /> 
 			    </td> 
 			    <td class="veryplain"> 
-			      <select id="select-paramset-{{paramsetid}}-metric>system_diesel>system_sizes"
-				      name="paramset-{{paramsetid}}-metric>system_diesel>system_sizes"
+			      <select id="select-paramset-{{paramsetid}}-metric>system_(mini-grid)>available_system_capacities_(diesel_generator)"
+				      name="paramset-{{paramsetid}}-metric>system_(mini-grid)>available_system_capacities_(diesel_generator)"
 				      size="5" multiple="multiple"
 				      class="form_multiselect w100"> 
-				{% with "system diesel" as system %}
-                                {% with "system sizes" as key %}
+				{% with "system (mini-grid)" as system %}
+                                {% with "available system capacities (diesel generator)" as key %}
                                 {% for o in params.metric|get:system|getlist:key %}
                                 <option value="{{o}}">{{o}}</option>
                                 {% endfor %}
@@ -929,37 +969,51 @@
 		  </div><!-- class="pageblock" --> 
 		  
 		  <div class="pageblock"> 
-		    <div class="ptitle w200"><label for="paramset-{{paramsetid}}-metric>system_diesel>engine_cost_per_kilowatt">Diesel generator cost per kilowatt:</label></div><!-- ptitle --> 
-		    <div class="pfield"><input name="paramset-{{paramsetid}}-metric>system_diesel>engine_cost_per_kilowatt"
-					       id="paramset-{{paramsetid}}-metric>system_diesel>engine_cost_per_kilowatt"
+		    <div class="ptitle w200"><label for="paramset-{{paramsetid}}-metric>system_(mini-grid)>diesel_generator_cost_per_diesel_system_kilowatt">Diesel generator cost per kilowatt:</label></div><!-- ptitle --> 
+		    <div class="pfield"><input name="paramset-{{paramsetid}}-metric>system_(mini-grid)>diesel_generator_cost_per_diesel_system_kilowatt"
+					       id="paramset-{{paramsetid}}-metric>system_(mini-grid)>diesel_generator_cost_per_diesel_system_kilowatt"
 					       class="form_text"
 					       type="text" size="10"
 					       maxlength="128" 
-					       value="{{params.metric|get:"system diesel"|get:"engine cost per kilowatt"}}"
+					       value="{{params.metric|get:"system (mini-grid)"|get:"diesel generator cost per diesel system kilowatt"}}"
 					       /> $/kW</div><!-- pfield --> 
 		    <div class="visualclear"></div> 
 		  </div><!-- class="pageblock" --> 
-		  
+
 		  <div class="pageblock"> 
-		    <div class="ptitle w200"><label for="paramset-{{paramsetid}}-metric>system_diesel>engine_installation_cost_as_fraction_of_engine_cost">Diesel Generator Installation cost factor<br />(as fraction of Diesel Generator cost):</label></div><!-- ptitle --> 
-		    <div class="pfield"><input name="paramset-{{paramsetid}}-metric>system_diesel>engine_installation_cost_as_fraction_of_engine_cost"
-					       id="paramset-{{paramsetid}}-metric>system_diesel>engine_installation_cost_as_fraction_of_engine_cost"
+		    <div class="ptitle
+		    w200"><label for="paramset-{{paramsetid}}-metric>system_(mini-grid)>distribution_loss_per_system_kilowatt">Distribution loss per system kilowatt:</label></div><!-- ptitle --> 
+		    <div class="pfield"><input name="paramset-{{paramsetid}}-metric>system_(mini-grid)>distribution_loss_per_system_kilowatt"
+					       id="paramset-{{paramsetid}}-metric>system_(mini-grid)>distribution_loss_per_system_kilowatt"
 					       class="form_text"
 					       type="text" size="10"
 					       maxlength="128" 
-					       value="{{params.metric|get:"system diesel"|get:"engine installation cost as fraction of engine cost"}}"
+					       value="{{params.metric|get:"system (mini-grid)"|get:"distribution loss per system kilowatt"}}"
+					       /> $/kW</div><!-- pfield --> 
+		    <div class="visualclear"></div> 
+		  </div><!-- class="pageblock" --> 
+
+		  
+		  <div class="pageblock"> 
+		    <div class="ptitle w200"><label for="paramset-{{paramsetid}}-metric>system_(mini-grid)>diesel_generator_installation_cost_as_fraction_of_diesel_generator_cost">Diesel Generator Installation cost factor<br />(as fraction of Diesel Generator cost):</label></div><!-- ptitle --> 
+		    <div class="pfield"><input name="paramset-{{paramsetid}}-metric>system_(mini-grid)>diesel_generator_installation_cost_as_fraction_of_diesel_generator_cost"
+					       id="paramset-{{paramsetid}}-metric>system_(mini-grid)>diesel_generator_installation_cost_as_fraction_of_diesel_generator_cost"
+					       class="form_text"
+					       type="text" size="10"
+					       maxlength="128" 
+					       value="{{params.metric|get:"system (mini-grid)"|get:"diesel generator installation cost as fraction of diesel generator cost"}}"
 					       /><div class="instructions">(e.g. 0.25 for 25%)</div></div><!-- pfield --> 
 		    <div class="visualclear"></div> 
 		  </div><!-- class="pageblock" --> 
 		  
 		  <div class="pageblock"> 
-		    <div class="ptitle w200"><label for="paramset-{{paramsetid}}-metric>system_diesel>equipment_cost_per_household">Other equipment cost per household :</label></div><!-- ptitle --> 
-		    <div class="pfield"><input name="paramset-{{paramsetid}}-metric>system_diesel>equipment_cost_per_household"
-					       id="paramset-{{paramsetid}}-metric>system_diesel>equipment_cost_per_household"
+		    <div class="ptitle w200"><label for="paramset-{{paramsetid}}-metric>system_(mini-grid)>diesel_equipment_cost_per_household">Other equipment cost per household :</label></div><!-- ptitle --> 
+		    <div class="pfield"><input name="paramset-{{paramsetid}}-metric>system_(mini-grid)>diesel_equipment_cost_per_household"
+					       id="paramset-{{paramsetid}}-metric>system_(mini-grid)>diesel_equipment_cost_per_household"
 					       class="form_text"
 					       type="text" size="10"
 					       maxlength="128" 
-					       value="{{params.metric|get:"system diesel"|get:"equipment cost per household"}}"
+					       value="{{params.metric|get:"system (mini-grid)"|get:"diesel equipment cost per household"}}"
 					       /> $/HH</div><!-- pfield --> 
 		    <div class="visualclear"></div> 
 		  </div><!-- class="pageblock" --> 
@@ -967,13 +1021,13 @@
 		  <h3 class="smaller">Diesel Generator Replacement</h3> 
 		  
 		  <div class="pageblock"> 
-		    <div class="ptitle w200"><label for="paramset-{{paramsetid}}-metric>system_diesel>engine_lifetime_in_years">Diesel Generator lifetime:</label></div><!-- ptitle --> 
-		    <div class="pfield"><input name="paramset-{{paramsetid}}-metric>system_diesel>engine_lifetime_in_years"
-					       id="paramset-{{paramsetid}}-metric>system_diesel>engine_lifetime_in_years"
+		    <div class="ptitle w200"><label for="paramset-{{paramsetid}}-metric>system_(mini-grid)>diesel_generator_lifetime_in_years">Diesel Generator lifetime:</label></div><!-- ptitle --> 
+		    <div class="pfield"><input name="paramset-{{paramsetid}}-metric>system_(mini-grid)>diesel_generator_lifetime_in_years"
+					       id="paramset-{{paramsetid}}-metric>system_(mini-grid)>diesel_generator_lifetime_in_years"
 					       class="form_text"
 					       type="text" size="10"
 					       maxlength="128" 
-					       value="{{params.metric|get:"system diesel"|get:"engine lifetime in years"}}"
+					       value="{{params.metric|get:"system (mini-grid)"|get:"diesel generator lifetime in years"}}"
 					       /> years</div><!-- pfield --> 
 		    <div class="visualclear"></div> 
 		  </div><!-- class="pageblock" --> 
@@ -981,25 +1035,25 @@
 		  <h3 class="smaller">Fuel</h3> 
 		  
 		  <div class="pageblock"> 
-		    <div class="ptitle w200"><label for="paramset-{{paramsetid}}-metric>system_diesel>fuel_cost_per_liter">Fuel cost per liter:</label></div><!-- ptitle --> 
-		    <div class="pfield"><input name="paramset-{{paramsetid}}-metric>system_diesel>fuel_cost_per_liter"
-					       id="paramset-{{paramsetid}}-metric>system_diesel>fuel_cost_per_liter"
+		    <div class="ptitle w200"><label for="paramset-{{paramsetid}}-metric>system_(mini-grid)>diesel_fuel_cost_per_liter">Fuel cost per liter:</label></div><!-- ptitle --> 
+		    <div class="pfield"><input name="paramset-{{paramsetid}}-metric>system_(mini-grid)>diesel_fuel_cost_per_liter"
+					       id="paramset-{{paramsetid}}-metric>system_(mini-grid)>diesel_fuel_cost_per_liter"
 					       class="form_text"
 					       type="text" size="10"
 					       maxlength="128" 
-					       value="{{params.metric|get:"system diesel"|get:"fuel cost per liter"}}"
+					       value="{{params.metric|get:"system (mini-grid)"|get:"diesel fuel cost per liter"}}"
 					       /> $/L</div><!-- pfield --> 
 		    <div class="visualclear"></div> 
 		  </div><!-- class="pageblock" --> 
 		  
 		  <div class="pageblock"> 
-		    <div class="ptitle w200"><label for="paramset-{{paramsetid}}-metric>system_diesel>fuel_liters_consumed_per_kilowatt-hour">Fuel liters consumed per kilowatt-hour:</label></div><!-- ptitle --> 
-		    <div class="pfield"><input name="paramset-{{paramsetid}}-metric>system_diesel>fuel_liters_consumed_per_kilowatt-hour"
-					       id="paramset-{{paramsetid}}-metric>system_diesel>fuel_liters_consumed_per_kilowatt-hour"
+		    <div class="ptitle w200"><label for="paramset-{{paramsetid}}-metric>system_(mini-grid)>diesel_fuel_liters_consumed_per_kilowatt-hour">Fuel liters consumed per kilowatt-hour:</label></div><!-- ptitle --> 
+		    <div class="pfield"><input name="paramset-{{paramsetid}}-metric>system_(mini-grid)>diesel_fuel_liters_consumed_per_kilowatt-hour"
+					       id="paramset-{{paramsetid}}-metric>system_(mini-grid)>diesel_fuel_liters_consumed_per_kilowatt-hour"
 					       class="form_text"
 					       type="text" size="10"
 					       maxlength="128" 
-					       value="{{params.metric|get:"system diesel"|get:"fuel liters consumed per kilowatt-hour"}}"
+					       value="{{params.metric|get:"system (mini-grid)"|get:"diesel fuel liters consumed per kilowatt-hour"}}"
 					       /> L/kWh</div><!-- pfield --> 
 		    <div class="visualclear"></div> 
 		  </div><!-- class="pageblock" --> 
@@ -1007,37 +1061,37 @@
 		  <h3 class="smaller">Operation and Maintenance (O&#38;M)</h3> 
 		  
 		  <div class="pageblock"> 
-		    <div class="ptitle w200"><label for="paramset-{{paramsetid}}-metric>system_diesel>fuel_hours_per_year">Total hours diesel generator is in operation in a year:</label></div><!-- ptitle --> 
-		    <div class="pfield"><input name="paramset-{{paramsetid}}-metric>system_diesel>fuel_hours_per_year"
-					       id="paramset-{{paramsetid}}-metric>system_diesel>fuel_hours_per_year"
+		    <div class="ptitle w200"><label for="paramset-{{paramsetid}}-metric>system_(mini-grid)>diesel_generator_hours_of_operation_per_year">Total hours diesel generator is in operation in a year:</label></div><!-- ptitle --> 
+		    <div class="pfield"><input name="paramset-{{paramsetid}}-metric>system_(mini-grid)>diesel_generator_hours_of_operation_per_year"
+					       id="paramset-{{paramsetid}}-metric>system_(mini-grid)>diesel_generator_hours_of_operation_per_year"
 					       class="form_text"
 					       type="text" size="10"
 					       maxlength="128" 
-					       value="{{params.metric|get:"system diesel"|get:"fuel hours per year"}}"
+					       value="{{params.metric|get:"system (mini-grid)"|get:"diesel generator hours of operation per year"}}"
 					       /> h/yr</div><!-- pfield --> 
 		    <div class="visualclear"></div> 
 		  </div><!-- class="pageblock" --> 
 		  
 		  <div class="pageblock"> 
-		    <div class="ptitle w200"><label for="paramset-{{paramsetid}}-metric>system_diesel>operations_and_maintenance_cost_as_fraction_of_engine_cost">Diesel Generator O&amp;M cost factor<br />(as fraction of Diesel Generator cost):</label></div><!-- ptitle --> 
-		    <div class="pfield"><input name="paramset-{{paramsetid}}-metric>system_diesel>operations_and_maintenance_cost_as_fraction_of_engine_cost"
-					       id="paramset-{{paramsetid}}-metric>system_diesel>operations_and_maintenance_cost_as_fraction_of_engine_cost"
+		    <div class="ptitle w200"><label for="paramset-{{paramsetid}}-metric>system_(mini-grid)>diesel_generator_operations_and_maintenance_cost_per_year_as_fraction_of_diesel_generator_cost">Diesel Generator O&amp;M cost factor<br />(as fraction of Diesel Generator cost):</label></div><!-- ptitle --> 
+		    <div class="pfield"><input name="paramset-{{paramsetid}}-metric>system_(mini-grid)>diesel_generator_operations_and_maintenance_cost_per_year_as_fraction_of_diesel_generator_cost"
+					       id="paramset-{{paramsetid}}-metric>system_(mini-grid)>diesel_generator_operations_and_maintenance_cost_per_year_as_fraction_of_diesel_generator_cost"
 					       class="form_text"
 					       type="text" size="10"
 					       maxlength="128" 
-					       value="{{params.metric|get:"system diesel"|get:"operations and maintenance cost as fraction of engine cost"}}"
+					       value="{{params.metric|get:"system (mini-grid)"|get:"diesel generator operations and maintenance cost per year as fraction of diesel generator cost"}}"
 					       /><div class="instructions">(e.g. 0.25 for 25%)</div></div><!-- pfield --> 
 		    <div class="visualclear"></div> 
 		  </div><!-- class="pageblock" --> 
 		  
 		  <div class="pageblock"> 
-		    <div class="ptitle w200"><label for="paramset-{{paramsetid}}-metric>system_diesel>equipment_operations_and_maintenance_cost_as_fraction_of_equipment_cost">Other Equipment O&amp;M cost factor<br />(as fraction of Other Equipment cost):</label></div><!-- ptitle --> 
-		    <div class="pfield"><input name="paramset-{{paramsetid}}-metric>system_diesel>equipment_operations_and_maintenance_cost_as_fraction_of_equipment_cost"
-					       id="paramset-{{paramsetid}}-metric>system_diesel>equipment_operations_and_maintenance_cost_as_fraction_of_equipment_cost"
+		    <div class="ptitle w200"><label for="paramset-{{paramsetid}}-metric>system_(mini-grid)>diesel_equipment_operations_and_maintenance_cost_per_year_as_fraction_of_diesel_equipment_cost">Other Equipment O&amp;M cost factor<br />(as fraction of Other Equipment cost):</label></div><!-- ptitle --> 
+		    <div class="pfield"><input name="paramset-{{paramsetid}}-metric>system_(mini-grid)>diesel_equipment_operations_and_maintenance_cost_per_year_as_fraction_of_diesel_equipment_cost"
+					       id="paramset-{{paramsetid}}-metric>system_(mini-grid)>diesel_equipment_operations_and_maintenance_cost_per_year_as_fraction_of_diesel_equipment_cost"
 					       class="form_text"
 					       type="text" size="10"
 					       maxlength="128" 
-					       value="{{params.metric|get:"system diesel"|get:"equipment operations and maintenance cost as fraction of equipment cost"}}"
+					       value="{{params.metric|get:"system (mini-grid)"|get:"diesel equipment operations and maintenance cost per year as fraction of diesel equipment cost"}}"
 					       /><div class="instructions">(e.g. 0.25 for 25%)</div></div><!-- pfield --> 
 		    <div class="visualclear"></div> 
 		  </div><!-- class="pageblock" --> 
@@ -1307,13 +1361,13 @@
 		  <h3 class="smaller">Low Voltage Lines</h3> 
 		  		  
 		  <div class="pageblock"> 
-		    <div class="ptitle w200"><label for="paramset-{{paramsetid}}-metric>system>low_voltage_line_cost_in_dollars_per_meter">Low-voltage line cost per meter:</label></div><!-- ptitle --> 
-		    <div class="pfield"><input name="paramset-{{paramsetid}}-metric>system>low_voltage_line_cost_in_dollars_per_meter"
-					       id="paramset-{{paramsetid}}-metric>system>low_voltage_line_cost_in_dollars_per_meter"
+		    <div class="ptitle w200"><label for="paramset-{{paramsetid}}-metric>distribution>low_voltage_line_cost_per_meter">Low-voltage line cost per meter:</label></div><!-- ptitle --> 
+		    <div class="pfield"><input name="paramset-{{paramsetid}}-metric>distribution>low_voltage_line_cost_per_meter"
+					       id="paramset-{{paramsetid}}-metric>distribution>low_voltage_line_cost_per_meter"
 					       class="form_text"
 					       type="text" size="10"
 					       maxlength="128" 
-					       value="{{params.metric.system|get:"low voltage line cost in dollars per meter"}}"
+					       value="{{params.metric.distribution|get:"low voltage line cost per meter"}}"
 					       /> $/m</div><!-- pfield --> 
 		    <div class="visualclear"></div> 
 		  </div><!-- class="pageblock" --> 
@@ -1321,13 +1375,13 @@
 		  <h3 class="smaller">Low Voltage Lines Replacement</h3> 
 		  		  
 		  <div class="pageblock"> 
-		    <div class="ptitle w200"><label for="paramset-{{paramsetid}}-metric>system>low_voltage_line_lifetime_in_years">Low-voltage line lifetime:</label></div><!-- ptitle --> 
-		    <div class="pfield"><input name="paramset-{{paramsetid}}-metric>system>low_voltage_line_lifetime_in_years"
-					       id="paramset-{{paramsetid}}-metric>system>low_voltage_line_lifetime_in_years"
+		    <div class="ptitle w200"><label for="paramset-{{paramsetid}}-metric>distribution>low_voltage_line_lifetime_in_years">Low-voltage line lifetime:</label></div><!-- ptitle --> 
+		    <div class="pfield"><input name="paramset-{{paramsetid}}-metric>distribution>low_voltage_line_lifetime_in_years"
+					       id="paramset-{{paramsetid}}-metric>distribution>low_voltage_line_lifetime_in_years"
 					       class="form_text"
 					       type="text" size="10"
 					       maxlength="128" 
-					       value="{{params.metric.system|get:"low voltage line lifetime in years"}}"
+					       value="{{params.metric.distribution|get:"low voltage line lifetime in years"}}"
 					       /> years</div><!-- pfield --> 
 		    <div class="visualclear"></div> 
 		  </div><!-- class="pageblock" --> 
@@ -1335,13 +1389,13 @@
 		  <h3 class="smaller">Operation and Maintenance (O&#38;M)</h3> 
 		  		  
 		  <div class="pageblock"> 
-		    <div class="ptitle w200"><label for="paramset-{{paramsetid}}-metric>system>low_voltage_line_operations_and_maintenance_cost_in_dollars_per_meter">Low-voltage O&amp;M cost in dollars per meter :</label></div><!-- ptitle --> 
-		    <div class="pfield"><input name="paramset-{{paramsetid}}-metric>system>low_voltage_line_operations_and_maintenance_cost_in_dollars_per_meter"
-					       id="paramset-{{paramsetid}}-metric>system>low_voltage_line_operations_and_maintenance_cost_in_dollars_per_meter"
+		    <div class="ptitle w200"><label for="paramset-{{paramsetid}}-metric>distribution>low_voltage_line_operations_and_maintenance_cost_per_meter">Low-voltage O&amp;M cost in dollars per meter :</label></div><!-- ptitle --> 
+		    <div class="pfield"><input name="paramset-{{paramsetid}}-metric>distribution>low_voltage_line_operations_and_maintenance_cost_per_meter"
+					       id="paramset-{{paramsetid}}-metric>distribution>low_voltage_line_operations_and_maintenance_cost_per_meter"
 					       class="form_text"
 					       type="text" size="10"
 					       maxlength="128" 
-					       value="{{params.metric.system|get:"low voltage line operations and maintenance cost in dollars per meter"}}"
+					       value="{{params.metric.distribution|get:"low voltage line operations and maintenance cost per meter"}}"
 					       /> $/m</div><!-- pfield --> 
 		    <div class="visualclear"></div> 
 		  </div><!-- class="pageblock" --> 
