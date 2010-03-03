@@ -33,13 +33,17 @@ params = defaultdict(defaultdict,
 5000 2.25
 10000 3.375""",
             "health facility count curve type" : "logistic",
-            },
-        "demand health" : {
-            "count curve points (population and count)" : """500 0.16
+            "unit demand per health facility in kilowatts per year" : "10000",
+            "health facility count curve points (population and facility count)" : """500 0.16
 1000 0.35
 5000 0.52
 10000 2.00""",
-            "unit demand in kilowatts per year" : "10000",
+            "public lighting facility count curve points (population and facility count)" : """500 1
+1000 2.81
+5000 7.31
+10000 25.52""",
+            "public lighting facility count curve type" : "logistic",
+            "unit demand per public lighting facility in kilowatt-hours per year" : "102",
             },
         "demand (household)" : {
             "demand curve points (population and multiplier)" : """500 1
@@ -48,14 +52,6 @@ params = defaultdict(defaultdict,
 10000 11.5""",
             "demand curve type" : "logistic",
             "household unit demand per household in kilowatt-hours per year" : "100",
-            },
-        "demand lighting" : {
-            "count curve points (population and count)" : """500 1
-1000 2.81
-5000 7.31
-10000 25.52""",
-            "count curve type" : "logistic",
-            "unit demand in kilowatts per year" : "102",
             },
         "demand (productive)" : {
             "demand curve points (population and multiplier)" : """500 1
