@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% load get %}
+
+{% block content %}
+
+<table id="data">
+<tbody>
+{% for type, total in counts.items %}
+<tr>
+<th scope="row">{{type}}</th>
+<td>{{total}}</td>
+</tr>
+{% endfor %}
+</tbody>
+</table>
+
+{% endblock %}

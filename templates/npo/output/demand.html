@@ -4,6 +4,7 @@
 
 {% block content %}
 
+
 <canvas id="graph" width="500" height="350"></canvas>
 
 <table id="data">
@@ -14,9 +15,10 @@
 <td>{{total}}</td>
 </tr>
 {% endfor %}
-
 </tbody>
 </table>
+
+<canvas id="graph2" width="500" height="350"></canvas>
 
 {% include "bluff.html" %}
 
@@ -24,9 +26,11 @@
   var g = new Bluff.Pie('graph', '500x350');
   g.theme_rails_keynote();
   g.data_from_table('data');
-  {% for type, total in demand.items %}
-//  g.data('{{type}}', {{total}});
-  {% endfor %}
+  g.draw()
+
+  var g = new Bluff.Bar('graph2', '500x350');
+  g.theme_rails_keynote();
+  g.data_from_table('data');
   g.draw();
 </script>
 
