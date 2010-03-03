@@ -1,5 +1,6 @@
 DEMAND_TYPES = "household productive commercial education health lighting".split()
 FACILITY_TYPES = "household health education commercial lighting".split()
+SYSTEM_TYPES = "grid off-grid mini-grid".split()
 
 class urban_rural_population_totals(object):
     def __init__(self, time_horizon=0):
@@ -55,6 +56,18 @@ def count_totals(nodes):
 
     return counts
 
+def nodes_per_system(nodes):
+    counts = dict()
+    for type in SYSTEM_TYPES:
+        counts[type] = 0
+
+    for node in nodes._dict:
+        node = nodes[node]
+        counts[node.system()] += 1
+
+    return counts
+
+        
 from simplejson import loads
 import os
 def load():
@@ -109,6 +122,11 @@ class Node(object):
         p = self.population(at_t)
         threshold = int(self['demographics']['urban population threshold'])
         return is_urban(p, threshold)
+
+    def system(self):
+        val = self['metric']['system']
+        assert val in SYSTEM_TYPES
+        return val
 
     def count(self, type):
         assert type in FACILITY_TYPES

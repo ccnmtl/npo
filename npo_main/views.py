@@ -226,3 +226,15 @@ def count(request, id):
     results = count_totals(nodes)
     
     return dict(counts=results)
+
+from backend.calc import nodes_per_system
+@login_required
+@rendered_with("npo/output/system_count.html")
+def system_count(request, id):
+    case = get_object_or_404(Case,id=id)
+
+    nodes = node_output(case)
+
+    results = nodes_per_system(nodes)
+    
+    return dict(counts=results)
