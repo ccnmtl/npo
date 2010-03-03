@@ -372,7 +372,7 @@
 		  
 		  
 		  <div class="pageblock"> 
-		    <div class="ptitle w150"><label for="paramset-{{paramsetid}}-metric>demand_institution>demand_curve_points_(population_and_multiplier)">Social infrastructure demand curve:</label></div><!-- ptitle --> 
+		    <div class="ptitle w150"><label for="paramset-{{paramsetid}}-metric>demand_(social_infrastructure)>demand_curve_points_(population_and_multiplier)">Social infrastructure demand curve:</label></div><!-- ptitle --> 
 
 		    {% with "social" as type %}
 
@@ -389,20 +389,20 @@
 			  </tr> 
 			</thead> 
 			<tbody> 
-			    {% with "demand institution" as section %}
+			    {% with "demand (social infrastructure)" as section %}
 			    {% with "demand curve points (population and multiplier)" as key %}
 			    {% for x,y in params.metric|get:section|get_tuples:key %}
 			  <tr> 
 			    <td class="veryplain"> 
-			      <input name="paramset-{{paramsetid}}-metric>demand_institution>demand_curve_points_(population_and_multiplier)__x__{{forloop.counter0}}"
-			      id="paramset-{{paramsetid}}-metric>demand_institution>demand_curve_points_(population_and_multiplier)__x__{{forloop.counter0}}" class="form_text"
+			      <input name="paramset-{{paramsetid}}-metric>demand_(social_infrastructure)>demand_curve_points_(population_and_multiplier)__x__{{forloop.counter0}}"
+			      id="paramset-{{paramsetid}}-metric>demand_(social_infrastructure)>demand_curve_points_(population_and_multiplier)__x__{{forloop.counter0}}" class="form_text"
 			      type="text" size="10" 
 				     value="{{x}}"
 				     maxlength="128" /> 
 			    </td> 
 			    <td class="veryplain"> 
-			      <input name="paramset-{{paramsetid}}-metric>demand_institution>demand_curve_points_(population_and_multiplier)__y__{{forloop.counter0}}"
-			      id="paramset-{{paramsetid}}-metric>demand_institution>demand_curve_points_(population_and_multiplier)__y__{{forloop.counter0}}" class="form_text"
+			      <input name="paramset-{{paramsetid}}-metric>demand_(social_infrastructure)>demand_curve_points_(population_and_multiplier)__y__{{forloop.counter0}}"
+			      id="paramset-{{paramsetid}}-metric>demand_(social_infrastructure)>demand_curve_points_(population_and_multiplier)__y__{{forloop.counter0}}" class="form_text"
 			      type="text" size="10" maxlength="128" 
 				     value="{{y}}"
 				     /> 
@@ -740,61 +740,61 @@
 		  <h3 class="smaller">Photovoltaic Systems</h3> 
 		  
 		  <div class="pageblock"> 
-		    <div class="ptitle w200"><label for="paramset-{{paramsetid}}-metric>system_photovoltaic>system_sizes">Available panel system sizes:</label></div><!-- ptitle --> 
-		    <div class="pfield"><input name="paramset-{{paramsetid}}-metric>system_photovoltaic>system_sizes"
-					       id="paramset-{{paramsetid}}-metric>system_photovoltaic>system_sizes"
+		    <div class="ptitle w200"><label for="paramset-{{paramsetid}}-metric>system_(off-grid)>system_sizes">Available panel system sizes:</label></div><!-- ptitle --> 
+		    <div class="pfield"><input name="paramset-{{paramsetid}}-metric>system_(off-grid)>system_sizes"
+					       id="paramset-{{paramsetid}}-metric>system_(off-grid)>system_sizes"
 					       class="form_text"
 					       type="text" size="10"
 					       maxlength="128" 
-					       value="{{params.metric|get:"system photovoltaic"|get:"system sizes"}}"
+					       value="{{params.metric|get:"system (off-grid)"|get:"system sizes"}}"
 					       /> kW</div><!-- pfield --> 
 		    <div class="visualclear"></div> 
 		  </div><!-- class="pageblock" --> 
 		  
 		  <div class="pageblock"> 
-		    <div class="ptitle w200"><label for="paramset-{{paramsetid}}-metric>system_photovoltaic>panel_cost_per_system_kilowatt">Panel cost per system kilowatt:</label></div><!-- ptitle --> 
-		    <div class="pfield"><input name="paramset-{{paramsetid}}-metric>system_photovoltaic>panel_cost_per_system_kilowatt"
-					       id="paramset-{{paramsetid}}-metric>system_photovoltaic>panel_cost_per_system_kilowatt"
+		    <div class="ptitle w200"><label for="paramset-{{paramsetid}}-metric>system_(off-grid)>photovoltaic_panel_cost_per_photovoltaic_system_kilowatt">Panel cost per system kilowatt:</label></div><!-- ptitle --> 
+		    <div class="pfield"><input name="paramset-{{paramsetid}}-metric>system_(off-grid)>photovoltaic_panel_cost_per_photovoltaic_system_kilowatt"
+					       id="paramset-{{paramsetid}}-metric>system_(off-grid)>photovoltaic_panel_cost_per_photovoltaic_system_kilowatt"
 					       class="form_text"
 					       type="text" size="10"
 					       maxlength="128" 
-					       value="{{params.metric|get:"system photovoltaic"|get:"panel cost per system kilowatt"}}"
+					       value="{{params.metric|get:"system (off-grid)"|get:"photovoltaic panel cost per photovoltaic system kilowatt"}}"
 					       /> $/kW</div><!-- pfield --> 
 		    <div class="visualclear"></div> 
 		  </div><!-- class="pageblock" --> 
 		  
 		  <div class="pageblock"> 
-		    <div class="ptitle w200"><label for="paramset-{{paramsetid}}-metric>system_photovoltaic>balance_cost_as_fraction_of_panel_cost">Balance of system cost factor (as fraction of Panel cost:</label></div><!-- ptitle --> 
-		    <div class="pfield"><input name="paramset-{{paramsetid}}-metric>system_photovoltaic>balance_cost_as_fraction_of_panel_cost"
-					       id="paramset-{{paramsetid}}-metric>system_photovoltaic>balance_cost_as_fraction_of_panel_cost"
+		    <div class="ptitle w200"><label for="paramset-{{paramsetid}}-metric>system_(off-grid)>photovoltaic_balance_cost_as_fraction_of_photovoltaic_panel_cost">Balance of system cost factor (as fraction of Panel cost:</label></div><!-- ptitle --> 
+		    <div class="pfield"><input name="paramset-{{paramsetid}}-metric>system_(off-grid)>photovoltaic_balance_cost_as_fraction_of_photovoltaic_panel_cost"
+					       id="paramset-{{paramsetid}}-metric>system_(off-grid)>photovoltaic_balance_cost_as_fraction_of_photovoltaic_panel_cost"
 					       class="form_text"
 					       type="text" size="10"
 					       maxlength="128" 
-					       value="{{params.metric|get:"system photovoltaic"|get:"balance cost as fraction of panel cost"}}"
+					       value="{{params.metric|get:"system (off-grid)"|get:"photovoltaic balance cost as fraction of photovoltaic panel cost"}}"
 					       /><div class="instructions">(e.g. 0.25 for 25%)</div></div><!-- pfield --> 
 		    <div class="visualclear"></div> 
 		  </div><!-- class="pageblock" --> 
 		  
 		  <div class="pageblock"> 
-		    <div class="ptitle w200"><label for="paramset-{{paramsetid}}-metric>system_photovoltaic>battery_kilowatt-hours_per_system_kilowatt">Battery energy per system kilowatt:</label></div><!-- ptitle --> 
-		    <div class="pfield"><input name="paramset-{{paramsetid}}-metric>system_photovoltaic>battery_kilowatt-hours_per_system_kilowatt"
-					       id="paramset-{{paramsetid}}-metric>system_photovoltaic>battery_kilowatt-hours_per_system_kilowatt"
+		    <div class="ptitle w200"><label for="paramset-{{paramsetid}}-metric>system_(off-grid)>photovoltaic_battery_kilowatt-hours_per_photovoltaic_system_kilowatt">Battery energy per system kilowatt:</label></div><!-- ptitle --> 
+		    <div class="pfield"><input name="paramset-{{paramsetid}}-metric>system_(off-grid)>photovoltaic_battery_kilowatt-hours_per_photovoltaic_system_kilowatt"
+					       id="paramset-{{paramsetid}}-metric>system_(off-grid)>photovoltaic_battery_kilowatt-hours_per_photovoltaic_system_kilowatt"
 					       class="form_text"
 					       type="text" size="10"
 					       maxlength="128" 
-					       value="{{params.metric|get:"system photovoltaic"|get:"battery kilowatt-hours per system kilowatt"}}"
+					       value="{{params.metric|get:"system (off-grid)"|get:"photovoltaic battery kilowatt-hours per photovoltaic system kilowatt"}}"
 					       /> kWh/kW</div><!-- pfield --> 
 		    <div class="visualclear"></div> 
 		  </div><!-- class="pageblock" --> 
 		  
 		  <div class="pageblock"> 
-		    <div class="ptitle w200"><label for="paramset-{{paramsetid}}-metric>system_photovoltaic>battery_cost_per_kilowatt-hour">Battery cost per kilowatt-hour:</label></div><!-- ptitle --> 
-		    <div class="pfield"><input name="paramset-{{paramsetid}}-metric>system_photovoltaic>battery_cost_per_kilowatt-hour"
-					       id="paramset-{{paramsetid}}-metric>system_photovoltaic>battery_cost_per_kilowatt-hour"
+		    <div class="ptitle w200"><label for="paramset-{{paramsetid}}-metric>system_(off-grid)>photovoltaic_battery_cost_per_kilowatt-hour">Battery cost per kilowatt-hour:</label></div><!-- ptitle --> 
+		    <div class="pfield"><input name="paramset-{{paramsetid}}-metric>system_(off-grid)>photovoltaic_battery_cost_per_kilowatt-hour"
+					       id="paramset-{{paramsetid}}-metric>system_(off-grid)>photovoltaic_battery_cost_per_kilowatt-hour"
 					       class="form_text"
 					       type="text" size="10"
 					       maxlength="128" 
-					       value="{{params.metric|get:"system photovoltaic"|get:"battery cost per kilowatt-hour"}}"
+					       value="{{params.metric|get:"system (off-grid)"|get:"photovoltaic battery cost per kilowatt-hour"}}"
 					       /> $/kW</div><!-- pfield --> 
 		    <div class="visualclear"></div> 
 		  </div><!-- class="pageblock" --> 
@@ -802,37 +802,37 @@
 		  <h3 class="smaller">Photovoltaic Systems Replacement</h3> 
 		  
 		  <div class="pageblock"> 
-		    <div class="ptitle w200"><label for="paramset-{{paramsetid}}-metric>system_photovoltaic>panel_lifetime_in_years">Panel lifetime:</label></div><!-- ptitle --> 
-		    <div class="pfield"><input name="paramset-{{paramsetid}}-metric>system_photovoltaic>panel_lifetime_in_years"
-					       id="paramset-{{paramsetid}}-metric>system_photovoltaic>panel_lifetime_in_years"
+		    <div class="ptitle w200"><label for="paramset-{{paramsetid}}-metric>system_(off-grid)>photovoltaic_panel_lifetime_in_years">Panel lifetime:</label></div><!-- ptitle --> 
+		    <div class="pfield"><input name="paramset-{{paramsetid}}-metric>system_(off-grid)>photovoltaic_panel_lifetime_in_years"
+					       id="paramset-{{paramsetid}}-metric>system_(off-grid)>photovoltaic_panel_lifetime_in_years"
 					       class="form_text"
 					       type="text" size="10"
 					       maxlength="128" 
-					       value="{{params.metric|get:"system photovoltaic"|get:"panel lifetime in years"}}"
+					       value="{{params.metric|get:"system (off-grid)"|get:"photovoltaic panel lifetime in years"}}"
 					       /> years</div><!-- pfield --> 
 		    <div class="visualclear"></div> 
 		  </div><!-- class="pageblock" --> 
 		  
 		  <div class="pageblock"> 
-		    <div class="ptitle w200"><label for="paramset-{{paramsetid}}-metric>system_photovoltaic>balance_lifetime_in_years">Balance of system lifetime:</label></div><!-- ptitle --> 
-		    <div class="pfield"><input name="paramset-{{paramsetid}}-metric>system_photovoltaic>balance_lifetime_in_years"
-					       id="paramset-{{paramsetid}}-metric>system_photovoltaic>balance_lifetime_in_years"
+		    <div class="ptitle w200"><label for="paramset-{{paramsetid}}-metric>system_(off-grid)>photovoltaic_balance_lifetime_in_years">Balance of system lifetime:</label></div><!-- ptitle --> 
+		    <div class="pfield"><input name="paramset-{{paramsetid}}-metric>system_(off-grid)>photovoltaic_balance_lifetime_in_years"
+					       id="paramset-{{paramsetid}}-metric>system_(off-grid)>photovoltaic_balance_lifetime_in_years"
 					       class="form_text"
 					       type="text" size="10"
 					       maxlength="128" 
-					       value="{{params.metric|get:"system photovoltaic"|get:"balance lifetime in years"}}"
+					       value="{{params.metric|get:"system (off-grid)"|get:"photovoltaic balance lifetime in years"}}"
 					       /> years</div><!-- pfield --> 
 		    <div class="visualclear"></div> 
 		  </div><!-- class="pageblock" --> 
 		  
 		  <div class="pageblock"> 
-		    <div class="ptitle w200"><label for="paramset-{{paramsetid}}-metric>system_photovoltaic>battery_lifetime_in_years">Battery lifetime:</label></div><!-- ptitle --> 
-		    <div class="pfield"><input name="paramset-{{paramsetid}}-metric>system_photovoltaic>battery_lifetime_in_years"
-					       id="paramset-{{paramsetid}}-metric>system_photovoltaic>battery_lifetime_in_years"
+		    <div class="ptitle w200"><label for="paramset-{{paramsetid}}-metric>system_(off-grid)>photovoltaic_battery_lifetime_in_years">Battery lifetime:</label></div><!-- ptitle --> 
+		    <div class="pfield"><input name="paramset-{{paramsetid}}-metric>system_(off-grid)>photovoltaic_battery_lifetime_in_years"
+					       id="paramset-{{paramsetid}}-metric>system_(off-grid)>photovoltaic_battery_lifetime_in_years"
 					       class="form_text"
 					       type="text" size="10"
 					       maxlength="128" 
-					       value="{{params.metric|get:"system photovoltaic"|get:"battery lifetime in years"}}"
+					       value="{{params.metric|get:"system (off-grid)"|get:"photovoltaic battery lifetime in years"}}"
 					       /> years</div><!-- pfield --> 
 		    <div class="visualclear"></div> 
 		  </div><!-- class="pageblock" --> 
@@ -840,12 +840,12 @@
 		  <h3 class="smaller">Operation and Maintenance (O&#38;M)</h3> 
 		  
 		  <div class="pageblock"> 
-		    <div class="ptitle w200"><label for="paramset-{{paramsetid}}-metric>system_photovoltaic>operations_and_maintenance_cost_as_fraction_of_system_cost">O&amp;M photovoltaic systems cost factor<br />(as fraction of total Panel System cost):</label></div><!-- ptitle --> 
-		    <div class="pfield"><input name="paramset-{{paramsetid}}-metric>system_photovoltaic>operations_and_maintenance_cost_as_fraction_of_system_cost"
-		    id="paramset-{{paramsetid}}-metric>system_photovoltaic>operations_and_maintenance_cost_as_fraction_of_system_cost"
+		    <div class="ptitle w200"><label for="paramset-{{paramsetid}}-metric>system_(off-grid)>photovoltaic_operations_and_maintenance_cost_per_year_as_fraction_of_photovoltaic_system_cost">O&amp;M photovoltaic systems cost factor<br />(as fraction of total Panel System cost):</label></div><!-- ptitle --> 
+		    <div class="pfield"><input name="paramset-{{paramsetid}}-metric>system_(off-grid)>photovoltaic_operations_and_maintenance_cost_per_year_as_fraction_of_photovoltaic_system_cost"
+		    id="paramset-{{paramsetid}}-metric>system_(off-grid)>photovoltaic_operations_and_maintenance_cost_per_year_as_fraction_of_photovoltaic_system_cost"
 		    class="form_text" type="text" size="10"
 		    maxlength="128" 
-					       value="{{params.metric|get:"system photovoltaic"|get:"operations and maintenance cost as fraction of system cost"}}"
+					       value="{{params.metric|get:"system (off-grid)"|get:"photovoltaic operations and maintenance cost per year as fraction of photovoltaic system cost"}}"
 					       /><div class="instructions">(e.g. 0.02 for 2%)</div></div><!-- pfield --> 
 		    <div class="visualclear"></div> 
 		  </div><!-- class="pageblock" --> 
@@ -853,7 +853,20 @@
 		  <h3 class="smaller">Diesel generators</h3> 
 		  
 		  <div class="pageblock"> 
-		    <div class="ptitle w200"><label for="paramset-{{paramsetid}}-metric>system_photovoltaic>system_sizes">Available diesel generator system sizes:</label></div><!-- ptitle --> 
+		    <div class="ptitle w200"><label for="paramset-{{paramsetid}}-metric>system_(off-grid)>diesel_generator_hours_of_operation_per_year">Total hours diesel generator is in operation in a year:</label></div><!-- ptitle --> 
+		    <div class="pfield"><input name="paramset-{{paramsetid}}-metric>system_(off-grid)>diesel_generator_hours_of_operation_per_year"
+					       id="paramset-{{paramsetid}}-metric>system_(off-grid)>diesel_generator_hours_of_operation_per_year"
+					       class="form_text"
+					       type="text" size="10"
+					       maxlength="128" 
+					       value="{{params.metric|get:"system (off-grid)"|get:"diesel generator hours of operation per year"}}"
+					       /> h/yr</div><!-- pfield --> 
+		    <div class="visualclear"></div> 
+		  </div><!-- class="pageblock" --> 
+
+
+		  <div class="pageblock"> 
+		    <div class="ptitle w200"><label for="paramset-{{paramsetid}}-metric>system_(off-grid)>available_system_capacities_(photovoltaic_panel)">Available diesel generator system sizes:</label></div><!-- ptitle --> 
 		    <div class="pfield"> 
 		      <table class="veryplain"> 
 			<tbody> 
@@ -865,25 +878,25 @@
 			  <tr> 
 			    <td class="veryplain" style="text-align: right;"> 
 			      <input 
-			      id="input-paramset-{{paramsetid}}-metric>system_photovoltaic>system_sizes" 
+			      id="input-paramset-{{paramsetid}}-metric>system_(off-grid)>available_system_capacities_(photovoltaic_panel)" 
 				     class="form_text" type="text"
 			      type="text" size="9" maxlength="128"  
 				     value="Enter value" onFocus="this.value=''" /> 
 			      kW <input type="button" value="Add &#187;" class="regButton" 
-					onclick="AddListItem('paramset-{{paramsetid}}-metric>system_photovoltaic>system_sizes')"
+					onclick="AddListItem('paramset-{{paramsetid}}-metric>system_(off-grid)>available_system_capacities_(photovoltaic_panel)')"
 					/> 
 			      <hr style="margin: 5px 0;" /> 
 			      <input type="button" value="&#171; Remove" class="regButton" 
-				     onclick="RemoveListItems('paramset-{{paramsetid}}-metric>system_photovoltaic>system_sizes')"/> 
+				     onclick="RemoveListItems('paramset-{{paramsetid}}-metric>system_(off-grid)>available_system_capacities_(photovoltaic_panel)')"/> 
 			    </td> 
 			    <td class="veryplain"> 
 			      <select size="5" 
-				      name="paramset-{{paramsetid}}-metric>system_photovoltaic>system_sizes"
-				      id="select-paramset-{{paramsetid}}-metric>system_photovoltaic>system_sizes"
+				      name="paramset-{{paramsetid}}-metric>system_(off-grid)>available_system_capacities_(photovoltaic_panel)"
+				      id="select-paramset-{{paramsetid}}-metric>system_(off-grid)>available_system_capacities_(photovoltaic_panel)"
 				      multiple="multiple"
 				      class="form_multiselect w100"> 
-				{% with "system photovoltaic" as system %}
-                                {% with "system sizes" as key %}
+				{% with "system (off-grid)" as system %}
+                                {% with "available system capacities (photovoltaic panel)" as key %}
                                 {% for o in params.metric|get:system|getlist:key %}
                                 <option value="{{o}}">{{o}}</option>
                                 {% endfor %}

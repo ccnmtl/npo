@@ -27,14 +27,18 @@ params = defaultdict(defaultdict,
 10000 25""",
             "education facility count curve type" : "logistic",
             "unit demand per education facility in kilowatt-hours per year" : "438",
-
+            "demand curve type" : "logistic",
+            "demand curve points (population and multiplier)" : """500 1
+1000 1.5
+5000 2.25
+10000 3.375""",
+            "health facility count curve type" : "logistic",
             },
         "demand health" : {
             "count curve points (population and count)" : """500 1.6
 1000 3.5
 5000 5.2
 10000 20""",
-            "count curve type" : "logistic",
             "unit demand in kilowatts per year" : "10000",
             },
         "demand (household)" : {
@@ -44,14 +48,6 @@ params = defaultdict(defaultdict,
 10000 11.5""",
             "demand curve type" : "logistic",
             "household unit demand per household in kilowatt-hours per year" : "100",
-            },
-        "demand institution" : {
-            "demand curve points (population and multiplier)" : """500 1
-1000 1.5
-5000 2.25
-10000 3.375""",
-            "demand curve type" : "logistic",
-            "unit demand in kilowatts per year" : "1000",
             },
         "demand lighting" : {
             "count curve points (population and count)" : """500 1
@@ -112,19 +108,18 @@ params = defaultdict(defaultdict,
             "transformer lifetime in years" : "10",
             "transformer operations and maintenance cost as fraction of transformer cost" : "0.03",
             },
-        "system photovoltaic" : {
-            "balance cost as fraction of panel cost" : "0.5",
-            "balance lifetime in years" : "10",
-            "battery cost per kilowatt-hour" : "400",
-            "battery kilowatt-hours per system kilowatt" : "5",
-            "battery lifetime in years" : "3",
-            "operations and maintenance cost as fraction of system cost" : "0.05",
-            "panel cost per system kilowatt" : "6000",
-            "panel lifetime in years" : "30",
-            "system sizes" : "0.05 0.075 0.15 0.4 1 1.5",
-            },
-        "system photovoltaic diesel" : {
-            "system sizes" : "2 4 6 12 19 32 70 100 150 200 400 500 750 1000",
+        "system (off-grid)" : {
+            "photovoltaic balance cost as fraction of photovoltaic panel cost" : "0.5",
+            "photovoltaic balance lifetime in years" : "10",
+            "photovoltaic battery cost per kilowatt-hour" : "400",
+            "photovoltaic battery kilowatt-hours per photovoltaic system kilowatt" : "5",
+            "photovoltaic battery lifetime in years" : "3",
+            "photovoltaic operations and maintenance cost per year as fraction of photovoltaic system cost" : "0.05",
+            "photovoltaic panel cost per photovoltaic system kilowatt" : "6000",
+            "photovoltaic panel lifetime in years" : "30",
+            "diesel generator hours of operation per year" : "7260.0",
+            "available system capacities (photovoltaic panel)" : "0.05 0.075 0.15 0.4 1 1.5",
+            "available system capacities (diesel generator)" : "2 4 6 12 19 32 70 100 150 200 400 500 750 1000",
             },
         },
     networkModelName = "modified-kruskal",
