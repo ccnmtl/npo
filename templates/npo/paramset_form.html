@@ -323,13 +323,13 @@
 		  </div><!-- class="pageblock" --> 
 		  
 		  <div class="pageblock"> 
-		    <div class="ptitle w150"><label for="paramset-{{paramsetid}}-metric>demand_health>unit_demand_in_kilowatts_per_year">Base health unit demand:</label></div><!-- ptitle --> 
-		    <div class="pfield"><input name="paramset-{{paramsetid}}-metric>demand_health>unit_demand_in_kilowatts_per_year"
-					       id="paramset-{{paramsetid}}-metric>demand_health>unit_demand_in_kilowatts_per_year"
+		    <div class="ptitle w150"><label for="paramset-{{paramsetid}}-metric>demand_(social_infrastructure)>unit_demand_per_health_facility_in_kilowatts_per_year">Base health unit demand:</label></div><!-- ptitle --> 
+		    <div class="pfield"><input name="paramset-{{paramsetid}}-metric>demand_(social_infrastructure)>unit_demand_per_health_facility_in_kilowatts_per_year"
+					       id="paramset-{{paramsetid}}-metric>demand_(social_infrastructure)>unit_demand_per_health_facility_in_kilowatts_per_year"
 					       class="form_text"
 					       type="text" size="10"
 					       maxlength="128" 
-					       value="{{params.metric|get:"demand health"|get:"unit demand in kilowatts per year"}}"
+					       value="{{params.metric|get:"demand (social infrastructure)"|get:"unit demand per health facility in kilowatts per year"}}"
 					       /> kW/year<div class="instructions">(per health facility)</div></div><!-- pfield --> 
 		    <div class="visualclear"></div> 
 		  </div><!-- class="pageblock" --> 
@@ -359,13 +359,13 @@
 		  </div><!-- class="pageblock" --> 
 		  
 		  <div class="pageblock"> 
-		    <div class="ptitle w150"><label for="paramset-{{paramsetid}}-metric>demand_lighting>unit_demand_in_kilowatts_per_year">Base public lighting unit demand:</label></div><!-- ptitle --> 
-		    <div class="pfield"><input name="paramset-{{paramsetid}}-metric>demand_lighting>unit_demand_in_kilowatts_per_year" 
-					       id="paramset-{{paramsetid}}-metric>demand_lighting>unit_demand_in_kilowatts_per_year"
+		    <div class="ptitle w150"><label for="paramset-{{paramsetid}}-metric>demand_(social_infrastructure)>unit_demand_per_public_lighting_facility_in_kilowatt-hours_per_year">Base public lighting unit demand:</label></div><!-- ptitle --> 
+		    <div class="pfield"><input name="paramset-{{paramsetid}}-metric>demand_(social_infrastructure)>unit_demand_per_public_lighting_facility_in_kilowatt-hours_per_year" 
+					       id="paramset-{{paramsetid}}-metric>demand_(social_infrastructure)>unit_demand_per_public_lighting_facility_in_kilowatt-hours_per_year"
 					       class="form_text"
 					       type="text" size="10"
 					       maxlength="128" 
-					       value="{{params.metric|get:"demand lighting"|get:"unit demand in kilowatts per year"}}"
+					       value="{{params.metric|get:"demand (social infrastructure)"|get:"unit demand per public lighting facility in kilowatt-hours per year"}}"
 					       /> kW/year</div><!-- pfield --> 
 		    <div class="visualclear"></div> 
 		  </div><!-- class="pageblock" --> 
@@ -427,7 +427,7 @@
 		  </div><!-- class="pageblock" Demand curve type --> 
 		  
 		  <div class="pageblock"> 
-		    <div class="ptitle w150"><label for="paramset-{{paramsetid}}-metric>demand_health>count_curve_points_(population_and_count)">Health infrastructure count:</label></div><!-- ptitle --> 
+		    <div class="ptitle w150"><label for="paramset-{{paramsetid}}-metric>demand_(social_infrastructure)>health_facility_count_curve_points_(population_and_facility_count)">Health infrastructure count:</label></div><!-- ptitle --> 
 
 		    {% with "health" as type %}
 
@@ -444,20 +444,20 @@
 			  </tr> 
 			</thead> 
 			<tbody> 
-			    {% with "demand health" as section %}
-			    {% with "count curve points (population and count)" as key %}
+			    {% with "demand (social infrastructure)" as section %}
+			    {% with "health facility count curve points (population and facility count)" as key %}
 			    {% for x,y in params.metric|get:section|get_tuples:key %}
 			  <tr> 
 			    <td class="veryplain"> 
-			      <input name="paramset-{{paramsetid}}-metric>demand_health>count_curve_points_(population_and_count)__x__{{forloop.counter0}}"
-			      id="paramset-{{paramsetid}}-metric>demand_health>count_curve_points_(population_and_count)__x__{{forloop.counter0}}" class="form_text"
+			      <input name="paramset-{{paramsetid}}-metric>demand_(social_infrastructure)>health_facility_count_curve_points_(population_and_facility_count)__x__{{forloop.counter0}}"
+			      id="paramset-{{paramsetid}}-metric>demand_(social_infrastructure)>health_facility_count_curve_points_(population_and_facility_count)__x__{{forloop.counter0}}" class="form_text"
 			      type="text" size="10" 
 				     value="{{x}}"
 				     maxlength="128" /> 
 			    </td> 
 			    <td class="veryplain"> 
-			      <input name="paramset-{{paramsetid}}-metric>demand_health>count_curve_points_(population_and_count)__y__{{forloop.counter0}}"
-			      id="paramset-{{paramsetid}}-metric>demand_health>count_curve_points_(population_and_count)__y__{{forloop.counter0}}" class="form_text"
+			      <input name="paramset-{{paramsetid}}-metric>demand_(social_infrastructure)>health_facility_count_curve_points_(population_and_facility_count)__y__{{forloop.counter0}}"
+			      id="paramset-{{paramsetid}}-metric>demand_(social_infrastructure)>health_facility_count_curve_points_(population_and_facility_count)__y__{{forloop.counter0}}" class="form_text"
 			      type="text" size="10" maxlength="128" 
 				     value="{{y}}"
 				     /> 
@@ -538,7 +538,7 @@
 		  
 		  
 		  <div class="pageblock"> 
-		    <div class="ptitle w150"><label for="paramset-{{paramsetid}}-metric>demand_(social_infrastructure)>count_curve_points_(population_and_count)">Commercial infrastructure count:</label></div><!-- ptitle --> 
+		    <div class="ptitle w150"><label for="paramset-{{paramsetid}}-metric>demand_(social_infrastructure)>health_facility_count_curve_points_(population_and_facility_count)">Commercial infrastructure count:</label></div><!-- ptitle --> 
 
 		    {% with "commercial" as type %}
 
@@ -594,7 +594,7 @@
 		  
 		  
 		  <div class="pageblock"> 
-		    <div class="ptitle w150"><label for="paramset-{{paramsetid}}-metric>demand_lighting>count_curve_points_(population_and_count)">Public lighting demand curve:</label></div><!-- ptitle --> 
+		    <div class="ptitle w150"><label for="paramset-{{paramsetid}}-metric>demand_(social_infrastructure)>public_lighting_facility_count_curve_points_(population_and_facility_count)">Public lighting demand curve:</label></div><!-- ptitle --> 
 
 		    {% with "lighting" as type %}
 
@@ -611,20 +611,20 @@
 			  </tr> 
 			</thead> 
 			<tbody> 
-			    {% with "demand lighting" as section %}
-			    {% with "count curve points (population and count)" as key %}
+			    {% with "demand (social infrastructure)" as section %}
+			    {% with "public lighting facility count curve points (population and facility count)" as key %}
 			    {% for x,y in params.metric|get:section|get_tuples:key %}
 			  <tr> 
 			    <td class="veryplain"> 
-			      <input name="paramset-{{paramsetid}}-metric>demand_lighting>count_curve_points_(population_and_count)__x__{{forloop.counter0}}"
-			      id="paramset-{{paramsetid}}-metric>demand_lighting>count_curve_points_(population_and_count)__x__{{forloop.counter0}}" class="form_text"
+			      <input name="paramset-{{paramsetid}}-metric>demand_(social_infrastructure)>public_lighting_facility_count_curve_points_(population_and_facility_count)__x__{{forloop.counter0}}"
+			      id="paramset-{{paramsetid}}-metric>demand_(social_infrastructure)>public_lighting_facility_count_curve_points_(population_and_facility_count)__x__{{forloop.counter0}}" class="form_text"
 			      type="text" size="10" 
 				     value="{{x}}"
 				     maxlength="128" /> 
 			    </td> 
 			    <td class="veryplain"> 
-			      <input name="paramset-{{paramsetid}}-metric>demand_lighting>count_curve_points_(population_and_count)__y__{{forloop.counter0}}"
-			      id="paramset-{{paramsetid}}-metric>demand_lighting>count_curve_points_(population_and_count)__y__{{forloop.counter0}}" class="form_text"
+			      <input name="paramset-{{paramsetid}}-metric>demand_(social_infrastructure)>public_lighting_facility_count_curve_points_(population_and_facility_count)__y__{{forloop.counter0}}"
+			      id="paramset-{{paramsetid}}-metric>demand_(social_infrastructure)>public_lighting_facility_count_curve_points_(population_and_facility_count)__y__{{forloop.counter0}}" class="form_text"
 			      type="text" size="10" maxlength="128" 
 				     value="{{y}}"
 				     /> 
