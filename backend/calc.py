@@ -67,6 +67,21 @@ def nodes_per_system(nodes):
 
     return counts
 
+
+def nodes_per_system_and_type(nodes):
+    counts = dict()
+    for type in SYSTEM_TYPES:
+        counts[type] = {'urban':0, 'rural':0}
+
+    for node in nodes._dict:
+        node = nodes[node]
+        system = node.system()
+        if node.is_urban():
+            counts[system]['urban'] += 1
+        else:
+            counts[system]['rural'] += 1
+
+    return counts
         
 from simplejson import loads
 import os
