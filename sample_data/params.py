@@ -27,6 +27,7 @@ params = defaultdict(defaultdict,
 10000 2.5""",
             "education facility count curve type" : "logistic",
             "unit demand per education facility in kilowatt-hours per year" : "438",
+            "demand curve type" : "logistic",
             },
         "demand health" : {
             "count curve points (population and count)" : """500 0.16
@@ -49,7 +50,6 @@ params = defaultdict(defaultdict,
 1000 1.5
 5000 2.25
 10000 3.375""",
-            "demand curve type" : "logistic",
             "unit demand in kilowatts per year" : "1000",
             },
         "demand lighting" : {
