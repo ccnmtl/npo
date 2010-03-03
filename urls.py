@@ -23,5 +23,8 @@ urlpatterns = patterns('',
                        (r'^case/(?P<id>\d+)/delete/$','npo_main.views.delete_case'),
                        (r'^case/create/$','npo_main.views.create_case'),
                        (r'^run/$','npo_main.views.run'),
-                       
+
+### output views (stub)
+                       (r'^case/(?P<id>\d+)/pop/$','npo_main.views.pop'),
+                       (r'^case/(?P<id>\d+)/demand/$','npo_main.views.demand'),
 )

@@ -2,6 +2,10 @@ from django import template
 register = template.Library()
 
 @register.filter
+def getitem(container, key):
+  return container[key]
+
+@register.filter
 def get( dict, key, default = '' ):
   """
   Usage: 
