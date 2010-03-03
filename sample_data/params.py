@@ -88,7 +88,7 @@ params = defaultdict(defaultdict,
             "diesel equipment operations and maintenance cost per year as fraction of diesel equipment cost" : "0.05",
             "available system capacities (diesel generator)" : "6 12 19 32 70 100 150 200 400 500 750 1000",
             },
-        "system grid" : {
+        "system (grid)" : {
             "distribution loss as fraction of system demand" : "0.15",
             "electricity cost per kilowatt-hour" : "0.17",
             "equipment cost per household" : "200",
