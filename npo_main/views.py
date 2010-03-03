@@ -214,3 +214,15 @@ def demand(request, id):
 
     
     return dict(demand=results)
+
+from backend.calc import count_totals
+@login_required
+@rendered_with("npo/output/count.html")
+def count(request, id):
+    case = get_object_or_404(Case,id=id)
+
+    nodes = node_output(case)
+
+    results = count_totals(nodes)
+    
+    return dict(counts=results)

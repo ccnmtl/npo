@@ -1,4 +1,5 @@
 DEMAND_TYPES = "household productive commercial education health lighting".split()
+FACILITY_TYPES = "household health education commercial lighting".split()
 
 class urban_rural_population_totals(object):
     def __init__(self, time_horizon=0):
@@ -39,6 +40,20 @@ class demand_totals(object):
                 self.demands[type] += demand
 
         return self.demands
+
+def count_totals(nodes):
+    counts = dict()
+    for type in FACILITY_TYPES:
+        counts[type] = 0
+
+    for node in nodes._dict:
+        node = nodes[node]
+
+        for type in FACILITY_TYPES:
+            count = node.count(type)
+            counts[type] += count
+
+    return counts
 
 from simplejson import loads
 import os
@@ -94,6 +109,16 @@ class Node(object):
         p = self.population(at_t)
         threshold = int(self['demographics']['urban population threshold'])
         return is_urban(p, threshold)
+
+    def count(self, type):
+        assert type in FACILITY_TYPES
+        if type == 'household':
+            value = self['demographics']['projected household count']
+        elif type == 'lighting':
+            value = self['demand (social infrastructure)']['projected public lighting facility count']
+        else:
+            value = self['demand (social infrastructure)']['projected %s facility count' % type]
+        return float(value)
 
     def demand(self, type):
         assert type in DEMAND_TYPES
