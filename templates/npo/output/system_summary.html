@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% load get %}
+
+{% block content %}
+
+<table id="data">
+  <tbody>
+    {% for type, values in counts.items %}
+    <tr>
+      <th scope="row">{{type}}</th>
+      <td>
+	<table>
+	  <thead>
+	    <tr>
+	      <th>Urban</th>
+	      <th>Rural</th>
+	    </tr>
+	  </thead>
+	  <tbody>
+	    <tr>
+	      <td>{{values.urban}}</td>
+	      <td>{{values.rural}}</td>
+	    </tr>
+	  </tbody>
+	</table>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+{% endblock %}
