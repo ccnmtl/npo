@@ -118,7 +118,7 @@ params = defaultdict(defaultdict,
             "available system capacities (diesel generator)" : "2 4 6 12 19 32 70 100 150 200 400 500 750 1000",
             },
         },
-    networkModelName = "modified-kruskal",
+    networkModelName = "modKruskal",
     network = {
         "algorithm" : {
             "minimum node count per subnetwork" : "2",
