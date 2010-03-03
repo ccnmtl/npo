@@ -32,13 +32,13 @@ params = defaultdict(defaultdict,
 1000 1.5
 5000 2.25
 10000 3.375""",
+            "health facility count curve type" : "logistic",
             },
         "demand health" : {
             "count curve points (population and count)" : """500 1.6
 1000 3.5
 5000 5.2
 10000 20""",
-            "count curve type" : "logistic",
             "unit demand in kilowatts per year" : "10000",
             },
         "demand (household)" : {
