@@ -26,5 +26,5 @@ urlpatterns = patterns('',
 
 ### output views (stub)
                        (r'^case/(?P<id>\d+)/pop/$','npo_main.views.pop'),
-                       
+                       (r'^case/(?P<id>\d+)/demand/$','npo_main.views.demand'),
 )

@@ -1,11 +1,12 @@
+DEMAND_TYPES = "household productive commercial education health lighting".split()
+
 class urban_rural_population_totals(object):
     def __init__(self, time_horizon=0):
         self.urban = [0] * time_horizon
         self.rural = [0] * time_horizon
         self.time_horizon = time_horizon
 
-    def __call__(self):
-        nodes = get_nodes()
+    def __call__(self, nodes):
         time_horizon = prev_time_horizon = None
         for node in nodes._dict:
             node = nodes[node]
@@ -22,6 +23,22 @@ class urban_rural_population_totals(object):
                 else:
                     self.rural[interval] += node.population(at_t=interval)
         return {'urban': self.urban, 'rural': self.rural}
+
+class demand_totals(object):
+    def __init__(self):
+        self.demands = dict()
+        for type in DEMAND_TYPES:
+            self.demands[type] = 0
+
+    def __call__(self, nodes):
+        for node in nodes._dict:
+            node = nodes[node]
+
+            for type in DEMAND_TYPES:
+                demand = node.demand(type)
+                self.demands[type] += demand
+
+        return self.demands
 
 from simplejson import loads
 def load():
@@ -71,7 +88,24 @@ class Node(object):
         p = self.population(at_t)
         threshold = int(self['demographics']['urban population threshold'])
         return is_urban(p, threshold)
-    
+
+    def demand(self, type):
+        assert type in DEMAND_TYPES
+
+        key = "projected %s demand in kilowatt-hours per year"
+        if type == "household":
+            x = self['demand (household)']
+            key = "projected %s demand in kilowatts-hours per year"
+        elif type == "productive":
+            x = self['demand (productive)']
+        else:
+            if type == "lighting":
+                type = "public lighting"
+            x = self['demand (social infrastructure)']
+            type = type + " facility"
+        key = key % type
+        return float(x[key])
+
 import code
 from pprint import pprint as pp
 
@@ -94,7 +128,7 @@ class webapp(object):
         other_src = "http://chart.apis.google.com/chart?cht=lc&chs=200x125&chd=t:40,60,60,45,47,75,70,72"
         html = """
 <html><head>
-<script type="text/javascript" src="http://blackrock.ccnmtl.columbia.edu/site_media/js/bluff/bluff-src.js" />
+o
 </head><body>
 
 """

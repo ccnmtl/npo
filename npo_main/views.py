@@ -171,10 +171,41 @@ def run(request):
     results = loads(backend_request(expand_param_names(params),demographics,networks))
     return dict(results=results)
 
+
+### outputs
+
+from calc import get_nodes
+def node_output():
+    # load a sample json output for now
+    # eventually we should get this from the stored case output
+    nodes = get_nodes()
+    return nodes
+
+def time_horizon():
+    # likewise the time horizon should be retrieved from the case input, i think
+    return 11
+
+from calc import urban_rural_population_totals as ur
 @rendered_with('npo/output/population.html')
 def pop(request, id):
-    from calc import urban_rural_population_totals as ur
-    x = ur(11)
-    results = x()
-    results['years'] = range(11)
+
+    horizon = time_horizon()
+    nodes = node_output()
+
+    x = ur(horizon)
+    results = x(nodes)
+    
+    results['years'] = range(horizon)
     return results
+
+from calc import demand_totals
+@rendered_with("npo/output/demand.html")
+def demand(request, id):
+    horizon = time_horizon()
+    nodes = node_output()
+
+    x = demand_totals()
+    results = x(nodes)
+
+    
+    return dict(demand=results)
