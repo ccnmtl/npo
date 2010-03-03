@@ -41,8 +41,11 @@ class demand_totals(object):
         return self.demands
 
 from simplejson import loads
+import os
 def load():
-    x = open('1.json').read()
+    from django.conf import settings
+    data_path = settings.SAMPLE_PATH
+    x = open(os.path.join(data_path, 'output.json')).read()
     y = loads(x)
     return y
 
