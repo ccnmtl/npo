@@ -1,7 +1,7 @@
 from collections import defaultdict
 
 params = defaultdict(defaultdict,
-    metricModelName="mvMax",
+    metricModelName="mvMax2",
     metric = {
         "finance" : {
             "economic growth rate per year" : "0.06",
