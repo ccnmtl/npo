@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% for type, cost in costs.items() %}
+{{type}}: {{cost}}
+{% endfor %}
+
+{% endblock %}
