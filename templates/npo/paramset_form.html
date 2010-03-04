@@ -127,7 +127,7 @@
 					 id="paramset-{{paramsetid}}-metric>demographics>population_count"
 					 class="form_text" type="text"
 					 size="10" maxlength="128" 
-					 value="{{params.metric.demographics|get:"population_count"}}"
+					 value="{{params.metric.demographics|get:"population count"}}"
 					 /> meters</div><!-- pfield --> 
 	      <div class="visualclear"></div> 
 	    </div><!-- class="pageblock" --> 
@@ -672,7 +672,7 @@
 					       class="form_text"
 					       type="text" size="10"
 					       maxlength="128" 
-					       value="{{params.metric.demand|get:"fraction of nodal demand occurring during peak hours (rural)"}}"
+					       value="{{params.metric|get:"demand (peak)"|get:"fraction of nodal demand occurring during peak hours (rural)"}}"
 					       /><div class="instructions">(e.g. 0.02 for 2%)</div></div><!-- pfield --> 
 		    <div class="visualclear"></div> 
 		  </div><!-- class="pageblock" --> 
@@ -684,7 +684,7 @@
 					       class="form_text"
 					       type="text" size="10"
 					       maxlength="128" 
-					       value="{{params.metric.demand|get:"fraction of nodal demand occurring during peak hours (urban)"}}"
+					       value="{{params.metric|get:"demand (peak)"|get:"fraction of nodal demand occurring during peak hours (urban)"}}"
 					       /><div class="instructions">(e.g. 0.02 for 2%)</div></div><!-- pfield --> 
 		    <div class="visualclear"></div> 
 		  </div><!-- class="pageblock" --> 
@@ -696,7 +696,7 @@
 					       class="form_text"
 					       type="text" size="10"
 					       maxlength="128" 
-					       value="{{params.metric.demand|get:"peak electrical usage hours per year"}}"
+					       value="{{params.metric|get:"demand (peak)"|get:"peak electrical usage hours per year"}}"
 					       /> hrs/yr</div><!-- pfield --> 
 		    <div class="visualclear"></div> 
 		  </div><!-- class="pageblock" --> 

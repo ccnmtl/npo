@@ -1,7 +1,7 @@
 from collections import defaultdict
 
 params = defaultdict(defaultdict,
-    metricModelName="mvMax",
+    metricModelName="mvMax2",
     metric = {
         "finance" : {
             "economic growth rate per year" : "0.06",
@@ -67,7 +67,7 @@ params = defaultdict(defaultdict,
             "mean household size (rural)" : "9.6",
             "mean household size (urban)" : "7.5",
             "mean interhousehold distance in meters" : "25",
-            "urban_population_threshold" : "5000",
+            "urban population threshold" : "5000",
             "population growth rate per year" : "0.02",
             },
         "distribution" : {
@@ -111,14 +111,14 @@ params = defaultdict(defaultdict,
             "photovoltaic battery kilowatt-hours per photovoltaic system kilowatt" : "5",
             "photovoltaic battery lifetime in years" : "3",
             "photovoltaic operations and maintenance cost per year as fraction of photovoltaic system cost" : "0.05",
-            "panel cost per system kilowatt" : "6000",
+            "photovoltaic panel cost per photovoltaic system kilowatt" : "6000",
             "diesel generator hours of operation per year" : "7260.0",
             "photovoltaic panel lifetime in years" : "30",
             "available system capacities (photovoltaic panel)" : "0.05 0.075 0.15 0.4 1 1.5",
             "available system capacities (diesel generator)" : "2 4 6 12 19 32 70 100 150 200 400 500 750 1000",
             },
         },
-    networkModelName = "modKruskal",
+    networkModelName = "modkruskal",
     network = {
         "algorithm" : {
             "minimum node count per subnetwork" : "2",

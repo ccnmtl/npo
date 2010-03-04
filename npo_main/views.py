@@ -113,8 +113,8 @@ def create_case(request):
 
         keys_to_delete = [key for key in params.keys() 
                           if key.startswith(selected_paramset)
-                          and (key.endswith("_(population_and_count)")
-                               or key.endswith("_(population_and_factor)"))]
+                          and (key.endswith("_(population_and_multiplier)" or key.endswith("_(population_and_facility_count)"))
+                               or key.endswith("_(population_and_multiplier)") or key.endswith("_(population_and_facility_count)"))]
         for key in keys_to_delete:
             del params[key]
         
