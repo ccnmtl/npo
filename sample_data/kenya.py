@@ -67,7 +67,7 @@ params = defaultdict(defaultdict,
             "mean household size (rural)" : "5.2",
             "mean household size (urban)" : "4",
             "mean interhousehold distance in meters" : "50",
-            "urban_population_threshold" : "5000",
+            "urban population threshold" : "5000",
             "population growth rate per year" : "0.02",
             },
         "distribution" : {
@@ -118,7 +118,7 @@ params = defaultdict(defaultdict,
             "available system capacities (diesel generator)" : "2 4 6 12 19 32 70 100 150 200 400 500 750 1000",
             },
         },
-    networkModelName = "modKruskal",
+    networkModelName = "modkruskal",
     network = {
         "algorithm" : {
             "minimum node count per subnetwork" : "2",
