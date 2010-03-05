@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% load get %}
+
+{% block content %}
+
+<table id="data">
+<tbody>
+  {% for type, value in results.items %}
+  <tr>
+    <th scope="row">{{type}}</th>
+    <td>{{value}}</td>
+  </tr>
+  {% endfor %}
+
+</tbody>
+</table>
+
+{% endblock %}
