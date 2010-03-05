@@ -180,7 +180,7 @@ def average_cost_per_household(nodes):
 
         system = node.system()
         cost = node.total_cost()
-        if node.is_urban:
+        if node.is_urban():
             urbanity = 'urban'
         else:
             urbanity = 'rural'
