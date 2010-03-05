@@ -7,8 +7,8 @@ COST_COMPONENTS = {
         "installation cost",
         "service cost",
         "equipment cost",
-        "medium voltage line cost per meter",
-        ## NO LOW VOLTAGE LINE COST YET
+        ## XXX TODO NO MEDIUM VOLTAGE LINE COST YET "medium voltage line cost per meter",
+        ## XXX TODO NO LOW VOLTAGE LINE COST YET
         ],
 
     'off-grid': [
@@ -24,7 +24,7 @@ COST_COMPONENTS = {
         "diesel generator cost",
         "diesel equipment cost",
         "diesel generator installation cost",
-        ## NO LOW VOLTAGE LINE COST YET
+        ## XXX TODO NO LOW VOLTAGE LINE COST YET
         ],
     }
 
@@ -98,7 +98,7 @@ def cost_histogram(nodes, system, *bins):
     for node in nodes._dict:
         node = nodes[node]
 
-        cost = node.initial_total_cost(system)
+        cost = node.total_costs(system)
         bin = find_bin(cost, bins)
         counts[bin] += 1
 
@@ -114,8 +114,8 @@ def nodes_per_system_nongrid(nodes):
     for node in nodes._dict:
         node = nodes[node]
 
-        mini_cost = node.initial_total_cost("mini-grid")
-        off_cost = node.initial_total_cost("off-grid")
+        mini_cost = node.total_cost("mini-grid")
+        off_cost = node.total_cost("off-grid")
 
         if mini_cost > off_cost:
             counts["off-grid"] += 1
@@ -142,7 +142,7 @@ def cost_components(nodes):
         for component in costs:
             my_cost = node.initial_cost(component)
             costs[component] += my_cost
-        my_total_cost = node.initial_total_cost()
+        my_total_cost = node.total_cost()## XXX TODO final=True) --> when we have MV COST
         total_cost[system_type] += my_total_cost
 
     return {'components': component_cost,
@@ -223,16 +223,32 @@ class Node(object):
         assert val in SYSTEM_TYPES
         return val
 
-    def initial_total_cost(self, system=None):
+    def mv_length_in_meters(self):
+        ## XXX TODO
+        raise NotImplementedError("NEED THIS FROM ROY")
+
+    def total_cost(self, system=None, final=False):
         """
-        Returns the total initial cost for building this node.
+        Returns the total cost for building this node over the 
+        time horizon.
 
         If system is None, uses the node's preferred system (if 
         that has been calculated).
+
+        The `final` parameter signifies whether the network has
+        been built (ie the Big Algorithm) - if it has not been
+        built we don't have access to some of the data. I think
+        this is only relevant for on-grid nodes.
         """
         system = system or self.system()
         if system == 'grid':
             cost = self['system (grid)']['internal system nodal cost']
+            if final:
+                external_cost = float(
+                    self['system (grid)']['external nodal cost per meter'])
+                meters = self.mv_length_in_meters()
+                external_cost *= meters
+                cost = float(cost) + external_cost
         else:
             cost = self['system (%s)' % system]['system nodal cost']
         cost = float(cost)
