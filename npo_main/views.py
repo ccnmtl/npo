@@ -137,11 +137,12 @@ def case_callback(request,id):
     case = get_object_or_404(Case,id=id)
     if request.method == "POST":
         # this should be Roy's backend sending us some results
-        if case.status() == "started":
+        status = case.status()
+        if status == "started":
             # save results to stage 1
-            case.stage_one_output = loads(request.POST.get('json','{}'))
-        if case.status() == "stage 1":
-            case.stage_two_output = loads(request.POST.get('json','{}'))
+            case.stage_one_output = request.POST.get('payload','{}')
+        elif status == "stage 1":
+            case.stage_two_output = request.POST.get('payload','{}')
         case.save()
 
         if case.status() == "complete":
