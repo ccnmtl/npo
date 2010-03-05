@@ -1,6 +1,23 @@
 DEMAND_TYPES = "household productive commercial education health lighting".split()
 FACILITY_TYPES = "household health education commercial lighting".split()
 SYSTEM_TYPES = "grid off-grid mini-grid".split()
+COST_COMPONENTS = {
+    'grid': [
+        "transformer cost",
+        "installation cost",
+        "service cost",
+        "equipment cost",
+        "medium voltage line cost per meter",
+        ## NO LOW VOLTAGE LINE COST YET
+        ],
+
+    'off-grid': [
+        
+        ],
+    'mini-grid': [
+        
+        ],
+    }
 
 class urban_rural_population_totals(object):
     def __init__(self, time_horizon=0):

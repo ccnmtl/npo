@@ -251,3 +251,21 @@ def system_summary(request, id):
     results = nodes_per_system_and_type(nodes)
     
     return dict(counts=results)
+
+from backend.calc import cost_components
+@login_required
+@rendered_with("npo/output/cost_components.html")
+def cost_components(request, id):
+    case = get_object_or_404(Case,id=id)
+
+    nodes = node_output(case)
+
+    results = cost_components(nodes)
+
+    return dict(costs=results)
+
+@rendered_with("npo/output/summary.html")
+def summary(request, id):
+
+    urls = "pop demand count system-count system-summary".split()
+    return {"urls": urls}
