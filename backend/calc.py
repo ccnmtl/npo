@@ -9,6 +9,8 @@ COST_COMPONENTS = {
         "equipment cost",
         ## XXX TODO NO MEDIUM VOLTAGE LINE COST YET "medium voltage line cost per meter",
         ## XXX TODO NO LOW VOLTAGE LINE COST YET
+        "internal system recurring cost per year",
+        ## XXX TODO what about external system recurring cost per year per meter?
         ],
 
     'off-grid': [
@@ -18,6 +20,8 @@ COST_COMPONENTS = {
         "diesel generator cost",
         "diesel equipment cost",
         "diesel generator installation cost"
+
+        "system recurring cost per year",
         ],
 
     'mini-grid': [
@@ -25,6 +29,7 @@ COST_COMPONENTS = {
         "diesel equipment cost",
         "diesel generator installation cost",
         ## XXX TODO NO LOW VOLTAGE LINE COST YET
+        "system recurring cost per year",
         ],
     }
 
