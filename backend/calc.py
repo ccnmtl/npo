@@ -12,8 +12,14 @@ COST_COMPONENTS = {
         ],
 
     'off-grid': [
-        
+        "photovoltaic panel cost",
+        "photovoltaic battery cost",
+        "photovoltaic balance cost",
+        "diesel generator cost",
+        "diesel equipment cost",
+        "diesel generator installation cost"
         ],
+
     'mini-grid': [
         
         ],
