@@ -172,22 +172,27 @@ def average_cost_per_household(nodes):
     costs = dict()
     households = dict()
     for type in SYSTEM_TYPES:
-        costs[type] = 0
-        households[type] = 0
+        costs[type] = dict(urban=0, rural=0)
+        households[type] = dict(urban=0, rural=0)
 
     for node in nodes._dict:
         node = nodes[node]
 
         system = node.system()
         cost = node.total_cost()
-        costs[system] += cost
-        households[system] += node.projected_households()
+        if node.is_urban:
+            urbanity = 'urban'
+        else:
+            urbanity = 'rural'
+        costs[system][urbanity] += cost
+        households[system][urbanity] += node.projected_households()
         
     for type in SYSTEM_TYPES:
-        if households[type] == 0:
-            costs[type] = 0
-        else:
-            costs[type] = costs[type] / households[type]
+        for x in "urban rural".split():
+            if households[type][x] == 0:
+                costs[type][x] = 0
+            else:
+                costs[type][x] = costs[type][x] / households[type][x]
 
     return costs
 
