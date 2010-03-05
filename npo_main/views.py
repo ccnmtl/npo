@@ -292,5 +292,5 @@ def cost_histograms(request, id):
 @rendered_with("npo/output/summary.html")
 def summary(request, id):
 
-    urls = "pop demand count system-count system-summary component-costs".split()
+    urls = "pop demand count system-count system-summary component-costs cost-histograms?m=1000000&m=2000000&m=3000000&o=1e%2B10&o=1e%2B14&o=1e%2B18&o=1e%2B16&g=1000000&g=2000000&g=3000000&g=4000000".split()
     return {"urls": urls}
