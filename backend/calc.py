@@ -169,6 +169,29 @@ class Node(object):
         assert val in SYSTEM_TYPES
         return val
 
+    def initial_total_cost(self):
+        system = self.system()
+        if system == 'grid':
+            cost = self['system (grid)']['internal system nodal cost']
+        else:
+            cost = self['system (%s)' % system]['system nodal cost']
+        cost = float(cost)
+        return cost
+
+    def initial_cost(self, component):
+        system = self.system()
+        assert component in COST_COMPONENTS[system]
+        component_cost = self['system (%s)' % system][component]
+        component_cost = float(component_cost)
+        
+        if component == "medium voltage line cost per meter":
+            num_meters = self['metric'][
+                'maximum length of medium voltage line in meters']
+            num_meters = float(num_meters)
+            component_cost = component_cost * num_meters
+
+        return component_cost
+
     def count(self, type):
         assert type in FACILITY_TYPES
         if type == 'household':
