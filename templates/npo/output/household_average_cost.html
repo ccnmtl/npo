@@ -9,7 +9,22 @@
   {% for type, value in results.items %}
   <tr>
     <th scope="row">{{type}}</th>
-    <td>{{value}}</td>
+    <td>
+      <table>
+	<thead>
+	  <tr>
+	    <th scope="col">Rural</th>
+	    <th scope="col">Urban</th>
+	  </tr>
+	</thead>
+	<tbody>
+	  <tr>
+	    <td>{{value.rural}}</td>
+	    <td>{{value.urban}}</td>
+	  </tr>
+	</tbody>
+      </table>
+    </td>
   </tr>
   {% endfor %}
 
