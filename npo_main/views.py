@@ -289,6 +289,16 @@ def cost_histograms(request, id):
     
     return dict(counts=results)
 
+from backend.calc import average_cost_per_household
+@login_required
+@rendered_with("npo/output/household_average_cost.html")
+def household_average_cost(request, id):
+    case = get_object_or_404(Case, id=id)
+    nodes = node_output(case)
+
+    results = average_cost_per_household(nodes)
+    return dict(results=results)
+
 @rendered_with("npo/output/summary.html")
 def summary(request, id):
 

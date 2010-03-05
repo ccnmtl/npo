@@ -167,7 +167,30 @@ def nodes_per_system_and_type(nodes):
             counts[system]['rural'] += 1
 
     return counts
+
+def average_cost_per_household(nodes):
+    costs = dict()
+    households = dict()
+    for type in SYSTEM_TYPES:
+        costs[type] = 0
+        households[type] = 0
+
+    for node in nodes._dict:
+        node = nodes[node]
+
+        system = node.system()
+        cost = node.total_cost()
+        costs[system] += cost
+        households[system] += node.projected_households()
         
+    for type in SYSTEM_TYPES:
+        if households[type] == 0:
+            costs[type] = 0
+        else:
+            costs[type] = costs[type] / households[type]
+
+    return costs
+
 from simplejson import loads
 import os
 def load():
@@ -206,6 +229,9 @@ class Node(object):
 
     def keys(self):
         return self._dict.keys()
+
+    def projected_households(self):
+        return float(self['demographics']['projected household count'])
 
     def time_horizon(self):
         return len(self.population_over_time())
