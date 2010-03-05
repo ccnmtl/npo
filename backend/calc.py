@@ -21,7 +21,10 @@ COST_COMPONENTS = {
         ],
 
     'mini-grid': [
-        
+        "diesel generator cost",
+        "diesel equipment cost",
+        "diesel generator installation cost",
+        ## NO LOW VOLTAGE LINE COST YET
         ],
     }
 
