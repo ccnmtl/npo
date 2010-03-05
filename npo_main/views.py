@@ -251,7 +251,7 @@ def system_summary(request, id):
     
     return dict(counts=results)
 
-from backend.calc import cost_components
+#from backend.calc import cost_components
 @login_required
 @rendered_with("npo/output/cost_components.html")
 def cost_components(request, id):
@@ -259,7 +259,7 @@ def cost_components(request, id):
 
     nodes = node_output(case)
 
-    results = cost_components(nodes)
+    #results = cost_components(nodes)
 
     return dict(costs=results)
 
