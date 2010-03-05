@@ -82,14 +82,23 @@ def count_totals(nodes):
 
     return counts
 
-def nodes_per_system(nodes):
+def nodes_per_system_nongrid(nodes):
     counts = dict()
-    for type in SYSTEM_TYPES:
+    types = "mini-grid off-grid".split()
+
+    for type in types:
         counts[type] = 0
 
     for node in nodes._dict:
         node = nodes[node]
-        counts[node.system()] += 1
+
+        mini_cost = node.initial_total_cost("mini-grid")
+        off_cost = node.initial_total_cost("off-grid")
+
+        if mini_cost > off_cost:
+            counts["off-grid"] += 1
+        else:
+            counts['mini-grid'] += 1
 
     return counts
 
@@ -192,8 +201,14 @@ class Node(object):
         assert val in SYSTEM_TYPES
         return val
 
-    def initial_total_cost(self):
-        system = self.system()
+    def initial_total_cost(self, system=None):
+        """
+        Returns the total initial cost for building this node.
+
+        If system is None, uses the node's preferred system (if 
+        that has been calculated).
+        """
+        system = system or self.system()
         if system == 'grid':
             cost = self['system (grid)']['internal system nodal cost']
         else:
