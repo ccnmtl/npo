@@ -252,7 +252,7 @@ def system_summary(request, id):
     
     return dict(counts=results)
 
-#from backend.calc import cost_components
+from backend.calc import cost_components as calc_component_costs
 @login_required
 @rendered_with("npo/output/cost_components.html")
 def cost_components(request, id):
@@ -260,12 +260,12 @@ def cost_components(request, id):
 
     nodes = node_output(case)
 
-    #results = cost_components(nodes)
+    results = calc_component_costs(nodes)
 
-    return dict(costs=results)
+    return results
 
 @rendered_with("npo/output/summary.html")
 def summary(request, id):
 
-    urls = "pop demand count system-count system-summary".split()
+    urls = "pop demand count system-count system-summary component-costs".split()
     return {"urls": urls}

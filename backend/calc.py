@@ -93,6 +93,29 @@ def nodes_per_system(nodes):
 
     return counts
 
+def cost_components(nodes):
+    component_cost = dict()
+    total_cost = dict()
+    for system_type in SYSTEM_TYPES:
+        components = COST_COMPONENTS[system_type]
+        component_cost[system_type] = dict()
+        for component in components:
+            component_cost[system_type][component] = 0
+        total_cost[system_type] = 0
+
+    for node in nodes._dict:
+        node = nodes[node]
+
+        system_type = node.system()
+        costs = component_cost[system_type]
+        for component in costs:
+            my_cost = node.initial_cost(component)
+            costs[component] += my_cost
+        my_total_cost = node.initial_total_cost()
+        total_cost[system_type] += my_total_cost
+
+    return {'components': component_cost,
+            'totals': total_cost}
 
 def nodes_per_system_and_type(nodes):
     counts = dict()
@@ -181,6 +204,11 @@ class Node(object):
     def initial_cost(self, component):
         system = self.system()
         assert component in COST_COMPONENTS[system]
+
+        # typo in outputs
+        if component == 'transformer cost':
+            component = 'transfomer cost'
+
         component_cost = self['system (%s)' % system][component]
         component_cost = float(component_cost)
         

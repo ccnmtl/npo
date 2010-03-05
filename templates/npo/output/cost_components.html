@@ -1,9 +1,47 @@
 {% extends "base.html" %}
+{% load get %}
 
 {% block content %}
 
-{% for type, cost in costs.items() %}
-{{type}}: {{cost}}
+{% for system, costs in components.items %}
+<h2>{{system}}</h2>
+<table>
+  <thead>
+    <tr>
+      <th scope="col">
+	component
+      </th>
+      <th scope="col">
+	cost (USD)
+      </th>
+      <th scope="col">
+	percent of total cost
+      </th>
+    </tr>
+  </thead>
+
+  <tbody>
+    {% for type, cost in costs.items %}
+    <tr>
+      <th scope="row">
+	{{type}}
+      </th>
+      <td>
+	${{cost}}
+      </td>
+      <td>
+	{% with totals|getitem:system as total %}
+	{{cost|percent_of:total}}
+	{% endwith %}
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endfor %}
+
+{% for system, cost in totals.items %}
+{{system}}: {{cost}}
 {% endfor %}
 
 {% endblock %}

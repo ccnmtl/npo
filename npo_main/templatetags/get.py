@@ -6,6 +6,13 @@ def getitem(container, key):
   return container[key]
 
 @register.filter
+def percent_of(partial, total):
+  if total == 0: 
+    return 0
+  fraction = partial / total
+  return fraction * 100
+
+@register.filter
 def get( dict, key, default = '' ):
   """
   Usage: 
