@@ -274,13 +274,18 @@ def cost_histograms(request, id):
 
     def bins(param):
         _bins = request.GET.getlist(param)
+        if not _bins:
+            raise KeyError
         return _bins
-
-    results = {
-        'grid': cost_histogram(nodes, 'grid', *bins('g')),
-        'off-grid': cost_histogram(nodes, 'off-grid', *bins('o')),
-        'mini-grid': cost_histogram(nodes, 'mini-grid', *bins('m')),
-        }
+    
+    try:
+        results = {
+            'grid': cost_histogram(nodes, 'grid', *bins('g')),
+            'off-grid': cost_histogram(nodes, 'off-grid', *bins('o')),
+            'mini-grid': cost_histogram(nodes, 'mini-grid', *bins('m')),
+            }
+    except KeyError:
+        return HttpResponse("Give me some bins!")
     
     return dict(counts=results)
 
