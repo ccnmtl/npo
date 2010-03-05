@@ -264,6 +264,26 @@ def cost_components(request, id):
 
     return results
 
+from backend.calc import cost_histogram
+@login_required
+@rendered_with("npo/output/cost_histograms.html")
+def cost_histograms(request, id):
+    case = get_object_or_404(Case,id=id)
+
+    nodes = node_output(case)
+
+    def bins(param):
+        _bins = request.GET.getlist(param)
+        return _bins
+
+    results = {
+        'grid': cost_histogram(nodes, 'grid', *bins('g')),
+        'off-grid': cost_histogram(nodes, 'off-grid', *bins('o')),
+        'mini-grid': cost_histogram(nodes, 'mini-grid', *bins('m')),
+        }
+    
+    return dict(counts=results)
+
 @rendered_with("npo/output/summary.html")
 def summary(request, id):
 

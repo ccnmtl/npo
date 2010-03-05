@@ -34,6 +34,8 @@ urlpatterns = patterns('',
 
                        (r'^case/(?P<id>\d+)/system-summary/$','npo_main.views.system_summary'),
 
+                       (r'^case/(?P<id>\d+)/cost-histograms/$','npo_main.views.cost_histograms'),
+
                        (r'^case/(?P<id>\d+)/summary/$','npo_main.views.summary'),
 
 )

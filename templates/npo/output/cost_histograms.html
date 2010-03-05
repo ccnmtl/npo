@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% load get %}
+
+{% block content %}
+
+{% for system, counts in counts.items %}
+<h2>{{system}}</h2>
+<ul>
+  {% for bin, count in counts.items %}
+  <li>{{bin}}: {{count}}</li>
+  {% endfor %}
+</ul>
+{% endfor %}
+
+{% endblock %}

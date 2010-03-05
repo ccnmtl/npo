@@ -82,6 +82,28 @@ def count_totals(nodes):
 
     return counts
 
+def cost_histogram(nodes, system, *bins):
+    bins = sorted(set(float(bin) for bin in bins))
+    counts = dict()
+
+    def find_bin(cost, bin_set):
+        for bin in bin_set:
+            if cost < bin:
+                return bin
+        return bin_set[-1]
+
+    for bin in bins:
+        counts[bin] = 0
+
+    for node in nodes._dict:
+        node = nodes[node]
+
+        cost = node.initial_total_cost(system)
+        bin = find_bin(cost, bins)
+        counts[bin] += 1
+
+    return counts
+
 def nodes_per_system_nongrid(nodes):
     counts = dict()
     types = "mini-grid off-grid".split()
