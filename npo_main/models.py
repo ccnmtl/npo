@@ -76,13 +76,13 @@ class Case(models.Model):
 
         demographics_extension = demographicsfile.split(".")[-1].lower()
 
-        params['callback_url'] = "http://" + host + "/api" + self.get_absolute_url()
+        params['callbackURL'] = "http://" + host + "/api" + self.get_absolute_url()
 
         params = expand_param_names(params)
-        results = backend_request(params,demographics,networks,async=False,
-                                  demographics_extension=demographics_extension)
-        self.stage_one_output = results
-        self.stage_two_output = results
+        backend_request(params,demographics,networks,async=True,
+                        demographics_extension=demographics_extension)
+        self.stage_one_output = ""
+        self.stage_two_output = ""
         self.save()
 
 from django.contrib import admin

@@ -9,7 +9,7 @@ SAMPLE_PATH = settings.SAMPLE_PATH
 BACKEND_URL = "http://october.mech.columbia.edu/jobs"
 
 def request(params,demographics,networks,async=True,demographics_extension="zip"):
-    params["sync"] = "1" # tell it we want our results NOW!
+#    params["sync"] = "1" # tell it we want our results NOW!
     files = {
         "network > network > existing network path" : {
             'file' : networks, 'filename' : "networks.zip",
