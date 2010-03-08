@@ -169,12 +169,14 @@ def run(request):
 
 ### outputs
 
-from backend.calc import Nodes
+from backend.calc import Nodes, get_nodes
 def node_output(case):
+    return get_nodes()
     nodes = case.output_dict()['variables']['node']
     return Nodes(nodes)
 
 def time_horizon(case):
+    return 11
     return int(case.parameters_dict()['metric']['finance']['time horizon in years']) + 1
 
 @login_required
@@ -183,10 +185,11 @@ def case(request,id):
     case = get_object_or_404(Case,id=id)
 
     results = pop(case)
-    return dict(
-        case=case,
-        results=results
-        )
+
+    results['demand'] = demand(case)
+
+    results['case'] = case
+    return results
 
 from backend.calc import urban_rural_population_totals as ur
 def pop(case):
@@ -207,10 +210,8 @@ def pop(case):
     return results
 
 from backend.calc import demand_totals
-@login_required
-@rendered_with("npo/output/demand.html")
-def demand(request, id):
-    case = get_object_or_404(Case,id=id)
+
+def demand(case):
 
     try:
         horizon = time_horizon(case)
@@ -224,8 +225,7 @@ def demand(request, id):
 
     x = demand_totals()
     results = x(nodes)
-
-    return dict(demand=results)
+    return results
 
 from backend.calc import count_totals
 @login_required

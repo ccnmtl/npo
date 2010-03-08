@@ -15,10 +15,13 @@
 <p>last updated {{case.updated}}</p>
 
 <h2>Rural vs urban population</h2>
-{% with "gpop" as graph_id %}
-{% with "dpop" as data_id %}
+<canvas id="g_pop" width="500" height="350"></canvas>
 {% include "npo/output/population.html" %}
-{% endwith %}{% endwith %}
+
+<h2>Demand</h2>
+<canvas id="g_demand" width="500" height="350"></canvas>
+<canvas id="g_demand2" width="500" height="350"></canvas>
+{% include "npo/output/demand.html" %}
 
 <form action="delete/" method="post">
 <input type="submit" value="delete" />
@@ -28,9 +31,20 @@
 
 {% block endjs %}
 <script type="text/javascript">
-  var g = new Bluff.Line('gpop', '500x350');
+  var g = new Bluff.Line('g_pop', '500x350');
   g.theme_rails_keynote();
-  g.data_from_table('dpop');
+  g.data_from_table('d_pop');
   g.draw();
+
+  var g = new Bluff.Pie('g_demand', '500x350');
+  g.theme_rails_keynote();
+  g.data_from_table('d_demand');
+  g.draw()
+
+  var g = new Bluff.Bar('g_demand2', '500x350');
+  g.theme_rails_keynote();
+  g.data_from_table('d_demand');
+  g.draw();
+
 </script>
 {% endblock %}
