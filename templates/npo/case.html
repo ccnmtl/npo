@@ -23,6 +23,12 @@
 <canvas id="g_demand2" width="500" height="350"></canvas>
 {% include "npo/output/demand.html" %}
 
+<h2>Total infrastructure count</h2>
+{% include "npo/output/count.html" %}
+
+<h2>Systems</h2>
+{% include "npo/output/system_count.html" %}
+
 <form action="delete/" method="post">
 <input type="submit" value="delete" />
 </form>

@@ -187,6 +187,8 @@ def case(request,id):
     results = pop(case)
 
     results['demand'] = demand(case)
+    results['counts'] = count(case)
+    results['system_counts'] = system_count(case)
 
     results['case'] = case
     return results
@@ -228,10 +230,7 @@ def demand(case):
     return results
 
 from backend.calc import count_totals
-@login_required
-@rendered_with("npo/output/count.html")
-def count(request, id):
-    case = get_object_or_404(Case,id=id)
+def count(case):
 
     try:
         horizon = time_horizon(case)
@@ -244,15 +243,10 @@ def count(request, id):
         return HttpResponse("stage 1 output is empty or missing node-level data. maybe the backend is still processing the job?")
 
     results = count_totals(nodes)
-    
-    return dict(counts=results)
+    return results
 
 from backend.calc import nodes_per_system_nongrid
-@login_required
-@rendered_with("npo/output/system_count.html")
-def system_count(request, id):
-    case = get_object_or_404(Case,id=id)
-
+def system_count(case):
 
     try:
         horizon = time_horizon(case)
@@ -265,8 +259,7 @@ def system_count(request, id):
         return HttpResponse("stage 1 output is empty or missing node-level data. maybe the backend is still processing the job?")
 
     results = nodes_per_system_nongrid(nodes)
-    
-    return dict(counts=results)
+    return results
 
 from backend.calc import nodes_per_system_and_type
 @login_required
