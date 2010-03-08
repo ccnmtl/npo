@@ -189,6 +189,8 @@ def case(request,id):
     results['demand'] = demand(case)
     results['counts'] = count(case)
     results['system_counts'] = system_count(case)
+    results['system_breakdown_counts'] = system_summary(case)
+    results['cost_components'] = cost_components(case)
 
     results['case'] = case
     return results
@@ -262,11 +264,7 @@ def system_count(case):
     return results
 
 from backend.calc import nodes_per_system_and_type
-@login_required
-@rendered_with("npo/output/system_summary.html")
-def system_summary(request, id):
-    case = get_object_or_404(Case,id=id)
-
+def system_summary(case):
     try:
         horizon = time_horizon(case)
     except KeyError:
@@ -278,15 +276,10 @@ def system_summary(request, id):
         return HttpResponse("stage 1 output is empty or missing node-level data. maybe the backend is still processing the job?")
 
     results = nodes_per_system_and_type(nodes)
-    
-    return dict(counts=results)
+    return results
 
 from backend.calc import cost_components as calc_component_costs
-@login_required
-@rendered_with("npo/output/cost_components.html")
-def cost_components(request, id):
-    case = get_object_or_404(Case,id=id)
-
+def cost_components(case):
     try:
         horizon = time_horizon(case)
     except KeyError:
@@ -298,7 +291,6 @@ def cost_components(request, id):
         return HttpResponse("stage 1 output is empty or missing node-level data. maybe the backend is still processing the job?")
 
     results = calc_component_costs(nodes)
-
     return results
 
 from backend.calc import cost_histogram

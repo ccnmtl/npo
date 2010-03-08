@@ -1,9 +1,6 @@
-{% extends "base.html" %}
 {% load get %}
 
-{% block content %}
-
-{% for system, costs in components.items %}
+{% for system, costs in cost_components.items %}
 <h2>{{system}}</h2>
 <table>
   <thead>
@@ -43,5 +40,3 @@
 {% for system, cost in totals.items %}
 {{system}}: {{cost}}
 {% endfor %}
-
-{% endblock %}

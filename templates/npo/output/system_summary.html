@@ -1,12 +1,8 @@
-{% extends 'base.html' %}
-
 {% load get %}
-
-{% block content %}
 
 <table id="data">
   <tbody>
-    {% for type, values in counts.items %}
+    {% for type, values in system_breakdown_counts.items %}
     <tr>
       <th scope="row">{{type}}</th>
       <td>
@@ -30,4 +26,3 @@
   </tbody>
 </table>
 
-{% endblock %}
