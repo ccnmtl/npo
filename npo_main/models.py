@@ -76,7 +76,7 @@ class Case(models.Model):
 
         demographics_extension = demographicsfile.split(".")[-1].lower()
 
-        params['callbackURL'] = "http://" + host + "/api" + self.get_absolute_url()
+        params['callback_url'] = "http://" + host + "/api" + self.get_absolute_url()
 
         params = expand_param_names(params)
         backend_request(params,demographics,networks,async=True,
