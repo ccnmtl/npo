@@ -103,7 +103,7 @@ def cost_histogram(nodes, system, *bins):
     for node in nodes._dict:
         node = nodes[node]
 
-        cost = node.total_costs(system)
+        cost = node.total_cost(system)
         bin = find_bin(cost, bins)
         counts[bin] += 1
 
