@@ -189,8 +189,15 @@ from backend.calc import urban_rural_population_totals as ur
 def pop(request, id):
     case = get_object_or_404(Case,id=id)
 
-    horizon = time_horizon(case)
-    nodes = node_output(case)
+    try:
+        horizon = time_horizon(case)
+    except KeyError:
+        return HttpResponse("time_horizon not found in case inputs.")
+
+    try:
+        nodes = node_output(case)
+    except KeyError:
+        return HttpResponse("stage 1 output is empty or missing node-level data. maybe the backend is still processing the job?")
 
     x = ur(horizon)
     results = x(nodes)
@@ -204,13 +211,19 @@ from backend.calc import demand_totals
 def demand(request, id):
     case = get_object_or_404(Case,id=id)
 
-    horizon = time_horizon(case)
-    nodes = node_output(case)
+    try:
+        horizon = time_horizon(case)
+    except KeyError:
+        return HttpResponse("time_horizon not found in case inputs.")
+
+    try:
+        nodes = node_output(case)
+    except KeyError:
+        return HttpResponse("stage 1 output is empty or missing node-level data. maybe the backend is still processing the job?")
 
     x = demand_totals()
     results = x(nodes)
 
-    
     return dict(demand=results)
 
 from backend.calc import count_totals
@@ -219,7 +232,15 @@ from backend.calc import count_totals
 def count(request, id):
     case = get_object_or_404(Case,id=id)
 
-    nodes = node_output(case)
+    try:
+        horizon = time_horizon(case)
+    except KeyError:
+        return HttpResponse("time_horizon not found in case inputs.")
+
+    try:
+        nodes = node_output(case)
+    except KeyError:
+        return HttpResponse("stage 1 output is empty or missing node-level data. maybe the backend is still processing the job?")
 
     results = count_totals(nodes)
     
@@ -231,7 +252,16 @@ from backend.calc import nodes_per_system_nongrid
 def system_count(request, id):
     case = get_object_or_404(Case,id=id)
 
-    nodes = node_output(case)
+
+    try:
+        horizon = time_horizon(case)
+    except KeyError:
+        return HttpResponse("time_horizon not found in case inputs.")
+
+    try:
+        nodes = node_output(case)
+    except KeyError:
+        return HttpResponse("stage 1 output is empty or missing node-level data. maybe the backend is still processing the job?")
 
     results = nodes_per_system_nongrid(nodes)
     
@@ -243,7 +273,15 @@ from backend.calc import nodes_per_system_and_type
 def system_summary(request, id):
     case = get_object_or_404(Case,id=id)
 
-    nodes = node_output(case)
+    try:
+        horizon = time_horizon(case)
+    except KeyError:
+        return HttpResponse("time_horizon not found in case inputs.")
+
+    try:
+        nodes = node_output(case)
+    except KeyError:
+        return HttpResponse("stage 1 output is empty or missing node-level data. maybe the backend is still processing the job?")
 
     results = nodes_per_system_and_type(nodes)
     
@@ -255,7 +293,15 @@ from backend.calc import cost_components as calc_component_costs
 def cost_components(request, id):
     case = get_object_or_404(Case,id=id)
 
-    nodes = node_output(case)
+    try:
+        horizon = time_horizon(case)
+    except KeyError:
+        return HttpResponse("time_horizon not found in case inputs.")
+
+    try:
+        nodes = node_output(case)
+    except KeyError:
+        return HttpResponse("stage 1 output is empty or missing node-level data. maybe the backend is still processing the job?")
 
     results = calc_component_costs(nodes)
 
@@ -267,7 +313,15 @@ from backend.calc import cost_histogram
 def cost_histograms(request, id):
     case = get_object_or_404(Case,id=id)
 
-    nodes = node_output(case)
+    try:
+        horizon = time_horizon(case)
+    except KeyError:
+        return HttpResponse("time_horizon not found in case inputs.")
+
+    try:
+        nodes = node_output(case)
+    except KeyError:
+        return HttpResponse("stage 1 output is empty or missing node-level data. maybe the backend is still processing the job?")
 
     def bins(param):
         _bins = request.GET.getlist(param)
@@ -291,7 +345,11 @@ from backend.calc import average_cost_per_household
 @rendered_with("npo/output/household_average_cost.html")
 def household_average_cost(request, id):
     case = get_object_or_404(Case, id=id)
-    nodes = node_output(case)
+
+    try:
+        nodes = node_output(case)
+    except KeyError:
+        return HttpResponse("stage 1 output is empty or missing node-level data. maybe the backend is still processing the job?")
 
     results = average_cost_per_household(nodes)
     return dict(results=results)
