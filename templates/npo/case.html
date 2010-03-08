@@ -1,36 +1,9 @@
 {% extends 'base.html' %}
 {% block title %}Your cases{% endblock %}
 
-
 {% block js %}
 
-<script src="http://openlayers.org/api/OpenLayers.js"></script>
-
-<script>
-function initmap() {
-
-var map = new OpenLayers.Map('map');
-
-map.addLayer(new OpenLayers.Layer.WMS('OpenLayers WMS',
-             'http://labs.metacarta.com/wms/vmap0', 
-             {layers: 'basic'}));
-
-map.setCenter(new OpenLayers.LonLat(
-              {{case.mean_lon}}, {{case.mean_lat}}),
-              map.getZoomForExtent(
-                new OpenLayers.Bounds(
-                {{case.min_lon}}, {{case.min_lat}},
-                {{case.max_lon}}, {{case.max_lat}}
-)));
-
-var features = {{case.geojson|safe}};
-var geojson_format = new OpenLayers.Format.GeoJSON();
-var vectorLayer = new OpenLayers.Layer.Vector();
-map.addLayer(vectorLayer);
-vectorLayer.addFeatures(geojson_format.read(features));
-}
-window.onload = initmap;
-</script>
+{% include "bluff.html" %}
 
 {% endblock %}
 
@@ -41,22 +14,23 @@ window.onload = initmap;
 <p>created {{case.created}}</p>
 <p>last updated {{case.updated}}</p>
 
-<div id="map"
-     style="width: 500px; height: 300px;
-	    border: 1px solid black;">
-</div>
-
-<h2>parameters:</h2>
-<p>{{case.parameters}}</p>
-
-<h2>stage one results</h2>
-<p>{{case.stage_one_output}}</p>
-
-<h2>stage two results</h2>
-<p>{{case.stage_two_output}}</p>
+<h2>Rural vs urban population</h2>
+{% with "gpop" as graph_id %}
+{% with "dpop" as data_id %}
+{% include "npo/outputs/population.html" %}
+{% endwith %}{% endwith %}
 
 <form action="delete/" method="post">
 <input type="submit" value="delete" />
 </form>
 
+{% endblock %}
+
+{% block endjs %}
+<script type="text/javascript">
+  var g = new Bluff.Line('gpop', '500x350');
+  g.theme_rails_keynote();
+  g.data_from_table('dpop');
+  g.draw();
+</script>
 {% endblock %}

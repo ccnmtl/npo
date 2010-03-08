@@ -153,12 +153,6 @@ def case_callback(request,id):
     return HttpResponse("this requires a POST")
 
 @login_required
-@rendered_with('npo/case.html')
-def case(request,id):
-    case = get_object_or_404(Case,id=id)
-    return dict(case=case)
-
-@login_required
 def delete_case(request,id):
     case = get_object_or_404(Case,id=id)
     case.delete()
@@ -183,12 +177,19 @@ def node_output(case):
 def time_horizon(case):
     return int(case.parameters_dict()['metric']['finance']['time horizon in years']) + 1
 
-from backend.calc import urban_rural_population_totals as ur
 @login_required
-@rendered_with('npo/output/population.html')
-def pop(request, id):
+@rendered_with('npo/case.html')
+def case(request,id):
     case = get_object_or_404(Case,id=id)
 
+    results = pop(case)
+    return dict(
+        case=case,
+        results=results
+        )
+
+from backend.calc import urban_rural_population_totals as ur
+def pop(case):
     try:
         horizon = time_horizon(case)
     except KeyError:

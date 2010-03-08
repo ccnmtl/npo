@@ -1,12 +1,10 @@
-{% extends 'base.html' %}
-
 {% load get %}
 
-{% block content %}
+<canvas id="{{graph_id}}" width="500" height="350"></canvas>
 
-<canvas id="graph" width="500" height="350"></canvas>
-
-<table id="data">
+<table 
+   id="{{data_id}}"
+   {% if hide_data %}style="display:none"{% endif %}>
   <caption>Change in urban/rural population over time</caption>
   <thead>
     <tr>
@@ -25,14 +23,3 @@
     {% endfor %}
   </tbody>
 </table>
-
-{% include "bluff.html" %}
-
-<script type="text/javascript">
-  var g = new Bluff.Line('graph', '500x350');
-  g.theme_rails_keynote();
-  g.data_from_table('data');
-  g.draw();
-</script>
-
-{% endblock %}
