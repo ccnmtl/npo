@@ -181,7 +181,7 @@ def node_output(case):
     return Nodes(nodes)
 
 def time_horizon(case):
-    return int(case.parameters_dict()['metric']['time']['time horizon in years']) + 1
+    return int(case.parameters_dict()['metric']['finance']['time horizon in years']) + 1
 
 from backend.calc import urban_rural_population_totals as ur
 @login_required
