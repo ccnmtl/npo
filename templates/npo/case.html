@@ -7,6 +7,46 @@
 
 {% block js %}
 
+<script src="http://ccnmtl.columbia.edu/scripts/MochiKit/MochiKit.js" type="text/javascript" language="javascript"></script> 
+<script src="/site_media/js/paramset.js" type="text/javascript" language="javascript"></script> 
+<script src="/site_media/js/tabber.js" type="text/javascript" language="javascript"></script> 
+<!--[if lt IE 7]><script src="http://ccnmtl.columbia.edu/remote/alerts/browser/ienosupport.js" type="text/javascript" language="javascript"></script><link rel="stylesheet" href="http://ccnmtl.columbia.edu/remote/alerts/browser/ienosupport.css" type="text/css" media="all" /><![endif]--> 
+
+<script type="text/javascript">
+var plot = function(insertInto, paramsFrom) {
+  var div = document.getElementById(insertInto);
+  
+  var table = document.getElementById(paramsFrom);
+
+  div.innerHTML = "";
+
+  var xs = MochiKit.Selector.findChildElements(table, ["td:first-child input"]);
+  var ys = MochiKit.Selector.findChildElements(table, ["td:last-child input"]);
+
+  var params = "";
+  for( x=0; x<xs.length; ++x ) {
+    params += "x=" + xs[x].value + "&";
+  }
+  for( y=0; y<ys.length; ++y ) {
+    params += "y=" + ys[y].value + "&";
+  }
+
+  var img = MochiKit.DOM.IMG({"src": "http://hotdog.ccnmtl.columbia.edu/curve?" + params + "dpi=40",
+                              "width": div.style.width, "height": div.style.height
+            });
+
+  var link = MochiKit.DOM.A({"href": "http://hotdog.ccnmtl.columbia.edu/curve?" + params + "dpi=100",
+                             "target": "_blank"
+            });
+
+  MochiKit.DOM.appendChildNodes(link, img);
+  MochiKit.DOM.appendChildNodes(div, link);
+
+  return false;
+};
+</script>
+
+
 {% include "bluff.html" %}
 <script src="http://openlayers.org/api/OpenLayers.js"></script>
 
@@ -16,6 +56,21 @@
 <h1>Case: {% if case.name %}{{case.name}}{% else %}{{case.pk}}{% endif %}</h1>
 <p>created {{case.created|date}} at {{case.created|time}}</p>
 <p>last updated {{case.updated|date}} at {{case.updated|time}}</p>
+
+<h2>Case Parameters</h2>
+
+<p><a href="" 
+onclick="showElement('paramset-{{case.id}}');return false">show parameters</a></p>
+{% with case.id as paramsetid %}
+{% with case.name as paramsettitle %}
+{% with case.parameters_dict as params %}
+{% include "npo/paramset_display.html" %}      
+{% endwith %}
+{% endwith %}
+{% endwith %}
+
+
+
 
 <form action="delete/" method="post">
 <input type="submit" value="Delete this case" />

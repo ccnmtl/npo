@@ -8,9 +8,12 @@ function clearText(field){
 function hideAllParamSet() {
 	//Loop through the seclect menu values and hide all
 	var selectParamSet = document.getElementById("selectParamSet");
+  if(selectParamSet) {
 	for (var i=0; i<=selectParamSet.options.length -1; i++) {
 		hideElement(selectParamSet.options[i].value);
 	}
+
+  }
 }
 
 function toggleParam(showID) {
