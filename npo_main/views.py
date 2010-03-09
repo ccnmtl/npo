@@ -173,11 +173,12 @@ def run(request):
 
 from backend.calc import Nodes, get_nodes
 def node_output(case):
+    return get_nodes()
     nodes = case.output_dict()['variables']['node']
     return Nodes(nodes)
 
 def time_horizon(case):
-    #return 11
+    return 11
     return int(case.parameters_dict()['metric']['finance']['time horizon in years']) + 1
 
 @login_required
