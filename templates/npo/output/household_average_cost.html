@@ -1,10 +1,6 @@
-{% extends 'base.html' %}
-
 {% load get %}
 
-{% block content %}
-
-<table id="data">
+<table id="household_costs">
 <tbody>
   {% for type, value in results.items %}
   <tr>
@@ -30,5 +26,3 @@
 
 </tbody>
 </table>
-
-{% endblock %}

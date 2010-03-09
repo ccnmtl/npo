@@ -197,11 +197,12 @@ def case(request,id):
         results['cost_components'] = x['components']
         results['totals'] = x['totals']
         results['cost_histogram_counts'] = cost_histograms(case, request)
+        results['household_costs'] = household_average_cost(case)
 
         results['case'] = case
         return results
     except:
-        #raise
+        #\raise
         return panic(request, id)
 
 @rendered_with('npo/case_raw.html')
@@ -277,18 +278,11 @@ def cost_histograms(case, request):
     return results
 
 from backend.calc import average_cost_per_household
-@login_required
-@rendered_with("npo/output/household_average_cost.html")
-def household_average_cost(request, id):
-    case = get_object_or_404(Case, id=id)
-
-    try:
-        nodes = node_output(case)
-    except KeyError:
-        return HttpResponse("stage 1 output is empty or missing node-level data. maybe the backend is still processing the job?")
+def household_average_cost(case):
+    nodes = node_output(case)
 
     results = average_cost_per_household(nodes)
-    return dict(results=results)
+    return results
 
 @rendered_with("npo/output/summary.html")
 def summary(request, id):
