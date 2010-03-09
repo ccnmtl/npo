@@ -23,6 +23,7 @@ class Case(models.Model):
     stage_one_output = models.TextField(blank=True,default="")
     stage_two_output = models.TextField(blank=True,default="")
     save_parameters = models.BooleanField(default=False)
+    output_file = models.FileField(upload_to="outputs/%Y/%m/%d",blank=True,null=True)
 
     def parameters_dict(self):
         return loads(self.parameters)
@@ -85,6 +86,16 @@ class Case(models.Model):
         self.stage_one_output = ""
         self.stage_two_output = ""
         self.save()
+
+    def fetch_output_file(self):
+        if self.status() == "started":
+            return # precondition: must have output
+
+        # stuck here for the moment since Roy's callback payload
+        # isn't including the formats section currently
+        url = "http://october.mech.columbia.edu" + self.output_dict()["formats"]["zip"]
+        return url
+
 
 from django.contrib import admin
 admin.site.register(Case)

@@ -204,6 +204,10 @@ def case(request,id):
         raise
         return panic(request, id)
 
+def fetch_case(request,id):
+    case = get_object_or_404(Case,id=id)
+    return HttpResponse(case.fetch_output_file())
+
 @rendered_with('npo/case_raw.html')
 def panic(request, id):
     case = get_object_or_404(Case,id=id)
