@@ -8,6 +8,7 @@
 {% block js %}
 
 {% include "bluff.html" %}
+<script src="http://openlayers.org/api/OpenLayers.js"></script>
 
 {% endblock %}
 
@@ -19,6 +20,12 @@
 <form action="delete/" method="post">
 <input type="submit" value="Delete this case" />
 </form>
+
+<h1>Network</h1>
+<div id="map"
+     style="width: 500px; height: 300px;
+	    border: 1px solid black;">
+</div>
 
 <h1>Output summary</h1>
 
@@ -116,5 +123,31 @@
   g.hide_legend = true;
   g.data_from_table('d_histo2');
   g.draw();
+</script>
+
+<script type="text/javascript">
+function initmap() {
+
+var map = new OpenLayers.Map('map');
+
+map.addLayer(new OpenLayers.Layer.WMS('OpenLayers WMS',
+             'http://labs.metacarta.com/wms/vmap0', 
+             {layers: 'basic'}));
+
+map.setCenter(new OpenLayers.LonLat(
+              {{case.mean_lon}}, {{case.mean_lat}}),
+              map.getZoomForExtent(
+                new OpenLayers.Bounds(
+                {{case.min_lon}}, {{case.min_lat}},
+                {{case.max_lon}}, {{case.max_lat}}
+)));
+
+var features = {{case.geojson|safe}};
+var geojson_format = new OpenLayers.Format.GeoJSON();
+var vectorLayer = new OpenLayers.Layer.Vector();
+map.addLayer(vectorLayer);
+vectorLayer.addFeatures(geojson_format.read(features));
+}
+window.onload = initmap;
 </script>
 {% endblock %}
