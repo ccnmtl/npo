@@ -193,7 +193,9 @@ def case(request,id):
         results['counts'] = count(case)
         results['system_counts'] = system_count(case)
         results['system_breakdown_counts'] = system_summary(case)
-        results['cost_components'] = cost_components(case)
+        x = cost_components(case)
+        results['cost_components'] = x['components']
+        results['totals'] = x['totals']
 
         results['case'] = case
         return results

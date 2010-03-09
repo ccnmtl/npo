@@ -13,28 +13,36 @@
 <p>created {{case.created|date}} at {{case.created|time}}</p>
 <p>last updated {{case.updated|date}} at {{case.updated|time}}</p>
 
+<form action="delete/" method="post">
+<input type="submit" value="Delete this case" />
+</form>
+
+<h1>Output summary</h1>
+
 <h2>Rural vs urban population</h2>
 <canvas id="g_pop" width="500" height="350"></canvas>
 {% include "npo/output/population.html" %}
+
+<hr/>
 
 <h2>Demand</h2>
 <canvas id="g_demand" width="500" height="350"></canvas>
 <canvas id="g_demand2" width="500" height="350"></canvas>
 {% include "npo/output/demand.html" %}
 
+<hr/>
+
 <h2>Total infrastructure count</h2>
 {% include "npo/output/count.html" %}
 
+<hr/>
+
 <h2>Systems</h2>
 {% include "npo/output/system_count.html" %}
-
 {% include "npo/output/system_summary.html" %}
 
-
-
-<form action="delete/" method="post">
-<input type="submit" value="delete" />
-</form>
+<h2>Cost breakdown per component</h2>
+{% include "npo/output/cost_components.html" %}
 
 {% endblock %}
 

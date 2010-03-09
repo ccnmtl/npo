@@ -1,7 +1,7 @@
 {% load get %}
 
 {% for system, costs in cost_components.items %}
-<h2>{{system}}</h2>
+<h3>{{system}}</h3>
 <table>
   <thead>
     <tr>
@@ -37,6 +37,8 @@
 </table>
 {% endfor %}
 
+<div style="display: none;">
 {% for system, cost in totals.items %}
 {{system}}: {{cost}}
 {% endfor %}
+</div>
