@@ -17,6 +17,16 @@
 <input type="submit" value="Delete this case" />
 </form>
 
+{% ifequal case.status "started" %}
+
+<p>The case has been submitted to the backend for processing. This
+  could take a few minutes for a small data set or several hours for a
+  large one. Please reload this page in a while to check on the status.</p>
+
+{% else %}
+
+
+
 <h1>Output summary</h1>
 
 <h2>Rural vs urban population</h2>
@@ -57,6 +67,7 @@
 {% include "npo/output/household_average_cost.html" %}
 {% endwith %}
 
+{% endifequal %}
 {% endblock %}
 
 {% block endjs %}
@@ -97,4 +108,5 @@
   g.data_from_table('d_histo2');
   g.draw();
 </script>
+
 {% endblock %}

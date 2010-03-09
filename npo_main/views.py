@@ -206,7 +206,7 @@ def sample_case(request):
 @rendered_with('npo/case.html')
 def case(request,id):
     case = get_object_or_404(Case,id=id)
-
+    results = dict(case=case)
     try:
         results = pop(case)
 
@@ -221,10 +221,10 @@ def case(request,id):
         results['household_costs'] = household_average_cost(case)
 
         results['case'] = case
-        return results
     except:
-        #\raise
-        return panic(request, id)
+        # must not have results yet
+        pass
+    return results
 
 def fetch_case(request,id):
     case = get_object_or_404(Case,id=id)
