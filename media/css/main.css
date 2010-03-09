@@ -859,6 +859,11 @@ ul.usernav li#logout a
 	margin-left: 1em;
 }
 
+.parametersetdisplay input {
+ border: 0px;
+ background-color: #fff;
+}
+
 .ptitle,
 .pfield,
 .pmore
