@@ -44,8 +44,12 @@ def bulk(request):
             for k in request.POST.keys():
                 if k.startswith("case_"):
                     caseid = k.split("_")[1]
-                    case = Case.objects.get(id=caseid)
-                    case.delete()
+                    try:
+                        case = Case.objects.get(id=caseid)
+                        case.delete()
+                    except Case.DoesNotExist:
+                        # whatever
+                        pass
         # compare not handled yet
         # it'll be a redirect to another view
     return HttpResponseRedirect("/")
