@@ -201,7 +201,7 @@ def case(request,id):
         results['case'] = case
         return results
     except:
-        raise
+        #raise
         return panic(request, id)
 
 @rendered_with('npo/case_raw.html')
