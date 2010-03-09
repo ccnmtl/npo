@@ -44,8 +44,12 @@ def bulk(request):
             for k in request.POST.keys():
                 if k.startswith("case_"):
                     caseid = k.split("_")[1]
-                    case = Case.objects.get(id=caseid)
-                    case.delete()
+                    try:
+                        case = Case.objects.get(id=caseid)
+                        case.delete()
+                    except Case.DoesNotExist:
+                        # whatever
+                        pass
         # compare not handled yet
         # it'll be a redirect to another view
     return HttpResponseRedirect("/")
@@ -146,7 +150,7 @@ def case_callback(request,id):
         elif status == "stage 1":
             case.stage_two_output = request.POST.get('payload','{}')
         case.save()
-
+        case.send_notification_email()
         if case.status() == "complete":
             # umm. someone's POSTing but it's already complete
             pass
@@ -214,7 +218,7 @@ def sample_case(request):
 @rendered_with('npo/case.html')
 def case(request,id):
     case = get_object_or_404(Case,id=id)
-
+    results = dict(case=case)
     try:
         results = pop(case)
 
@@ -235,10 +239,21 @@ def case(request,id):
             }
 
         results['case'] = case
-        return results
     except:
-        #\raise
-        return panic(request, id)
+        # must not have results yet
+        pass
+    return results
+
+@login_required
+def email_case(request,id):
+    case = get_object_or_404(Case,id=id)
+    case.email_user = True
+    case.save()
+    return HttpResponseRedirect(case.get_absolute_url())
+
+def fetch_case(request,id):
+    case = get_object_or_404(Case,id=id)
+    return HttpResponse(case.fetch_output_file())
 
 @rendered_with('npo/case_raw.html')
 def panic(request, id):

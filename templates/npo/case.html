@@ -21,6 +21,25 @@
 <input type="submit" value="Delete this case" />
 </form>
 
+{% ifequal case.status "started" %}
+
+<p>The case has been submitted to the backend for processing. This
+  could take a few minutes for a small data set or several hours for a
+  large one. Please reload this page in a while to check on the status.</p>
+
+{% if case.email_user %}
+<p>When this run is complete, a notification email will be sent to
+  {{request.user.email}}.</p>
+{% else %}
+<p>If you expect this run to take a long time, hit this button to have
+  it send an email when the run is complete:</p>
+
+<form action="email/" method="post">
+<input type="submit" value="send email to {{request.user.email}} when run is complete" />
+</form>
+{% endif %}
+{% else %}
+
 <h1>Network</h1>
 <div id="map"
      style="width: 500px; height: 300px;
@@ -84,6 +103,7 @@
 {% include "npo/output/household_average_cost.html" %}
 {% endwith %}
 
+{% endifequal %}
 {% endblock %}
 
 {% block endjs %}

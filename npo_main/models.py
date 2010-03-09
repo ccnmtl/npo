@@ -9,6 +9,7 @@ from backend import expand_param_names
 from backend import request as backend_request
 from django.conf import settings
 import os
+from django.core.mail import send_mail
 
 datasets = dict(default=("demographics.csv","networks.zip"),
                 leona=("LeonaVillages.zip","LeonaNetworks.zip"),
@@ -23,6 +24,21 @@ class Case(models.Model):
     stage_one_output = models.TextField(blank=True,default="")
     stage_two_output = models.TextField(blank=True,default="")
     save_parameters = models.BooleanField(default=False)
+    output_file = models.FileField(upload_to="outputs/%Y/%m/%d",blank=True,null=True)
+    email_user = models.BooleanField(default=False)
+
+    def send_notification_email(self):
+        if not self.email_user:
+            return # they didn't ask for email so we don't spam them
+        # note that the URL is hard-coded for production
+        # I figure email functionality on dev instances isn't a
+        # big deal if it's missing
+        send_mail("NPO Run '%s' complete" % self.name or str(self.pk),
+                  """Your NPO run has completed. You may view the output at
+
+%s""" % "http://npo.ccnmtl.columbia.edu" + self.get_absolute_url(),
+                  "npo@ccnmtl.columbia.edu",
+                  [self.owner.email])
 
     def parameters_dict(self):
         return loads(self.parameters)
@@ -85,6 +101,16 @@ class Case(models.Model):
         self.stage_one_output = ""
         self.stage_two_output = ""
         self.save()
+
+    def fetch_output_file(self):
+        if self.status() == "started":
+            return # precondition: must have output
+
+        # stuck here for the moment since Roy's callback payload
+        # isn't including the formats section currently
+        url = "http://october.mech.columbia.edu" + self.output_dict()["formats"]["zip"]
+        return url
+
 
 from django.contrib import admin
 admin.site.register(Case)
