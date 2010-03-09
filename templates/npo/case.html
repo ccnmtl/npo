@@ -39,13 +39,13 @@
 </form>
 {% endif %}
 {% else %}
-
+<!--
 <h1>Network</h1>
 <div id="map"
      style="width: 500px; height: 300px;
 	    border: 1px solid black;">
 </div>
-
+-->
 <h1>Output summary</h1>
 
 <h2>Rural vs urban population</h2>
@@ -168,6 +168,6 @@ var vectorLayer = new OpenLayers.Layer.Vector();
 map.addLayer(vectorLayer);
 vectorLayer.addFeatures(geojson_format.read(features));
 }
-window.onload = initmap;
+//window.onload = initmap;
 </script>
 {% endblock %}
