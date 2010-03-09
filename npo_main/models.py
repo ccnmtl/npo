@@ -30,10 +30,13 @@ class Case(models.Model):
     def send_notification_email(self):
         if not self.email_user:
             return # they didn't ask for email so we don't spam them
-        send_mail("NPO Run complete",
+        # note that the URL is hard-coded for production
+        # I figure email functionality on dev instances isn't a
+        # big deal if it's missing
+        send_mail("NPO Run '%s' complete" % self.name or str(self.pk),
                   """Your NPO run has completed. You may view the output at
 
-%s""" % self.get_absolute_url(),
+%s""" % "http://npo.ccnmtl.columbia.edu" + self.get_absolute_url(),
                   "npo@ccnmtl.columbia.edu",
                   [self.owner.email])
 
