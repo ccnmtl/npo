@@ -173,13 +173,34 @@ def run(request):
 
 from backend.calc import Nodes, get_nodes
 def node_output(case):
-    #return get_nodes()
+    if case is None:  # lame way of getting sample outputs easily
+        return get_nodes()
     nodes = case.output_dict()['variables']['node']
     return Nodes(nodes)
 
 def time_horizon(case):
-    #return 11
+    if case is None:
+        return 11 # lame lame lame
     return int(case.parameters_dict()['metric']['finance']['time horizon in years']) + 1
+
+@login_required
+@rendered_with('npo/case.html')
+def sample_case(request):
+    case = None
+    results = pop(case)
+
+    results['demand'] = demand(case)
+    results['counts'] = count(case)
+    results['system_counts'] = system_count(case)
+    results['system_breakdown_counts'] = system_summary(case)
+    x = cost_components(case)
+    results['cost_components'] = x['components']
+    results['totals'] = x['totals']
+    results['cost_histogram_counts'] = cost_histograms(case, request)
+    results['household_costs'] = household_average_cost(case)
+    
+    results['case'] = case
+    return results
 
 @login_required
 @rendered_with('npo/case.html')
