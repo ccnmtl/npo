@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block title %}Your cases{% endblock %}
+
+{% block content %}
+
+<h1>Something went wrong</h1>
+
+<h1>{{case.name}}</h1>
+<p>created {{case.created}}</p>
+<p>last updated {{case.updated}}</p>
+
+<h2>Parameters</h2>
+{{case.parameters}}
+
+<h2>Output</h2>
+{{case.stage_one_output}}
+{% endblock %}

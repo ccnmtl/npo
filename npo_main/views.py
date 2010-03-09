@@ -175,6 +175,7 @@ def node_output(case):
     return Nodes(nodes)
 
 def time_horizon(case):
+    #return 11
     return int(case.parameters_dict()['metric']['finance']['time horizon in years']) + 1
 
 @login_required
@@ -182,28 +183,29 @@ def time_horizon(case):
 def case(request,id):
     case = get_object_or_404(Case,id=id)
 
-    results = pop(case)
+    try:
+        results = pop(case)
 
-    results['demand'] = demand(case)
-    results['counts'] = count(case)
-    results['system_counts'] = system_count(case)
-    results['system_breakdown_counts'] = system_summary(case)
-    results['cost_components'] = cost_components(case)
+        results['demand'] = demand(case)
+        results['counts'] = count(case)
+        results['system_counts'] = system_count(case)
+        results['system_breakdown_counts'] = system_summary(case)
+        results['cost_components'] = cost_components(case)
 
-    results['case'] = case
-    return results
+        results['case'] = case
+        return results
+    except:
+        return panic(request, id)
+
+@rendered_with('npo/case_raw.html')
+def panic(request, id):
+    case = get_object_or_404(Case,id=id)
+    return {'case': case}
 
 from backend.calc import urban_rural_population_totals as ur
 def pop(case):
-    try:
-        horizon = time_horizon(case)
-    except KeyError:
-        return HttpResponse("time_horizon not found in case inputs.")
-
-    try:
-        nodes = node_output(case)
-    except KeyError:
-        return HttpResponse("stage 1 output is empty or missing node-level data. maybe the backend is still processing the job?")
+    horizon = time_horizon(case)
+    nodes = node_output(case)
 
     x = ur(horizon)
     results = x(nodes)
@@ -214,16 +216,7 @@ def pop(case):
 from backend.calc import demand_totals
 
 def demand(case):
-
-    try:
-        horizon = time_horizon(case)
-    except KeyError:
-        return HttpResponse("time_horizon not found in case inputs.")
-
-    try:
-        nodes = node_output(case)
-    except KeyError:
-        return HttpResponse("stage 1 output is empty or missing node-level data. maybe the backend is still processing the job?")
+    nodes = node_output(case)
 
     x = demand_totals()
     results = x(nodes)
@@ -231,62 +224,28 @@ def demand(case):
 
 from backend.calc import count_totals
 def count(case):
-
-    try:
-        horizon = time_horizon(case)
-    except KeyError:
-        return HttpResponse("time_horizon not found in case inputs.")
-
-    try:
-        nodes = node_output(case)
-    except KeyError:
-        return HttpResponse("stage 1 output is empty or missing node-level data. maybe the backend is still processing the job?")
+    nodes = node_output(case)
 
     results = count_totals(nodes)
     return results
 
 from backend.calc import nodes_per_system_nongrid
 def system_count(case):
-
-    try:
-        horizon = time_horizon(case)
-    except KeyError:
-        return HttpResponse("time_horizon not found in case inputs.")
-
-    try:
-        nodes = node_output(case)
-    except KeyError:
-        return HttpResponse("stage 1 output is empty or missing node-level data. maybe the backend is still processing the job?")
+    nodes = node_output(case)
 
     results = nodes_per_system_nongrid(nodes)
     return results
 
 from backend.calc import nodes_per_system_and_type
 def system_summary(case):
-    try:
-        horizon = time_horizon(case)
-    except KeyError:
-        return HttpResponse("time_horizon not found in case inputs.")
-
-    try:
-        nodes = node_output(case)
-    except KeyError:
-        return HttpResponse("stage 1 output is empty or missing node-level data. maybe the backend is still processing the job?")
+    nodes = node_output(case)
 
     results = nodes_per_system_and_type(nodes)
     return results
 
 from backend.calc import cost_components as calc_component_costs
 def cost_components(case):
-    try:
-        horizon = time_horizon(case)
-    except KeyError:
-        return HttpResponse("time_horizon not found in case inputs.")
-
-    try:
-        nodes = node_output(case)
-    except KeyError:
-        return HttpResponse("stage 1 output is empty or missing node-level data. maybe the backend is still processing the job?")
+    nodes = node_output(case)
 
     results = calc_component_costs(nodes)
     return results
