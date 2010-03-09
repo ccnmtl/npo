@@ -150,7 +150,7 @@ def case_callback(request,id):
         elif status == "stage 1":
             case.stage_two_output = request.POST.get('payload','{}')
         case.save()
-
+        case.send_notification_email()
         if case.status() == "complete":
             # umm. someone's POSTing but it's already complete
             pass
@@ -229,6 +229,13 @@ def case(request,id):
         # must not have results yet
         pass
     return results
+
+@login_required
+def email_case(request,id):
+    case = get_object_or_404(Case,id=id)
+    case.email_user = True
+    case.save()
+    return HttpResponseRedirect(case.get_absolute_url())
 
 def fetch_case(request,id):
     case = get_object_or_404(Case,id=id)

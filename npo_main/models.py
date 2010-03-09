@@ -9,6 +9,7 @@ from backend import expand_param_names
 from backend import request as backend_request
 from django.conf import settings
 import os
+from django.core.mail import send_mail
 
 datasets = dict(default=("demographics.csv","networks.zip"),
                 leona=("LeonaVillages.zip","LeonaNetworks.zip"),
@@ -24,6 +25,17 @@ class Case(models.Model):
     stage_two_output = models.TextField(blank=True,default="")
     save_parameters = models.BooleanField(default=False)
     output_file = models.FileField(upload_to="outputs/%Y/%m/%d",blank=True,null=True)
+    email_user = models.BooleanField(default=False)
+
+    def send_notification_email(self):
+        if not self.email_user:
+            return # they didn't ask for email so we don't spam them
+        send_mail("NPO Run complete",
+                  """Your NPO run has completed. You may view the output at
+
+%s""" % self.get_absolute_url(),
+                  "npo@ccnmtl.columbia.edu",
+                  [self.owner.email])
 
     def parameters_dict(self):
         return loads(self.parameters)
