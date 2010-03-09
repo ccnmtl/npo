@@ -119,9 +119,11 @@ def create_case(request):
             del params[key]
         
         params["dataset"] = request.POST.get("dataset","default")
+        save = request.POST.get("submitbutton","") == "Run case"
         case = Case.objects.create(name=request.POST['title'],
                                    owner=request.user,
                                    parameters=dumps(params),
+                                   save_parameters=save,
                                    )
 
         # here's where we would actually kick off the job
@@ -129,7 +131,7 @@ def create_case(request):
         case.run(request.get_host())
         return HttpResponseRedirect("/")
     defaults = params
-    return dict(cases=Case.objects.filter(owner=request.user),defaults=defaults,
+    return dict(cases=Case.objects.filter(owner=request.user,save_parameters=True),defaults=defaults,
                 leona=params_leona,kenya=params_kenya)
 
 

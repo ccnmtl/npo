@@ -22,6 +22,7 @@ class Case(models.Model):
     parameters = models.TextField(blank=True,default="")
     stage_one_output = models.TextField(blank=True,default="")
     stage_two_output = models.TextField(blank=True,default="")
+    save_parameters = models.BooleanField(default=False)
 
     def parameters_dict(self):
         return loads(self.parameters)
@@ -76,7 +77,7 @@ class Case(models.Model):
 
         demographics_extension = demographicsfile.split(".")[-1].lower()
 
-        params['callbackURL'] = "http://" + host + "/api" + self.get_absolute_url()
+        params['callback_url'] = "http://" + host + "/api" + self.get_absolute_url()
 
         params = expand_param_names(params)
         backend_request(params,demographics,networks,async=True,
