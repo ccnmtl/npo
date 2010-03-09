@@ -196,10 +196,12 @@ def case(request,id):
         x = cost_components(case)
         results['cost_components'] = x['components']
         results['totals'] = x['totals']
+        results['cost_histogram_counts'] = cost_histograms(case, request)
 
         results['case'] = case
         return results
     except:
+        raise
         return panic(request, id)
 
 @rendered_with('npo/case_raw.html')
@@ -256,37 +258,23 @@ def cost_components(case):
     return results
 
 from backend.calc import cost_histogram
-@login_required
-@rendered_with("npo/output/cost_histograms.html")
-def cost_histograms(request, id):
-    case = get_object_or_404(Case,id=id)
-
-    try:
-        horizon = time_horizon(case)
-    except KeyError:
-        return HttpResponse("time_horizon not found in case inputs.")
-
-    try:
-        nodes = node_output(case)
-    except KeyError:
-        return HttpResponse("stage 1 output is empty or missing node-level data. maybe the backend is still processing the job?")
+def cost_histograms(case, request):
+    nodes = node_output(case)
 
     def bins(param):
         _bins = request.GET.getlist(param)
         if not _bins:
-            raise KeyError
+            _bins = ['1e10', '1e12', '1e14']
+            
         return _bins
     
-    try:
-        results = {
-            'grid': cost_histogram(nodes, 'grid', *bins('g')),
-            'off-grid': cost_histogram(nodes, 'off-grid', *bins('o')),
-            'mini-grid': cost_histogram(nodes, 'mini-grid', *bins('m')),
-            }
-    except KeyError:
-        return HttpResponse("Give me some bins!")
+    results = {
+        'grid': cost_histogram(nodes, 'grid', *bins('g')),
+        'off-grid': cost_histogram(nodes, 'off-grid', *bins('o')),
+        'mini-grid': cost_histogram(nodes, 'mini-grid', *bins('m')),
+        }
     
-    return dict(counts=results)
+    return results
 
 from backend.calc import average_cost_per_household
 @login_required

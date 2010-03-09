@@ -44,6 +44,13 @@
 <h2>Cost breakdown per component</h2>
 {% include "npo/output/cost_components.html" %}
 
+<h2>Total cost histograms</h2>
+
+{% for system, counts in cost_histogram_counts.items %}
+{% include "npo/output/cost_histograms.html" %}
+<canvas id="g_histo{{forloop.counter0}}" width="500" height="350"></canvas>
+{% endfor %}
+
 {% endblock %}
 
 {% block endjs %}
@@ -63,5 +70,25 @@
   g.data_from_table('d_demand');
   g.draw();
 
+  var g = new Bluff.Bar('g_histo0', '500x350');
+  g.theme_rails_keynote();
+  g.sort = false;
+  g.hide_legend = true;
+  g.data_from_table('d_histo0');
+  g.draw();
+
+  var g = new Bluff.Bar('g_histo1', '500x350');
+  g.theme_rails_keynote();
+  g.sort = false;
+  g.hide_legend = true;
+  g.data_from_table('d_histo1');
+  g.draw();
+
+  var g = new Bluff.Bar('g_histo2', '500x350');
+  g.theme_rails_keynote();
+  g.sort = false;
+  g.hide_legend = true;
+  g.data_from_table('d_histo2');
+  g.draw();
 </script>
 {% endblock %}
