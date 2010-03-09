@@ -51,6 +51,12 @@
 <canvas id="g_histo{{forloop.counter0}}" width="500" height="350"></canvas>
 {% endfor %}
 
+<h2>Average household costs</h2>
+
+{% with household_costs as results %}
+{% include "npo/output/household_average_cost.html" %}
+{% endwith %}
+
 {% endblock %}
 
 {% block endjs %}
