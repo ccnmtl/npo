@@ -198,7 +198,15 @@ def sample_case(request):
     results['totals'] = x['totals']
     results['cost_histogram_counts'] = cost_histograms(case, request)
     results['household_costs'] = household_average_cost(case)
-    
+
+
+
+    results['histogram_params'] = {
+        'o': bins('o', request),
+        'm': bins('m', request), 
+        'g': bins('g', request),
+        }
+
     results['case'] = case
     return results
 
@@ -219,6 +227,12 @@ def case(request,id):
         results['totals'] = x['totals']
         results['cost_histogram_counts'] = cost_histograms(case, request)
         results['household_costs'] = household_average_cost(case)
+
+        results['histogram_params'] = {
+            'o': bins('o', request),
+            'm': bins('m', request), 
+            'g': bins('g', request),
+            }
 
         results['case'] = case
         return results
@@ -279,21 +293,23 @@ def cost_components(case):
     results = calc_component_costs(nodes)
     return results
 
+DEFAULT_BINS = ['1e10', '1e12', '1e14']
+def bins(param, request):
+    _bins = [i for i in request.GET.getlist(param) if i]
+    if not _bins:
+        _bins = list(DEFAULT_BINS)
+        
+    return _bins
+
 from backend.calc import cost_histogram
 def cost_histograms(case, request):
     nodes = node_output(case)
 
-    def bins(param):
-        _bins = request.GET.getlist(param)
-        if not _bins:
-            _bins = ['1e10', '1e12', '1e14']
-            
-        return _bins
     
     results = {
-        'grid': cost_histogram(nodes, 'grid', *bins('g')),
-        'off-grid': cost_histogram(nodes, 'off-grid', *bins('o')),
-        'mini-grid': cost_histogram(nodes, 'mini-grid', *bins('m')),
+        'grid': cost_histogram(nodes, 'grid', *bins('g', request)),
+        'off-grid': cost_histogram(nodes, 'off-grid', *bins('o', request)),
+        'mini-grid': cost_histogram(nodes, 'mini-grid', *bins('m', request)),
         }
     
     return results

@@ -1,4 +1,7 @@
 {% extends 'base.html' %}
+
+{% load get %}
+
 {% block title %}Your cases{% endblock %}
 {% block breadcrumbs %}<a href="/">HOME</a> &gt; CASE SUMMARY{% endblock %}
 
@@ -49,6 +52,23 @@
 {% for system, counts in cost_histogram_counts.items %}
 {% include "npo/output/cost_histograms.html" %}
 <canvas id="g_histo{{forloop.counter0}}" width="500" height="350"></canvas>
+
+<form method="GET">
+  {% for type, params in histogram_params.items %}
+  {% ifnotequal type system.0 %}
+  {% for param in params %}
+  <input type="hidden" name="{{type}}" value="{{param}}" />
+  {% endfor %}
+
+  {% else %}
+  {% for param in params %}
+  <input type="text" name="{{type}}" value="{{param}}" />
+  {% endfor %}
+  {% endifnotequal %}
+  {% endfor %}
+  <input type="submit" value="Change bin sizes" />
+</form>
+
 {% endfor %}
 
 <h2>Average household costs</h2>

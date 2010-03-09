@@ -6,6 +6,10 @@ def getitem(container, key):
   return container[key]
 
 @register.filter
+def req_getlist(container, key):
+  return container.getlist(key)
+
+@register.filter
 def percent_of(partial, total):
   if total == 0: 
     return 0

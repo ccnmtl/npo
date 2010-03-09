@@ -1,7 +1,7 @@
 {% load get %}
 
 <h2>{{system}}</h2>
-<table id="d_histo{{forloop.counter0}}" style="display:none">
+<table id="d_histo{{forloop.counter0}}" style="float: right; ">
 <tbody>
   {% for bin, count in counts.items %}
   <tr>
@@ -10,4 +10,3 @@
   {% endfor %}
 </tbody>
 </table>
-
