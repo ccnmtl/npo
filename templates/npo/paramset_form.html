@@ -9,52 +9,39 @@
 	  
 	  <div class="tabbertab" title="Financing"> 
 	    
-	    <div class="pageblock"> 
-	      <div class="ptitle w150"><label for="paramset-{{paramsetid}}-metric>finance>time_horizon_in_years">Time horizon:</label></div><!-- ptitle --> 
-	      <div class="pfield"><input name="paramset-{{paramsetid}}-metric>finance>time_horizon_in_years"
-					 id="paramset-{{paramsetid}}-metric>finance>time_horizon_in_years" 
-					 class="form_text" type="text"
-					 size="10" maxlength="128" 
-					 value="{{params.metric.finance|get:"time horizon in years"}}"
-					 /> year(s)</div><!-- pfield --> 
-	      <div class="visualclear"></div> 
-	    </div><!-- class="pageblock" --> 
+	    {% with params.metric.finance as section %}
 
-	    <div class="pageblock"> 
-	      <div class="ptitle
-	      w150"><label for="paramset-{{paramsetid}}-metric>finance>economic_growth_rate_per_year">Economic Growth Rate Per Year:</label></div><!-- ptitle --> 
-	      <div class="pfield"><input name="paramset-{{paramsetid}}-metric>finance>economic_growth_rate_per_year"
-					 id="paramset-{{paramsetid}}-metric>finance>economic_growth_rate_per_year" 
-					 class="form_text" type="text"
-					 size="10" maxlength="128" 
-					 value="{{params.metric.finance|get:"economic growth rate per year"}}"
-					 /> </div><!-- pfield --> 
-	      <div class="visualclear"></div> 
-	    </div><!-- class="pageblock" --> 
+	    {% with "Time horizon" as label %}
+	    {% with "year(s)" as units %}
+	    {% with "metric>finance>time_horizon_in_years" as fullid %}
+	    {% with "time horizon in years" as key %}
+	    {% include "npo/simple_param_block.html" %}
+	    {% endwith %}{% endwith %}{% endwith %}{% endwith %}
 
-	    <div class="pageblock"> 
-	      <div class="ptitle
-	      w150"><label for="paramset-{{paramsetid}}-metric>finance>elasticity_of_electricity_demand">Elasticity of Electricity Demand:</label></div><!-- ptitle --> 
-	      <div class="pfield"><input name="paramset-{{paramsetid}}-metric>finance>elasticity_of_electricity_demand"
-					 id="paramset-{{paramsetid}}-metric>finance>elasticity_of_electricity_demand" 
-					 class="form_text" type="text"
-					 size="10" maxlength="128" 
-					 value="{{params.metric.finance|get:"elasticity of electricity demand"}}"
-					 /> </div><!-- pfield --> 
-	      <div class="visualclear"></div> 
-	    </div><!-- class="pageblock" --> 
+	    {% with "Economic Growth Rate Per Year" as label %}
+	    {% with "" as units %}
+	    {% with "metric>finance>economic_growth_rate_per_year" as fullid %}
+	    {% with "economic growth rate per year" as key %}
+	    {% include "npo/simple_param_block.html" %}
+	    {% endwith %}{% endwith %}{% endwith %}{% endwith %}
 
-	    
-	    <div class="pageblock"> 
-	      <div class="ptitle w150"><label for="paramset-{{paramsetid}}-metric>finance>yearly_interest_rate">Annual interest rate:</label></div><!-- ptitle --> 
-	      <div class="pfield"><input name="paramset-{{paramsetid}}-metric>finance>yearly_interest_rate"
-					 id="paramset-{{paramsetid}}-metric>finance>yearly_interest_rate" 
-					 class="form_text" type="text"
-					 size="10" maxlength="128" 
-					 value="{{params.metric.finance|get:"yearly interest rate"}}"
-					 /><div class="instructions">(e.g. 0.02 for 2%)</div></div><!-- pfield --> 
-	      <div class="visualclear"></div> 
-	    </div><!-- class="pageblock" --> 
+	    {% with "Elasticity of Electricity Demand" as label %}
+	    {% with "" as units %}
+	    {% with "metric>finance>elasticity_of_electricity_demand" as fullid %}
+	    {% with "elasticity of electricity demand" as key %}
+	    {% include "npo/simple_param_block.html" %}
+	    {% endwith %}{% endwith %}{% endwith %}{% endwith %}
+
+	    {% with "Annual interest rate" as label %}
+	    {% with "" as units %}
+	    {% with "metric>finance>yearly_interest_rate" as fullid %}
+	    {% with "yearly interest rate" as key %}
+	    {% with "(e.g. 0.02 for 2%)" as instructions %}
+	    {% include "npo/simple_param_block.html" %}
+	    {% endwith %}{% endwith %}{% endwith %}{% endwith %}{% endwith %}
+
+
+	    {% endwith %}
 	    
 	  </div><!-- tabbertab Financing --> 
 	  

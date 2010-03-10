@@ -1,0 +1,13 @@
+{% load get %}
+{% with section|get:key as value %}
+<div class="pageblock"> 
+  <div class="ptitle w150"><label for="paramset-{{paramsetid}}-{{fullid}}">{{label}}:</label></div>
+  <div class="pfield"><input name="paramset-{{paramsetid}}-{{fullid}}"
+			     id="paramset-{{paramsetid}}-{{fullid}}" 
+			     class="form_text" type="text"
+			     size="10" maxlength="128" 
+			     value="{{value}}"
+			     /> {{units}}{% if instructions %}<div class="instructions">{{instructions}}</div>{% endif %}</div>
+  <div class="visualclear"></div> 
+</div>
+{% endwith %}
