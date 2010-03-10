@@ -10,6 +10,7 @@
 	  <div class="tabbertab" title="Financing"> 
 	    
 	    {% with params.metric.finance as section %}
+	    {% with "w150" as divwidth %}
 
 	    {% with "Time horizon" as label %}
 	    {% with "year(s)" as units %}
@@ -40,7 +41,7 @@
 	    {% include "npo/simple_param_block.html" %}
 	    {% endwith %}{% endwith %}{% endwith %}{% endwith %}{% endwith %}
 
-
+	    {% endwith %}
 	    {% endwith %}
 	    
 	  </div><!-- tabbertab Financing --> 
@@ -51,75 +52,62 @@
 	  
 	  <div class="tabbertab" title="Demographics"> 
 	    
-	    
-	    <div class="pageblock"> 
-	      <div class="ptitle w200"><label for="paramset-{{paramsetid}}-metric>demographics>population_growth_rate_per_year">Annual population growth rate:</label></div><!-- ptitle --> 
-	      <div class="pfield"><input name="paramset-{{paramsetid}}-metric>demographics>population_growth_rate_per_year"
-					 id="paramset-{{paramsetid}}-metric>demographics>population_growth_rate_per_year"
-					 class="form_text" type="text"
-					 size="10" maxlength="128" 
-					 value="{{params.metric.demographics|get:"population growth rate per year"}}"
-					 /><div class="instructions">(e.g. 0.02 for 2%)</div></div><!-- pfield --> 
-	      <div class="visualclear"></div> 
-	    </div><!-- class="pageblock" --> 
-	    
-	    <div class="pageblock"> 
-	      <div class="ptitle w200"><label for="paramset-{{paramsetid}}-metric>demographics>mean_household_size_(rural)">Mean household size (rural):</label></div><!-- ptitle --> 
-	      <div class="pfield"><input name="paramset-{{paramsetid}}-metric>demographics>mean_household_size_(rural)"
-					 id="paramset-{{paramsetid}}-metric>demographics>mean_household_size_(rural)"
-					 class="form_text" type="text"
-					 size="10" maxlength="128" 
-					 value="{{params.metric.demographics|get:"mean household size (rural)"}}"
-					 /> person(s)</div><!-- pfield --> 
-	      <div class="visualclear"></div> 
-	    </div><!-- class="pageblock" --> 
-	    
-	    <div class="pageblock"> 
-	      <div class="ptitle w200"><label for="paramset-{{paramsetid}}-metric>demographics>mean_household_size_(urban)">Mean household size (urban):</label></div><!-- ptitle --> 
-	      <div class="pfield"><input name="paramset-{{paramsetid}}-metric>demographics>mean_household_size_(urban)"
-					 id="paramset-{{paramsetid}}-metric>demographics>mean_household_size_(urban)"
-					 class="form_text" type="text"
-					 size="10" maxlength="128" 
-					 value="{{params.metric.demographics|get:"mean household size (urban)"}}"
-					 /> person(s)</div><!-- pfield --> 
-	      <div class="visualclear"></div> 
-	    </div><!-- class="pageblock" --> 
-	    
-	    <div class="pageblock"> 
-	      <div class="ptitle w200"><label for="paramset-{{paramsetid}}-metric>demographics>urban_population_threshold">Urban population threshold:</label></div><!-- ptitle --> 
-	      <div class="pfield"><input name="paramset-{{paramsetid}}-metric>demographics>urban_population_threshold"
-					 id="paramset-{{paramsetid}}-metric>demographics>urban_population_threshold"
-					 class="form_text" type="text"
-					 size="10" maxlength="128" 
-					 value="{{params.metric.demographics|get:"urban population threshold"}}"
-					 /> person(s)<div class="instructions">(minimum population of community when considered urban)</div></div><!-- pfield --> 
-	      <div class="visualclear"></div> 
-	    </div><!-- class="pageblock" --> 
-	    
-	    <div class="pageblock"> 
-	      <div class="ptitle w200"><label for="paramset-{{paramsetid}}-metric>demographics>mean_interhousehold_distance_in_meters">Mean interhousehold distance:</label></div><!-- ptitle --> 
-	      <div class="pfield"><input name="paramset-{{paramsetid}}-metric>demographics>mean_interhousehold_distance_in_meters"
-					 id="paramset-{{paramsetid}}-metric>demographics>mean_interhousehold_distance_in_meters"
-					 class="form_text" type="text"
-					 size="10" maxlength="128" 
-					 value="{{params.metric.demographics|get:"mean interhousehold distance in meters"}}"
-					 /> meters</div><!-- pfield --> 
-	      <div class="visualclear"></div> 
-	    </div><!-- class="pageblock" --> 
 
-	    <div class="pageblock"> 
-	      <div class="ptitle
-	      w200"><label for="paramset-{{paramsetid}}-metric>demographics>population_count">Population Count:</label></div><!-- ptitle --> 
-	      <div class="pfield"><input name="paramset-{{paramsetid}}-metric>demographics>population_count"
-					 id="paramset-{{paramsetid}}-metric>demographics>population_count"
-					 class="form_text" type="text"
-					 size="10" maxlength="128" 
-					 value="{{params.metric.demographics|get:"population count"}}"
-					 /> meters</div><!-- pfield --> 
-	      <div class="visualclear"></div> 
-	    </div><!-- class="pageblock" --> 
+	    {% with params.metric.demographics as section %}
+	    {% with "w200" as divwidth %}
+
+	    {% with "Annual population growth rate" as label %}
+	    {% with "" as units %}
+	    {% with "metric>demographics>population_growth_rate_per_year" as fullid %}
+	    {% with "population growth rate per year" as key %}
+	    {% with "(e.g. 0.02 for 2%)" as instructions %}
+	    {% include "npo/simple_param_block.html" %}
+	    {% endwith %}{% endwith %}{% endwith %}{% endwith %}{% endwith %}
+
+	    {% with "Mean household size (rural)" as label %}
+	    {% with "person(s)" as units %}
+	    {% with "metric>demographics>mean_household_size_(rural)" as fullid %}
+	    {% with "mean household size (rural)" as key %}
+	    {% with "" as instructions %}
+	    {% include "npo/simple_param_block.html" %}
+	    {% endwith %}{% endwith %}{% endwith %}{% endwith %}{% endwith %}
+
+	    {% with "Mean household size (urban)" as label %}
+	    {% with "person(s)" as units %}
+	    {% with "metric>demographics>mean_household_size_(urban)" as fullid %}
+	    {% with "mean household size (urban)" as key %}
+	    {% with "" as instructions %}
+	    {% include "npo/simple_param_block.html" %}
+	    {% endwith %}{% endwith %}{% endwith %}{% endwith %}{% endwith %}
+
+	    {% with "Urban population threshold" as label %}
+	    {% with "person(s)" as units %}
+	    {% with "metric>demographics>urban_population_threshold" as fullid %}
+	    {% with "urban population threshold" as key %}
+	    {% with "(minimum population of community when considered urban)" as instructions %}
+	    {% include "npo/simple_param_block.html" %}
+	    {% endwith %}{% endwith %}{% endwith %}{% endwith %}{% endwith %}
+
+	    {% with "Mean interhousehold distance" as label %}
+	    {% with "meters" as units %}
+	    {% with "metric>demographics>mean_interhousehold_distance_in_meters" as fullid %}
+	    {% with "mean interhousehold distance in meters" as key %}
+	    {% with "" as instructions %}
+	    {% include "npo/simple_param_block.html" %}
+	    {% endwith %}{% endwith %}{% endwith %}{% endwith %}{% endwith %}
+
+	    {% with "Population Count" as label %}
+	    {% with "meters" as units %}
+	    {% with "metric>demographics>population_count" as fullid %}
+	    {% with "population count" as key %}
+	    {% with "" as instructions %}
+	    {% include "npo/simple_param_block.html" %}
+	    {% endwith %}{% endwith %}{% endwith %}{% endwith %}{% endwith %}
 
 
+	    {% endwith %}
+	    {% endwith %}
+	    
 	  </div><!-- tabbertab Demographics --> 
 	  
 	  <!-- ***  END TAB DIV *** --> 
