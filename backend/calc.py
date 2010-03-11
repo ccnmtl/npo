@@ -19,17 +19,14 @@ COST_COMPONENTS = {
         "photovoltaic balance cost",
         "diesel generator cost",
         "diesel equipment cost",
-        "diesel generator installation cost"
-
-        "system recurring cost per year",
+        "diesel generator installation cost",
         ],
 
     'mini-grid': [
         "diesel generator cost",
         "diesel equipment cost",
         "diesel generator installation cost",
-        ## XXX TODO NO LOW VOLTAGE LINE COST YET
-        "system recurring cost per year",
+        "low voltage line cost",
         ],
     }
 
@@ -72,6 +69,15 @@ class demand_totals(object):
                 self.demands[type] += demand
 
         return self.demands
+
+def get_nodes_for_system(nodes, system):
+    _nodes = []
+    for node in nodes._dict:
+        node = nodes[node]
+        
+        if node.system() == system:
+            _nodes.append(node)
+    return _nodes
 
 def count_totals(nodes):
     counts = dict()
@@ -137,16 +143,20 @@ def cost_components(nodes):
         component_cost[system_type] = dict()
         for component in components:
             component_cost[system_type][component] = 0
+        component_cost[system_type]['recurring costs'] = 0
         total_cost[system_type] = 0
 
     for node in nodes._dict:
         node = nodes[node]
 
         system_type = node.system()
-        costs = component_cost[system_type]
+        costs = COST_COMPONENTS[system_type]
         for component in costs:
             my_cost = node.initial_cost(component)
-            costs[component] += my_cost
+            component_cost[system_type][component] += my_cost
+
+        component_cost[system_type]['recurring costs'] += node.recurring_costs()
+
         my_total_cost = node.total_cost()## XXX TODO final=True) --> when we have MV COST
         total_cost[system_type] += my_total_cost
 
@@ -290,6 +300,33 @@ class Node(object):
         cost = float(cost)
         return cost
 
+    def recurring_costs(self, component=None):
+        """ 
+        calculate total recurring costs for the given component,
+        or total recurring costs across all recurring cost components
+        if no component is provided
+        """
+
+        if component is not None:
+            raise NotImplementedError
+
+        system = self.system()
+        
+        discount_factor = float(
+            self['finance']['discounted cash flow factor'])
+
+        if system != 'grid':
+            cost_per_year = float(
+                self['system (%s)' % system]['system recurring cost per year'])
+        else:
+            cost_per_year = float(
+                self['system (grid)']['internal system recurring cost per year'])
+        
+        time_horizon = self.time_horizon() 
+        time_horizon -= 1 # recurring costs don't kick in until the second year
+
+        return cost_per_year * discount_factor * time_horizon
+
     def initial_cost(self, component):
         system = self.system()
         assert component in COST_COMPONENTS[system]
@@ -298,8 +335,17 @@ class Node(object):
         if component == 'transformer cost':
             component = 'transfomer cost'
 
-        component_cost = self['system (%s)' % system][component]
-        component_cost = float(component_cost)
+        if component == 'low voltage line cost':
+            assert system == 'mini-grid', \
+                "Only mini-grid nodes have LV costs, right?"
+            cost_per_meter = self['distribution'][
+                'low voltage line cost per meter']
+            length = self['distribution'][
+                'low voltage line length in meters']
+            component_cost = float(cost_per_meter) * float(length)
+        else:
+            component_cost = self['system (%s)' % system][component]
+            component_cost = float(component_cost)
         
         if component == "medium voltage line cost per meter":
             num_meters = self['metric'][
