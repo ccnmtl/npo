@@ -80,6 +80,9 @@ EMAIL_SUBJECT_PREFIX = "[npo] "
 EMAIL_HOST = 'localhost'
 SERVER_EMAIL = "npo@ccnmtl.columbia.edu"
 
+BACKEND_URL = "http://september.mech.columbia.edu/jobs"
+#BACKEND_URL = "http://october.mech.columbia.edu/jobs"
+
 # WIND settings
 
 AUTHENTICATION_BACKENDS = ('djangowind.auth.WindAuthBackend','django.contrib.auth.backends.ModelBackend',)
