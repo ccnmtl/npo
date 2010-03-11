@@ -19,7 +19,7 @@ COST_COMPONENTS = {
         "photovoltaic balance cost",
         "diesel generator cost",
         "diesel equipment cost",
-        "diesel generator installation cost"
+        "diesel generator installation cost",
 
         "system recurring cost per year",
         ],
