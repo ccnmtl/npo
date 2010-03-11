@@ -24,6 +24,7 @@ urlpatterns = patterns('',
                        (r'^api/case/(?P<id>\d+)/$','npo_main.views.case_callback',{},"case-callback"),
                        (r'^case/(?P<id>\d+)/delete/$','npo_main.views.delete_case'),
                        (r'^case/create/$','npo_main.views.create_case'),
+                       (r'^compare/(?P<ids>[\d\,]+)/$','npo_main.views.compare_cases'),
                        (r'^run/$','npo_main.views.run'),
 
 ### output views (stub)

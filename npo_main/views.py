@@ -50,8 +50,13 @@ def bulk(request):
                     except Case.DoesNotExist:
                         # whatever
                         pass
-        # compare not handled yet
-        # it'll be a redirect to another view
+        if request.POST.get("compare","") != "":
+            case_ids = []
+            for k in request.POST.keys():
+                if k.startswith("case_"):
+                    caseid = k.split("_")[1]
+                    case_ids.append(caseid)
+        return HttpResponseRedirect("/compare/" + ",".join(case_ids) + "/")
     return HttpResponseRedirect("/")
 
 @login_required
@@ -214,13 +219,11 @@ def sample_case(request):
     results['case'] = case
     return results
 
-@login_required
-@rendered_with('npo/case.html')
-def case(request,id):
-    case = get_object_or_404(Case,id=id)
+def results_for_case(case,request):
     results = dict(case=case)
     try:
         results = pop(case)
+        results['case'] = case
 
         results['demand'] = demand(case)
         results['counts'] = count(case)
@@ -238,11 +241,23 @@ def case(request,id):
             'g': bins('g', request),
             }
 
-        results['case'] = case
     except:
         # must not have results yet
+        print "hit an exception"
         pass
     return results
+
+@login_required
+@rendered_with('npo/case.html')
+def case(request,id):
+    case = get_object_or_404(Case,id=id)
+    return results_for_case(case,request)
+
+@login_required
+@rendered_with('npo/compare_cases.html')
+def compare_cases(request,ids):
+    cases = [results_for_case(get_object_or_404(Case,id=id),request) for id in ids.split(',')]
+    return dict(cases=cases)
 
 @login_required
 def email_case(request,id):

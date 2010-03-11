@@ -1,0 +1,155 @@
+{% extends 'base.html' %}
+
+{% load get %}
+
+{% block title %}Your cases{% endblock %}
+{% block breadcrumbs %}<a href="/">HOME</a> &gt; CASE SUMMARY{% endblock %}
+
+{% block js %}
+
+<script src="http://ccnmtl.columbia.edu/scripts/MochiKit/MochiKit.js" type="text/javascript" language="javascript"></script> 
+<script src="/site_media/js/paramset.js" type="text/javascript" language="javascript"></script> 
+<script src="/site_media/js/tabber.js" type="text/javascript" language="javascript"></script> 
+<!--[if lt IE 7]><script src="http://ccnmtl.columbia.edu/remote/alerts/browser/ienosupport.js" type="text/javascript" language="javascript"></script><link rel="stylesheet" href="http://ccnmtl.columbia.edu/remote/alerts/browser/ienosupport.css" type="text/css" media="all" /><![endif]--> 
+
+<script type="text/javascript">
+var plot = function(insertInto, paramsFrom) {
+  var div = document.getElementById(insertInto);
+  
+  var table = document.getElementById(paramsFrom);
+
+  div.innerHTML = "";
+
+  var xs = MochiKit.Selector.findChildElements(table, ["td:first-child input"]);
+  var ys = MochiKit.Selector.findChildElements(table, ["td:last-child input"]);
+
+  var params = "";
+  for( x=0; x<xs.length; ++x ) {
+    params += "x=" + xs[x].value + "&";
+  }
+  for( y=0; y<ys.length; ++y ) {
+    params += "y=" + ys[y].value + "&";
+  }
+
+  var img = MochiKit.DOM.IMG({"src": "http://hotdog.ccnmtl.columbia.edu/curve?" + params + "dpi=40",
+                              "width": div.style.width, "height": div.style.height
+            });
+
+  var link = MochiKit.DOM.A({"href": "http://hotdog.ccnmtl.columbia.edu/curve?" + params + "dpi=100",
+                             "target": "_blank"
+            });
+
+  MochiKit.DOM.appendChildNodes(link, img);
+  MochiKit.DOM.appendChildNodes(div, link);
+
+  return false;
+};
+</script>
+
+
+{% include "bluff.html" %}
+<script src="http://openlayers.org/api/OpenLayers.js"></script>
+
+{% endblock %}
+
+{% block content %}
+<table>
+<tr>
+{% for c in cases %}
+<td>
+{% with c.case as case %}
+{% with c.demand as demand %}
+{% with c.costs as costs %}
+{% with c.urban as urban %}
+{% with c.rural as rural %}
+{% with c.system_counts as system_counts %}
+{% with c.system_breakdown_counts as system_breakdown_counts %}
+{% with c.cost_components as cost_components %}
+{% with c.totals as totals %}
+{% with c.counts as counts %}
+{% with c.cost_histogram_counts as cost_histogram_counts %}
+{% with c.household_costs as household_costs %}
+{% with c.histogram_params as histogram_params %}
+{% include "npo/case_display.html" %}
+{% endwith %}{% endwith %}{% endwith %}
+{% endwith %}
+{% endwith %}
+{% endwith %}
+{% endwith %}
+{% endwith %}
+{% endwith %}
+{% endwith %}
+{% endwith %}
+{% endwith %}
+{% endwith %}
+</td>
+{% endfor %}
+</tr></table>
+{% endblock %}
+
+{% block endjs %}
+<script type="text/javascript">
+  var g = new Bluff.Line('g_pop', '500x350');
+  g.theme_rails_keynote();
+  g.data_from_table('d_pop');
+  g.draw();
+
+  var g = new Bluff.Pie('g_demand', '500x350');
+  g.theme_rails_keynote();
+  g.data_from_table('d_demand');
+  g.draw()
+
+  var g = new Bluff.Bar('g_demand2', '500x350');
+  g.theme_rails_keynote();
+  g.data_from_table('d_demand');
+  g.draw();
+
+  var g = new Bluff.Bar('g_histo0', '500x350');
+  g.theme_rails_keynote();
+  g.sort = false;
+  g.hide_legend = true;
+  g.data_from_table('d_histo0');
+  g.draw();
+
+  var g = new Bluff.Bar('g_histo1', '500x350');
+  g.theme_rails_keynote();
+  g.sort = false;
+  g.hide_legend = true;
+  g.data_from_table('d_histo1');
+  g.draw();
+
+  var g = new Bluff.Bar('g_histo2', '500x350');
+  g.theme_rails_keynote();
+  g.sort = false;
+  g.hide_legend = true;
+  g.data_from_table('d_histo2');
+  g.draw();
+</script>
+
+<script type="text/javascript">
+function initmap() {
+
+var map = new OpenLayers.Map('map');
+
+map.addLayer(new OpenLayers.Layer.WMS('OpenLayers WMS',
+             'http://labs.metacarta.com/wms/vmap0', 
+             {layers: 'basic'}));
+
+map.setCenter(new OpenLayers.LonLat(
+              {{case.mean_lon}}, {{case.mean_lat}}),
+              map.getZoomForExtent(
+                new OpenLayers.Bounds(
+                {{case.min_lon}}, {{case.min_lat}},
+                {{case.max_lon}}, {{case.max_lat}}
+)));
+
+var features = {{case.geojson|safe}};
+var geojson_format = new OpenLayers.Format.GeoJSON();
+var vectorLayer = new OpenLayers.Layer.Vector();
+map.addLayer(vectorLayer);
+vectorLayer.addFeatures(geojson_format.read(features));
+}
+//window.onload = initmap;
+</script>
+
+{% endblock %}

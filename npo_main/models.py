@@ -105,7 +105,7 @@ class Case(models.Model):
     def fetch_output_file(self):
         if self.status() == "started":
             return # precondition: must have output
-        return str(self.output_dict())
+        return self.stage_one_output
 #        print str(self.output_dict()["variables"].keys())
         # stuck here for the moment since Roy's callback payload
         # isn't including the formats section currently
