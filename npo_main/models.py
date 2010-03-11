@@ -105,11 +105,12 @@ class Case(models.Model):
     def fetch_output_file(self):
         if self.status() == "started":
             return # precondition: must have output
-
+        return str(self.output_dict())
+#        print str(self.output_dict()["variables"].keys())
         # stuck here for the moment since Roy's callback payload
         # isn't including the formats section currently
-        url = "http://october.mech.columbia.edu" + self.output_dict()["formats"]["zip"]
-        return url
+#        url = "http://september.mech.columbia.edu" + self.output_dict()["variables"]["formats"]["zip"]
+#        return url
 
 
 from django.contrib import admin

@@ -1,0 +1,109 @@
+{% load get %}
+<h1>Case: {% if case.name %}{{case.name}}{% else %}{{case.pk}}{% endif %}</h1>
+<p>created {{case.created|date}} at {{case.created|time}}</p>
+<p>last updated {{case.updated|date}} at {{case.updated|time}}</p>
+
+<h2>Case Parameters</h2>
+
+<p><a href="" 
+onclick="showElement('paramset-{{case.id}}');return false">show parameters</a></p>
+{% with case.id as paramsetid %}
+{% with case.name as paramsettitle %}
+{% with case.parameters_dict as params %}
+{% include "npo/paramset_display.html" %}      
+{% endwith %}
+{% endwith %}
+{% endwith %}
+
+
+
+
+<form action="delete/" method="post">
+<input type="submit" value="Delete this case" />
+</form>
+
+{% ifequal case.status "started" %}
+
+<p>The case has been submitted to the backend for processing. This
+  could take a few minutes for a small data set or several hours for a
+  large one. Please reload this page in a while to check on the status.</p>
+
+{% if case.email_user %}
+<p>When this run is complete, a notification email will be sent to
+  {{request.user.email}}.</p>
+{% else %}
+<p>If you expect this run to take a long time, hit this button to have
+  it send an email when the run is complete:</p>
+
+<form action="email/" method="post">
+<input type="submit" value="send email to {{request.user.email}} when run is complete" />
+</form>
+{% endif %}
+{% else %}
+<!--
+<h1>Network</h1>
+<div id="map"
+     style="width: 500px; height: 300px;
+	    border: 1px solid black;">
+</div>
+-->
+<h1>Output summary</h1>
+
+<h2>Rural vs urban population</h2>
+<canvas id="g_pop" width="500" height="350"></canvas>
+{% include "npo/output/population.html" %}
+
+<hr/>
+
+<h2>Demand</h2>
+<canvas id="g_demand" width="500" height="350"></canvas>
+<canvas id="g_demand2" width="500" height="350"></canvas>
+{% include "npo/output/demand.html" %}
+
+<hr/>
+
+<h2>Total infrastructure count</h2>
+{% include "npo/output/count.html" %}
+
+<hr/>
+
+<h2>Systems</h2>
+{% include "npo/output/system_count.html" %}
+{% include "npo/output/system_summary.html" %}
+
+<h2>Cost breakdown per component</h2>
+{% include "npo/output/cost_components.html" %}
+
+<h2>Total cost histograms</h2>
+
+{% for system, counts in cost_histogram_counts.items %}
+{% include "npo/output/cost_histograms.html" %}
+<canvas id="g_histo{{forloop.counter0}}" width="500" height="350"></canvas>
+
+<form method="GET">
+  {% for type, params in histogram_params.items %}
+  {% ifnotequal type system.0 %}
+  {% for param in params %}
+  <input type="hidden" name="{{type}}" value="{{param}}" />
+  {% endfor %}
+
+  {% else %}
+  {% for param in params %}
+  <input type="text" name="{{type}}" value="{{param}}" />
+  {% endfor %}
+  {% endifnotequal %}
+  {% endfor %}
+  <input type="submit" value="Change bin sizes" />
+</form>
+
+{% endfor %}
+
+<h2>Average household costs</h2>
+
+{% with household_costs as results %}
+{% include "npo/output/household_average_cost.html" %}
+{% endwith %}
+
+{% endifequal %}
+
+
