@@ -216,7 +216,7 @@ def results_for_case(case,request):
         results = case.pop()
         results['case'] = case
 
-        results['demand'] = demand(case)
+        results['demand'] = case.demand()
         results['counts'] = count(case)
         results['system_counts'] = system_count(case)
         results['system_breakdown_counts'] = system_summary(case)
@@ -264,16 +264,6 @@ def fetch_case(request,id):
 def panic(request, id):
     case = get_object_or_404(Case,id=id)
     return {'case': case}
-
-
-from backend.calc import demand_totals
-
-def demand(case):
-    nodes = case.node_output()
-
-    x = demand_totals()
-    results = x(nodes)
-    return results
 
 from backend.calc import count_totals
 def count(case):

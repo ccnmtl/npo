@@ -11,6 +11,7 @@ from restclient import GET
 import time
 from backend.calc import Nodes, get_nodes
 from backend.calc import urban_rural_population_totals as ur
+from backend.calc import demand_totals
 
 datasets = dict(default=("demographics.csv","networks.zip"),
                 leona=("LeonaVillages.zip","LeonaNetworks.zip"),
@@ -89,6 +90,13 @@ class Case(models.Model):
         results = x(nodes)
 
         results['years'] = range(horizon)
+        return results
+
+    def demand(self):
+        nodes = self.node_output()
+
+        x = demand_totals()
+        results = x(nodes)
         return results
 
     @models.permalink
