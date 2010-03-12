@@ -178,6 +178,24 @@ def nodes_per_system_and_type(nodes):
 
     return counts
 
+def lv_per_household(nodes):
+    lens = dict(urban=0, rural=0)
+
+    for node in nodes._dict:
+        node = nodes[node]
+        
+        if node.system() != 'grid':
+            continue
+
+        val = (node.lv_line_length() / 
+               node.projected_households())
+            
+        if node.is_urban():
+            lens['urban'] += val
+        else:
+            lens['rural'] += val
+    return lens
+
 def average_cost_per_household(nodes):
     costs = dict()
     households = dict()

@@ -1,0 +1,19 @@
+{% load get %}
+
+<table id="lv_hh">
+  <thead>
+    <tr>
+      {% for type in results.keys %}
+      <th scope="col">{{type}}</th>
+      {% endfor %}
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      {% for value in results.values %}
+      <td>{{value}}</td>
+      {% endfor %}
+    </tr>
+  </tbody>
+</table>
+
