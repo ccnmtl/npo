@@ -10,6 +10,7 @@ from django.core.mail import send_mail
 from restclient import GET
 import time
 from backend.calc import Nodes, get_nodes
+from backend.calc import urban_rural_population_totals as ur
 
 datasets = dict(default=("demographics.csv","networks.zip"),
                 leona=("LeonaVillages.zip","LeonaNetworks.zip"),
@@ -79,6 +80,16 @@ class Case(models.Model):
     def node_output(self):
         nodes = self.output_dict()['variables']['node']
         return Nodes(nodes)
+
+    def pop(self):
+        horizon = self.time_horizon()
+        nodes = self.node_output()
+
+        x = ur(horizon)
+        results = x(nodes)
+
+        results['years'] = range(horizon)
+        return results
 
     @models.permalink
     def get_absolute_url(self):

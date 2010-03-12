@@ -187,7 +187,7 @@ def run(request):
 @rendered_with('npo/case.html')
 def sample_case(request):
     case = None
-    results = pop(case)
+    results = case.pop()
 
     results['demand'] = demand(case)
     results['counts'] = count(case)
@@ -213,7 +213,7 @@ def sample_case(request):
 def results_for_case(case,request):
     results = dict(case=case)
     try:
-        results = pop(case)
+        results = case.pop()
         results['case'] = case
 
         results['demand'] = demand(case)
@@ -265,16 +265,6 @@ def panic(request, id):
     case = get_object_or_404(Case,id=id)
     return {'case': case}
 
-from backend.calc import urban_rural_population_totals as ur
-def pop(case):
-    horizon = case.time_horizon()
-    nodes = case.node_output()
-
-    x = ur(horizon)
-    results = x(nodes)
-    
-    results['years'] = range(horizon)
-    return results
 
 from backend.calc import demand_totals
 
