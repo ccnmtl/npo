@@ -215,8 +215,6 @@ def results_for_case(case,request):
     try:
         results = case.pop()
         results['case'] = case
-
-        results['demand'] = case.demand()
         results['counts'] = case.count()
         results['system_counts'] = case.system_count()
         results['system_breakdown_counts'] = case.system_summary()
