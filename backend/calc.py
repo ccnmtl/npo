@@ -327,6 +327,11 @@ class Node(object):
 
         return cost_per_year * discount_factor * time_horizon
 
+    def lv_line_length(self):
+        assert self.system() == 'mini-grid', \
+            "Only mini-grid nodes have low-voltage line, right?"
+        return float(self['distribution']['low voltage line length in meters'])
+        
     def initial_cost(self, component):
         system = self.system()
         assert component in COST_COMPONENTS[system]
@@ -340,9 +345,7 @@ class Node(object):
                 "Only mini-grid nodes have LV costs, right?"
             cost_per_meter = self['distribution'][
                 'low voltage line cost per meter']
-            length = self['distribution'][
-                'low voltage line length in meters']
-            component_cost = float(cost_per_meter) * float(length)
+            component_cost = float(cost_per_meter) * self.lv_line_length()
         else:
             component_cost = self['system (%s)' % system][component]
             component_cost = float(component_cost)
