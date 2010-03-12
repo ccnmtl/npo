@@ -72,6 +72,9 @@ class Case(models.Model):
     def max_lat(self):
         return self.node_stats().get('maximum latitude',None)
 
+    def time_horizon(self):
+        return int(self.parameters_dict()['metric']['finance']['time horizon in years']) + 1
+
     @models.permalink
     def get_absolute_url(self):
         return ('npo_main.views.case',[str(self.id)])

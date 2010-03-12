@@ -188,10 +188,6 @@ def node_output(case):
     nodes = case.output_dict()['variables']['node']
     return Nodes(nodes)
 
-def time_horizon(case):
-    if case is None:
-        return 11 # lame lame lame
-    return int(case.parameters_dict()['metric']['finance']['time horizon in years']) + 1
 
 @login_required
 @rendered_with('npo/case.html')
@@ -277,7 +273,7 @@ def panic(request, id):
 
 from backend.calc import urban_rural_population_totals as ur
 def pop(case):
-    horizon = time_horizon(case)
+    horizon = case.time_horizon()
     nodes = node_output(case)
 
     x = ur(horizon)
