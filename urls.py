@@ -30,18 +30,4 @@ urlpatterns = patterns('',
 ### output views (stub)
                        (r'^case/sample/$','npo_main.views.sample_case'),
 
-                       (r'^case/(?P<id>\d+)/pop/$','npo_main.views.pop'),
-                       (r'^case/(?P<id>\d+)/demand/$','npo_main.views.demand'),
-                       (r'^case/(?P<id>\d+)/count/$','npo_main.views.count'),
-                       (r'^case/(?P<id>\d+)/system-count/$','npo_main.views.system_count'),
-
-                       (r'^case/(?P<id>\d+)/component-costs/$','npo_main.views.cost_components'),
-
-                       (r'^case/(?P<id>\d+)/system-summary/$','npo_main.views.system_summary'),
-
-                       (r'^case/(?P<id>\d+)/cost-histograms/$','npo_main.views.cost_histograms'),
-
-                       (r'^case/(?P<id>\d+)/summary/$','npo_main.views.summary'),
-                       (r'^case/(?P<id>\d+)/household-cost/$','npo_main.views.household_average_cost'),
-
 )
