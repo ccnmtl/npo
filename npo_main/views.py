@@ -214,7 +214,6 @@ def results_for_case(case,request):
     results = dict(case=case)
     results = case.pop()
     results['case'] = case
-    results['system_breakdown_counts'] = case.system_summary()
     x = case.cost_components()
     mv_cost = (case.total_mv_line_length() *
                case.mv_line_cost_per_meter())            
