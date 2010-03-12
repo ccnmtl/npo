@@ -8,7 +8,7 @@ COST_COMPONENTS = {
         "service cost",
         "equipment cost",
         ## XXX TODO NO MEDIUM VOLTAGE LINE COST YET "medium voltage line cost per meter",
-        ## XXX TODO NO LOW VOLTAGE LINE COST YET
+        "low voltage line cost",
         "internal system recurring cost per year",
         ## XXX TODO what about external system recurring cost per year per meter?
         ],
@@ -327,6 +327,11 @@ class Node(object):
 
         return cost_per_year * discount_factor * time_horizon
 
+    def lv_line_length(self):
+        assert self.system() in ('mini-grid', 'grid'), \
+            "Off-grid nodes don't have low-voltage line, right?"
+        return float(self['distribution']['low voltage line length in meters'])
+        
     def initial_cost(self, component):
         system = self.system()
         assert component in COST_COMPONENTS[system]
@@ -336,13 +341,11 @@ class Node(object):
             component = 'transfomer cost'
 
         if component == 'low voltage line cost':
-            assert system == 'mini-grid', \
-                "Only mini-grid nodes have LV costs, right?"
+            assert system in ('mini-grid', 'grid'), \
+                "Off-grid nodes don't have low-voltage line, right?"
             cost_per_meter = self['distribution'][
                 'low voltage line cost per meter']
-            length = self['distribution'][
-                'low voltage line length in meters']
-            component_cost = float(cost_per_meter) * float(length)
+            component_cost = float(cost_per_meter) * self.lv_line_length()
         else:
             component_cost = self['system (%s)' % system][component]
             component_cost = float(component_cost)
