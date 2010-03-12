@@ -244,7 +244,6 @@ def results_for_case(case,request):
 
     except:
         # must not have results yet
-        print "hit an exception"
         pass
     return results
 
