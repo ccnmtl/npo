@@ -218,7 +218,13 @@ def results_for_case(case,request):
         results['system_counts'] = case.system_count()
         results['system_breakdown_counts'] = case.system_summary()
         x = case.cost_components()
+        mv_cost = (case.total_mv_line_length() *
+                   case.mv_line_cost_per_meter())            
+        x['components']['grid'][
+            'medium-voltage line cost'] = mv_cost
+
         results['cost_components'] = x['components']
+        
         results['totals'] = x['totals']
         results['cost_histogram_counts'] = case.cost_histograms(request)
         results['household_costs'] = case.household_average_cost()

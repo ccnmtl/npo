@@ -102,6 +102,14 @@ class Case(models.Model):
         return float(self.output_dict()
                      ['statistics']['network']
                      ['new segment weight'])
+    def mv_line_cost_per_meter(self):
+        return float(self.output_dict()
+                     ['inputs']
+                     ['metric configuration']
+                     ['system (grid)']
+                     [
+                'medium voltage line cost per meter'
+                ])
 
     def mv_hh(self):
         nodes = self.node_output()

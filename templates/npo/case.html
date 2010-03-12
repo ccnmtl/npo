@@ -95,30 +95,4 @@ var plot = function(insertInto, paramsFrom) {
   g.draw();
 </script>
 
-<script type="text/javascript">
-function initmap() {
-
-var map = new OpenLayers.Map('map');
-
-map.addLayer(new OpenLayers.Layer.WMS('OpenLayers WMS',
-             'http://labs.metacarta.com/wms/vmap0', 
-             {layers: 'basic'}));
-
-map.setCenter(new OpenLayers.LonLat(
-              {{case.mean_lon}}, {{case.mean_lat}}),
-              map.getZoomForExtent(
-                new OpenLayers.Bounds(
-                {{case.min_lon}}, {{case.min_lat}},
-                {{case.max_lon}}, {{case.max_lat}}
-)));
-
-var features = {{case.geojson|safe}};
-var geojson_format = new OpenLayers.Format.GeoJSON();
-var vectorLayer = new OpenLayers.Layer.Vector();
-map.addLayer(vectorLayer);
-vectorLayer.addFeatures(geojson_format.read(features));
-}
-//window.onload = initmap;
-</script>
-
 {% endblock %}

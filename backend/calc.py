@@ -7,7 +7,6 @@ COST_COMPONENTS = {
         "installation cost",
         "service cost",
         "equipment cost",
-        ## XXX TODO NO MEDIUM VOLTAGE LINE COST YET "medium voltage line cost per meter",
         "low voltage line cost",
         "internal system recurring cost per year",
         ## XXX TODO what about external system recurring cost per year per meter?
