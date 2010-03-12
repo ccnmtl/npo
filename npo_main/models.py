@@ -115,7 +115,7 @@ class Case(models.Model):
         except KeyError:
             # looks like we don't have a zip file to download
             # have to punt for now
-            return url
+            return
 
         content = GET(url)
         path = time.strftime("outputs/%Y/%m/%d")
