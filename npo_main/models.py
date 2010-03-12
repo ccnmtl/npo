@@ -120,12 +120,12 @@ class Case(models.Model):
     def pop(self):
         horizon = self.time_horizon()
         nodes = self.node_output()
-
         x = ur(horizon)
         results = x(nodes)
-
-        results['years'] = range(horizon)
         return results
+
+    def years(self):
+        return range(self.time_horizon())
 
     def demand(self):
         nodes = self.node_output()
