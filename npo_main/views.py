@@ -224,7 +224,7 @@ def results_for_case(case,request):
         results['cost_components'] = x['components']
         results['totals'] = x['totals']
         results['cost_histogram_counts'] = case.cost_histograms(request)
-        results['household_costs'] = household_average_cost(case)
+        results['household_costs'] = case.household_average_cost()
         results['histogram_params'] = {
             'o': bins('o', request),
             'm': bins('m', request), 
@@ -267,12 +267,6 @@ def panic(request, id):
     return {'case': case}
 
 
-from backend.calc import average_cost_per_household
-def household_average_cost(case):
-    nodes = case.node_output()
-
-    results = average_cost_per_household(nodes)
-    return results
 
 from backend.calc import lv_per_household
 def lv_hh(case):

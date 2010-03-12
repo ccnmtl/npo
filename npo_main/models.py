@@ -18,6 +18,7 @@ from backend.calc import nodes_per_system_nongrid
 from backend.calc import nodes_per_system_and_type
 from backend.calc import cost_components as calc_component_costs
 from backend.calc import cost_histogram
+from backend.calc import average_cost_per_household
 
 DEFAULT_BINS = ['1e10', '1e12', '1e14']
 def bins(param, request):
@@ -155,6 +156,10 @@ class Case(models.Model):
 
         return results
 
+    def household_average_cost(self):
+        nodes = self.node_output()
+        results = average_cost_per_household(nodes)
+        return results
 
     @models.permalink
     def get_absolute_url(self):
