@@ -9,7 +9,7 @@ import os
 from django.core.mail import send_mail
 from restclient import GET
 import time
-from backend.calc import Nodes, get_nodes
+from backend.calc import Nodes
 from backend.calc import urban_rural_population_totals as ur
 from backend.calc import demand_totals
 from backend.calc import total_projected_household_count
@@ -19,6 +19,7 @@ from backend.calc import nodes_per_system_and_type
 from backend.calc import cost_components as calc_component_costs
 from backend.calc import cost_histogram
 from backend.calc import average_cost_per_household
+from backend.calc import lv_per_household
 
 DEFAULT_BINS = ['1e10', '1e12', '1e14']
 def bins(param, request):
@@ -159,6 +160,11 @@ class Case(models.Model):
     def household_average_cost(self):
         nodes = self.node_output()
         results = average_cost_per_household(nodes)
+        return results
+
+    def lv_hh(self):
+        nodes = self.node_output()
+        results = lv_per_household(nodes)
         return results
 
     @models.permalink

@@ -231,7 +231,7 @@ def results_for_case(case,request):
             'g': bins('g', request),
             }
         
-        results['lv_hh'] = lv_hh(case.node_output())
+        results['lv_hh'] = case.lv_hh()
         results['mv_hh'] = case.mv_hh()
     except:
         # must not have results yet
@@ -268,11 +268,6 @@ def panic(request, id):
 
 
 
-from backend.calc import lv_per_household
-def lv_hh(case):
-    nodes = case.node_output()
-    results = lv_per_household(nodes)
-    return results
 
 @rendered_with("npo/output/summary.html")
 def summary(request, id):
