@@ -235,6 +235,7 @@ def results_for_case(case,request):
             }
         
         results['lv_hh'] = lv_hh(nodes)
+        results['mv_hh'] = case.mv_hh()
 
     except:
         # must not have results yet

@@ -12,6 +12,7 @@ import time
 from backend.calc import Nodes, get_nodes
 from backend.calc import urban_rural_population_totals as ur
 from backend.calc import demand_totals
+from backend.calc import total_projected_household_count
 
 datasets = dict(default=("demographics.csv","networks.zip"),
                 leona=("LeonaVillages.zip","LeonaNetworks.zip"),
@@ -81,6 +82,18 @@ class Case(models.Model):
     def node_output(self):
         nodes = self.output_dict()['variables']['node']
         return Nodes(nodes)
+
+    def total_mv_line_length(self):
+        return float(self.output_dict()
+                     ['statistics']['network']
+                     ['new segment weight'])
+
+    def mv_hh(self):
+        nodes = self.node_output()
+        count = total_projected_household_count(
+            nodes, system='grid')
+        mv_length = self.total_mv_line_length()
+        return mv_length / count
 
     def pop(self):
         horizon = self.time_horizon()
