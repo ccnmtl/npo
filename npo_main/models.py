@@ -12,6 +12,8 @@ import time
 from backend.calc import Nodes, get_nodes
 from backend.calc import urban_rural_population_totals as ur
 from backend.calc import demand_totals
+from backend.calc import count_totals
+from backend.calc import nodes_per_system_nongrid
 
 datasets = dict(default=("demographics.csv","networks.zip"),
                 leona=("LeonaVillages.zip","LeonaNetworks.zip"),
@@ -94,10 +96,20 @@ class Case(models.Model):
 
     def demand(self):
         nodes = self.node_output()
-
         x = demand_totals()
         results = x(nodes)
         return results
+
+    def count(self):
+        nodes = self.node_output()
+        results = count_totals(nodes)
+        return results
+
+    def system_count(self):
+        nodes = self.node_output()
+        results = nodes_per_system_nongrid(nodes)
+        return results
+
 
     @models.permalink
     def get_absolute_url(self):

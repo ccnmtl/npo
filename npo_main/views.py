@@ -219,8 +219,8 @@ def results_for_case(case,request):
         results['case'] = case
 
         results['demand'] = case.demand()
-        results['counts'] = count(case)
-        results['system_counts'] = system_count(case)
+        results['counts'] = case.count()
+        results['system_counts'] = case.system_count()
         results['system_breakdown_counts'] = system_summary(case)
         x = cost_components(case)
         results['cost_components'] = x['components']
@@ -269,19 +269,7 @@ def panic(request, id):
     case = get_object_or_404(Case,id=id)
     return {'case': case}
 
-from backend.calc import count_totals
-def count(case):
-    nodes = case.node_output()
 
-    results = count_totals(nodes)
-    return results
-
-from backend.calc import nodes_per_system_nongrid
-def system_count(case):
-    nodes = case.node_output()
-
-    results = nodes_per_system_nongrid(nodes)
-    return results
 
 from backend.calc import nodes_per_system_and_type
 def system_summary(case):
