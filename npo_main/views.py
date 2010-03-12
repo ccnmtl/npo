@@ -232,7 +232,7 @@ def results_for_case(case,request):
             }
         
         results['lv_hh'] = lv_hh(case.node_output())
-
+        results['mv_hh'] = case.mv_hh()
     except:
         # must not have results yet
         pass

@@ -178,6 +178,17 @@ def nodes_per_system_and_type(nodes):
 
     return counts
 
+
+def total_projected_household_count(nodes, system):
+    count = 0
+    nodes = self.node_output()
+    for node in nodes._dict:
+        node = nodes[node]
+        if node.system() != system:
+            continue
+        count += node.projected_hoouseholds()
+    return count
+
 def lv_per_household(nodes):
     lens = dict(urban=0, rural=0)
 
