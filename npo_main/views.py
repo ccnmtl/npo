@@ -215,8 +215,6 @@ def results_for_case(case,request):
     try:
         results = case.pop()
         results['case'] = case
-
-        results['demand'] = case.demand()
         results['counts'] = case.count()
         results['system_counts'] = case.system_count()
         results['system_breakdown_counts'] = case.system_summary()
@@ -230,14 +228,14 @@ def results_for_case(case,request):
         
         results['totals'] = x['totals']
         results['cost_histogram_counts'] = case.cost_histograms(request)
-        results['household_costs'] = household_average_cost(case)
+        results['household_costs'] = case.household_average_cost()
         results['histogram_params'] = {
             'o': bins('o', request),
             'm': bins('m', request), 
             'g': bins('g', request),
             }
         
-        results['lv_hh'] = lv_hh(case.node_output())
+        results['lv_hh'] = case.lv_hh()
         results['mv_hh'] = case.mv_hh()
     except:
         # must not have results yet
@@ -273,18 +271,7 @@ def panic(request, id):
     return {'case': case}
 
 
-from backend.calc import average_cost_per_household
-def household_average_cost(case):
-    nodes = case.node_output()
 
-    results = average_cost_per_household(nodes)
-    return results
-
-from backend.calc import lv_per_household
-def lv_hh(case):
-    nodes = case.node_output()
-    results = lv_per_household(nodes)
-    return results
 
 @rendered_with("npo/output/summary.html")
 def summary(request, id):
