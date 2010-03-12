@@ -154,6 +154,7 @@ def case_callback(request,id):
             case.stage_one_output = request.POST.get('payload','{}')
         elif status == "stage 1":
             case.stage_two_output = request.POST.get('payload','{}')
+        case.fetch_output_file()
         case.save()
         case.send_notification_email()
         if case.status() == "complete":

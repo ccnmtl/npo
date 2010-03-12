@@ -1,15 +1,14 @@
 from django.db import models
 from django.contrib.auth.models import User
 from datetime import datetime
-#from django.contrib.contenttypes.models import ContentType
-#from django.contrib.contenttypes import generic
 from django.utils.simplejson import loads
-#from sample_data.params import params
 from backend import expand_param_names
 from backend import request as backend_request
 from django.conf import settings
 import os
 from django.core.mail import send_mail
+from restclient import GET
+import time
 
 datasets = dict(default=("demographics.csv","networks.zip"),
                 leona=("LeonaVillages.zip","LeonaNetworks.zip"),
@@ -45,7 +44,12 @@ class Case(models.Model):
 
     def output_dict(self):
         try:
-            return loads(self.stage_one_output)
+            # temporarily handle both possible payloads that the backend might give us
+            d = loads(self.stage_one_output)
+            if d.has_key('outputs'):
+                return d['outputs']
+            else:
+                return d
         except:
             return dict()
 
@@ -105,13 +109,27 @@ class Case(models.Model):
     def fetch_output_file(self):
         if self.status() == "started":
             return # precondition: must have output
-        return self.stage_one_output
-#        print str(self.output_dict()["variables"].keys())
-        # stuck here for the moment since Roy's callback payload
-        # isn't including the formats section currently
-#        url = "http://september.mech.columbia.edu" + self.output_dict()["variables"]["formats"]["zip"]
-#        return url
+        d = loads(self.stage_one_output)
+        try:
+            url = d['formats']['zip']
+        except KeyError:
+            # looks like we don't have a zip file to download
+            # have to punt for now
+            return url
 
+        content = GET(url)
+        path = time.strftime("outputs/%Y/%m/%d")
+        fullpath = os.path.join(settings.MEDIA_ROOT,path)
+        fname = "%d.zip" % self.id
+        try:
+            os.makedirs(fullpath)
+        except OSError:
+            pass # dir already exists
+        f = open(os.path.join(fullpath,fname),"w")
+        f.write(content)
+        f.close()
+        self.output_file = os.path.join(path,fname)
+        self.save()
 
 from django.contrib import admin
 admin.site.register(Case)

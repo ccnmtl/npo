@@ -35,9 +35,13 @@
 	  {% ifequal case.status "started" %}
 	  [run is in progress]
 	  {% else %}
+	  {% if case.output_file %}
+	  <a href="{{case.output_file.url}}" class="downloadfiles" 
+	     title="Click to download output files for this case"><span>Download
+	      files</span></a>{% else %}
 	  <a href="http://october.mech.columbia.edu/jobs" class="downloadfiles" 
 	     title="Click to download output files for this case"><span>Download
-	      files</span></a>{% endifequal %}
+	      files</span></a>{% endif %}{% endifequal %}
 
 	</td> 
       </tr> 
