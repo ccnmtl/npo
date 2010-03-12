@@ -58,7 +58,6 @@ var plot = function(insertInto, paramsFrom) {
 {% for c in cases %}
 <td>
 {% with c.case as case %}
-{% with c.demand as demand %}
 {% with c.costs as costs %}
 {% with c.urban as urban %}
 {% with c.rural as rural %}
@@ -66,14 +65,11 @@ var plot = function(insertInto, paramsFrom) {
 {% with c.system_breakdown_counts as system_breakdown_counts %}
 {% with c.cost_components as cost_components %}
 {% with c.totals as totals %}
-{% with c.counts as counts %}
 {% with c.cost_histogram_counts as cost_histogram_counts %}
 {% with c.household_costs as household_costs %}
 {% with c.histogram_params as histogram_params %}
 {% include "npo/case_display.html" %}
 {% endwith %}{% endwith %}{% endwith %}
-{% endwith %}
-{% endwith %}
 {% endwith %}
 {% endwith %}
 {% endwith %}
