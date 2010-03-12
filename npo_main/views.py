@@ -10,7 +10,7 @@ from backend import request as backend_request
 SAMPLE_PATH = "sample_data"
 import os
 from simplejson import loads, dumps
-from models import Case
+from models import Case, bins
 from collections import defaultdict
 
 class recursivedefaultdict(defaultdict): 
@@ -199,8 +199,6 @@ def sample_case(request):
     results['cost_histogram_counts'] = cost_histograms(case, request)
     results['household_costs'] = household_average_cost(case)
 
-
-
     results['histogram_params'] = {
         'o': bins('o', request),
         'm': bins('m', request), 
@@ -221,20 +219,19 @@ def results_for_case(case,request):
         results['demand'] = case.demand()
         results['counts'] = case.count()
         results['system_counts'] = case.system_count()
-        results['system_breakdown_counts'] = system_summary(case)
-        x = cost_components(case)
+        results['system_breakdown_counts'] = case.system_summary()
+        x = case.cost_components()
         results['cost_components'] = x['components']
         results['totals'] = x['totals']
-        results['cost_histogram_counts'] = cost_histograms(case, request)
+        results['cost_histogram_counts'] = case.cost_histograms(request)
         results['household_costs'] = household_average_cost(case)
-
         results['histogram_params'] = {
             'o': bins('o', request),
             'm': bins('m', request), 
             'g': bins('g', request),
             }
         
-        results['lv_hh'] = lv_hh(nodes)
+        results['lv_hh'] = lv_hh(case.node_output())
 
     except:
         # must not have results yet
@@ -269,42 +266,6 @@ def panic(request, id):
     case = get_object_or_404(Case,id=id)
     return {'case': case}
 
-
-
-from backend.calc import nodes_per_system_and_type
-def system_summary(case):
-    nodes = case.node_output()
-
-    results = nodes_per_system_and_type(nodes)
-    return results
-
-from backend.calc import cost_components as calc_component_costs
-def cost_components(case):
-    nodes = case.node_output()
-
-    results = calc_component_costs(nodes)
-    return results
-
-DEFAULT_BINS = ['1e10', '1e12', '1e14']
-def bins(param, request):
-    _bins = [i for i in request.GET.getlist(param) if i]
-    if not _bins:
-        _bins = list(DEFAULT_BINS)
-        
-    return _bins
-
-from backend.calc import cost_histogram
-def cost_histograms(case, request):
-    nodes = case.node_output()
-
-    
-    results = {
-        'grid': cost_histogram(nodes, 'grid', *bins('g', request)),
-        'off-grid': cost_histogram(nodes, 'off-grid', *bins('o', request)),
-        'mini-grid': cost_histogram(nodes, 'mini-grid', *bins('m', request)),
-        }
-    
-    return results
 
 from backend.calc import average_cost_per_household
 def household_average_cost(case):

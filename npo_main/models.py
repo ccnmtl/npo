@@ -14,6 +14,17 @@ from backend.calc import urban_rural_population_totals as ur
 from backend.calc import demand_totals
 from backend.calc import count_totals
 from backend.calc import nodes_per_system_nongrid
+from backend.calc import nodes_per_system_and_type
+from backend.calc import cost_components as calc_component_costs
+from backend.calc import cost_histogram
+
+DEFAULT_BINS = ['1e10', '1e12', '1e14']
+def bins(param, request):
+    _bins = [i for i in request.GET.getlist(param) if i]
+    if not _bins:
+        _bins = list(DEFAULT_BINS)
+        
+    return _bins
 
 datasets = dict(default=("demographics.csv","networks.zip"),
                 leona=("LeonaVillages.zip","LeonaNetworks.zip"),
@@ -108,6 +119,27 @@ class Case(models.Model):
     def system_count(self):
         nodes = self.node_output()
         results = nodes_per_system_nongrid(nodes)
+        return results
+
+    def system_summary(self):
+        nodes = self.node_output()
+        results = nodes_per_system_and_type(nodes)
+        return results
+
+    def cost_components(self):
+        nodes = self.node_output()
+        results = calc_component_costs(nodes)
+        return results
+
+    def cost_histograms(self, request):
+        nodes = self.node_output()
+
+        results = {
+            'grid': cost_histogram(nodes, 'grid', *bins('g', request)),
+            'off-grid': cost_histogram(nodes, 'off-grid', *bins('o', request)),
+            'mini-grid': cost_histogram(nodes, 'mini-grid', *bins('m', request)),
+            }
+
         return results
 
 
