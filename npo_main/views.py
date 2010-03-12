@@ -229,9 +229,6 @@ def results_for_case(case,request):
         'm': bins('m', request), 
         'g': bins('g', request),
         }
-
-    results['mv_hh'] = case.mv_hh()
-
     return results
 
 @login_required
