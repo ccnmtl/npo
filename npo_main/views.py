@@ -217,6 +217,8 @@ def sample_case(request):
         'g': bins('g', request),
         }
 
+    results['lv_hh'] = lv_hh(case)
+        
     results['case'] = case
     return results
 
@@ -241,6 +243,8 @@ def results_for_case(case,request):
             'm': bins('m', request), 
             'g': bins('g', request),
             }
+        
+        results['lv_hh'] = lv_hh(nodes)
 
     except:
         # must not have results yet
@@ -349,6 +353,12 @@ def household_average_cost(case):
     nodes = node_output(case)
 
     results = average_cost_per_household(nodes)
+    return results
+
+from backend.calc import lv_per_household
+def lv_hh(case):
+    nodes = node_output(case)
+    results = lv_per_household(nodes)
     return results
 
 @rendered_with("npo/output/summary.html")
