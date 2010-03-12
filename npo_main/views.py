@@ -224,7 +224,6 @@ def results_for_case(case,request):
 
     results['totals'] = x['totals']
     results['cost_histogram_counts'] = case.cost_histograms(request)
-    results['household_costs'] = case.household_average_cost()
     results['histogram_params'] = {
         'o': bins('o', request),
         'm': bins('m', request), 

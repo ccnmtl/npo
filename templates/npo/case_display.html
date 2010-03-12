@@ -100,9 +100,7 @@ onclick="showElement('paramset-{{case.id}}');return false">show parameters</a></
 
 <h2>Average household costs</h2>
 <em>The total cost of the system divided by the projected number of households.</em>
-{% with household_costs as results %}
 {% include "npo/output/household_average_cost.html" %}
-{% endwith %}
 
 <h2>LV/HH</h2>
 <em>The low-voltage line length per household, only for nodes on the grid</em>

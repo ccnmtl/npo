@@ -2,7 +2,7 @@
 
 <table id="household_costs">
 <tbody>
-  {% for type, value in results.items %}
+  {% for type, value in case.household_average_cost.items %}
   <tr>
     <th scope="row">{{type}}</th>
     <td>
