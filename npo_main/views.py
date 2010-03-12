@@ -56,7 +56,7 @@ def bulk(request):
                 if k.startswith("case_"):
                     caseid = k.split("_")[1]
                     case_ids.append(caseid)
-        return HttpResponseRedirect("/compare/" + ",".join(case_ids) + "/")
+            return HttpResponseRedirect("/compare/" + ",".join(case_ids) + "/")
     return HttpResponseRedirect("/")
 
 @login_required
