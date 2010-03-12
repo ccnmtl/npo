@@ -230,7 +230,6 @@ def results_for_case(case,request):
         'g': bins('g', request),
         }
 
-    results['lv_hh'] = case.lv_hh()
     results['mv_hh'] = case.mv_hh()
 
     return results

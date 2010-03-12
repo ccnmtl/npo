@@ -3,14 +3,14 @@
 <table id="lv_hh">
   <thead>
     <tr>
-      {% for type in results.keys %}
+      {% for type in case.lv_hh.keys %}
       <th scope="col">{{type}}</th>
       {% endfor %}
     </tr>
   </thead>
   <tbody>
     <tr>
-      {% for value in results.values %}
+      {% for value in case.lv_hh.values %}
       <td>{{value}}</td>
       {% endfor %}
     </tr>
