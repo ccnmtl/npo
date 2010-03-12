@@ -327,7 +327,7 @@ def household_average_cost(case):
 
 from backend.calc import lv_per_household
 def lv_hh(case):
-    nodes = node_output(case)
+    nodes = case.node_output()
     results = lv_per_household(nodes)
     return results
 
