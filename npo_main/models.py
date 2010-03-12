@@ -103,9 +103,10 @@ class Case(models.Model):
                      ['statistics']['network']
                      ['new segment weight'])
     def mv_line_cost_per_meter(self):
-        return float(self.output_dict()
-                     ['inputs']
-                     ['metric configuration']
+        print str(self.parameters_dict().keys())
+        return float(self.parameters_dict()
+#                     ['inputs']
+                     ['metric']
                      ['system (grid)']
                      [
                 'medium voltage line cost per meter'
