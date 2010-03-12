@@ -9,6 +9,7 @@ import os
 from django.core.mail import send_mail
 from restclient import GET
 import time
+from backend.calc import Nodes, get_nodes
 
 datasets = dict(default=("demographics.csv","networks.zip"),
                 leona=("LeonaVillages.zip","LeonaNetworks.zip"),
@@ -71,6 +72,13 @@ class Case(models.Model):
         return self.node_stats().get('maximum longitude',None)
     def max_lat(self):
         return self.node_stats().get('maximum latitude',None)
+
+    def time_horizon(self):
+        return int(self.parameters_dict()['metric']['finance']['time horizon in years']) + 1
+
+    def node_output(self):
+        nodes = self.output_dict()['variables']['node']
+        return Nodes(nodes)
 
     @models.permalink
     def get_absolute_url(self):

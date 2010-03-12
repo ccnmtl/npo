@@ -181,17 +181,7 @@ def run(request):
 
 ### outputs
 
-from backend.calc import Nodes, get_nodes
-def node_output(case):
-    if case is None:  # lame way of getting sample outputs easily
-        return get_nodes()
-    nodes = case.output_dict()['variables']['node']
-    return Nodes(nodes)
 
-def time_horizon(case):
-    if case is None:
-        return 11 # lame lame lame
-    return int(case.parameters_dict()['metric']['finance']['time horizon in years']) + 1
 
 @login_required
 @rendered_with('npo/case.html')
@@ -281,8 +271,8 @@ def panic(request, id):
 
 from backend.calc import urban_rural_population_totals as ur
 def pop(case):
-    horizon = time_horizon(case)
-    nodes = node_output(case)
+    horizon = case.time_horizon()
+    nodes = case.node_output()
 
     x = ur(horizon)
     results = x(nodes)
@@ -293,7 +283,7 @@ def pop(case):
 from backend.calc import demand_totals
 
 def demand(case):
-    nodes = node_output(case)
+    nodes = case.node_output()
 
     x = demand_totals()
     results = x(nodes)
@@ -301,28 +291,28 @@ def demand(case):
 
 from backend.calc import count_totals
 def count(case):
-    nodes = node_output(case)
+    nodes = case.node_output()
 
     results = count_totals(nodes)
     return results
 
 from backend.calc import nodes_per_system_nongrid
 def system_count(case):
-    nodes = node_output(case)
+    nodes = case.node_output()
 
     results = nodes_per_system_nongrid(nodes)
     return results
 
 from backend.calc import nodes_per_system_and_type
 def system_summary(case):
-    nodes = node_output(case)
+    nodes = case.node_output()
 
     results = nodes_per_system_and_type(nodes)
     return results
 
 from backend.calc import cost_components as calc_component_costs
 def cost_components(case):
-    nodes = node_output(case)
+    nodes = case.node_output()
 
     results = calc_component_costs(nodes)
     return results
@@ -337,7 +327,7 @@ def bins(param, request):
 
 from backend.calc import cost_histogram
 def cost_histograms(case, request):
-    nodes = node_output(case)
+    nodes = case.node_output()
 
     
     results = {
@@ -350,7 +340,7 @@ def cost_histograms(case, request):
 
 from backend.calc import average_cost_per_household
 def household_average_cost(case):
-    nodes = node_output(case)
+    nodes = case.node_output()
 
     results = average_cost_per_household(nodes)
     return results
