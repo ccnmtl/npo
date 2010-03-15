@@ -180,36 +180,6 @@ def run(request):
 
 
 ### outputs
-
-
-
-@login_required
-@rendered_with('npo/case.html')
-def sample_case(request):
-    case = None
-    results = case.pop()
-
-    results['demand'] = demand(case)
-    results['counts'] = count(case)
-    results['system_counts'] = system_count(case)
-    results['system_breakdown_counts'] = system_summary(case)
-    x = cost_components(case)
-    results['cost_components'] = x['components']
-    results['totals'] = x['totals']
-    results['cost_histogram_counts'] = cost_histograms(case, request)
-    results['household_costs'] = household_average_cost(case)
-
-    results['histogram_params'] = {
-        'o': bins('o', request),
-        'm': bins('m', request), 
-        'g': bins('g', request),
-        }
-
-    results['lv_hh'] = lv_hh(case)
-        
-    results['case'] = case
-    return results
-
 def results_for_case(case,request):
     results = dict(case=case)
     results = case.pop()
