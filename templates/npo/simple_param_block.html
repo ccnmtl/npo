@@ -1,13 +1,20 @@
 {% load get %}
-{% with section|get:key as value %}
+{% load idify %}
+{% with params.metric|get:section as sectiondict %}
+{% with sectiondict|get:key as value %}
+{% with section|idify as sectionid %}
+{% with key|idify as keyid %}
 <div class="pageblock"> 
-  <div class="ptitle {{divwidth}}"><label for="paramset-{{paramsetid}}-{{fullid}}">{{label}}:</label></div>
-  <div class="pfield"><input name="paramset-{{paramsetid}}-{{fullid}}"
-			     id="paramset-{{paramsetid}}-{{fullid}}" 
+  <div class="ptitle {{divwidth}}"><label for="paramset-{{paramsetid}}-metric>{{sectionid}}>{{keyid}}">{{label}}:</label></div>
+  <div class="pfield"><input name="paramset-{{paramsetid}}-metric>{{sectionid}}>{{keyid}}"
+			     id="paramset-{{paramsetid}}-metric>{{sectionid}}>{{keyid}}" 
 			     class="form_text" type="text"
 			     size="10" maxlength="128" 
 			     value="{{value}}"
 			     /> {{units}}{% if instructions %}<div class="instructions">{{instructions}}</div>{% endif %}</div>
   <div class="visualclear"></div> 
 </div>
+{% endwith %}
+{% endwith %}
+{% endwith %}
 {% endwith %}

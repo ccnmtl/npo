@@ -9,37 +9,33 @@
 	  
 	  <div class="tabbertab" title="Financing"> 
 	    
-	    {% with params.metric.finance as section %}
+	    {% with "finance" as section %}
 	    {% with "w150" as divwidth %}
 
 	    {% with "Time horizon" as label %}
 	    {% with "year(s)" as units %}
-	    {% with "metric>finance>time_horizon_in_years" as fullid %}
 	    {% with "time horizon in years" as key %}
 	    {% include "npo/simple_param_block.html" %}
-	    {% endwith %}{% endwith %}{% endwith %}{% endwith %}
+	    {% endwith %}{% endwith %}{% endwith %}
 
 	    {% with "Economic Growth Rate Per Year" as label %}
 	    {% with "" as units %}
-	    {% with "metric>finance>economic_growth_rate_per_year" as fullid %}
 	    {% with "economic growth rate per year" as key %}
 	    {% include "npo/simple_param_block.html" %}
-	    {% endwith %}{% endwith %}{% endwith %}{% endwith %}
+	    {% endwith %}{% endwith %}{% endwith %}
 
 	    {% with "Elasticity of Electricity Demand" as label %}
 	    {% with "" as units %}
-	    {% with "metric>finance>elasticity_of_electricity_demand" as fullid %}
 	    {% with "elasticity of electricity demand" as key %}
 	    {% include "npo/simple_param_block.html" %}
-	    {% endwith %}{% endwith %}{% endwith %}{% endwith %}
+	    {% endwith %}{% endwith %}{% endwith %}
 
 	    {% with "Annual interest rate" as label %}
 	    {% with "" as units %}
-	    {% with "metric>finance>yearly_interest_rate" as fullid %}
 	    {% with "yearly interest rate" as key %}
 	    {% with "(e.g. 0.02 for 2%)" as instructions %}
 	    {% include "npo/simple_param_block.html" %}
-	    {% endwith %}{% endwith %}{% endwith %}{% endwith %}{% endwith %}
+	    {% endwith %}{% endwith %}{% endwith %}{% endwith %}
 
 	    {% endwith %}
 	    {% endwith %}
@@ -53,56 +49,50 @@
 	  <div class="tabbertab" title="Demographics"> 
 	    
 
-	    {% with params.metric.demographics as section %}
+	    {% with "demographics" as section %}
 	    {% with "w200" as divwidth %}
 
 	    {% with "Annual population growth rate" as label %}
 	    {% with "" as units %}
-	    {% with "metric>demographics>population_growth_rate_per_year" as fullid %}
 	    {% with "population growth rate per year" as key %}
 	    {% with "(e.g. 0.02 for 2%)" as instructions %}
 	    {% include "npo/simple_param_block.html" %}
-	    {% endwith %}{% endwith %}{% endwith %}{% endwith %}{% endwith %}
+	    {% endwith %}{% endwith %}{% endwith %}{% endwith %}
 
 	    {% with "Mean household size (rural)" as label %}
 	    {% with "person(s)" as units %}
-	    {% with "metric>demographics>mean_household_size_(rural)" as fullid %}
 	    {% with "mean household size (rural)" as key %}
 	    {% with "" as instructions %}
 	    {% include "npo/simple_param_block.html" %}
-	    {% endwith %}{% endwith %}{% endwith %}{% endwith %}{% endwith %}
+	    {% endwith %}{% endwith %}{% endwith %}{% endwith %}
 
 	    {% with "Mean household size (urban)" as label %}
 	    {% with "person(s)" as units %}
-	    {% with "metric>demographics>mean_household_size_(urban)" as fullid %}
 	    {% with "mean household size (urban)" as key %}
 	    {% with "" as instructions %}
 	    {% include "npo/simple_param_block.html" %}
-	    {% endwith %}{% endwith %}{% endwith %}{% endwith %}{% endwith %}
+	    {% endwith %}{% endwith %}{% endwith %}{% endwith %}
 
 	    {% with "Urban population threshold" as label %}
 	    {% with "person(s)" as units %}
-	    {% with "metric>demographics>urban_population_threshold" as fullid %}
 	    {% with "urban population threshold" as key %}
 	    {% with "(minimum population of community when considered urban)" as instructions %}
 	    {% include "npo/simple_param_block.html" %}
-	    {% endwith %}{% endwith %}{% endwith %}{% endwith %}{% endwith %}
+	    {% endwith %}{% endwith %}{% endwith %}{% endwith %}
 
 	    {% with "Mean interhousehold distance" as label %}
 	    {% with "meters" as units %}
-	    {% with "metric>demographics>mean_interhousehold_distance_in_meters" as fullid %}
 	    {% with "mean interhousehold distance in meters" as key %}
 	    {% with "" as instructions %}
 	    {% include "npo/simple_param_block.html" %}
-	    {% endwith %}{% endwith %}{% endwith %}{% endwith %}{% endwith %}
+	    {% endwith %}{% endwith %}{% endwith %}{% endwith %}
 
 	    {% with "Population Count" as label %}
 	    {% with "meters" as units %}
-	    {% with "metric>demographics>population_count" as fullid %}
 	    {% with "population count" as key %}
 	    {% with "" as instructions %}
 	    {% include "npo/simple_param_block.html" %}
-	    {% endwith %}{% endwith %}{% endwith %}{% endwith %}{% endwith %}
+	    {% endwith %}{% endwith %}{% endwith %}{% endwith %}
 
 
 	    {% endwith %}
@@ -127,19 +117,17 @@
 		    <div class="instructions">The following parameters refer to energy demands to power domestic lighting and other household electrical equipment, such as televisions or radios.</div><!-- class="instructions" --> 
 		  </div><!-- class="pageblock" --> 
 
-		  {% with "demand (household)" as dsection %}
-		  {% with params.metric|get:dsection as section %}
+		  {% with "demand (household)" as section %}
 		  {% with "w150" as divwidth %}
 
 		  {% with "Base household unit demand" as label %}
 		  {% with "kW/year" as units %}
-		  {% with "metric>demand_(household)>household_unit_demand_per_household_in_kilowatt-hours_per_year" as fullid %}
 		  {% with "household unit demand per household in kilowatt-hours per year" as key %}
 		  {% with "(per household)" as instructions %}
 		  {% include "npo/simple_param_block.html" %}
-		  {% endwith %}{% endwith %}{% endwith %}{% endwith %}{% endwith %}
+		  {% endwith %}{% endwith %}{% endwith %}{% endwith %}
 
-		  {% endwith %}{% endwith %}{% endwith %}
+		  {% endwith %}{% endwith %}
 		  
 		  
 		  <div class="pageblock"> 
@@ -211,19 +199,17 @@
 		    <div class="instructions">These parameters refer to energy demands to power household level of access to productive infrastructure, such as water pumps, agro-processing, equipment, and mills.</div><!-- class="instructions" --> 
 		  </div><!-- class="pageblock" --> 
 		  
-		  {% with "demand (productive)" as msection %}
-		  {% with params.metric|get:msection as section %}
+		  {% with "demand (productive)" as section %}
 		  {% with "w150" as divwidth %}
 
 		  {% with "Base productive unit demand" as label %}
 		  {% with "kW/year" as units %}
-		  {% with "metric>demand_(productive)>productive_unit_demand_per_household_in_kilowatt-hours_per_year" as fullid %}
 		  {% with "productive unit demand per household in kilowatt-hours per year" as key %}
 		  {% with "(per household)" as instructions %}
 		  {% include "npo/simple_param_block.html" %}
-		  {% endwith %}{% endwith %}{% endwith %}{% endwith %}{% endwith %}
+		  {% endwith %}{% endwith %}{% endwith %}{% endwith %}
 
-		  {% endwith %}{% endwith %}{% endwith %}
+		  {% endwith %}{% endwith %}
 
 		  
 		  <div class="pageblock"> 
@@ -303,43 +289,38 @@
 		    </div><!-- class="instructions" --> 
 		  </div><!-- class="pageblock" --> 
 
-		  {% with "demand (social infrastructure)" as msection %}
-		  {% with params.metric|get:msection as section %}
+		  {% with "demand (social infrastructure)" as section %}
 		  {% with "w150" as divwidth %}
 
 		  {% with "Base health unit demand" as label %}
 		  {% with "kW/year" as units %}
-		  {% with "metric>demand_(social_infrastructure)>unit_demand_per_health_facility_in_kilowatts_per_year" as fullid %}
 		  {% with "unit demand per health facility in kilowatts per year" as key %}
 		  {% with "(per health facility)" as instructions %}
 		  {% include "npo/simple_param_block.html" %}
-		  {% endwith %}{% endwith %}{% endwith %}{% endwith %}{% endwith %}
+		  {% endwith %}{% endwith %}{% endwith %}{% endwith %}
 
 		  {% with "Base education unit demand" as label %}
 		  {% with "kW/year" as units %}
-		  {% with "metric>demand_(social_infrastructure)>unit_demand_per_education_facility_in_kilowatt-hours_per_year" as fullid %}
 		  {% with "unit demand per education facility in kilowatt-hours per year" as key %}
 		  {% with "(per education facility)" as instructions %}
 		  {% include "npo/simple_param_block.html" %}
-		  {% endwith %}{% endwith %}{% endwith %}{% endwith %}{% endwith %}
+		  {% endwith %}{% endwith %}{% endwith %}{% endwith %}
 
 		  {% with "Base commercial unit demand" as label %}
 		  {% with "kW/year" as units %}
-		  {% with "metric>demand_(social_infrastructure)>unit_demand_per_commercial_facility_in_kilowatt-hours_per_year" as fullid %}
 		  {% with "unit demand per commercial facility in kilowatt-hours per year" as key %}
 		  {% with "(per commercial facility)" as instructions %}
 		  {% include "npo/simple_param_block.html" %}
-		  {% endwith %}{% endwith %}{% endwith %}{% endwith %}{% endwith %}
+		  {% endwith %}{% endwith %}{% endwith %}{% endwith %}
 
 		  {% with "Base public lighting unit demand" as label %}
 		  {% with "kW/year" as units %}
-		  {% with "metric>demand_(social_infrastructure)>unit_demand_per_public_lighting_facility_in_kilowatt-hours_per_year" as fullid %}
 		  {% with "unit demand per public lighting facility in kilowatt-hours per year" as key %}
 		  {% with "(per commercial facility)" as instructions %}
 		  {% include "npo/simple_param_block.html" %}
-		  {% endwith %}{% endwith %}{% endwith %}{% endwith %}{% endwith %}
+		  {% endwith %}{% endwith %}{% endwith %}{% endwith %}
 
-		  {% endwith %}{% endwith %}{% endwith %}
+		  {% endwith %}{% endwith %}
 		  
 		  <div class="pageblock"> 
 		    <div class="ptitle w150"><label for="paramset-{{paramsetid}}-metric>demand_(social_infrastructure)>demand_curve_points_(population_and_multiplier)">Social infrastructure demand curve:</label></div><!-- ptitle --> 
