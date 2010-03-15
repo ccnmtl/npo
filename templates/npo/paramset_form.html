@@ -1202,47 +1202,36 @@
 		  </div><!-- class="pageblock" --> 
 		  
 		  <h3 class="smaller">Low Voltage Lines</h3> 
-		  		  
-		  <div class="pageblock"> 
-		    <div class="ptitle w200"><label for="paramset-{{paramsetid}}-metric>distribution>low_voltage_line_cost_per_meter">Low-voltage line cost per meter:</label></div><!-- ptitle --> 
-		    <div class="pfield"><input name="paramset-{{paramsetid}}-metric>distribution>low_voltage_line_cost_per_meter"
-					       id="paramset-{{paramsetid}}-metric>distribution>low_voltage_line_cost_per_meter"
-					       class="form_text"
-					       type="text" size="10"
-					       maxlength="128" 
-					       value="{{params.metric.distribution|get:"low voltage line cost per meter"}}"
-					       /> $/m</div><!-- pfield --> 
-		    <div class="visualclear"></div> 
-		  </div><!-- class="pageblock" --> 
-		  
+
+		  {% with "distribution" as section %}
+		  {% with "w200" as divwidth %}
+
+		  {% with "Low-voltage line cost per meter" as label %}
+		  {% with "$/m" as units %}
+		  {% with "low voltage line cost per meter" as key %}
+		  {% with "" as instructions %}
+		  {% include "npo/simple_param_block.html" %}
+		  {% endwith %}{% endwith %}{% endwith %}{% endwith %}
+
 		  <h3 class="smaller">Low Voltage Lines Replacement</h3> 
+
+		  {% with "Low-voltage line lifetime" as label %}
+		  {% with "years" as units %}
+		  {% with "low voltage line lifetime in years" as key %}
+		  {% with "" as instructions %}
+		  {% include "npo/simple_param_block.html" %}
+		  {% endwith %}{% endwith %}{% endwith %}{% endwith %}
 		  		  
-		  <div class="pageblock"> 
-		    <div class="ptitle w200"><label for="paramset-{{paramsetid}}-metric>distribution>low_voltage_line_lifetime_in_years">Low-voltage line lifetime:</label></div><!-- ptitle --> 
-		    <div class="pfield"><input name="paramset-{{paramsetid}}-metric>distribution>low_voltage_line_lifetime_in_years"
-					       id="paramset-{{paramsetid}}-metric>distribution>low_voltage_line_lifetime_in_years"
-					       class="form_text"
-					       type="text" size="10"
-					       maxlength="128" 
-					       value="{{params.metric.distribution|get:"low voltage line lifetime in years"}}"
-					       /> years</div><!-- pfield --> 
-		    <div class="visualclear"></div> 
-		  </div><!-- class="pageblock" --> 
-		  
 		  <h3 class="smaller">Operation and Maintenance (O&#38;M)</h3> 
-		  		  
-		  <div class="pageblock"> 
-		    <div class="ptitle w200"><label for="paramset-{{paramsetid}}-metric>distribution>low_voltage_line_operations_and_maintenance_cost_per_meter">Low-voltage O&amp;M cost in dollars per meter :</label></div><!-- ptitle --> 
-		    <div class="pfield"><input name="paramset-{{paramsetid}}-metric>distribution>low_voltage_line_operations_and_maintenance_cost_per_meter"
-					       id="paramset-{{paramsetid}}-metric>distribution>low_voltage_line_operations_and_maintenance_cost_per_meter"
-					       class="form_text"
-					       type="text" size="10"
-					       maxlength="128" 
-					       value="{{params.metric.distribution|get:"low voltage line operations and maintenance cost per meter"}}"
-					       /> $/m</div><!-- pfield --> 
-		    <div class="visualclear"></div> 
-		  </div><!-- class="pageblock" --> 
-		  
+
+		  {% with "Low-voltage O&amp;M cost in dollars per meter" as label %}
+		  {% with "$/m" as units %}
+		  {% with "low voltage line operations and maintenance cost per meter" as key %}
+		  {% with "" as instructions %}
+		  {% include "npo/simple_param_block.html" %}
+		  {% endwith %}{% endwith %}{% endwith %}{% endwith %}
+
+		  {% endwith %}{% endwith %}		  
 		  <div class="visualclear"></div> 
 		</div><!-- tabbertab  Low voltage distribution --> 
 		
