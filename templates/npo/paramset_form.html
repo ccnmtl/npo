@@ -725,120 +725,78 @@
 		    <div class="visualclear"></div> 
 		  </div><!-- class="pageblock" --> 
 
+		  {% with "system (off-grid)" as section %}
+		  {% with "w200" as divwidth %}
 
-		  <div class="pageblock"> 
-		    <div class="ptitle w200"><label for="paramset-{{paramsetid}}-metric>system_(off-grid)>photovoltaic_panel_cost_per_photovoltaic_system_kilowatt">Panel cost per system kilowatt:</label></div><!-- ptitle --> 
-		    <div class="pfield"><input name="paramset-{{paramsetid}}-metric>system_(off-grid)>photovoltaic_panel_cost_per_photovoltaic_system_kilowatt"
-					       id="paramset-{{paramsetid}}-metric>system_(off-grid)>photovoltaic_panel_cost_per_photovoltaic_system_kilowatt"
-					       class="form_text"
-					       type="text" size="10"
-					       maxlength="128" 
-					       value="{{params.metric|get:"system (off-grid)"|get:"photovoltaic panel cost per photovoltaic system kilowatt"}}"
-					       /> $/kW</div><!-- pfield --> 
-		    <div class="visualclear"></div> 
-		  </div><!-- class="pageblock" --> 
-		  
-		  <div class="pageblock"> 
-		    <div class="ptitle w200"><label for="paramset-{{paramsetid}}-metric>system_(off-grid)>photovoltaic_balance_cost_as_fraction_of_photovoltaic_panel_cost">Balance of system cost factor (as fraction of Panel cost:</label></div><!-- ptitle --> 
-		    <div class="pfield"><input name="paramset-{{paramsetid}}-metric>system_(off-grid)>photovoltaic_balance_cost_as_fraction_of_photovoltaic_panel_cost"
-					       id="paramset-{{paramsetid}}-metric>system_(off-grid)>photovoltaic_balance_cost_as_fraction_of_photovoltaic_panel_cost"
-					       class="form_text"
-					       type="text" size="10"
-					       maxlength="128" 
-					       value="{{params.metric|get:"system (off-grid)"|get:"photovoltaic balance cost as fraction of photovoltaic panel cost"}}"
-					       /><div class="instructions">(e.g. 0.25 for 25%)</div></div><!-- pfield --> 
-		    <div class="visualclear"></div> 
-		  </div><!-- class="pageblock" --> 
-		  
-		  <div class="pageblock"> 
-		    <div class="ptitle w200"><label for="paramset-{{paramsetid}}-metric>system_(off-grid)>photovoltaic_battery_kilowatt-hours_per_photovoltaic_system_kilowatt">Battery energy per system kilowatt:</label></div><!-- ptitle --> 
-		    <div class="pfield"><input name="paramset-{{paramsetid}}-metric>system_(off-grid)>photovoltaic_battery_kilowatt-hours_per_photovoltaic_system_kilowatt"
-					       id="paramset-{{paramsetid}}-metric>system_(off-grid)>photovoltaic_battery_kilowatt-hours_per_photovoltaic_system_kilowatt"
-					       class="form_text"
-					       type="text" size="10"
-					       maxlength="128" 
-					       value="{{params.metric|get:"system (off-grid)"|get:"photovoltaic battery kilowatt-hours per photovoltaic system kilowatt"}}"
-					       /> kWh/kW</div><!-- pfield --> 
-		    <div class="visualclear"></div> 
-		  </div><!-- class="pageblock" --> 
-		  
-		  <div class="pageblock"> 
-		    <div class="ptitle w200"><label for="paramset-{{paramsetid}}-metric>system_(off-grid)>photovoltaic_battery_cost_per_kilowatt-hour">Battery cost per kilowatt-hour:</label></div><!-- ptitle --> 
-		    <div class="pfield"><input name="paramset-{{paramsetid}}-metric>system_(off-grid)>photovoltaic_battery_cost_per_kilowatt-hour"
-					       id="paramset-{{paramsetid}}-metric>system_(off-grid)>photovoltaic_battery_cost_per_kilowatt-hour"
-					       class="form_text"
-					       type="text" size="10"
-					       maxlength="128" 
-					       value="{{params.metric|get:"system (off-grid)"|get:"photovoltaic battery cost per kilowatt-hour"}}"
-					       /> $/kW</div><!-- pfield --> 
-		    <div class="visualclear"></div> 
-		  </div><!-- class="pageblock" --> 
-		  
+		  {% with "Panel cost per system kilowatt" as label %}
+		  {% with "$/kW" as units %}
+		  {% with "photovoltaic panel cost per photovoltaic system kilowatt" as key %}
+		  {% with "" as instructions %}
+		  {% include "npo/simple_param_block.html" %}
+		  {% endwith %}{% endwith %}{% endwith %}{% endwith %}
+
+		  {% with "Balance of system cost factor (as fraction of Panel cost)" as label %}
+		  {% with "" as units %}
+		  {% with "photovoltaic balance cost as fraction of photovoltaic panel cost" as key %}
+		  {% with "(e.g. 0.25 for 25%)" as instructions %}
+		  {% include "npo/simple_param_block.html" %}
+		  {% endwith %}{% endwith %}{% endwith %}{% endwith %}
+
+		  {% with "Battery energy per system kilowatt" as label %}
+		  {% with "kWh/kW" as units %}
+		  {% with "photovoltaic battery kilowatt-hours per photovoltaic system kilowatt" as key %}
+		  {% with "" as instructions %}
+		  {% include "npo/simple_param_block.html" %}
+		  {% endwith %}{% endwith %}{% endwith %}{% endwith %}
+
+		  {% with "Battery cost per kilowatt-hour" as label %}
+		  {% with "$/kW" as units %}
+		  {% with "photovoltaic battery cost per kilowatt-hour" as key %}
+		  {% with "" as instructions %}
+		  {% include "npo/simple_param_block.html" %}
+		  {% endwith %}{% endwith %}{% endwith %}{% endwith %}
+
 		  <h3 class="smaller">Photovoltaic Systems Replacement</h3> 
-		  
-		  <div class="pageblock"> 
-		    <div class="ptitle w200"><label for="paramset-{{paramsetid}}-metric>system_(off-grid)>photovoltaic_panel_lifetime_in_years">Panel lifetime:</label></div><!-- ptitle --> 
-		    <div class="pfield"><input name="paramset-{{paramsetid}}-metric>system_(off-grid)>photovoltaic_panel_lifetime_in_years"
-					       id="paramset-{{paramsetid}}-metric>system_(off-grid)>photovoltaic_panel_lifetime_in_years"
-					       class="form_text"
-					       type="text" size="10"
-					       maxlength="128" 
-					       value="{{params.metric|get:"system (off-grid)"|get:"photovoltaic panel lifetime in years"}}"
-					       /> years</div><!-- pfield --> 
-		    <div class="visualclear"></div> 
-		  </div><!-- class="pageblock" --> 
-		  
-		  <div class="pageblock"> 
-		    <div class="ptitle w200"><label for="paramset-{{paramsetid}}-metric>system_(off-grid)>photovoltaic_balance_lifetime_in_years">Balance of system lifetime:</label></div><!-- ptitle --> 
-		    <div class="pfield"><input name="paramset-{{paramsetid}}-metric>system_(off-grid)>photovoltaic_balance_lifetime_in_years"
-					       id="paramset-{{paramsetid}}-metric>system_(off-grid)>photovoltaic_balance_lifetime_in_years"
-					       class="form_text"
-					       type="text" size="10"
-					       maxlength="128" 
-					       value="{{params.metric|get:"system (off-grid)"|get:"photovoltaic balance lifetime in years"}}"
-					       /> years</div><!-- pfield --> 
-		    <div class="visualclear"></div> 
-		  </div><!-- class="pageblock" --> 
-		  
-		  <div class="pageblock"> 
-		    <div class="ptitle w200"><label for="paramset-{{paramsetid}}-metric>system_(off-grid)>photovoltaic_battery_lifetime_in_years">Battery lifetime:</label></div><!-- ptitle --> 
-		    <div class="pfield"><input name="paramset-{{paramsetid}}-metric>system_(off-grid)>photovoltaic_battery_lifetime_in_years"
-					       id="paramset-{{paramsetid}}-metric>system_(off-grid)>photovoltaic_battery_lifetime_in_years"
-					       class="form_text"
-					       type="text" size="10"
-					       maxlength="128" 
-					       value="{{params.metric|get:"system (off-grid)"|get:"photovoltaic battery lifetime in years"}}"
-					       /> years</div><!-- pfield --> 
-		    <div class="visualclear"></div> 
-		  </div><!-- class="pageblock" --> 
+
+		  {% with "Panel lifetime" as label %}
+		  {% with "years" as units %}
+		  {% with "photovoltaic panel lifetime in years" as key %}
+		  {% with "" as instructions %}
+		  {% include "npo/simple_param_block.html" %}
+		  {% endwith %}{% endwith %}{% endwith %}{% endwith %}
+
+		  {% with "Balance of system lifetime" as label %}
+		  {% with "years" as units %}
+		  {% with "photovoltaic balance lifetime in years" as key %}
+		  {% with "" as instructions %}
+		  {% include "npo/simple_param_block.html" %}
+		  {% endwith %}{% endwith %}{% endwith %}{% endwith %}
+
+		  {% with "Battery lifetime" as label %}
+		  {% with "years" as units %}
+		  {% with "photovoltaic battery lifetime in years" as key %}
+		  {% with "" as instructions %}
+		  {% include "npo/simple_param_block.html" %}
+		  {% endwith %}{% endwith %}{% endwith %}{% endwith %}
 		  
 		  <h3 class="smaller">Operation and Maintenance (O&#38;M)</h3> 
-		  
-		  <div class="pageblock"> 
-		    <div class="ptitle w200"><label for="paramset-{{paramsetid}}-metric>system_(off-grid)>photovoltaic_operations_and_maintenance_cost_per_year_as_fraction_of_photovoltaic_system_cost">O&amp;M photovoltaic systems cost factor<br />(as fraction of total Panel System cost):</label></div><!-- ptitle --> 
-		    <div class="pfield"><input name="paramset-{{paramsetid}}-metric>system_(off-grid)>photovoltaic_operations_and_maintenance_cost_per_year_as_fraction_of_photovoltaic_system_cost"
-		    id="paramset-{{paramsetid}}-metric>system_(off-grid)>photovoltaic_operations_and_maintenance_cost_per_year_as_fraction_of_photovoltaic_system_cost"
-		    class="form_text" type="text" size="10"
-		    maxlength="128" 
-					       value="{{params.metric|get:"system (off-grid)"|get:"photovoltaic operations and maintenance cost per year as fraction of photovoltaic system cost"}}"
-					       /><div class="instructions">(e.g. 0.02 for 2%)</div></div><!-- pfield --> 
-		    <div class="visualclear"></div> 
-		  </div><!-- class="pageblock" --> 
-		  
-		  <h3 class="smaller">Diesel generators</h3> 
-		  
-		  <div class="pageblock"> 
-		    <div class="ptitle w200"><label for="paramset-{{paramsetid}}-metric>system_(off-grid)>diesel_generator_hours_of_operation_per_year">Total hours diesel generator is in operation in a year:</label></div><!-- ptitle --> 
-		    <div class="pfield"><input name="paramset-{{paramsetid}}-metric>system_(off-grid)>diesel_generator_hours_of_operation_per_year"
-					       id="paramset-{{paramsetid}}-metric>system_(off-grid)>diesel_generator_hours_of_operation_per_year"
-					       class="form_text"
-					       type="text" size="10"
-					       maxlength="128" 
-					       value="{{params.metric|get:"system (off-grid)"|get:"diesel generator hours of operation per year"}}"
-					       /> h/yr</div><!-- pfield --> 
-		    <div class="visualclear"></div> 
-		  </div><!-- class="pageblock" --> 
 
+		  {% with "O&amp;M photovoltaic systems cost factor<br />(as fraction of total Panel System cost)" as label %}
+		  {% with "" as units %}
+		  {% with "photovoltaic operations and maintenance cost per year as fraction of photovoltaic system cost" as key %}
+		  {% with "(e.g. 0.02 for 2%)" as instructions %}
+		  {% include "npo/simple_param_block.html" %}
+		  {% endwith %}{% endwith %}{% endwith %}{% endwith %}
+
+		  <h3 class="smaller">Diesel generators</h3> 
+
+		  {% with "Total hours diesel generator is in operation in a year" as label %}
+		  {% with "h/yr" as units %}
+		  {% with "diesel generator hours of operation per year" as key %}
+		  {% with "" as instructions %}
+		  {% include "npo/simple_param_block.html" %}
+		  {% endwith %}{% endwith %}{% endwith %}{% endwith %}
+		  
 		  <div class="pageblock"> 
 		    <div class="ptitle
 		    w200"><label for="paramset-{{paramsetid}}-metric>system_(off-grid)>available_system_capacities_(diesel_generator)">Available
@@ -886,7 +844,7 @@
 		    <div class="visualclear"></div> 
 		  </div><!-- class="pageblock" --> 
 
-		  
+		  {% endwith %}{% endwith %}		  
 		  <div class="visualclear"></div> 
 		</div><!-- tabbertab System: Off-grid --> 
 		
