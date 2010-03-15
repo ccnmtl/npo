@@ -2,7 +2,7 @@
 
 {% for system, counts in cost_histogram_counts.items %}
 <h2>{{system}}</h2>
-<table id="d_histo{{forloop.counter0}}" style="float: right; ">
+<table id="{{case.id}}-d_histo{{forloop.counter0}}" style="float: right; ">
 <tbody>
   {% for bin, count in counts.items %}
   <tr>
@@ -11,7 +11,7 @@
   {% endfor %}
 </tbody>
 </table>
-<canvas id="g_histo{{forloop.counter0}}" width="500" height="350"></canvas>
+<canvas id="{{case.id}}-g_histo{{forloop.counter0}}" width="500" height="350"></canvas>
 
 <form method="GET">
   {% for type, params in histogram_params.items %}

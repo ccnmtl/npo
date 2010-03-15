@@ -50,14 +50,14 @@ onclick="showElement('paramset-{{case.id}}');return false">show parameters</a></
 <h1>Output summary</h1>
 
 <h2>Rural vs urban population</h2>
-<canvas id="g_pop" width="500" height="350"></canvas>
+<canvas id="{{case.id}}-g_pop" width="500" height="350"></canvas>
 {% include "npo/output/population.html" %}
 
 <hr/>
 
 <h2>Demand</h2>
-<canvas id="g_demand" width="500" height="350"></canvas>
-<canvas id="g_demand2" width="500" height="350"></canvas>
+<canvas id="{{case.id}}-g_demand" width="500" height="350"></canvas>
+<canvas id="{{case.id}}-g_demand2" width="500" height="350"></canvas>
 {% include "npo/output/demand.html" %}
 
 <hr/>

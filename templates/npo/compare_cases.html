@@ -84,68 +84,44 @@ var plot = function(insertInto, paramsFrom) {
 {% endblock %}
 
 {% block endjs %}
+{% for c in cases %}
 <script type="text/javascript">
-  var g = new Bluff.Line('g_pop', '500x350');
+  var g = new Bluff.Line('{{c.case.id}}-g_pop', '500x350');
   g.theme_rails_keynote();
-  g.data_from_table('d_pop');
+  g.data_from_table('{{c.case.id}}-d_pop');
   g.draw();
 
-  var g = new Bluff.Pie('g_demand', '500x350');
+  var g = new Bluff.Pie('{{c.case.id}}-g_demand', '500x350');
   g.theme_rails_keynote();
-  g.data_from_table('d_demand');
+  g.data_from_table('{{c.case.id}}-d_demand');
   g.draw()
 
-  var g = new Bluff.Bar('g_demand2', '500x350');
+  var g = new Bluff.Bar('{{c.case.id}}-g_demand2', '500x350');
   g.theme_rails_keynote();
-  g.data_from_table('d_demand');
+  g.data_from_table('{{c.case.id}}-d_demand');
   g.draw();
 
-  var g = new Bluff.Bar('g_histo0', '500x350');
+  var g = new Bluff.Bar('{{c.case.id}}-g_histo0', '500x350');
   g.theme_rails_keynote();
   g.sort = false;
   g.hide_legend = true;
-  g.data_from_table('d_histo0');
+  g.data_from_table('{{c.case.id}}-d_histo0');
   g.draw();
 
-  var g = new Bluff.Bar('g_histo1', '500x350');
+  var g = new Bluff.Bar('{{c.case.id}}-g_histo1', '500x350');
   g.theme_rails_keynote();
   g.sort = false;
   g.hide_legend = true;
-  g.data_from_table('d_histo1');
+  g.data_from_table('{{c.case.id}}-d_histo1');
   g.draw();
 
-  var g = new Bluff.Bar('g_histo2', '500x350');
+  var g = new Bluff.Bar('{{c.case.id}}-g_histo2', '500x350');
   g.theme_rails_keynote();
   g.sort = false;
   g.hide_legend = true;
-  g.data_from_table('d_histo2');
+  g.data_from_table('{{c.case.id}}-d_histo2');
   g.draw();
 </script>
-
-<script type="text/javascript">
-function initmap() {
-
-var map = new OpenLayers.Map('map');
-
-map.addLayer(new OpenLayers.Layer.WMS('OpenLayers WMS',
-             'http://labs.metacarta.com/wms/vmap0', 
-             {layers: 'basic'}));
-
-map.setCenter(new OpenLayers.LonLat(
-              {{case.mean_lon}}, {{case.mean_lat}}),
-              map.getZoomForExtent(
-                new OpenLayers.Bounds(
-                {{case.min_lon}}, {{case.min_lat}},
-                {{case.max_lon}}, {{case.max_lat}}
-)));
-
-var features = {{case.geojson|safe}};
-var geojson_format = new OpenLayers.Format.GeoJSON();
-var vectorLayer = new OpenLayers.Layer.Vector();
-map.addLayer(vectorLayer);
-vectorLayer.addFeatures(geojson_format.read(features));
-}
-//window.onload = initmap;
-</script>
+{% endfor %}
 
 {% endblock %}
