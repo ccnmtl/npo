@@ -21,13 +21,6 @@ from backend.calc import cost_histogram
 from backend.calc import average_cost_per_household
 from backend.calc import lv_per_household
 
-DEFAULT_BINS = ['1e10', '1e12', '1e14']
-def bins(param, request):
-    _bins = [i for i in request.GET.getlist(param) if i]
-    if not _bins:
-        _bins = list(DEFAULT_BINS)
-        
-    return _bins
 
 datasets = dict(default=("demographics.csv","networks.zip"),
                 leona=("LeonaVillages.zip","LeonaNetworks.zip"),
@@ -153,13 +146,13 @@ class Case(models.Model):
         results = calc_component_costs(nodes)
         return results
 
-    def cost_histograms(self, request):
+    def cost_histograms(self, g_bins, o_bins, m_bins):
         nodes = self.node_output()
 
         results = {
-            'grid': cost_histogram(nodes, 'grid', *bins('g', request)),
-            'off-grid': cost_histogram(nodes, 'off-grid', *bins('o', request)),
-            'mini-grid': cost_histogram(nodes, 'mini-grid', *bins('m', request)),
+            'grid': cost_histogram(nodes, 'grid', *g_bins),
+            'off-grid': cost_histogram(nodes, 'off-grid', *o_bins),
+            'mini-grid': cost_histogram(nodes, 'mini-grid', *m_bins),
             }
 
         return results

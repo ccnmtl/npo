@@ -10,7 +10,7 @@ from backend import request as backend_request
 SAMPLE_PATH = "sample_data"
 import os
 from simplejson import loads, dumps
-from models import Case, bins
+from models import Case
 from collections import defaultdict
 
 class recursivedefaultdict(defaultdict): 
@@ -178,6 +178,13 @@ def run(request):
     results = loads(backend_request(expand_param_names(params),demographics,networks))
     return dict(results=results)
 
+DEFAULT_BINS = ['1e10', '1e12', '1e14']
+def bins(param, request):
+    _bins = [i for i in request.GET.getlist(param) if i]
+    if not _bins:
+        _bins = list(DEFAULT_BINS)
+        
+    return _bins
 
 ### outputs
 def results_for_case(case,request):
@@ -192,11 +199,15 @@ def results_for_case(case,request):
     results['cost_components'] = x['components']
 
     results['totals'] = x['totals']
-    results['cost_histogram_counts'] = case.cost_histograms(request)
+    g_bins = bins('g',request)
+    o_bins = bins('o',request)
+    m_bins = bins('m',request)
+    
+    results['cost_histogram_counts'] = case.cost_histograms(g_bins, o_bins, m_bins)
     results['histogram_params'] = {
-        'o': bins('o', request),
-        'm': bins('m', request), 
-        'g': bins('g', request),
+        'o': o_bins,
+        'm': m_bins, 
+        'g': g_bins,
         }
     return results
 
