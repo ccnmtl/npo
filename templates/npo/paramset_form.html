@@ -1016,32 +1016,25 @@
 			</ul>
 		    </div><!-- class="instructions" --> 
 		  </div><!-- class="pageblock" --> 
+
+
+		  {% with "system (grid)" as section %}
+		  {% with "w200" as divwidth %}
+
+		  {% with "Electricity cost per kilowatt-hour" as label %}
+		  {% with "$/kWh" as units %}
+		  {% with "electricity cost per kilowatt-hour" as key %}
+		  {% with "" as instructions %}
+		  {% include "npo/simple_param_block.html" %}
+		  {% endwith %}{% endwith %}{% endwith %}{% endwith %}
+
+		  {% with "Transmission and distribution loss factor<br />(as fraction of grid system demand)" as label %}
+		  {% with "" as units %}
+		  {% with "distribution loss per system kilowatt" as key %}
+		  {% with "(e.g. 0.02 for 2%)" as instructions %}
+		  {% include "npo/simple_param_block.html" %}
+		  {% endwith %}{% endwith %}{% endwith %}{% endwith %}
 		  
-		  <div class="pageblock"> 
-		    <div class="ptitle
-		    w200"><label for="paramset-{{paramsetid}}-metric>system_(grid)>electricity_cost_per_kilowatt-hour">Electricity cost per kilowatt-hour:</label></div><!-- ptitle --> 
-		    <div class="pfield"><input name="paramset-{{paramsetid}}-metric>system_(grid)>electricity_cost_per_kilowatt-hour"
-					       id="paramset-{{paramsetid}}-metric>system_(grid)>electricity_cost_per_kilowatt-hour"
-					       class="form_text"
-					       type="text" size="10"
-					       maxlength="128" 
-					       value="{{params.metric|get:"system (grid)"|get:"electricity cost per kilowatt-hour"}}"
-					       /> $/kWh</div><!-- pfield --> 
-		    <div class="visualclear"></div> 
-		  </div><!-- class="pageblock" --> 
-		  
-		  <div class="pageblock"> 
-		    <div class="ptitle
-				w200"><label for="paramset-{{paramsetid}}-metric>system_(grid)>distribution_loss_per_system_kilowatt">Transmission and distribution loss factor<br />(as fraction of grid system demand):</label></div><!-- ptitle --> 
-		    <div class="pfield"><input name="paramset-{{paramsetid}}-metric>system_(grid)>distribution_loss_per_system_kilowatt"
-					       id="paramset-{{paramsetid}}-metric>system_(grid)>distribution_loss_per_system_kilowatt"
-					       class="form_text"
-					       type="text" size="10"
-					       maxlength="128" 
-					       value="{{params.metric|get:"system (grid)"|get:"distribution loss per system kilowatt"}}"
-					       /><div class="instructions">(e.g. 0.02 for 2%)</div></div><!-- pfield --> 
-		    <div class="visualclear"></div> 
-		  </div><!-- class="pageblock" -->
 		  
 		  <h2 class="medium">Grid: Transformers</h2>
 		  
@@ -1094,157 +1087,105 @@
 		    </table></div><!-- pfield --> 
 		    <div class="visualclear"></div> 
 		  </div><!-- class="pageblock" --> 
-		  
-		  <div class="pageblock"> 
-		    <div class="ptitle w200"><label for="paramset-{{paramsetid}}-metric>system_(grid)>transformer_cost_per_grid_system_kilowatt">Transformer cost per kilowatt:</label></div><!-- ptitle --> 
-		    <div class="pfield"><input name="paramset-{{paramsetid}}-metric>system_(grid)>transformer_cost_per_grid_system_kilowatt"
-					       id="paramset-{{paramsetid}}-metric>system_(grid)>transformer_cost_per_grid_system_kilowatt"
-					       class="form_text"
-					       type="text" size="10"
-					       maxlength="128" 
-					       value="{{params.metric|get:"system (grid)"|get:"transformer cost per grid system kilowatt"}}"
-					       /> $/kW</div><!-- pfield --> 
-		    <div class="visualclear"></div> 
-		  </div><!-- class="pageblock" --> 
+
+		  {% with "Transformer cost per kilowatt" as label %}
+		  {% with "$/kW" as units %}
+		  {% with "transformer cost per grid system kilowatt" as key %}
+		  {% with "" as instructions %}
+		  {% include "npo/simple_param_block.html" %}
+		  {% endwith %}{% endwith %}{% endwith %}{% endwith %}
 		  
 		  <h3 class="smaller">Transformer Replacement</h3> 
+
+		  {% with "Transformer lifetime" as label %}
+		  {% with "years" as units %}
+		  {% with "transformer lifetime in years" as key %}
+		  {% with "" as instructions %}
+		  {% include "npo/simple_param_block.html" %}
+		  {% endwith %}{% endwith %}{% endwith %}{% endwith %}
 		  		  
-		  <div class="pageblock"> 
-		    <div class="ptitle w200"><label for="paramset-{{paramsetid}}-metric>system_(grid)>transformer_lifetime_in_years">Transformer lifetime:</label></div><!-- ptitle --> 
-		    <div class="pfield"><input name="paramset-{{paramsetid}}-metric>system_(grid)>transformer_lifetime_in_years"
-					       id="paramset-{{paramsetid}}-metric>system_(grid)>transformer_lifetime_in_years"
-					       class="form_text"
-					       type="text" size="10"
-					       maxlength="128" 
-					       value="{{params.metric|get:"system (grid)"|get:"transformer lifetime in years"}}"
-/> years</div><!-- pfield --> 
-		    <div class="visualclear"></div> 
-		  </div><!-- class="pageblock" --> 
-		  
 		  <h3 class="smaller">Operation and Maintenance (O&#38;M)</h3> 
+
+		  {% with "Transformer O&#38;M cost factor<br />(as fraction of transformer cost)" as label %}
+		  {% with "" as units %}
+		  {% with "transformer operations and maintenance cost per year as fraction of transformer cost" as key %}
+		  {% with "(e.g. 0.02 for 2%)" as instructions %}
+		  {% include "npo/simple_param_block.html" %}
+		  {% endwith %}{% endwith %}{% endwith %}{% endwith %}
 		  		  
-		  <div class="pageblock"> 
-		    <div class="ptitle w200"><label for="paramset-{{paramsetid}}-metric>system_(grid)>transformer_operations_and_maintenance_cost_per_year_as_fraction_of_transformer_cost">Transformer O&#38;M cost factor<br />(as fraction of transformer cost):</label></div><!-- ptitle --> 
-		    <div class="pfield"><input name="paramset-{{paramsetid}}-metric>system_(grid)>transformer_operations_and_maintenance_cost_per_year_as_fraction_of_transformer_cost"
-					       id="paramset-{{paramsetid}}-metric>system_(grid)>transformer_operations_and_maintenance_cost_per_year_as_fraction_of_transformer_cost"
-					       class="form_text"
-					       type="text" size="10"
-					       maxlength="128" 
-					       value="{{params.metric|get:"system (grid)"|get:"transformer operations and maintenance cost per year as fraction of transformer cost"}}"
-					       /><div class="instructions">(e.g. 0.02 for 2%)</div></div><!-- pfield --> 
-		    <div class="visualclear"></div> 
-		  </div><!-- class="pageblock" --> 
-		  
 		  <h2 class="medium">Grid: Household Connections</h2>
 		  
 		  <h3 class="smaller">Household Connections to Low Voltage Network</h3> 
+
+
+		  {% with "Equipment cost per household<br />e.g. energy meters, internal wiring, etc." as label %}
+		  {% with "$/HH" as units %}
+		  {% with "equipment cost per connection" as key %}
+		  {% with "" as instructions %}
+		  {% include "npo/simple_param_block.html" %}
+		  {% endwith %}{% endwith %}{% endwith %}{% endwith %}
+
+		  {% with "Installation cost per household<br />e.g. installation of energy meters, internal wiring, etc." as label %}
+		  {% with "$/HH" as units %}
+		  {% with "installation cost per connection" as key %}
+		  {% with "" as instructions %}
+		  {% include "npo/simple_param_block.html" %}
+		  {% endwith %}{% endwith %}{% endwith %}{% endwith %}
+
+		  {% with "Service cost per household<br />(annual flat fee for service)" as label %}
+		  {% with "$/HH" as units %}
+		  {% with "service cost per connection" as key %}
+		  {% with "" as instructions %}
+		  {% include "npo/simple_param_block.html" %}
+		  {% endwith %}{% endwith %}{% endwith %}{% endwith %}
 		  		  
-		  <div class="pageblock"> 
-		    <div class="ptitle w200"><label for="paramset-{{paramsetid}}-metric>system_(grid)>equipment_cost_per_connection">Equipment cost per household<br />e.g. energy meters, internal wiring, etc.:</label></div><!-- ptitle --> 
-		    <div class="pfield"><input name="paramset-{{paramsetid}}-metric>system_(grid)>equipment_cost_per_connection" 
-					       id="paramset-{{paramsetid}}-metric>system_(grid)>equipment_cost_per_connection"
-					       class="form_text"
-					       type="text" size="10"
-					       maxlength="128" 
-					       value="{{params.metric|get:"system (grid)"|get:"equipment cost per connection"}}"
-					       /> $/HH</div><!-- pfield --> 
-		    <div class="visualclear"></div> 
-		  </div><!-- class="pageblock" --> 
-		  
-		  <div class="pageblock"> 
-		    <div class="ptitle w200"><label for="paramset-{{paramsetid}}-metric>system_(grid)>installation_cost_per_connection">Installation cost per household<br />e.g. installation of energy meters, internal wiring, etc.:</label></div><!-- ptitle --> 
-		    <div class="pfield"><input name="paramset-{{paramsetid}}-metric>system_(grid)>installation_cost_per_connection"
-					       id="paramset-{{paramsetid}}-metric>system_(grid)>installation_cost_per_connection"
-					       class="form_text"
-					       type="text" size="10"
-					       maxlength="128" 
-					       value="{{params.metric|get:"system (grid)"|get:"installation cost per connection"}}"
-					       /> $/HH</div><!-- pfield --> 
-		    <div class="visualclear"></div> 
-		  </div><!-- class="pageblock" --> 
-		  
-		  <div class="pageblock"> 
-		    <div class="ptitle w200"><label for="paramset-{{paramsetid}}-metric>system_(grid)>service_cost_per_connection">Service cost per household<br />(annual flat fee for service):</label></div><!-- ptitle --> 
-		    <div class="pfield"><input name="paramset-{{paramsetid}}-metric>system_(grid)>service_cost_per_connection"
-					       id="paramset-{{paramsetid}}-metric>system_(grid)>service_cost_per_connection"
-					       class="form_text"
-					       type="text" size="10"
-					       maxlength="128" value="{{params.metric|get:"system (grid)"|get:"service cost per connection"}}"
-					       /> $/HH</div><!-- pfield --> 
-		    <div class="visualclear"></div> 
-		  </div><!-- class="pageblock" --> 
-		  
 		  <h3 class="smaller">Operation and Maintenance (O&#38;M)</h3> 
+
+		  {% with "Equipment O&#38;M cost factor<br />(as fraction of equipment cost)" as label %}
+		  {% with "" as units %}
+		  {% with "equipment operations and maintenance cost per year as fraction of equipment cost" as key %}
+		  {% with "(e.g. 0.02 for 2%)" as instructions %}
+		  {% include "npo/simple_param_block.html" %}
+		  {% endwith %}{% endwith %}{% endwith %}{% endwith %}
+
+		  {% with "Service O&#38;M cost factor<br />(as fraction of service cost)" as label %}
+		  {% with "" as units %}
+		  {% with "service operations and maintenance cost per year as fraction of service cost" as key %}
+		  {% with "(e.g. 0.02 for 2%)" as instructions %}
+		  {% include "npo/simple_param_block.html" %}
+		  {% endwith %}{% endwith %}{% endwith %}{% endwith %}
 		  		  
-		  <div class="pageblock"> 
-		    <div class="ptitle w200"><label for="paramset-{{paramsetid}}-metric>system_(grid)>equipment_operations_and_maintenance_cost_per_year_as_fraction_of_equipment_cost">Equipment O&#38;M cost factor<br />(as fraction of equipment cost):</label></div><!-- ptitle --> 
-		    <div class="pfield"><input name="paramset-{{paramsetid}}-metric>system_(grid)>equipment_operations_and_maintenance_cost_per_year_as_fraction_of_equipment_cost"
-					       id="paramset-{{paramsetid}}-metric>system_(grid)>equipment_operations_and_maintenance_cost_per_year_as_fraction_of_equipment_cost"
-					       class="form_text"
-					       type="text" size="10"
-					       maxlength="128" 
-					       value="{{params.metric|get:"system (grid)"|get:"equipment operations and maintenance cost per year as fraction of equipment cost"}}"
-					       /><div class="instructions">(e.g. 0.02 for 2%)</div></div><!-- pfield --> 
-		    <div class="visualclear"></div> 
-		  </div><!-- class="pageblock" --> 
-		  
-		  <div class="pageblock"> 
-		    <div class="ptitle
-				w200"><label for="paramset-{{paramsetid}}-metric>system_(grid)>service_operations_and_maintenance_cost_per_year_as_fraction_of_service_cost">Service O&#38;M cost factor<br />(as fraction of service cost):</label></div><!-- ptitle --> 
-		    <div class="pfield"><input name="paramset-{{paramsetid}}-metric>system_(grid)>service_operations_and_maintenance_cost_per_year_as_fraction_of_service_cost"
-					       id="paramset-{{paramsetid}}-metric>system_(grid)>service_operations_and_maintenance_cost_per_year_as_fraction_of_service_cost"
-					       class="form_text"
-					       type="text" size="10"
-					       maxlength="128" 
-					       value="{{params.metric|get:"system (grid)"|get:"service operations and maintenance cost per year as fraction of service cost"}}"
-					       /><div class="instructions">(e.g. 0.02 for 2%)</div></div><!-- pfield --> 
-		    <div class="visualclear"></div> 
-		  </div><!-- class="pageblock" --> 
-		  
 		  <h2 class="medium">Grid: Medium Voltage Extension</h2>
 		  
 		  <h3 class="smaller">Medium Voltage Lines</h3> 
+
+		  {% with "Medium Voltage Line cost per meter" as label %}
+		  {% with "$/m" as units %}
+		  {% with "medium voltage line cost per meter" as key %}
+		  {% with "" as instructions %}
+		  {% include "npo/simple_param_block.html" %}
+		  {% endwith %}{% endwith %}{% endwith %}{% endwith %}
+
 		  		  
-		  <div class="pageblock"> 
-		    <div class="ptitle w200"><label for="paramset-{{paramsetid}}-metric>system_(grid)>medium_voltage_line_cost_per_meter">Medium Voltage Line cost per meter:</label></div><!-- ptitle --> 
-		    <div class="pfield"><input name="paramset-{{paramsetid}}-metric>system_(grid)>medium_voltage_line_cost_per_meter"
-					       id="paramset-{{paramsetid}}-metric>system_(grid)>medium_voltage_line_cost_per_meter"
-					       class="form_text"
-					       type="text" size="10"
-					       maxlength="128" 
-					       value="{{params.metric|get:"system (grid)"|get:"medium voltage line cost per meter"}}"
-					       /> $/m</div><!-- pfield --> 
-		    <div class="visualclear"></div> 
-		  </div><!-- class="pageblock" --> 
-		  
 		  <h3 class="smaller">Medium Voltage Lines Replacement</h3> 
-		  		  
-		  <div class="pageblock"> 
-		    <div class="ptitle w200"><label for="paramset-{{paramsetid}}-metric>system_(grid)>medium_voltage_line_lifetime_in_years">Medium Voltage Line Lifetime:</label></div><!-- ptitle --> 
-		    <div class="pfield"><input name="paramset-{{paramsetid}}-metric>system_(grid)>medium_voltage_line_lifetime_in_years"
-					       id="paramset-{{paramsetid}}-metric>system_(grid)>medium_voltage_line_lifetime_in_years"
-					       class="form_text"
-					       type="text" size="10"
-					       maxlength="128" 
-					       value="{{params.metric|get:"system (grid)"|get:"medium voltage line lifetime in years"}}"					       
-					       /> years</div><!-- pfield --> 
-		    <div class="visualclear"></div> 
-		  </div><!-- class="pageblock" --> 
+
+		  {% with "Medium Voltage Line Lifetime" as label %}
+		  {% with "years" as units %}
+		  {% with "medium voltage line lifetime in years" as key %}
+		  {% with "" as instructions %}
+		  {% include "npo/simple_param_block.html" %}
+		  {% endwith %}{% endwith %}{% endwith %}{% endwith %}
 		  
 		  <h3 class="smaller">Operation and Maintenance (O&#38;M)</h3> 
+
+		  {% with "Medium Voltage Line O&#38;M cost factor<br />(as fraction of Medium Voltage Line cost)" as label %}
+		  {% with "" as units %}
+		  {% with "medium voltage line operations and maintenance cost per year as fraction of medium voltage line cost" as key %}
+		  {% with "(e.g. 0.02 for 2%)" as instructions %}
+		  {% include "npo/simple_param_block.html" %}
+		  {% endwith %}{% endwith %}{% endwith %}{% endwith %}
 		  		  
-		  <div class="pageblock"> 
-		    <div class="ptitle w200"><label for="paramset-{{paramsetid}}-metric>system_(grid)>medium_voltage_line_operations_and_maintenance_cost_per_year_as_fraction_of_medium_voltage_line_cost">Medium Voltage Line O&#38;M cost factor<br />(as fraction of Medium Voltage Line cost):</label></div><!-- ptitle --> 
-		    <div class="pfield"><input name="paramset-{{paramsetid}}-metric>system_(grid)>medium_voltage_line_operations_and_maintenance_cost_per_year_as_fraction_of_medium_voltage_line_cost"
-					       id="paramset-{{paramsetid}}-metric>system_(grid)>medium_voltage_line_operations_and_maintenance_cost_per_year_as_fraction_of_medium_voltage_line_cost"
-					       class="form_text"
-					       type="text" size="10"
-					       maxlength="128" 
-					       value="{{params.metric|get:"system (grid)"|get:"medium voltage line operations and maintenance cost per year as fraction of medium voltage line cost"}}"
-					       /><div class="instructions">(e.g. 0.02 for 2%)</div></div><!-- pfield --> 
-		    <div class="visualclear"></div> 
-		  </div><!-- class="pageblock" --> 
-		  
+		  {% endwith %}{% endwith %}		  
 		  <div class="visualclear"></div> 
 		</div><!-- tabbertab Grid -->
 		
