@@ -614,44 +614,32 @@
 		  <div class="pageblock plain"> 
 		    <div class="instructions">Electricity demand can fluctuate depending on factors, such as, time of day and temperature. Peak demand (peak load) refers to periods when electricity need is the highest.</div><!-- class="instructions" --> 
 		  </div><!-- class="pageblock" --> 
-		  
-		  <div class="pageblock"> 
-		    <div class="ptitle
-		    w200"><label for="paramset-{{paramsetid}}-metric>demand_(peak)>fraction_of_nodal_demand_occurring_during_peak_hours_(rural)">Fraction of total demand during peak hours (rural):</label></div><!-- ptitle --> 
-		    <div class="pfield"><input name="paramset-{{paramsetid}}-metric>demand_(peak)>fraction_of_nodal_demand_occurring_during_peak_hours_(rural)"
-					       id="paramset-{{paramsetid}}-metric>demand_(peak)>fraction_of_nodal_demand_occurring_during_peak_hours_(rural)"
-					       class="form_text"
-					       type="text" size="10"
-					       maxlength="128" 
-					       value="{{params.metric|get:"demand (peak)"|get:"fraction of nodal demand occurring during peak hours (rural)"}}"
-					       /><div class="instructions">(e.g. 0.02 for 2%)</div></div><!-- pfield --> 
-		    <div class="visualclear"></div> 
-		  </div><!-- class="pageblock" --> 
-		  
-		  <div class="pageblock"> 
-		    <div class="ptitle w200"><label for="paramset-{{paramsetid}}-metric>demand_(peak)>fraction_of_nodal_demand_occurring_during_peak_hours_(urban)">Fraction of total demand during peak hours (urban):</label></div><!-- ptitle --> 
-		    <div class="pfield"><input name="paramset-{{paramsetid}}-metric>demand_(peak)>fraction_of_nodal_demand_occurring_during_peak_hours_(urban)"
-					       id="paramset-{{paramsetid}}-metric>demand_(peak)>fraction_of_nodal_demand_occurring_during_peak_hours_(urban)"
-					       class="form_text"
-					       type="text" size="10"
-					       maxlength="128" 
-					       value="{{params.metric|get:"demand (peak)"|get:"fraction of nodal demand occurring during peak hours (urban)"}}"
-					       /><div class="instructions">(e.g. 0.02 for 2%)</div></div><!-- pfield --> 
-		    <div class="visualclear"></div> 
-		  </div><!-- class="pageblock" --> 
-		  
-		  <div class="pageblock"> 
-		    <div class="ptitle w200"><label for="paramset-{{paramsetid}}-metric>demand_(peak)>peak_electrical_usage_hours_per_year">Annual peak usage hours:</label></div><!-- ptitle --> 
-		    <div class="pfield"><input name="paramset-{{paramsetid}}-metric>demand_(peak)>peak_electrical_usage_hours_per_year"
-					       id="paramset-{{paramsetid}}-metric>demand_(peak)>peak_electrical_usage_hours_per_year"
-					       class="form_text"
-					       type="text" size="10"
-					       maxlength="128" 
-					       value="{{params.metric|get:"demand (peak)"|get:"peak electrical usage hours per year"}}"
-					       /> hrs/yr</div><!-- pfield --> 
-		    <div class="visualclear"></div> 
-		  </div><!-- class="pageblock" --> 
 
+		  {% with "demand (peak)" as section %}
+		  {% with "w200" as divwidth %}
+
+		  {% with "Fraction of total demand during peak hours (rural)" as label %}
+		  {% with "" as units %}
+		  {% with "fraction of nodal demand occurring during peak hours (rural)" as key %}
+		  {% with "(e.g. 0.02 for 2%)" as instructions %}
+		  {% include "npo/simple_param_block.html" %}
+		  {% endwith %}{% endwith %}{% endwith %}{% endwith %}
+
+		  {% with "Fraction of total demand during peak hours (urban)" as label %}
+		  {% with "" as units %}
+		  {% with "fraction of nodal demand occurring during peak hours (urban)" as key %}
+		  {% with "(e.g. 0.02 for 2%)" as instructions %}
+		  {% include "npo/simple_param_block.html" %}
+		  {% endwith %}{% endwith %}{% endwith %}{% endwith %}
+
+		  {% with "Annual peak usage hours" as label %}
+		  {% with "hrs/yr" as units %}
+		  {% with "peak electrical usage hours per year" as key %}
+		  {% with "" as instructions %}
+		  {% include "npo/simple_param_block.html" %}
+		  {% endwith %}{% endwith %}{% endwith %}{% endwith %}
+		  
+		  {% endwith %}{% endwith %}
 		  <div class="visualclear"></div> 
 		</div><!-- tabbertab Demand: Peak --> 
 		
