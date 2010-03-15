@@ -211,17 +211,20 @@
 		    <div class="instructions">These parameters refer to energy demands to power household level of access to productive infrastructure, such as water pumps, agro-processing, equipment, and mills.</div><!-- class="instructions" --> 
 		  </div><!-- class="pageblock" --> 
 		  
-		  <div class="pageblock"> 
-		    <div class="ptitle w150"><label for="paramset-{{paramsetid}}-metric>demand_(productive)>productive_unit_demand_per_household_in_kilowatt-hours_per_year">Base productive unit demand:</label></div><!-- ptitle --> 
-		    <div class="pfield"><input name="paramset-{{paramsetid}}-metric>demand_(productive)>productive_unit_demand_per_household_in_kilowatt-hours_per_year"
-					       id="paramset-{{paramsetid}}-metric>demand_(productive)>productive_unit_demand_per_household_in_kilowatt-hours_per_year"
-					       class="form_text"
-					       type="text" size="10"
-					       maxlength="128" 
-					       value="{{params.metric|get:"demand (productive)"|get:"productive unit demand per household in kilowatt-hours per year"}}"
-					       /> kW/year<div class="instructions">(per household)</div></div><!-- pfield --> 
-		    <div class="visualclear"></div> 
-		  </div><!-- class="pageblock" --> 
+		  {% with "demand (productive)" as msection %}
+		  {% with params.metric|get:msection as section %}
+		  {% with "w150" as divwidth %}
+
+		  {% with "Base productive unit demand" as label %}
+		  {% with "kW/year" as units %}
+		  {% with "metric>demand_(productive)>productive_unit_demand_per_household_in_kilowatt-hours_per_year" as fullid %}
+		  {% with "productive unit demand per household in kilowatt-hours per year" as key %}
+		  {% with "(per household)" as instructions %}
+		  {% include "npo/simple_param_block.html" %}
+		  {% endwith %}{% endwith %}{% endwith %}{% endwith %}{% endwith %}
+
+		  {% endwith %}{% endwith %}{% endwith %}
+
 		  
 		  <div class="pageblock"> 
 		    <div class="ptitle w150"><label for="paramset-{{paramsetid}}-metric>demand_(productive)>demand_curve_points_(population_and_multiplier)">Productive demand curve:</label></div><!-- ptitle --> 
@@ -299,55 +302,44 @@
 		      (base unit demand = known facility demand)
 		    </div><!-- class="instructions" --> 
 		  </div><!-- class="pageblock" --> 
-		  
-		  <div class="pageblock"> 
-		    <div class="ptitle w150"><label for="paramset-{{paramsetid}}-metric>demand_(social_infrastructure)>unit_demand_per_health_facility_in_kilowatts_per_year">Base health unit demand:</label></div><!-- ptitle --> 
-		    <div class="pfield"><input name="paramset-{{paramsetid}}-metric>demand_(social_infrastructure)>unit_demand_per_health_facility_in_kilowatts_per_year"
-					       id="paramset-{{paramsetid}}-metric>demand_(social_infrastructure)>unit_demand_per_health_facility_in_kilowatts_per_year"
-					       class="form_text"
-					       type="text" size="10"
-					       maxlength="128" 
-					       value="{{params.metric|get:"demand (social infrastructure)"|get:"unit demand per health facility in kilowatts per year"}}"
-					       /> kW/year<div class="instructions">(per health facility)</div></div><!-- pfield --> 
-		    <div class="visualclear"></div> 
-		  </div><!-- class="pageblock" --> 
-		  
-		  <div class="pageblock"> 
-		    <div class="ptitle w150"><label for="paramset-{{paramsetid}}-metric>demand_(social_infrastructure)>unit_demand_per_education_facility_in_kilowatt-hours_per_year">Base education unit demand:</label></div><!-- ptitle --> 
-		    <div class="pfield"><input name="paramset-{{paramsetid}}-metric>demand_(social_infrastructure)>unit_demand_per_education_facility_in_kilowatt-hours_per_year"
-					       id="paramset-{{paramsetid}}-metric>demand_(social_infrastructure)>unit_demand_per_education_facility_in_kilowatt-hours_per_year"
-					       class="form_text"
-					       type="text" size="10"
-					       maxlength="128" 
-					       value="{{params.metric|get:"demand (social infrastructure)"|get:"unit demand per education facility in kilowatt-hours per year"}}"
-					       /> kW/year<div class="instructions">(per education facility)</div></div><!-- pfield --> 
-		    <div class="visualclear"></div> 
-		  </div><!-- class="pageblock" --> 
-		  
-		  <div class="pageblock"> 
-		    <div class="ptitle w150"><label for="paramset-{{paramsetid}}-metric>demand_(social_infrastructure)>unit_demand_per_commercial_facility_in_kilowatt-hours_per_year">Base commercial unit demand:</label></div><!-- ptitle --> 
-		    <div class="pfield"><input name="paramset-{{paramsetid}}-metric>demand_(social_infrastructure)>unit_demand_per_commercial_facility_in_kilowatt-hours_per_year"
-					       id="paramset-{{paramsetid}}-metric>demand_(social_infrastructure)>unit_demand_per_commercial_facility_in_kilowatt-hours_per_year"
-					       class="form_text"
-					       type="text" size="10"
-					       maxlength="128" 
-					       value="{{params.metric|get:"demand (social infrastructure)"|get:"unit demand per commercial facility in kilowatt-hours per year"}}"
-					       /> kW/year<div class="instructions">(per commercial facility)</div></div><!-- pfield --> 
-		    <div class="visualclear"></div> 
-		  </div><!-- class="pageblock" --> 
-		  
-		  <div class="pageblock"> 
-		    <div class="ptitle w150"><label for="paramset-{{paramsetid}}-metric>demand_(social_infrastructure)>unit_demand_per_public_lighting_facility_in_kilowatt-hours_per_year">Base public lighting unit demand:</label></div><!-- ptitle --> 
-		    <div class="pfield"><input name="paramset-{{paramsetid}}-metric>demand_(social_infrastructure)>unit_demand_per_public_lighting_facility_in_kilowatt-hours_per_year" 
-					       id="paramset-{{paramsetid}}-metric>demand_(social_infrastructure)>unit_demand_per_public_lighting_facility_in_kilowatt-hours_per_year"
-					       class="form_text"
-					       type="text" size="10"
-					       maxlength="128" 
-					       value="{{params.metric|get:"demand (social infrastructure)"|get:"unit demand per public lighting facility in kilowatt-hours per year"}}"
-					       /> kW/year</div><!-- pfield --> 
-		    <div class="visualclear"></div> 
-		  </div><!-- class="pageblock" --> 
-		  
+
+		  {% with "demand (social infrastructure)" as msection %}
+		  {% with params.metric|get:msection as section %}
+		  {% with "w150" as divwidth %}
+
+		  {% with "Base health unit demand" as label %}
+		  {% with "kW/year" as units %}
+		  {% with "metric>demand_(social_infrastructure)>unit_demand_per_health_facility_in_kilowatts_per_year" as fullid %}
+		  {% with "unit demand per health facility in kilowatts per year" as key %}
+		  {% with "(per health facility)" as instructions %}
+		  {% include "npo/simple_param_block.html" %}
+		  {% endwith %}{% endwith %}{% endwith %}{% endwith %}{% endwith %}
+
+		  {% with "Base education unit demand" as label %}
+		  {% with "kW/year" as units %}
+		  {% with "metric>demand_(social_infrastructure)>unit_demand_per_education_facility_in_kilowatt-hours_per_year" as fullid %}
+		  {% with "unit demand per education facility in kilowatt-hours per year" as key %}
+		  {% with "(per education facility)" as instructions %}
+		  {% include "npo/simple_param_block.html" %}
+		  {% endwith %}{% endwith %}{% endwith %}{% endwith %}{% endwith %}
+
+		  {% with "Base commercial unit demand" as label %}
+		  {% with "kW/year" as units %}
+		  {% with "metric>demand_(social_infrastructure)>unit_demand_per_commercial_facility_in_kilowatt-hours_per_year" as fullid %}
+		  {% with "unit demand per commercial facility in kilowatt-hours per year" as key %}
+		  {% with "(per commercial facility)" as instructions %}
+		  {% include "npo/simple_param_block.html" %}
+		  {% endwith %}{% endwith %}{% endwith %}{% endwith %}{% endwith %}
+
+		  {% with "Base public lighting unit demand" as label %}
+		  {% with "kW/year" as units %}
+		  {% with "metric>demand_(social_infrastructure)>unit_demand_per_public_lighting_facility_in_kilowatt-hours_per_year" as fullid %}
+		  {% with "unit demand per public lighting facility in kilowatt-hours per year" as key %}
+		  {% with "(per commercial facility)" as instructions %}
+		  {% include "npo/simple_param_block.html" %}
+		  {% endwith %}{% endwith %}{% endwith %}{% endwith %}{% endwith %}
+
+		  {% endwith %}{% endwith %}{% endwith %}
 		  
 		  <div class="pageblock"> 
 		    <div class="ptitle w150"><label for="paramset-{{paramsetid}}-metric>demand_(social_infrastructure)>demand_curve_points_(population_and_multiplier)">Social infrastructure demand curve:</label></div><!-- ptitle --> 
