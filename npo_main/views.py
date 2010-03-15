@@ -181,7 +181,6 @@ def run(request):
 
 ### outputs
 def results_for_case(case,request):
-    results = dict(case=case)
     results = case.pop()
     results['case'] = case
     x = case.cost_components()
