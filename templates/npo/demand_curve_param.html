@@ -1,0 +1,56 @@
+{% load get %}
+{% load idify %}
+{% with params.metric|get:section as sectiondict %}
+{% with sectiondict|get:key as value %}
+{% with section|idify as sectionid %}
+{% with key|idify as keyid %}
+
+<div class="pageblock"> 
+  <div class="ptitle {{divwidth}}">
+    <label for="paramset-{{paramsetid}}-metric>{{sectionid}}>{{keyid}}">{{label}}:</label>
+  </div>
+  <div class="pfield"> 
+    <table id="table-demand-{{sectionid}}" class="veryplain"> 
+      <thead>
+	<tr> 
+	  <td class="veryplain"> 
+	    Population
+	  </td> 
+	  <td class="veryplain"> 
+	    Scaling factor
+	  </td> 
+	</tr> 
+      </thead> 
+      <tbody> 
+	{% for x,y in sectiondict|get_tuples:key %}
+	<tr> 
+	  <td class="veryplain"> 
+	    <input name="paramset-{{paramsetid}}-metric>{{sectionid}}>{{keyid}}__x__{{forloop.counter0}}"
+		   id="paramset-{{paramsetid}}-metric>{{sectionid}}>{{keyid}}__x__{{forloop.counter0}}" class="form_text"
+		   type="text" size="10" 
+		   value="{{x}}"
+		   maxlength="128" /> 
+	  </td> 
+	  <td class="veryplain"> 
+	    <input name="paramset-{{paramsetid}}-metric>{{sectionid}}>{{keyid}}__y__{{forloop.counter0}}"
+		   id="paramset-{{paramsetid}}-metric>{{sectionid}}>{{keyid}}__y__{{forloop.counter0}}" class="form_text"
+		   type="text" size="10" maxlength="128" 
+		   value="{{y}}"
+		   /> 
+	  </td> 
+	</tr> 
+	{% endfor %}
+      </tbody> 
+    </table> 
+  </div>
+
+  {% include "npo/paramset_form_plot.html" %}
+		    
+  <div class="visualclear"></div> 
+		    
+  <div class="ptitle {{divwidth}}"><span class="label">Demand curve type :</span></div>
+  <div class="pfield"><b>Logistic</b></div>
+  <div class="visualclear"></div> 
+</div>
+
+{% endwith %}{% endwith %}{% endwith %}{% endwith %}
