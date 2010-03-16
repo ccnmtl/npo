@@ -160,63 +160,13 @@
 		  {% include "npo/simple_param_block.html" %}
 		  {% endwith %}{% endwith %}{% endwith %}{% endwith %}
 
+		  {% with "Productive demand curve" as label %}
+		  {% with "demand curve points (population and multiplier)" as key %}
+		  {% include "npo/demand_curve_param.html" %}
 		  {% endwith %}{% endwith %}
 
-		  
-		  <div class="pageblock"> 
-		    <div class="ptitle w150"><label for="paramset-{{paramsetid}}-metric>demand_(productive)>demand_curve_points_(population_and_multiplier)">Productive demand curve:</label></div><!-- ptitle --> 
 
-		    {% with "productive" as type %}
-
-		    <div class="pfield"> 
-		      <table id="table-demand-{{type}}" class="veryplain"> 
-			<thead> 
-			  <tr> 
-			    <td class="veryplain"> 
-			      Population
-			    </td> 
-			    <td class="veryplain"> 
-			      Scaling factor
-			    </td> 
-			  </tr> 
-			</thead> 
-			<tbody> 
-			    {% with "demand (productive)" as section %}
-			    {% with "demand curve points (population and multiplier)" as key %}
-			    {% for x,y in params.metric|get:section|get_tuples:key %}
-			  <tr> 
-			    <td class="veryplain"> 
-			      <input name="paramset-{{paramsetid}}-metric>demand_(productive)>demand_curve_points_(population_and_multiplier)__x__{{forloop.counter0}}"
-			      id="paramset-{{paramsetid}}-metric>demand_(productive)>demand_curve_points_(population_and_multiplier)__x__{{forloop.counter0}}" class="form_text"
-			      type="text" size="10" 
-				     value="{{x}}"
-				     maxlength="128" /> 
-			    </td> 
-			    <td class="veryplain"> 
-			      <input name="paramset-{{paramsetid}}-metric>demand_(productive)>demand_curve_points_(population_and_multiplier)__y__{{forloop.counter0}}"
-			      id="paramset-{{paramsetid}}-metric>demand_(productive)>demand_curve_points_(population_and_multiplier)__y__{{forloop.counter0}}" class="form_text"
-			      type="text" size="10" maxlength="128" 
-				     value="{{y}}"
-				     /> 
-			    </td> 
-			  </tr> 
-			  {% endfor %}
-			  {% endwith %}
-			  {% endwith %}
-
-			</tbody> 
-		      </table> 
-		    </div><!-- pfield --> 
-
-		    {% include "npo/paramset_form_plot.html" %}
-		    {% endwith %}
-
-		    <div class="visualclear"></div> 
-		    
-		    <div class="ptitle w150"><span class="label">Demand curve type :</span></div><!-- ptitle --> 
-		    <div class="pfield"><b>Logistic</b></div><!-- pfield --> 
-		    <div class="visualclear"></div> 
-		  </div><!-- class="pageblock" Demand curve type --> 
+		  {% endwith %}{% endwith %}
 		  
 		  <div class="visualclear"></div> 
 		</div><!-- tabbertab Demand: Productive --> 
