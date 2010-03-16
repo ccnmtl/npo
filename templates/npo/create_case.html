@@ -85,6 +85,9 @@ var plot = function(insertInto, paramsFrom) {
       {% endfor %}
     </select> 
 
+{% with "npo/simple_param_block.html" as simple_param_block_template %}
+{% with "npo/list_param.html" as list_param_block_template %}
+{% with "npo/demand_curve_param.html" as demand_curve_param_template %}
 
 {% with "leona" as paramsetid %}
 {% with "Default Leona set" as paramsettitle %}
@@ -112,7 +115,7 @@ var plot = function(insertInto, paramsFrom) {
 {% endwith %}
 {% endwith %}    
 {% endwith %}
-
+{% endwith %}
 
 
 
@@ -126,8 +129,8 @@ var plot = function(insertInto, paramsFrom) {
 {% endwith %}
 {% endwith %}
 {% endfor %}
-
-
+{% endwith %}
+{% endwith %}
 
   </div><!-- class="pageblock" Case Parameters --> 
 

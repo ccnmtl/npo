@@ -7,16 +7,19 @@
 
 <p><a href="" 
 onclick="showElement('paramset-{{case.id}}');return false">show parameters</a></p>
+{% with "npo/simple_param_block_display.html" as simple_param_block_template %}
+{% with "npo/list_param_display.html" as list_param_block_template %}
+{% with "npo/demand_curve_param_display.html" as demand_curve_param_template %}
 {% with case.id as paramsetid %}
 {% with case.name as paramsettitle %}
 {% with case.parameters_dict as params %}
-{% include "npo/paramset_display.html" %}      
+{% include "npo/paramset_form.html" %}      
 {% endwith %}
 {% endwith %}
 {% endwith %}
-
-
-
+{% endwith %}
+{% endwith %}
+{% endwith %}
 
 <form action="delete/" method="post">
 <input type="submit" value="Delete this case" />

@@ -15,26 +15,26 @@
 	    {% with "Time horizon" as label %}
 	    {% with "year(s)" as units %}
 	    {% with "time horizon in years" as key %}
-	    {% include "npo/simple_param_block.html" %}
+	    {% include simple_param_block_template %}
 	    {% endwith %}{% endwith %}{% endwith %}
 
 	    {% with "Economic Growth Rate Per Year" as label %}
 	    {% with "" as units %}
 	    {% with "economic growth rate per year" as key %}
-	    {% include "npo/simple_param_block.html" %}
+	    {% include simple_param_block_template %}
 	    {% endwith %}{% endwith %}{% endwith %}
 
 	    {% with "Elasticity of Electricity Demand" as label %}
 	    {% with "" as units %}
 	    {% with "elasticity of electricity demand" as key %}
-	    {% include "npo/simple_param_block.html" %}
+	    {% include simple_param_block_template %}
 	    {% endwith %}{% endwith %}{% endwith %}
 
 	    {% with "Annual interest rate" as label %}
 	    {% with "" as units %}
 	    {% with "yearly interest rate" as key %}
 	    {% with "(e.g. 0.02 for 2%)" as instructions %}
-	    {% include "npo/simple_param_block.html" %}
+	    {% include simple_param_block_template %}
 	    {% endwith %}{% endwith %}{% endwith %}{% endwith %}
 
 	    {% endwith %}
@@ -56,42 +56,42 @@
 	    {% with "" as units %}
 	    {% with "population growth rate per year" as key %}
 	    {% with "(e.g. 0.02 for 2%)" as instructions %}
-	    {% include "npo/simple_param_block.html" %}
+	    {% include simple_param_block_template %}
 	    {% endwith %}{% endwith %}{% endwith %}{% endwith %}
 
 	    {% with "Mean household size (rural)" as label %}
 	    {% with "person(s)" as units %}
 	    {% with "mean household size (rural)" as key %}
 	    {% with "" as instructions %}
-	    {% include "npo/simple_param_block.html" %}
+	    {% include simple_param_block_template %}
 	    {% endwith %}{% endwith %}{% endwith %}{% endwith %}
 
 	    {% with "Mean household size (urban)" as label %}
 	    {% with "person(s)" as units %}
 	    {% with "mean household size (urban)" as key %}
 	    {% with "" as instructions %}
-	    {% include "npo/simple_param_block.html" %}
+	    {% include simple_param_block_template %}
 	    {% endwith %}{% endwith %}{% endwith %}{% endwith %}
 
 	    {% with "Urban population threshold" as label %}
 	    {% with "person(s)" as units %}
 	    {% with "urban population threshold" as key %}
 	    {% with "(minimum population of community when considered urban)" as instructions %}
-	    {% include "npo/simple_param_block.html" %}
+	    {% include simple_param_block_template %}
 	    {% endwith %}{% endwith %}{% endwith %}{% endwith %}
 
 	    {% with "Mean interhousehold distance" as label %}
 	    {% with "meters" as units %}
 	    {% with "mean interhousehold distance in meters" as key %}
 	    {% with "" as instructions %}
-	    {% include "npo/simple_param_block.html" %}
+	    {% include simple_param_block_template %}
 	    {% endwith %}{% endwith %}{% endwith %}{% endwith %}
 
 	    {% with "Population Count" as label %}
 	    {% with "meters" as units %}
 	    {% with "population count" as key %}
 	    {% with "" as instructions %}
-	    {% include "npo/simple_param_block.html" %}
+	    {% include simple_param_block_template %}
 	    {% endwith %}{% endwith %}{% endwith %}{% endwith %}
 
 
@@ -124,12 +124,12 @@
 		  {% with "kW/year" as units %}
 		  {% with "household unit demand per household in kilowatt-hours per year" as key %}
 		  {% with "(per household)" as instructions %}
-		  {% include "npo/simple_param_block.html" %}
+		  {% include simple_param_block_template %}
 		  {% endwith %}{% endwith %}{% endwith %}{% endwith %}
 
 		  {% with "Household demand curve" as label %}
 		  {% with "demand curve points (population and multiplier)" as key %}
-		  {% include "npo/demand_curve_param.html" %}
+		  {% include demand_curve_param_template %}
 		  {% endwith %}{% endwith %}
 
 
@@ -157,12 +157,12 @@
 		  {% with "kW/year" as units %}
 		  {% with "productive unit demand per household in kilowatt-hours per year" as key %}
 		  {% with "(per household)" as instructions %}
-		  {% include "npo/simple_param_block.html" %}
+		  {% include simple_param_block_template %}
 		  {% endwith %}{% endwith %}{% endwith %}{% endwith %}
 
 		  {% with "Productive demand curve" as label %}
 		  {% with "demand curve points (population and multiplier)" as key %}
-		  {% include "npo/demand_curve_param.html" %}
+		  {% include demand_curve_param_template %}
 		  {% endwith %}{% endwith %}
 
 
@@ -197,53 +197,53 @@
 		  {% with "kW/year" as units %}
 		  {% with "unit demand per health facility in kilowatts per year" as key %}
 		  {% with "(per health facility)" as instructions %}
-		  {% include "npo/simple_param_block.html" %}
+		  {% include simple_param_block_template %}
 		  {% endwith %}{% endwith %}{% endwith %}{% endwith %}
 
 		  {% with "Base education unit demand" as label %}
 		  {% with "kW/year" as units %}
 		  {% with "unit demand per education facility in kilowatt-hours per year" as key %}
 		  {% with "(per education facility)" as instructions %}
-		  {% include "npo/simple_param_block.html" %}
+		  {% include simple_param_block_template %}
 		  {% endwith %}{% endwith %}{% endwith %}{% endwith %}
 
 		  {% with "Base commercial unit demand" as label %}
 		  {% with "kW/year" as units %}
 		  {% with "unit demand per commercial facility in kilowatt-hours per year" as key %}
 		  {% with "(per commercial facility)" as instructions %}
-		  {% include "npo/simple_param_block.html" %}
+		  {% include simple_param_block_template %}
 		  {% endwith %}{% endwith %}{% endwith %}{% endwith %}
 
 		  {% with "Base public lighting unit demand" as label %}
 		  {% with "kW/year" as units %}
 		  {% with "unit demand per public lighting facility in kilowatt-hours per year" as key %}
 		  {% with "(per commercial facility)" as instructions %}
-		  {% include "npo/simple_param_block.html" %}
+		  {% include simple_param_block_template %}
 		  {% endwith %}{% endwith %}{% endwith %}{% endwith %}
 
 		  {% with "Social infrastructure demand curve" as label %}
 		  {% with "demand curve points (population and multiplier)" as key %}
-		  {% include "npo/demand_curve_param.html" %}
+		  {% include demand_curve_param_template %}
 		  {% endwith %}{% endwith %}
 
 		  {% with "Health infrastructure count" as label %}
 		  {% with "health facility count curve points (population and facility count)" as key %}
-		  {% include "npo/demand_curve_param.html" %}
+		  {% include demand_curve_param_template %}
 		  {% endwith %}{% endwith %}
 
 		  {% with "Education infrastructure count" as label %}
 		  {% with "education facility count curve points (population and facility count)" as key %}
-		  {% include "npo/demand_curve_param.html" %}
+		  {% include demand_curve_param_template %}
 		  {% endwith %}{% endwith %}
 
 		  {% with "Commercial infrastructure count" as label %}
 		  {% with "commercial facility count curve points (population and facility count)" as key %}
-		  {% include "npo/demand_curve_param.html" %}
+		  {% include demand_curve_param_template %}
 		  {% endwith %}{% endwith %}
 
 		  {% with "Public lighting demand curve" as label %}
 		  {% with "public lighting facility count curve points (population and facility count)" as key %}
-		  {% include "npo/demand_curve_param.html" %}
+		  {% include demand_curve_param_template %}
 		  {% endwith %}{% endwith %}
 
 		  {% endwith %}{% endwith %}
@@ -270,21 +270,21 @@
 		  {% with "" as units %}
 		  {% with "fraction of nodal demand occurring during peak hours (rural)" as key %}
 		  {% with "(e.g. 0.02 for 2%)" as instructions %}
-		  {% include "npo/simple_param_block.html" %}
+		  {% include simple_param_block_template %}
 		  {% endwith %}{% endwith %}{% endwith %}{% endwith %}
 
 		  {% with "Fraction of total demand during peak hours (urban)" as label %}
 		  {% with "" as units %}
 		  {% with "fraction of nodal demand occurring during peak hours (urban)" as key %}
 		  {% with "(e.g. 0.02 for 2%)" as instructions %}
-		  {% include "npo/simple_param_block.html" %}
+		  {% include simple_param_block_template %}
 		  {% endwith %}{% endwith %}{% endwith %}{% endwith %}
 
 		  {% with "Annual peak usage hours" as label %}
 		  {% with "hrs/yr" as units %}
 		  {% with "peak electrical usage hours per year" as key %}
 		  {% with "" as instructions %}
-		  {% include "npo/simple_param_block.html" %}
+		  {% include simple_param_block_template %}
 		  {% endwith %}{% endwith %}{% endwith %}{% endwith %}
 		  
 		  {% endwith %}{% endwith %}
@@ -333,7 +333,7 @@
 		  {% with "" as units %}
 		  {% with "available system capacities (photovoltaic panel)" as key %}
 		  {% with "" as instructions %}
-		  {% include "npo/list_param.html" %}
+		  {% include list_param_block_template %}
 		  {% endwith %}{% endwith %}{% endwith %}{% endwith %}
 
 
@@ -341,28 +341,28 @@
 		  {% with "$/kW" as units %}
 		  {% with "photovoltaic panel cost per photovoltaic system kilowatt" as key %}
 		  {% with "" as instructions %}
-		  {% include "npo/simple_param_block.html" %}
+		  {% include simple_param_block_template %}
 		  {% endwith %}{% endwith %}{% endwith %}{% endwith %}
 
 		  {% with "Balance of system cost factor (as fraction of Panel cost)" as label %}
 		  {% with "" as units %}
 		  {% with "photovoltaic balance cost as fraction of photovoltaic panel cost" as key %}
 		  {% with "(e.g. 0.25 for 25%)" as instructions %}
-		  {% include "npo/simple_param_block.html" %}
+		  {% include simple_param_block_template %}
 		  {% endwith %}{% endwith %}{% endwith %}{% endwith %}
 
 		  {% with "Battery energy per system kilowatt" as label %}
 		  {% with "kWh/kW" as units %}
 		  {% with "photovoltaic battery kilowatt-hours per photovoltaic system kilowatt" as key %}
 		  {% with "" as instructions %}
-		  {% include "npo/simple_param_block.html" %}
+		  {% include simple_param_block_template %}
 		  {% endwith %}{% endwith %}{% endwith %}{% endwith %}
 
 		  {% with "Battery cost per kilowatt-hour" as label %}
 		  {% with "$/kW" as units %}
 		  {% with "photovoltaic battery cost per kilowatt-hour" as key %}
 		  {% with "" as instructions %}
-		  {% include "npo/simple_param_block.html" %}
+		  {% include simple_param_block_template %}
 		  {% endwith %}{% endwith %}{% endwith %}{% endwith %}
 
 		  <h3 class="smaller">Photovoltaic Systems Replacement</h3> 
@@ -371,21 +371,21 @@
 		  {% with "years" as units %}
 		  {% with "photovoltaic panel lifetime in years" as key %}
 		  {% with "" as instructions %}
-		  {% include "npo/simple_param_block.html" %}
+		  {% include simple_param_block_template %}
 		  {% endwith %}{% endwith %}{% endwith %}{% endwith %}
 
 		  {% with "Balance of system lifetime" as label %}
 		  {% with "years" as units %}
 		  {% with "photovoltaic balance lifetime in years" as key %}
 		  {% with "" as instructions %}
-		  {% include "npo/simple_param_block.html" %}
+		  {% include simple_param_block_template %}
 		  {% endwith %}{% endwith %}{% endwith %}{% endwith %}
 
 		  {% with "Battery lifetime" as label %}
 		  {% with "years" as units %}
 		  {% with "photovoltaic battery lifetime in years" as key %}
 		  {% with "" as instructions %}
-		  {% include "npo/simple_param_block.html" %}
+		  {% include simple_param_block_template %}
 		  {% endwith %}{% endwith %}{% endwith %}{% endwith %}
 		  
 		  <h3 class="smaller">Operation and Maintenance (O&#38;M)</h3> 
@@ -394,7 +394,7 @@
 		  {% with "" as units %}
 		  {% with "photovoltaic operations and maintenance cost per year as fraction of photovoltaic system cost" as key %}
 		  {% with "(e.g. 0.02 for 2%)" as instructions %}
-		  {% include "npo/simple_param_block.html" %}
+		  {% include simple_param_block_template %}
 		  {% endwith %}{% endwith %}{% endwith %}{% endwith %}
 
 		  <h3 class="smaller">Diesel generators</h3> 
@@ -403,14 +403,14 @@
 		  {% with "h/yr" as units %}
 		  {% with "diesel generator hours of operation per year" as key %}
 		  {% with "" as instructions %}
-		  {% include "npo/simple_param_block.html" %}
+		  {% include simple_param_block_template %}
 		  {% endwith %}{% endwith %}{% endwith %}{% endwith %}
 
 		  {% with "Available diesel generator system sizes" as label %}
 		  {% with "" as units %}
 		  {% with "available system capacities (diesel generator)" as key %}
 		  {% with "Standard units for diesel generator<br />system sizes are represented in kVA; kVA=kW*Power Factor" as instructions %}
-		  {% include "npo/list_param.html" %}
+		  {% include list_param_block_template %}
 		  {% endwith %}{% endwith %}{% endwith %}{% endwith %}
 
 		  {% endwith %}{% endwith %}		  
@@ -444,35 +444,35 @@
 		  {% with "" as units %}
 		  {% with "available system capacities (diesel generator)" as key %}
 		  {% with "Standard units for diesel generator<br />system sizes are represented in kVA; kVA=kW*Power Factor" as instructions %}
-		  {% include "npo/list_param.html" %}
+		  {% include list_param_block_template %}
 		  {% endwith %}{% endwith %}{% endwith %}{% endwith %}
 
 		  {% with "Diesel generator cost per kilowatt" as label %}
 		  {% with "$/kW" as units %}
 		  {% with "diesel generator cost per diesel system kilowatt" as key %}
 		  {% with "" as instructions %}
-		  {% include "npo/simple_param_block.html" %}
+		  {% include simple_param_block_template %}
 		  {% endwith %}{% endwith %}{% endwith %}{% endwith %}
 
 		  {% with "Distribution loss per system kilowatt" as label %}
 		  {% with "$/kW" as units %}
 		  {% with "distribution loss per system kilowatt" as key %}
 		  {% with "" as instructions %}
-		  {% include "npo/simple_param_block.html" %}
+		  {% include simple_param_block_template %}
 		  {% endwith %}{% endwith %}{% endwith %}{% endwith %}
 
 		  {% with "Diesel Generator Installation cost factor<br />(as fraction of Diesel Generator cost)" as label %}
 		  {% with "" as units %}
 		  {% with "diesel generator installation cost as fraction of diesel generator cost" as key %}
 		  {% with "(e.g. 0.25 for 25%)" as instructions %}
-		  {% include "npo/simple_param_block.html" %}
+		  {% include simple_param_block_template %}
 		  {% endwith %}{% endwith %}{% endwith %}{% endwith %}
 
 		  {% with "Other equipment cost per household" as label %}
 		  {% with "$/HH" as units %}
 		  {% with "diesel equipment cost per household" as key %}
 		  {% with "" as instructions %}
-		  {% include "npo/simple_param_block.html" %}
+		  {% include simple_param_block_template %}
 		  {% endwith %}{% endwith %}{% endwith %}{% endwith %}
 		  
 		  <h3 class="smaller">Diesel Generator Replacement</h3> 
@@ -481,7 +481,7 @@
 		  {% with "years" as units %}
 		  {% with "diesel generator lifetime in years" as key %}
 		  {% with "" as instructions %}
-		  {% include "npo/simple_param_block.html" %}
+		  {% include simple_param_block_template %}
 		  {% endwith %}{% endwith %}{% endwith %}{% endwith %}
 		  
 		  <h3 class="smaller">Fuel</h3> 
@@ -490,14 +490,14 @@
 		  {% with "$/L" as units %}
 		  {% with "diesel fuel cost per liter" as key %}
 		  {% with "" as instructions %}
-		  {% include "npo/simple_param_block.html" %}
+		  {% include simple_param_block_template %}
 		  {% endwith %}{% endwith %}{% endwith %}{% endwith %}
 
 		  {% with "Fuel liters consumed per kilowatt-hour" as label %}
 		  {% with "L/kWh" as units %}
 		  {% with "diesel fuel liters consumed per kilowatt-hour" as key %}
 		  {% with "" as instructions %}
-		  {% include "npo/simple_param_block.html" %}
+		  {% include simple_param_block_template %}
 		  {% endwith %}{% endwith %}{% endwith %}{% endwith %}
 		  
 		  <h3 class="smaller">Operation and Maintenance (O&#38;M)</h3> 
@@ -506,21 +506,21 @@
 		  {% with "h/yr" as units %}
 		  {% with "diesel generator hours of operation per year" as key %}
 		  {% with "" as instructions %}
-		  {% include "npo/simple_param_block.html" %}
+		  {% include simple_param_block_template %}
 		  {% endwith %}{% endwith %}{% endwith %}{% endwith %}
 
 		  {% with "Diesel Generator O&amp;M cost factor<br />(as fraction of Diesel Generator cost)" as label %}
 		  {% with "" as units %}
 		  {% with "diesel generator operations and maintenance cost per year as fraction of diesel generator cost" as key %}
 		  {% with "(e.g. 0.25 for 25%)" as instructions %}
-		  {% include "npo/simple_param_block.html" %}
+		  {% include simple_param_block_template %}
 		  {% endwith %}{% endwith %}{% endwith %}{% endwith %}
 
 		  {% with "Other Equipment O&amp;M cost factor<br />(as fraction of Other Equipment cost)" as label %}
 		  {% with "" as units %}
 		  {% with "diesel equipment operations and maintenance cost per year as fraction of diesel equipment cost" as key %}
 		  {% with "(e.g. 0.25 for 25%)" as instructions %}
-		  {% include "npo/simple_param_block.html" %}
+		  {% include simple_param_block_template %}
 		  {% endwith %}{% endwith %}{% endwith %}{% endwith %}
 		  
 		  {% endwith %}{% endwith %}
@@ -553,14 +553,14 @@
 		  {% with "$/kWh" as units %}
 		  {% with "electricity cost per kilowatt-hour" as key %}
 		  {% with "" as instructions %}
-		  {% include "npo/simple_param_block.html" %}
+		  {% include simple_param_block_template %}
 		  {% endwith %}{% endwith %}{% endwith %}{% endwith %}
 
 		  {% with "Transmission and distribution loss factor<br />(as fraction of grid system demand)" as label %}
 		  {% with "" as units %}
 		  {% with "distribution loss per system kilowatt" as key %}
 		  {% with "(e.g. 0.02 for 2%)" as instructions %}
-		  {% include "npo/simple_param_block.html" %}
+		  {% include simple_param_block_template %}
 		  {% endwith %}{% endwith %}{% endwith %}{% endwith %}
 		  
 		  
@@ -572,14 +572,14 @@
 		  {% with "" as units %}
 		  {% with "available system capacities (transformer)" as key %}
 		  {% with "Standard units for transformer<br />system sizes are represented in kVA; kVA=kW*Power Factor" as instructions %}
-		  {% include "npo/list_param.html" %}
+		  {% include list_param_block_template %}
 		  {% endwith %}{% endwith %}{% endwith %}{% endwith %}
 		  		  
 		  {% with "Transformer cost per kilowatt" as label %}
 		  {% with "$/kW" as units %}
 		  {% with "transformer cost per grid system kilowatt" as key %}
 		  {% with "" as instructions %}
-		  {% include "npo/simple_param_block.html" %}
+		  {% include simple_param_block_template %}
 		  {% endwith %}{% endwith %}{% endwith %}{% endwith %}
 		  
 		  <h3 class="smaller">Transformer Replacement</h3> 
@@ -588,7 +588,7 @@
 		  {% with "years" as units %}
 		  {% with "transformer lifetime in years" as key %}
 		  {% with "" as instructions %}
-		  {% include "npo/simple_param_block.html" %}
+		  {% include simple_param_block_template %}
 		  {% endwith %}{% endwith %}{% endwith %}{% endwith %}
 		  		  
 		  <h3 class="smaller">Operation and Maintenance (O&#38;M)</h3> 
@@ -597,7 +597,7 @@
 		  {% with "" as units %}
 		  {% with "transformer operations and maintenance cost per year as fraction of transformer cost" as key %}
 		  {% with "(e.g. 0.02 for 2%)" as instructions %}
-		  {% include "npo/simple_param_block.html" %}
+		  {% include simple_param_block_template %}
 		  {% endwith %}{% endwith %}{% endwith %}{% endwith %}
 		  		  
 		  <h2 class="medium">Grid: Household Connections</h2>
@@ -609,21 +609,21 @@
 		  {% with "$/HH" as units %}
 		  {% with "equipment cost per connection" as key %}
 		  {% with "" as instructions %}
-		  {% include "npo/simple_param_block.html" %}
+		  {% include simple_param_block_template %}
 		  {% endwith %}{% endwith %}{% endwith %}{% endwith %}
 
 		  {% with "Installation cost per household<br />e.g. installation of energy meters, internal wiring, etc." as label %}
 		  {% with "$/HH" as units %}
 		  {% with "installation cost per connection" as key %}
 		  {% with "" as instructions %}
-		  {% include "npo/simple_param_block.html" %}
+		  {% include simple_param_block_template %}
 		  {% endwith %}{% endwith %}{% endwith %}{% endwith %}
 
 		  {% with "Service cost per household<br />(annual flat fee for service)" as label %}
 		  {% with "$/HH" as units %}
 		  {% with "service cost per connection" as key %}
 		  {% with "" as instructions %}
-		  {% include "npo/simple_param_block.html" %}
+		  {% include simple_param_block_template %}
 		  {% endwith %}{% endwith %}{% endwith %}{% endwith %}
 		  		  
 		  <h3 class="smaller">Operation and Maintenance (O&#38;M)</h3> 
@@ -632,14 +632,14 @@
 		  {% with "" as units %}
 		  {% with "equipment operations and maintenance cost per year as fraction of equipment cost" as key %}
 		  {% with "(e.g. 0.02 for 2%)" as instructions %}
-		  {% include "npo/simple_param_block.html" %}
+		  {% include simple_param_block_template %}
 		  {% endwith %}{% endwith %}{% endwith %}{% endwith %}
 
 		  {% with "Service O&#38;M cost factor<br />(as fraction of service cost)" as label %}
 		  {% with "" as units %}
 		  {% with "service operations and maintenance cost per year as fraction of service cost" as key %}
 		  {% with "(e.g. 0.02 for 2%)" as instructions %}
-		  {% include "npo/simple_param_block.html" %}
+		  {% include simple_param_block_template %}
 		  {% endwith %}{% endwith %}{% endwith %}{% endwith %}
 		  		  
 		  <h2 class="medium">Grid: Medium Voltage Extension</h2>
@@ -650,7 +650,7 @@
 		  {% with "$/m" as units %}
 		  {% with "medium voltage line cost per meter" as key %}
 		  {% with "" as instructions %}
-		  {% include "npo/simple_param_block.html" %}
+		  {% include simple_param_block_template %}
 		  {% endwith %}{% endwith %}{% endwith %}{% endwith %}
 
 		  		  
@@ -660,7 +660,7 @@
 		  {% with "years" as units %}
 		  {% with "medium voltage line lifetime in years" as key %}
 		  {% with "" as instructions %}
-		  {% include "npo/simple_param_block.html" %}
+		  {% include simple_param_block_template %}
 		  {% endwith %}{% endwith %}{% endwith %}{% endwith %}
 		  
 		  <h3 class="smaller">Operation and Maintenance (O&#38;M)</h3> 
@@ -669,7 +669,7 @@
 		  {% with "" as units %}
 		  {% with "medium voltage line operations and maintenance cost per year as fraction of medium voltage line cost" as key %}
 		  {% with "(e.g. 0.02 for 2%)" as instructions %}
-		  {% include "npo/simple_param_block.html" %}
+		  {% include simple_param_block_template %}
 		  {% endwith %}{% endwith %}{% endwith %}{% endwith %}
 		  		  
 		  {% endwith %}{% endwith %}		  
@@ -697,7 +697,7 @@
 		  {% with "$/m" as units %}
 		  {% with "low voltage line cost per meter" as key %}
 		  {% with "" as instructions %}
-		  {% include "npo/simple_param_block.html" %}
+		  {% include simple_param_block_template %}
 		  {% endwith %}{% endwith %}{% endwith %}{% endwith %}
 
 		  <h3 class="smaller">Low Voltage Lines Replacement</h3> 
@@ -706,7 +706,7 @@
 		  {% with "years" as units %}
 		  {% with "low voltage line lifetime in years" as key %}
 		  {% with "" as instructions %}
-		  {% include "npo/simple_param_block.html" %}
+		  {% include simple_param_block_template %}
 		  {% endwith %}{% endwith %}{% endwith %}{% endwith %}
 		  		  
 		  <h3 class="smaller">Operation and Maintenance (O&#38;M)</h3> 
@@ -715,7 +715,7 @@
 		  {% with "$/m" as units %}
 		  {% with "low voltage line operations and maintenance cost per meter" as key %}
 		  {% with "" as instructions %}
-		  {% include "npo/simple_param_block.html" %}
+		  {% include simple_param_block_template %}
 		  {% endwith %}{% endwith %}{% endwith %}{% endwith %}
 
 		  {% endwith %}{% endwith %}		  
