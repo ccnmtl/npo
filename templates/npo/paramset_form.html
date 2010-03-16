@@ -866,58 +866,17 @@
 		  </div><!-- class="pageblock" --> 
 		  
 		  <h3 class="smaller">Diesel Generators</h3> 
-		  
-		  <div class="pageblock"> 
-		    <div class="ptitle w200"><label for="paramset-{{paramsetid}}-metric>system_(mini-grid)>available_system_capacities_(diesel_generator)">Available diesel generator system sizes:</label></div><!-- ptitle --> 
-		    <div class="pfield"> 
-		      <table class="veryplain"> 
-			<tbody> 
-			  <tr> 
-			    <td class="veryplain" colspan="2"> 
-			      <div class="instructions">To add, enter value and click Add.<br />To remove, highlight value and click Remove.</div><!-- class="instructions" --> 
-			    </td> 
-			  </tr> 
-			  <tr> 
-			    <td class="veryplain" style="text-align: right;"> 
-			      <input id="input-paramset-{{paramsetid}}-metric>system_(mini-grid)>available_system_capacities_(diesel_generator)" 
-				     class="form_text" type="text"
-			      type="text" size="9" maxlength="128"  
-				     value="Enter value" onFocus="this.value=''" /> 
-			      <input type="button" value="Add &#187;"
-			      class="regButton" 
-				     onclick="AddListItem('paramset-{{paramsetid}}-metric>system_(mini-grid)>available_system_capacities_(diesel_generator)')"/> 
-			      <hr style="margin: 5px 0;" /> 
-			      <input type="button" value="&#171; Remove" 
-				     onclick="RemoveListItems('paramset-{{paramsetid}}-metric>system_(mini-grid)>available_system_capacities_(diesel_generator)')"
-				     class="regButton" /> 
-			    </td> 
-			    <td class="veryplain"> 
-			      <select id="select-paramset-{{paramsetid}}-metric>system_(mini-grid)>available_system_capacities_(diesel_generator)"
-				      name="paramset-{{paramsetid}}-metric>system_(mini-grid)>available_system_capacities_(diesel_generator)"
-				      size="5" multiple="multiple"
-				      class="form_multiselect w100"> 
-				{% with "system (mini-grid)" as system %}
-                                {% with "available system capacities (diesel generator)" as key %}
-                                {% for o in params.metric|get:system|getlist:key %}
-                                <option value="{{o}}">{{o}}</option>
-                                {% endfor %}
-                                {% endwith %}
-                                {% endwith %}
-			      </select> 
-			    </td> 
-			  </tr> 
-			  <tr> 
-			    <td class="veryplain" colspan="2"> 
-			      <div class="instructions">Standard units for diesel generator<br />system sizes are represented in kVA; kVA=kW*Power Factor</div><!-- class="instructions" --> 
-			    </td> 
-			  </tr> 
-			</tbody> 
-		    </table></div><!-- pfield --> 
-		    <div class="visualclear"></div> 
-		  </div><!-- class="pageblock" --> 
 
+		  
 		  {% with "system (mini-grid)" as section %}
 		  {% with "w200" as divwidth %}
+
+		  {% with "Available diesel generator system sizes" as label %}
+		  {% with "" as units %}
+		  {% with "available system capacities (diesel generator)" as key %}
+		  {% with "Standard units for diesel generator<br />system sizes are represented in kVA; kVA=kW*Power Factor" as instructions %}
+		  {% include "npo/list_param.html" %}
+		  {% endwith %}{% endwith %}{% endwith %}{% endwith %}
 
 		  {% with "Diesel generator cost per kilowatt" as label %}
 		  {% with "$/kW" as units %}
