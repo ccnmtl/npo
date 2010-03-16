@@ -796,53 +796,13 @@
 		  {% with "" as instructions %}
 		  {% include "npo/simple_param_block.html" %}
 		  {% endwith %}{% endwith %}{% endwith %}{% endwith %}
-		  
-		  <div class="pageblock"> 
-		    <div class="ptitle
-		    w200"><label for="paramset-{{paramsetid}}-metric>system_(off-grid)>available_system_capacities_(diesel_generator)">Available
-		    System Capacities (diesel generator):</label></div><!-- ptitle --> 
-		    <div class="pfield"> 
-		      <table class="veryplain"> 
-			<tbody> 
-			  <tr> 
-			    <td class="veryplain" colspan="2"> 
-			      <div class="instructions">To add, enter value and click Add.<br />To remove, highlight value and click Remove.</div><!-- class="instructions" --> 
-			    </td> 
-			  </tr> 
-			  <tr> 
-			    <td class="veryplain" style="text-align: right;"> 
-			      <input 
-			      id="input-paramset-{{paramsetid}}-metric>system_(off-grid)>available_system_capacities_(diesel_generator)" 
-				     class="form_text" type="text"
-			      type="text" size="9" maxlength="128"  
-				     value="Enter value" onFocus="this.value=''" /> 
-			      kW <input type="button" value="Add &#187;" class="regButton" 
-					onclick="AddListItem('paramset-{{paramsetid}}-metric>system_(off-grid)>available_system_capacities_(diesel_generator)')"
-					/> 
-			      <hr style="margin: 5px 0;" /> 
-			      <input type="button" value="&#171; Remove" class="regButton" 
-				     onclick="RemoveListItems('paramset-{{paramsetid}}-metric>system_(off-grid)>available_system_capacities_(diesel_generator)')"/> 
-			    </td> 
-			    <td class="veryplain"> 
-			      <select size="5" 
-				      name="paramset-{{paramsetid}}-metric>system_(off-grid)>available_system_capacities_(diesel_generator)"
-				      id="select-paramset-{{paramsetid}}-metric>system_(off-grid)>available_system_capacities_(diesel_generator)"
-				      multiple="multiple"
-				      class="form_multiselect w100"> 
-				{% with "system (off-grid)" as system %}
-                                {% with "available system capacities (diesel generator)" as key %}
-                                {% for o in params.metric|get:system|getlist:key %}
-                                <option value="{{o}}">{{o}}</option>
-                                {% endfor %}
-				{% endwith %}
-                                {% endwith %}
-			      </select> 
-			    </td> 
-			  </tr> 
-			</tbody> 
-		    </table></div><!-- pfield --> 
-		    <div class="visualclear"></div> 
-		  </div><!-- class="pageblock" --> 
+
+		  {% with "Available diesel generator system sizes" as label %}
+		  {% with "" as units %}
+		  {% with "available system capacities (diesel generator)" as key %}
+		  {% with "Standard units for diesel generator<br />system sizes are represented in kVA; kVA=kW*Power Factor" as instructions %}
+		  {% include "npo/list_param.html" %}
+		  {% endwith %}{% endwith %}{% endwith %}{% endwith %}
 
 		  {% endwith %}{% endwith %}		  
 		  <div class="visualclear"></div> 
