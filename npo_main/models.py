@@ -144,6 +144,10 @@ class Case(models.Model):
     def cost_components(self):
         nodes = self.node_output()
         results = calc_component_costs(nodes)
+        mv_cost = (self.total_mv_line_length() *
+                   self.mv_line_cost_per_meter())            
+        results['components']['grid'][
+            'medium-voltage line cost'] = mv_cost
         return results
 
     def cost_histograms(self, g_bins, o_bins, m_bins):

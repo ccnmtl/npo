@@ -190,15 +190,11 @@ def bins(param, request):
 def results_for_case(case,request):
     results = case.pop()
     results['case'] = case
+
     x = case.cost_components()
-    mv_cost = (case.total_mv_line_length() *
-               case.mv_line_cost_per_meter())            
-    x['components']['grid'][
-        'medium-voltage line cost'] = mv_cost
-
     results['cost_components'] = x['components']
-
     results['totals'] = x['totals']
+
     g_bins = bins('g',request)
     o_bins = bins('o',request)
     m_bins = bins('m',request)
@@ -215,7 +211,10 @@ def results_for_case(case,request):
 @rendered_with('npo/case.html')
 def case(request,id):
     case = get_object_or_404(Case,id=id)
-    return results_for_case(case,request)
+    try:
+        return results_for_case(case,request)
+    except:
+        return dict(case=case)
 
 @login_required
 @rendered_with('npo/compare_cases.html')
