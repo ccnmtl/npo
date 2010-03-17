@@ -211,6 +211,7 @@ def results_for_case(case,request):
 @rendered_with('npo/case.html')
 def case(request,id):
     case = get_object_or_404(Case,id=id)
+
     try:
         return results_for_case(case,request)
     except:

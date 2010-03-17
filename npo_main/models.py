@@ -1,7 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from datetime import datetime
-from django.utils.simplejson import loads
+from django.utils.simplejson import loads, dumps
 from backend import expand_param_names
 from backend import request as backend_request
 from django.conf import settings
@@ -34,6 +34,7 @@ class Case(models.Model):
     parameters = models.TextField(blank=True,default="")
     stage_one_output = models.TextField(blank=True,default="")
     stage_two_output = models.TextField(blank=True,default="")
+    output_summary = models.TextField(blank=True, default="")
     save_parameters = models.BooleanField(default=False)
     output_file = models.FileField(upload_to="outputs/%Y/%m/%d",blank=True,null=True)
     email_user = models.BooleanField(default=False)
@@ -65,6 +66,20 @@ class Case(models.Model):
         except:
             return dict()
 
+    def output_summary_dict(self):
+        try:
+            return loads(self.output_summary)
+        except ValueError:
+            return {}
+    def get_output_summary(self, key):
+        values = self.output_summary_dict()
+        return values.get(key)
+    def set_output_summary(self, key, value):
+        values = self.output_summary_dict()
+        values[key] = value
+        self.output_summary = dumps(values)
+        self.save()
+
     def geojson(self):
         return self.output_dict().get('geojson','')
 
@@ -90,7 +105,7 @@ class Case(models.Model):
     def node_output(self):
         nodes = self.output_dict()['variables']['node']
         return Nodes(nodes)
-
+    
     def total_mv_line_length(self):
         return float(self.output_dict()
                      ['statistics']['network']
@@ -103,51 +118,87 @@ class Case(models.Model):
                 'medium voltage line cost per meter'
                 ])
 
+    def years(self):
+        return range(self.time_horizon())
+
     def mv_hh(self):
+        _val = self.get_output_summary("mv_hh")
+        if _val is not None: return _val
+
         nodes = self.node_output()
         count = total_projected_household_count(
             nodes, system='grid')
         mv_length = self.total_mv_line_length()
-        return mv_length / count
+        _val = mv_length / count
+
+        self.set_output_summary("mv_hh", _val)
+        return _val
 
     def pop(self):
+        _val = self.get_output_summary("pop")
+        if _val is not None: return _val
+
         horizon = self.time_horizon()
         nodes = self.node_output()
         x = ur(horizon)
         results = x(nodes)
+
+        self.set_output_summary("pop", results)
         return results
 
-    def years(self):
-        return range(self.time_horizon())
-
     def demand(self):
+        _val = self.get_output_summary("demand")
+        if _val is not None: return _val
+
         nodes = self.node_output()
         x = demand_totals()
         results = x(nodes)
+
+        self.set_output_summary("demand", results)
         return results
 
     def count(self):
+        _val = self.get_output_summary("count")
+        if _val is not None: return _val
+
         nodes = self.node_output()
         results = count_totals(nodes)
+
+        self.set_output_summary("count", results)
         return results
 
     def system_count(self):
+        _val = self.get_output_summary("system_count")
+        if _val is not None: return _val
+
         nodes = self.node_output()
         results = nodes_per_system_nongrid(nodes)
+
+        self.set_output_summary("system_count", results)
         return results
 
     def system_summary(self):
+        _val = self.get_output_summary("system_summary")
+        if _val is not None: return _val
+
         nodes = self.node_output()
         results = nodes_per_system_and_type(nodes)
+
+        self.set_output_summary("system_summary", results)
         return results
 
     def cost_components(self):
+        _val = self.get_output_summary("cost_components")
+        if _val is not None: return _val
+
         nodes = self.node_output()
         results = calc_component_costs(nodes)
         mv_cost = (self.total_mv_line_length() *
-                   self.mv_line_cost_per_meter())            
+                   self.mv_line_cost_per_meter())
         results['components']['grid'][
             'medium-voltage line cost'] = mv_cost
+
+        self.set_output_summary("cost_components", results)
         return results
 
     def cost_histograms(self, g_bins, o_bins, m_bins):
@@ -162,13 +213,23 @@ class Case(models.Model):
         return results
 
     def household_average_cost(self):
+        _val = self.get_output_summary("household_average_cost")
+        if _val is not None: return _val
+
         nodes = self.node_output()
         results = average_cost_per_household(nodes)
+
+        self.set_output_summary("household_average_cost", results)
         return results
 
     def lv_hh(self):
+        _val = self.get_output_summary("lv_hh")
+        if _val is not None: return _val
+
         nodes = self.node_output()
         results = lv_per_household(nodes)
+
+        self.set_output_summary("lv_hh", results)
         return results
 
     @models.permalink
