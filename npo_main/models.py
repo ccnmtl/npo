@@ -232,6 +232,24 @@ class Case(models.Model):
         self.set_output_summary("lv_hh", results)
         return results
 
+    def populate_summary_cache(self):
+        """ Clear the output_summary cache (json blob) and re-run
+        all the methods that populate and use that cache, ie all the
+        methods which iterate over the node data in the output (which
+        is really slow because it's so big).
+        """
+        self.output_summary = ""
+        self.save()
+        self.mv_hh()
+        self.pop()
+        self.demand()
+        self.count()
+        self.system_count()
+        self.system_summary()
+        self.cost_components()
+        self.household_average_cost()
+        self.lv_hh()
+
     @models.permalink
     def get_absolute_url(self):
         return ('npo_main.views.case',[str(self.id)])
