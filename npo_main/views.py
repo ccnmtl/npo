@@ -161,6 +161,8 @@ def case_callback(request,id):
             # umm. someone's POSTing but it's already complete
             pass
 
+        case.populate_summary_cache()
+
         return HttpResponse("ok")
     return HttpResponse("this requires a POST")
 
