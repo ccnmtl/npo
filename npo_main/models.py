@@ -198,6 +198,10 @@ class Case(models.Model):
         results['components']['grid'][
             'medium-voltage line cost'] = mv_cost
 
+        x = self.output_dict()
+        results['totals']['grid'] = float(x['variables'][
+            'metric']['system (grid)']['system total cost'])
+
         self.set_output_summary("cost_components", results)
         return results
 
