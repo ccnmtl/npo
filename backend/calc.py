@@ -301,42 +301,26 @@ class Node(object):
         ## XXX TODO
         raise NotImplementedError("NEED THIS FROM ROY")
 
-    def total_cost(self, system=None, final=False):
+    def total_cost(self, system=None):
         """
         Returns the total cost for building this node over the 
         time horizon.
 
         If system is None, uses the node's preferred system (if 
         that has been calculated).
-
-        The `final` parameter signifies whether the network has
-        been built (ie the Big Algorithm) - if it has not been
-        built we don't have access to some of the data. I think
-        this is only relevant for on-grid nodes.
         """
         system = system or self.system()
         if system == 'grid':
             cost = self['system (grid)']['internal system nodal cost']
-            if final:
-                external_cost = float(
-                    self['system (grid)']['external nodal cost per meter'])
-                meters = self.mv_length_in_meters()
-                external_cost *= meters
-                cost = float(cost) + external_cost
         else:
             cost = self['system (%s)' % system]['system nodal cost']
         cost = float(cost)
         return cost
 
-    def recurring_costs(self, component=None):
+    def recurring_costs(self):
         """ 
-        calculate total recurring costs for the given component,
-        or total recurring costs across all recurring cost components
-        if no component is provided
+        calculate total recurring costs for the given component
         """
-
-        if component is not None:
-            raise NotImplementedError
 
         system = self.system()
         
