@@ -93,6 +93,7 @@ onclick="showElement('paramset-{{case.id}}');return false">show parameters</a></
 
 <h2>MV/HH</h2>
 <em>The medium-voltage line length per household, only for nodes on the grid</em>
-{{case.mv_hh}}
+<br/>
+{{case.mv_hh|floatformat:2}}
 
 {% endifequal %}

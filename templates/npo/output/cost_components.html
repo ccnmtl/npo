@@ -23,12 +23,12 @@
       <th scope="row">
 	{{type}}
       </th>
-      <td>
-	${{cost}}
+      <td style="float: right">
+	${{cost|floatformat:2}}
       </td>
       <td>
 	{% with totals|getitem:system as total %}
-	{{cost|percent_of:total}}
+	{{cost|percent_of:total|floatformat:2}}%
 	{% endwith %}
       </td>
     </tr>

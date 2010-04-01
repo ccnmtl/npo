@@ -5,7 +5,7 @@
 {% for type, total in case.count.items %}
 <tr>
 <th scope="row">{{type}}</th>
-<td>{{total}}</td>
+<td style="float: right">{{total|floatformat:2}}</td>
 </tr>
 {% endfor %}
 </tbody>
