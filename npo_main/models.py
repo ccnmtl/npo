@@ -272,6 +272,7 @@ class Case(models.Model):
         # with a result
         params = loads(self.parameters)
         dataset = params.get('dataset') or 'default'
+        if dataset not in datasets: dataset = 'default'
         (demographicsfile,networksfile) = datasets[dataset]
         del params['dataset']
         demographics = open(os.path.join(settings.SAMPLE_PATH,demographicsfile)).read()
