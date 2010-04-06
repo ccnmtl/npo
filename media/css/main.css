@@ -853,11 +853,8 @@ ul.usernav li#logout a
 	border-bottom: 1px dotted #ccc;
 }
 
-.parameterset
-{
-	display: none;
-	margin-left: 1em;
-}
+.invisible {display: none;}
+
 
 .parametersetdisplay input {
  border: 0px;
