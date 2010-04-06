@@ -1,12 +1,12 @@
 {% load get %}
-<h1>Case: {% if case.name %}{{case.name}}{% else %}{{case.pk}}{% endif %}</h1>
+<h1>Case: {{case.name|default:case.pk}}</h1>
 <p>created {{case.created|date}} at {{case.created|time}}</p>
 <p>last updated {{case.updated|date}} at {{case.updated|time}}</p>
 
 <h2>Case Parameters</h2>
 
 <p><a href="" 
-onclick="showElement('paramset-{{case.id}}');return false">show parameters</a></p>
+onclick="toggleElement('paramset-{{case.id}}');return false">show parameters</a></p>
 {% with "npo/simple_param_block_display.html" as simple_param_block_template %}
 {% with "npo/list_param_display.html" as list_param_block_template %}
 {% with "npo/demand_curve_param_display.html" as demand_curve_param_template %}
