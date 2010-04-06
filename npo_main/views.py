@@ -190,6 +190,8 @@ def bins(param, request):
 
 ### outputs
 def results_for_case(case,request):
+    if case.status() == "started":
+        return dict(incomplete=True,case=case)
     results = case.pop()
     results['case'] = case
 
