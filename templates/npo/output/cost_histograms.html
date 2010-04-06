@@ -34,9 +34,21 @@
     <br />
     {% endif %}
     {% endfor %}
+
+    <input type="submit" value="Change bin sizes" />
+
+    <br/>
+    <input type="text" class="newbin"></input>
+    <br/>
+    <input type="text" class="newbin"></input>
+    <br/>
+    <button onclick="newFormInterval(this.parentNode, '{{type}}'); return false;">
+      Add new bin
+    </button>
+
     {% endifnotequal %}
     {% endfor %}
-    <input type="submit" value="Change bin sizes" />
+
   </form>
 
 </div>

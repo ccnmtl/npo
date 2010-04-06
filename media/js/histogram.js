@@ -15,7 +15,7 @@ var validateForm = function(form) {
     var paramEl = paramEls[i];
     var floorVal = 0;
     if( i>0 ) floorVal = paramEls[i-1].value;
-    myVal = parseFloat(paramEl.value);
+    var myVal = parseFloat(paramEl.value);
     floorVal = parseFloat(floorVal);
     if( myVal <= floorVal ) {
       return false;
@@ -53,4 +53,64 @@ var styleForm = function(form) {
 
   var span = MochiKit.Selector.findChildElements(form, ["span.finalParamCue"])[0];
   span.innerHTML = paramEls[paramEls.length-1].value + " and greater";
+};
+
+var addInterval = function(form, name, floor, ceiling) {
+  var newInput = MochiKit.DOM.INPUT({"class": "param",
+				     "type": "text",
+				     "name": name,
+				     "onchange": "validateAndRestyleForm(this.parentNode)"});
+  var paramEls = MochiKit.Selector.findChildElements(form, ["input.param"]);
+
+  /* First do validation -- make sure the new interval
+   * isn't going to span more than one existing bin.
+   */
+  for( var i=0; i<paramEls.length; ++i ) {
+    var paramEl = paramEls[i];
+    var myFloorVal = 0;
+    if( i>0 ) myFloorVal = paramEls[i-1].value;
+    var myCeilingVal = parseFloat(paramEl.value);
+    myFloorVal = parseFloat(myFloorVal);
+    if( floor<=myFloorVal && ceiling>=myCeilingVal ) {
+      alert("You are trying to add a new bin that spans more than one existing bin. You can't do that.");
+      return false;
+    };
+  };
+
+  /* OK, the new interval validated alright.
+   * Now we'll figure out where to put it.
+   */
+  for( var i=0; i<paramEls.length; ++i ) {
+    var paramEl = paramEls[i];
+    var myFloorVal = 0;
+    if( i>0 ) myFloorVal = paramEls[i-1].value;
+    var myCeilingVal = parseFloat(paramEl.value);
+    myFloorVal = parseFloat(myFloorVal);
+
+    if( floor <= myCeilingVal ) {
+      newInput.value = ceiling;
+      MochiKit.DOM.insertSiblingNodesAfter(paramEl.nextSibling.nextSibling,
+					    newInput, MochiKit.DOM.BR());
+      paramEl.value = floor;
+      validateAndRestyleForm(form);
+      return 1;
+    };
+  };
+  var paramEl = paramEls[paramEls.length-1];
+  newInput.value = ceiling;
+  MochiKit.DOM.insertSiblingNodesAfter(paramEl.nextSibling.nextSibling,
+				       newInput, MochiKit.DOM.BR());
+  paramEl.value = floor;
+  validateAndRestyleForm(form);
+  return 1;
+};
+
+var newFormInterval = function(form, name) {
+  var inputs = MochiKit.Selector.findChildElements(form, ["input.newbin"]);
+  var a = inputs[0].value;
+  var b = inputs[1].value;
+  var floor = a < b && a || b;
+  var ceiling = floor == a && b || a;
+  addInterval(form, name, floor, ceiling);
+
 };
