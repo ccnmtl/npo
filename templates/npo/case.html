@@ -9,6 +9,7 @@
 
 <script src="http://ccnmtl.columbia.edu/scripts/MochiKit/MochiKit.js" type="text/javascript" language="javascript"></script> 
 <script src="/site_media/js/paramset.js" type="text/javascript" language="javascript"></script> 
+<script src="/site_media/js/histogram.js" type="text/javascript" language="javascript"></script> 
 <script src="/site_media/js/tabber.js" type="text/javascript" language="javascript"></script> 
 <!--[if lt IE 7]><script src="http://ccnmtl.columbia.edu/remote/alerts/browser/ienosupport.js" type="text/javascript" language="javascript"></script><link rel="stylesheet" href="http://ccnmtl.columbia.edu/remote/alerts/browser/ienosupport.css" type="text/css" media="all" /><![endif]--> 
 
@@ -48,7 +49,6 @@ var plot = function(insertInto, paramsFrom) {
 
 
 {% include "bluff.html" %}
-<script src="http://openlayers.org/api/OpenLayers.js"></script>
 
 {% endblock %}
 
@@ -129,4 +129,7 @@ var plot = function(insertInto, paramsFrom) {
 };
 </script>
 
+<script type="text/javascript">
+addLoadEvent(styleHistogramForms);
+</script>
 {% endblock %}

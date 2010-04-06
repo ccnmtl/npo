@@ -13,7 +13,7 @@
 </table>
 <canvas id="{{case.id}}-g_histo{{forloop.counter0}}" width="500" height="350"></canvas>
 
-<form method="GET">
+<form class="histogram_params" method="GET">
   {% for type, params in histogram_params.items %}
   {% ifnotequal type system.0 %}
   {% for param in params %}
@@ -22,7 +22,9 @@
 
   {% else %}
   {% for param in params %}
-  <input type="text" name="{{type}}" value="{{param}}" />
+  <input class="param" type="text"
+	 name="{{type}}" value="{{param}}" 
+	 onchange="validateAndRestyleForm(this.parentNode)" />
   {% endfor %}
   {% endifnotequal %}
   {% endfor %}
