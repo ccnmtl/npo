@@ -2,33 +2,45 @@
 
 {% for system, counts in cost_histogram_counts.items %}
 <h2>{{system}}</h2>
-<table id="{{case.id}}-d_histo{{forloop.counter0}}" style="float: right; ">
-<tbody>
-  {% for bin, count in counts.items %}
-  <tr>
-    <th scope="row">{{bin}}</th>
-    <td>{{count}}</td>
-  {% endfor %}
-</tbody>
-</table>
+<div style="float: right;">
+  <table id="{{case.id}}-d_histo{{forloop.counter0}}">
+    <tbody>
+      {% for bin, count in counts.items %}
+      <tr>
+	<th scope="row">{{bin}}</th>
+	<td>{{count}}</td>
+	{% endfor %}
+    </tbody>
+  </table>
+
+  <h3>Histogram Bins</h3>
+  <form class="histogram_params" method="GET">
+    {% for type, params in histogram_params.items %}
+    {% ifnotequal type system.0 %}
+    {% for param in params %}
+    <input type="hidden" name="{{type}}" value="{{param}}" />
+    {% endfor %}
+    
+    {% else %}
+    {% for param in params %}
+    <input class="param" type="text"
+	   name="{{type}}" value="{{param}}" 
+	   onchange="validateAndRestyleForm(this.parentNode)" />
+    <br />
+    {% if forloop.last %}
+    <span class="finalParamCue">
+      {{param}} and greater
+    </span>
+    <br />
+    {% endif %}
+    {% endfor %}
+    {% endifnotequal %}
+    {% endfor %}
+    <input type="submit" value="Change bin sizes" />
+  </form>
+
+</div>
+
 <canvas id="{{case.id}}-g_histo{{forloop.counter0}}" width="500" height="350"></canvas>
-
-<form class="histogram_params" method="GET">
-  {% for type, params in histogram_params.items %}
-  {% ifnotequal type system.0 %}
-  {% for param in params %}
-  <input type="hidden" name="{{type}}" value="{{param}}" />
-  {% endfor %}
-
-  {% else %}
-  {% for param in params %}
-  <input class="param" type="text"
-	 name="{{type}}" value="{{param}}" 
-	 onchange="validateAndRestyleForm(this.parentNode)" />
-  {% endfor %}
-  {% endifnotequal %}
-  {% endfor %}
-  <input type="submit" value="Change bin sizes" />
-</form>
 
 {% endfor %}
