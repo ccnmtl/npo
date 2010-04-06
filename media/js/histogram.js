@@ -50,4 +50,8 @@ var styleForm = function(form) {
     span.innerHTML = spanText(floorVal);
     MochiKit.DOM.insertSiblingNodesBefore(paramEl, span);
   };
+
+  var span = MochiKit.DOM.SPAN({"class": "paramCue"});
+  span.innerHTML = paramEls[paramEls.length-1].value + " and greater";
+  MochiKit.DOM.insertSiblingNodesAfter(paramEls[paramEls.length-1], span);
 };
