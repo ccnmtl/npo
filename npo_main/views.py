@@ -203,7 +203,12 @@ def results_for_case(case,request):
     o_bins = bins('o',request)
     m_bins = bins('m',request)
     
-    results['cost_histogram_counts'] = case.cost_histograms(g_bins, o_bins, m_bins)
+    cost_histogram_counts = case.cost_histograms(
+        g_bins, o_bins, m_bins)
+    cost_histogram_counts = dict((key, sorted(val.items()))
+                                 for key, val in cost_histogram_counts.items())
+    results['cost_histogram_counts'] = cost_histogram_counts
+    
     results['histogram_params'] = {
         'o': o_bins,
         'm': m_bins, 

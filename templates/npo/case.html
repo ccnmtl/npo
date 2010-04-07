@@ -5,6 +5,17 @@
 {% block title %}Your cases{% endblock %}
 {% block breadcrumbs %}<a href="/">HOME</a> &gt; CASE SUMMARY{% endblock %}
 
+{% block css %}
+<style type="text/css">
+  div.bluff-tooltip {
+    background-color: white;
+    padding: 0.5em;
+  }
+  div.bluff-tooltip span.label {
+    font-style: italic;
+  }
+</style>
+{% endblock %}
 {% block js %}
 
 <script src="http://ccnmtl.columbia.edu/scripts/MochiKit/MochiKit.js" type="text/javascript" language="javascript"></script> 
@@ -59,16 +70,20 @@ var plot = function(insertInto, paramsFrom) {
 {% block endjs %}
 <script type="text/javascript">
   var g = new Bluff.Line('{{case.id}}-g_pop', '500x350');
+  g.tooltips = true;
   g.theme_rails_keynote();
   g.data_from_table('{{case.id}}-d_pop');
   g.draw();
 
   var g = new Bluff.Pie('{{case.id}}-g_demand', '500x350');
+  g.hide_labels_less_than = 101;
+  
   g.theme_rails_keynote();
   g.data_from_table('{{case.id}}-d_demand');
   g.draw()
 
   var g = new Bluff.Bar('{{case.id}}-g_demand2', '500x350');
+  g.tooltips = true;
   g.theme_rails_keynote();
   g.data_from_table('{{case.id}}-d_demand');
   g.draw();
@@ -78,6 +93,7 @@ var plot = function(insertInto, paramsFrom) {
   g.sort = false;
   g.hide_legend = true;
   g.data_from_table('{{case.id}}-d_histo0');
+  g.bar_spacing = 1;
   g.draw();
 
   var g = new Bluff.Bar('{{case.id}}-g_histo1', '500x350');
@@ -85,6 +101,7 @@ var plot = function(insertInto, paramsFrom) {
   g.sort = false;
   g.hide_legend = true;
   g.data_from_table('{{case.id}}-d_histo1');
+  g.bar_spacing = 1;
   g.draw();
 
   var g = new Bluff.Bar('{{case.id}}-g_histo2', '500x350');
@@ -92,6 +109,7 @@ var plot = function(insertInto, paramsFrom) {
   g.sort = false;
   g.hide_legend = true;
   g.data_from_table('{{case.id}}-d_histo2');
+  g.bar_spacing = 1;
   g.draw();
 </script>
 

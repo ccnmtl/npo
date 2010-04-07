@@ -11,7 +11,7 @@
   <div class="tabbertab" title="Show raw data">
     <table id="{{case.id}}-d_histo{{forloop.counter0}}">
       <tbody>
-	{% for bin, count in counts.items %}
+	{% for bin, count in counts %}
 	<tr>
 	  <th scope="row">{{bin}}</th>
 	  <td>{{count}}</td>
