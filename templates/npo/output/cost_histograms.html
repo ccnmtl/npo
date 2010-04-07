@@ -2,17 +2,25 @@
 
 {% for system, counts in cost_histogram_counts.items %}
 <h2 id="histogram-{{system}}">{{system}}</h2>
-<div style="float: right;">
-  <table id="{{case.id}}-d_histo{{forloop.counter0}}">
-    <tbody>
-      {% for bin, count in counts.items %}
-      <tr>
-	<th scope="row">{{bin}}</th>
-	<td>{{count}}</td>
-	{% endfor %}
-    </tbody>
-  </table>
+<div class="tabber">
 
+  <div class="tabbertab" title="Histogram">
+    <canvas id="{{case.id}}-g_histo{{forloop.counter0}}" width="500" height="350"></canvas>
+  </div>
+  
+  <div class="tabbertab" title="Show raw data">
+    <table id="{{case.id}}-d_histo{{forloop.counter0}}">
+      <tbody>
+	{% for bin, count in counts.items %}
+	<tr>
+	  <th scope="row">{{bin}}</th>
+	  <td>{{count}}</td>
+	  {% endfor %}
+      </tbody>
+    </table>
+  </div>
+  
+  <div class="tabbertab" title="Edit bin sizes">
   <h3>Histogram Bins</h3>
   <form action="#histogram-{{system}}"
 	class="histogram_params" method="GET">
@@ -39,11 +47,11 @@
 
     <input type="submit" value="Change bin sizes" />
 
-    <br/>
-    <input type="text" class="newbin"></input>
-    <br/>
-    <input type="text" class="newbin"></input>
-    <br/>
+    <br />
+    <input type="text" class="newbin" />
+    <br />
+    <input type="text" class="newbin" />
+    <br />
     <button onclick="newFormInterval(this.parentNode, '{{type}}'); return false;">
       Add new bin
     </button>
@@ -52,9 +60,8 @@
     {% endfor %}
 
   </form>
+  </div>
 
 </div>
-
-<canvas id="{{case.id}}-g_histo{{forloop.counter0}}" width="500" height="350"></canvas>
 
 {% endfor %}
