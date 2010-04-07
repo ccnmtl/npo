@@ -56,10 +56,6 @@ var styleForm = function(form) {
 };
 
 var addInterval = function(form, name, floor, ceiling) {
-  var newInput = MochiKit.DOM.INPUT({"class": "param",
-				     "type": "text",
-				     "name": name,
-				     "onchange": "validateAndRestyleForm(this.parentNode)"});
   var paramEls = MochiKit.Selector.findChildElements(form, ["input.param"]);
 
   /* First do validation -- make sure the new interval
@@ -77,6 +73,25 @@ var addInterval = function(form, name, floor, ceiling) {
     };
   };
 
+  /* If both ends of the new interval are greater than
+   * all the intervals we currently have, we need to add
+   * two new bins, not just one.
+   */
+  var myFloorVal = parseFloat(paramEls[paramEls.length-1].value);
+  if( floor > myFloorVal && ceiling > myFloorVal ) {
+    addInterval(form, name, myFloorVal, floor);
+
+    // We need to re-get the params since the list has grown during the recursive call
+    paramEls = MochiKit.Selector.findChildElements(form, ["input.param"]);
+  };
+
+  var newInput = MochiKit.DOM.INPUT({"class": "param",
+				     "type": "text",
+				     "name": name,
+				     "onchange": "validateAndRestyleForm(this.parentNode.parentNode)"});
+  var newInputDiv = MochiKit.DOM.DIV();
+  MochiKit.DOM.appendChildNodes(newInputDiv, newInput);
+
   /* OK, the new interval validated alright.
    * Now we'll figure out where to put it.
    */
@@ -89,8 +104,8 @@ var addInterval = function(form, name, floor, ceiling) {
 
     if( floor <= myCeilingVal ) {
       newInput.value = ceiling;
-      MochiKit.DOM.insertSiblingNodesAfter(paramEl.nextSibling.nextSibling,
-					    newInput, MochiKit.DOM.BR());
+      MochiKit.DOM.insertSiblingNodesAfter(paramEl.parentNode,
+					    newInputDiv);
       paramEl.value = floor;
       validateAndRestyleForm(form);
       return 1;
@@ -98,8 +113,8 @@ var addInterval = function(form, name, floor, ceiling) {
   };
   var paramEl = paramEls[paramEls.length-1];
   newInput.value = ceiling;
-  MochiKit.DOM.insertSiblingNodesAfter(paramEl.nextSibling.nextSibling,
-				       newInput, MochiKit.DOM.BR());
+  MochiKit.DOM.insertSiblingNodesAfter(paramEl.parentNode,
+				       newInputDiv);
   paramEl.value = floor;
   validateAndRestyleForm(form);
   return 1;
