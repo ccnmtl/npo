@@ -94,13 +94,13 @@ def count_totals(nodes):
 
 def cost_histogram(nodes, system, *bins):
     bins = sorted(set(float(bin) for bin in bins))
-    counts = dict()
+    counts = {"highbin": 0}
 
     def find_bin(cost, bin_set):
         for bin in bin_set:
             if cost < bin:
                 return bin
-        return bin_set[-1]
+        return "highbin"
 
     for bin in bins:
         counts[bin] = 0
