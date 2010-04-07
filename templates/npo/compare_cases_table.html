@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+
+{% load get %}
+
+{% block title %}Your cases{% endblock %}
+{% block breadcrumbs %}<a href="/">HOME</a> &gt; CASE SUMMARY{% endblock %}
+
+{% block content %}
+<table width="100%">
+
+<thead>
+<tr>
+<th rowspan="2">Case</th>
+<th rowspan="2">#HH connected by grid</th>
+<th rowspan="2">MV Line Length per HH</th>
+<th rowspan="2">LV Line Length per HH</th>
+<th rowspan="2">MV Infrastructure Costs</th>
+<th rowspan="2">LV Infrastructure Costs</th>
+<th colspan="3">Average HH Cost by Technology</th>
+</tr>
+<tr>
+<th>Grid</th>
+<th>Off-grid</th>
+<th>Mini-grid</th>
+</tr>
+</thead>
+
+<tbody>
+{% for c in cases %}
+<tr class="{% cycle 'odd' 'even' %}">
+
+{% with c.case as case %}
+{% with c.costs as costs %}
+{% with c.urban as urban %}
+{% with c.rural as rural %}
+{% with c.system_counts as system_counts %}
+{% with c.system_breakdown_counts as system_breakdown_counts %}
+{% with c.cost_components as cost_components %}
+{% with c.totals as totals %}
+{% with c.cost_histogram_counts as cost_histogram_counts %}
+{% with c.household_costs as household_costs %}
+{% with c.histogram_params as histogram_params %}
+<th>Case: {{case.name|default:case.pk}}</th>
+<td>#HH connected by grid</td>
+<td>{{case.mv_hh|floatformat:2}}</td>
+<td>LV line length per HH</td>
+<td>MV infrastructure costs</td>
+<td>LV infrastructure costs</td>
+<td>avg HH cost Grid</td>
+<td>avg HH cost off-grid</td>
+<td>avg HH cost mini-grid</td>
+{% endwith %}{% endwith %}{% endwith %}
+{% endwith %}
+{% endwith %}
+{% endwith %}
+{% endwith %}
+{% endwith %}
+{% endwith %}
+{% endwith %}
+{% endwith %}
+</tr>
+{% endfor %}
+</tbody>
+</table>
+{% endblock %}
+
+
