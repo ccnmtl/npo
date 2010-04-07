@@ -120,8 +120,9 @@ var addInterval = function(form, name, floor, ceiling) {
   return 1;
 };
 
-var newFormInterval = function(form, name) {
-  var inputs = MochiKit.Selector.findChildElements(form, ["input.newbin"]);
+var newFormInterval = function(div, form, name) {
+  var inputs = MochiKit.Selector.findChildElements(
+		 div, ["input.newbin"]);
   var a = inputs[0].value;
   var b = inputs[1].value;
   var floor = a < b && a || b;

@@ -22,7 +22,11 @@
   
   <div class="tabbertab" title="Edit bin sizes">
   <h3>Histogram Bins</h3>
-  <form action="#histogram-{{system}}"
+  <table>
+    <tr>
+      <td>
+  <form id="histogram-form-{{system}}"
+	action="#histogram-{{system}}"
 	class="histogram_params" method="GET">
     {% for type, params in histogram_params.items %}
     {% ifnotequal type system.0 %}
@@ -46,20 +50,29 @@
     {% endfor %}
 
     <input type="submit" value="Change bin sizes" />
-
-    <br />
+  </form>
+      </td>
+      <td>
+  <div>
     <input type="text" class="newbin" />
     <br />
     <input type="text" class="newbin" />
     <br />
-    <button onclick="newFormInterval(this.parentNode, '{{type}}'); return false;">
+    <button onclick="newFormInterval(
+		      this.parentNode,
+	              document.getElementById('histogram-form-{{system}}'),
+		      '{{type}}');
+		     return false;">
       Add new bin
     </button>
+  </div>
+      </td>
+    </tr>
+  </table>
 
     {% endifnotequal %}
     {% endfor %}
 
-  </form>
   </div>
 
 </div>
