@@ -23,10 +23,11 @@
     
     {% else %}
     {% for param in params %}
-    <input class="param" type="text"
-	   name="{{type}}" value="{{param}}" 
-	   onchange="validateAndRestyleForm(this.parentNode)" />
-    <br />
+    <div>
+      <input class="param" type="text"
+	     name="{{type}}" value="{{param}}" 
+	     onchange="validateAndRestyleForm(this.parentNode.parentNode)" />
+    </div>
     {% if forloop.last %}
     <span class="finalParamCue">
       {{param}} and greater
