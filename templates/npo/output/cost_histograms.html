@@ -1,7 +1,7 @@
 {% load get %}
 
 {% for system, counts in cost_histogram_counts.items %}
-<h2>{{system}}</h2>
+<h2 id="histogram-{{system}}">{{system}}</h2>
 <div style="float: right;">
   <table id="{{case.id}}-d_histo{{forloop.counter0}}">
     <tbody>
@@ -14,7 +14,8 @@
   </table>
 
   <h3>Histogram Bins</h3>
-  <form class="histogram_params" method="GET">
+  <form action="#histogram-{{system}}"
+	class="histogram_params" method="GET">
     {% for type, params in histogram_params.items %}
     {% ifnotequal type system.0 %}
     {% for param in params %}
