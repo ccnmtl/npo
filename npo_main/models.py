@@ -236,6 +236,10 @@ class Case(models.Model):
         self.set_output_summary("lv_hh", results)
         return results
 
+    def lv_hh_total(self):
+        r = self.lv_hh()
+        return r['rural'] + r['urban']
+
     def populate_summary_cache(self):
         """ Clear the output_summary cache (json blob) and re-run
         all the methods that populate and use that cache, ie all the

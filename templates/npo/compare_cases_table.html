@@ -41,9 +41,9 @@
 {% with c.household_costs as household_costs %}
 {% with c.histogram_params as histogram_params %}
 <th>Case: {{case.name|default:case.pk}}</th>
-<td>#HH connected by grid</td>
+<td>{{total_households}}</td>
 <td>{{case.mv_hh|floatformat:2}}</td>
-<td>LV line length per HH</td>
+<td>{{case.lv_hh_total|floatformat:2}}</td>
 <td>MV infrastructure costs</td>
 <td>LV infrastructure costs</td>
 <td>avg HH cost Grid</td>

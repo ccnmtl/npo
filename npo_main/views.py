@@ -214,6 +214,7 @@ def results_for_case(case,request):
         'm': m_bins, 
         'g': g_bins,
         }
+
     return results
 
 @login_required
