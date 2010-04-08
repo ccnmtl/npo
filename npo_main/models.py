@@ -228,7 +228,6 @@ class Case(models.Model):
 
     def household_average_cost_grid(self):
         d = self.household_average_cost()
-        print str(d)
         return d['grid']['urban'] + d['grid']['rural']
 
     def household_average_cost_off_grid(self):
