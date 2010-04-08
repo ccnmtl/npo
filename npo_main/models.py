@@ -226,6 +226,19 @@ class Case(models.Model):
         self.set_output_summary("household_average_cost", results)
         return results
 
+    def household_average_cost_grid(self):
+        d = self.household_average_cost()
+        print str(d)
+        return d['grid']['urban'] + d['grid']['rural']
+
+    def household_average_cost_off_grid(self):
+        d = self.household_average_cost()
+        return d['off-grid']['urban'] + d['off-grid']['rural']
+
+    def household_average_cost_mini_grid(self):
+        d = self.household_average_cost()
+        return d['mini-grid']['urban'] + d['mini-grid']['rural']
+
     def lv_hh(self):
         _val = self.get_output_summary("lv_hh")
         if _val is not None: return _val
