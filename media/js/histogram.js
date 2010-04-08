@@ -26,8 +26,10 @@ var validateForm = function(form) {
 
 var validateAndRestyleForm = function(form) {
   if( !validateForm(form) ) {
-    alert("Bins must not overlap. Please correct the error before continuing.");
     var submit = MochiKit.Selector.findChildElements(form, ["input[type=submit]"]);
+    if( submit[0].disabled != "true" ) {
+      alert("Bins must not overlap. Please correct the error before continuing.");
+    };
     submit[0].disabled = "true";
     return false;
   };
@@ -90,7 +92,14 @@ var addInterval = function(form, name, floor, ceiling) {
 				     "name": name,
 				     "onchange": "validateAndRestyleForm(this.parentNode.parentNode)"});
   var newInputDiv = MochiKit.DOM.DIV();
-  MochiKit.DOM.appendChildNodes(newInputDiv, newInput);
+  var control = MochiKit.DOM.A({"href": "#",
+				"onclick": "removeBin(this); return false;"});
+  MochiKit.DOM.appendChildNodes(control,
+				MochiKit.DOM.IMG({"src": "/site_media/img/delete.png",
+						  "width": "15px",
+						  "height": "15px"
+						 }));
+  MochiKit.DOM.appendChildNodes(newInputDiv, control, newInput);
 
   /* OK, the new interval validated alright.
    * Now we'll figure out where to put it.
@@ -127,6 +136,23 @@ var newFormInterval = function(div, form, name) {
   var b = inputs[1].value;
   var floor = a < b && a || b;
   var ceiling = floor == a && b || a;
+  if( !a && !b ) {
+    return false;
+  };
   addInterval(form, name, floor, ceiling);
+  return true;
+};
 
+var removeBin = function(control) {
+  var bin = control.parentNode;
+  var form = bin.parentNode;
+  var bins = MochiKit.Selector.findChildElements(
+	       form, ["input.param"]);
+  if( bins.length == 1 ) {
+    alert("You must have at least one bin!");
+    return false;
+  };
+  MochiKit.DOM.removeElement(bin);
+  validateAndRestyleForm(form);
+  return true;
 };

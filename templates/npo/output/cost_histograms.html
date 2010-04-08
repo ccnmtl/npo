@@ -37,6 +37,10 @@
     {% else %}
     {% for param in params %}
     <div>
+      <a href="#" onclick="removeBin(this); return false;">
+	<img src="/site_media/img/delete.png" 
+	     width="15px" height="15px" />
+      </a>
       <input class="param" type="text"
 	     name="{{type}}" value="{{param}}" 
 	     onchange="validateAndRestyleForm(this.parentNode.parentNode)" />
