@@ -1,7 +1,7 @@
 {% load get %}
 <h1>Case: {{case.name|default:case.pk}}</h1>
-<p>created {{case.created|date}} at {{case.created|time}}</p>
-<p>last updated {{case.updated|date}} at {{case.updated|time}}</p>
+<p style="margin-left: 1em;">created: {{case.created|date}} at {{case.created|time}}
+<br />last updated: {{case.updated|date}} at {{case.updated|time}}</p>
 
 <h2>Case Parameters</h2>
 
@@ -43,6 +43,26 @@ onclick="toggleElement('paramset-{{case.id}}');return false">show parameters</a>
 </form>
 {% endif %}
 {% else %}
+
+<h1 id="toc">Output summary</h1>
+
+<b><u>Jump to</u></b>:
+<ul class="toc">
+  <li><a href="#ruralurban">Rural/urban population comparison</a></li>
+  <li><a href="#demand">Demand distribution</a></li>
+  <li><a href="#infra-count">Total infrastructure count by type</a></li>
+  <li><a href="#systems">Systems</a></li>
+  <li><a onclick="expandTab(this)" href="#cost-components-off-grid">Cost breakdown by component: off-grid</a></li>
+  <li><a onclick="expandTab(this)" href="#cost-components-mini-grid">Cost breakdown by component: mini-grid</a></li>
+  <li><a onclick="expandTab(this)" href="#cost-components-grid">Cost breakdown by component: grid</a></li>
+  <li><a onclick="expandTab(this)" href="#histogram-off-grid">Total cost histogram: off-grid</a></li>
+  <li><a onclick="expandTab(this)" href="#histogram-mini-grid">Total cost histogram: mini-grid</a></li>
+  <li><a onclick="expandTab(this)" href="#histogram-grid">Total cost histogram: grid</a></li>
+  <li><a href="#avg-costs">Average household costs</a></li>
+  <li><a href="#lv-hh">LV/HH</a></li>
+  <li><a href="#mv-hh">MV/HH</a></li>
+</ul>
+
 <!--
 <h1>Network</h1>
 <div id="map"
@@ -50,48 +70,64 @@ onclick="toggleElement('paramset-{{case.id}}');return false">show parameters</a>
 	    border: 1px solid black;">
 </div>
 -->
-<h1>Output summary</h1>
-
-<h2>Rural vs urban population</h2>
+<h2 id="ruralurban">Rural vs urban population</h2>
+{% include "npo/output/back_to_top.html" %}
 <canvas id="{{case.id}}-g_pop" width="500" height="350"></canvas>
 {% include "npo/output/population.html" %}
 
 <hr/>
 
-<h2>Demand</h2>
-<canvas id="{{case.id}}-g_demand" width="500" height="350"></canvas>
-<canvas id="{{case.id}}-g_demand2" width="500" height="350"></canvas>
+<h2 id="demand">Demand</h2>
+{% include "npo/output/back_to_top.html" %}
+<div class="pageblock parametergroup"
+<div class="tabber">
+  <div class="tabbertab" title="Pie graph">
+    <canvas id="{{case.id}}-g_demand" width="500" height="350"></canvas>
+  </div>
+  <div class="tabbertab" title="Bar graph">
+    <canvas id="{{case.id}}-g_demand2" width="500" height="350"></canvas>
+  </div>
+</div>
+</div>
 {% include "npo/output/demand.html" %}
 
 <hr/>
 
-<h2>Total infrastructure count</h2>
+<h2 id="infra-count">Total infrastructure count</h2>
+{% include "npo/output/back_to_top.html" %}
 {% include "npo/output/count.html" %}
 
 <hr/>
 
-<h2>Systems</h2>
+<h2 id="systems">Systems</h2>
+{% include "npo/output/back_to_top.html" %}
 {% include "npo/output/system_count.html" %}
 {% include "npo/output/system_summary.html" %}
+<hr />
 
 <h2>Cost breakdown per component</h2>
 {% include "npo/output/cost_components.html" %}
+<hr />
 
 <h2>Total cost histograms</h2>
 
 {% include "npo/output/cost_histograms.html" %}
+<hr />
 
+<h2 id="avg-costs">Average household costs</h2>
+{% include "npo/output/back_to_top.html" %}
 
-
-<h2>Average household costs</h2>
 <em>The total cost of the system divided by the projected number of households.</em>
 {% include "npo/output/household_average_cost.html" %}
+<hr />
 
-<h2>LV/HH</h2>
+<h2 id="lv-hh">LV/HH</h2>
+{% include "npo/output/back_to_top.html" %}
 <em>The low-voltage line length per household, only for nodes on the grid</em>
 {% include "npo/output/lv_hh.html" %}
 
-<h2>MV/HH</h2>
+<h2 id="mv-hh">MV/HH</h2>
+{% include "npo/output/back_to_top.html" %}
 <em>The medium-voltage line length per household, only for nodes on the grid</em>
 <br/>
 {{case.mv_hh|floatformat:2}}

@@ -57,7 +57,22 @@ var plot = function(insertInto, paramsFrom) {
   return false;
 };
 </script>
+<script type="text/javascript">
+function expandTab(el) {
+  var href = el.hash.substr(1);
+  var to = getElement(href);
+  if( !MochiKit.DOM.hasElementClass(
+        to.parentNode, "tabbertab") )
+    return 1;
+  var key = to.innerHTML;
+  var tabButton = MochiKit.Selector.findChildElements(to.parentNode.parentNode,
+                    ["ul.tabbernav li a#" + key])[0];
+  tabButton.onclick();
+  return 1;
+};
 
+
+</script>
 
 {% include "bluff.html" %}
 

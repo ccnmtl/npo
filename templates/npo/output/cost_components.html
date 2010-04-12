@@ -1,7 +1,11 @@
 {% load get %}
 
+<div class="pageblock parametergroup">
+<div class="tabber">
 {% for system, costs in cost_components.items %}
-<h3>{{system}}</h3>
+<div class="tabbertab">
+<h3 id="cost-components-{{system}}">{{system}}</h3>
+{% include "npo/output/back_to_top.html" %}
 <table>
   <thead>
     <tr>
@@ -35,7 +39,10 @@
     {% endfor %}
   </tbody>
 </table>
+</div>
 {% endfor %}
+</div>
+</div>
 
 <div style="display: none;">
 {% for system, cost in totals.items %}
