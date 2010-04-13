@@ -70,10 +70,17 @@ onclick="toggleElement('paramset-{{case.id}}');return false">show parameters</a>
 	    border: 1px solid black;">
 </div>
 -->
-<h2 id="ruralurban">Rural vs urban population</h2>
-{% include "npo/output/back_to_top.html" %}
-<canvas id="{{case.id}}-g_pop" width="500" height="350"></canvas>
-{% include "npo/output/population.html" %}
+
+<div class="outputgroup">
+  <h2 class="paramsetheader" id="ruralurban">
+    Rural vs urban population
+    {% include "npo/output/back_to_top.html" %}
+  </h2>
+  <div class="outputbody">
+    <canvas id="{{case.id}}-g_pop" width="500" height="350"></canvas>
+    {% include "npo/output/population.html" %}
+  </div>
+</div>
 
 <hr/>
 
@@ -97,16 +104,28 @@ onclick="toggleElement('paramset-{{case.id}}');return false">show parameters</a>
 
 <hr/>
 
-<h2 id="infra-count">Total infrastructure count</h2>
-{% include "npo/output/back_to_top.html" %}
-{% include "npo/output/count.html" %}
+<div class="outputgroup">
+  <h2 class="paramsetheader"
+      id="infra-count">Total infrastructure count
+    {% include "npo/output/back_to_top.html" %}
+  </h2>
+  <div class="outputbody">
+    {% include "npo/output/count.html" %}
+  </div>
+</div>
 
 <hr/>
 
-<h2 id="systems">Systems</h2>
-{% include "npo/output/back_to_top.html" %}
-{% include "npo/output/system_count.html" %}
-{% include "npo/output/system_summary.html" %}
+<div class="outputgroup">
+  <h2 class="paramsetheader" id="systems">Systems
+    {% include "npo/output/back_to_top.html" %}
+  </h2>
+  <div class="outputbody">
+    {% include "npo/output/system_count.html" %}
+    {% include "npo/output/system_summary.html" %}
+  </div>
+</div>
+
 <hr />
 
 <h2 class="paramsetheader">Cost breakdown per component
@@ -124,22 +143,39 @@ Total cost histograms
 <div class="visualclear"></div>
 <hr />
 
-<h2 id="avg-costs">Average household costs</h2>
-{% include "npo/output/back_to_top.html" %}
+<div class="outputgroup">
+  <h2 class="paramsetheader"
+      id="avg-costs">Average household costs
+    {% include "npo/output/back_to_top.html" %}
+  </h2>
 
-<em>The total cost of the system divided by the projected number of households.</em>
-{% include "npo/output/household_average_cost.html" %}
+  <div class="outputbody">
+    <em>The total cost of the system divided by the projected number of households.</em>
+    {% include "npo/output/household_average_cost.html" %}
+  </div>
+</div>
+
 <hr />
 
-<h2 id="lv-hh">LV/HH</h2>
-{% include "npo/output/back_to_top.html" %}
-<em>The low-voltage line length per household, only for nodes on the grid</em>
-{% include "npo/output/lv_hh.html" %}
+<div class="outputgroup">
+  <h2 class="paramsetheader" id="lv-hh">
+    LV/HH
+    {% include "npo/output/back_to_top.html" %}
+  </h2>
+  <div class="outputbody">
+    <em>The low-voltage line length per household, only for nodes on the grid</em>
+    {% include "npo/output/lv_hh.html" %}
+  </div>
 
-<h2 id="mv-hh">MV/HH</h2>
-{% include "npo/output/back_to_top.html" %}
-<em>The medium-voltage line length per household, only for nodes on the grid</em>
-<br/>
-{{case.mv_hh|floatformat:2}}
+  <h2 class="paramsetheader" id="mv-hh">
+    MV/HH
+    {% include "npo/output/back_to_top.html" %}
+  </h2>
+  <div class="outputbody">
+    <em>The medium-voltage line length per household, only for nodes on the grid</em>
+    <br/>
+    {{case.mv_hh|floatformat:2}}
+  </div>
+</div>
 
 {% endifequal %}
