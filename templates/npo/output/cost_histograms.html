@@ -1,11 +1,10 @@
 {% load get %}
 
-<div class="pageblock parametergroup">
+<div class="parametergroup outputgroup">
 <div class="tabber">
 {% for system, counts in cost_histogram_counts.items %}
 <div class="tabbertab">
 <h2 id="histogram-{{system}}">{{system}}</h2> 
-{% include "npo/output/back_to_top.html" %}
 <div class="parametersubgroup">
 <div class="tabber">
 

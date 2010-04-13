@@ -77,9 +77,11 @@ onclick="toggleElement('paramset-{{case.id}}');return false">show parameters</a>
 
 <hr/>
 
-<h2 id="demand">Demand</h2>
+<div class="parameterset">
+<h2 class="paramsetheader" id="demand">Demand
 {% include "npo/output/back_to_top.html" %}
-<div class="pageblock parametergroup"
+</h2>
+<div class="parametergroup outputgroup">
 <div class="tabber">
   <div class="tabbertab" title="Pie graph">
     <canvas id="{{case.id}}-g_demand" width="500" height="350"></canvas>
@@ -90,6 +92,8 @@ onclick="toggleElement('paramset-{{case.id}}');return false">show parameters</a>
 </div>
 </div>
 {% include "npo/output/demand.html" %}
+<div class="visualclear" />
+</div>
 
 <hr/>
 
@@ -105,13 +109,19 @@ onclick="toggleElement('paramset-{{case.id}}');return false">show parameters</a>
 {% include "npo/output/system_summary.html" %}
 <hr />
 
-<h2>Cost breakdown per component</h2>
+<h2 class="paramsetheader">Cost breakdown per component
+  {% include "npo/output/back_to_top.html" %}
+</h2>
 {% include "npo/output/cost_components.html" %}
+<div class="visualclear" />
 <hr />
 
-<h2>Total cost histograms</h2>
-
+<h2 class="paramsetheader">
+Total cost histograms
+{% include "npo/output/back_to_top.html" %}
+</h2>
 {% include "npo/output/cost_histograms.html" %}
+<div class="visualclear"></div>
 <hr />
 
 <h2 id="avg-costs">Average household costs</h2>
