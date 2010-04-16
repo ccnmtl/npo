@@ -4,9 +4,9 @@ SYSTEM_TYPES = "grid off-grid mini-grid".split()
 COST_COMPONENTS = {
     'grid': [
         "transformer cost",
+        "equipment cost",
         "installation cost",
         "service cost",
-        "equipment cost",
         "low voltage line cost",
         "internal system recurring cost per year",
         ## XXX TODO what about external system recurring cost per year per meter?
@@ -14,8 +14,8 @@ COST_COMPONENTS = {
 
     'off-grid': [
         "photovoltaic panel cost",
-        "photovoltaic battery cost",
         "photovoltaic balance cost",
+        "photovoltaic battery cost",
         "diesel generator cost",
         "diesel equipment cost",
         "diesel generator installation cost",
@@ -134,12 +134,14 @@ def nodes_per_system_nongrid(nodes):
 
     return counts
 
+from django.utils.datastructures import SortedDict
+
 def cost_components(nodes):
     component_cost = dict()
     total_cost = dict()
     for system_type in SYSTEM_TYPES:
         components = COST_COMPONENTS[system_type]
-        component_cost[system_type] = dict()
+        component_cost[system_type] = SortedDict()
         for component in components:
             component_cost[system_type][component] = 0
         component_cost[system_type]['recurring costs'] = 0
