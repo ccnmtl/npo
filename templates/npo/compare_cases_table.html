@@ -41,7 +41,7 @@
 {% with c.household_costs as household_costs %}
 {% with c.histogram_params as histogram_params %}
 <th>Case: {{case.name|default:case.pk}}</th>
-<td>{{total_households}}</td>
+<td>{{case.total_households_on_grid}}</td>
 <td>{{case.mv_hh|floatformat:2}}</td>
 <td>{{case.lv_hh_total|floatformat:2}}</td>
 <td>MV infrastructure costs</td>
