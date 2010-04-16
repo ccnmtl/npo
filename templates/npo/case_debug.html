@@ -1,0 +1,15 @@
+{% load pprinter %}
+
+<table>
+<tr><th>name</th><td>{{case.name}}</td></tr>
+<tr><th>owner</th><td>{{case.owner.name}}</td></tr>
+<tr><th>created</th><td>{{case.created}}</td></tr>
+<tr><th>updated</th><td>{{case.updated}}</td></tr>
+<tr><th valign="top">parameters</th><td><pre>{{case.parameters|pprint_json}}</pre></td></tr>
+<tr><th valign="top">stage_one_output</th><td><pre>{{case.stage_one_output|pprint_json}}</pre></td></tr>
+<tr><th valign="top">stage_two_output</th><td><pre>{{case.stage_two_output|pprint_json}}</pre></td></tr>
+<tr><th valign="top">output_summary</th><td><pre>{{case.output_summary|pprint_json}}</pre></td></tr>
+<tr><th>save_parameters</th><td>{{case.save_parameters}}</td></tr>
+<tr><th>output_file</th><td>{{case.output_file}}</td></tr>
+<tr><th>email_user</th><td>{{case.email_user}}</td></tr>
+</table>

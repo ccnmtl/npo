@@ -232,6 +232,12 @@ def case(request,id):
         return dict(case=case)
 
 @login_required
+@rendered_with('npo/case_debug.html')
+def debug_case(request,id):
+    case = get_object_or_404(Case,id=id)
+    return dict(case=case)
+
+@login_required
 @rendered_with('npo/compare_cases_table.html')
 def compare_cases(request,ids):
     cases = [results_for_case(get_object_or_404(Case,id=id),request) for id in ids.split(',')]
