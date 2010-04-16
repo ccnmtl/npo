@@ -135,7 +135,7 @@ onclick="toggleElement('paramset-{{case.id}}');return false">show parameters</a>
 <div class="visualclear" />
 <hr />
 
-<h2 class="paramsetheader">
+<h2 id="histograms" class="paramsetheader">
 Total cost histograms
 {% include "npo/output/back_to_top.html" %}
 </h2>
@@ -171,10 +171,15 @@ Total cost histograms
     MV/HH
     {% include "npo/output/back_to_top.html" %}
   </h2>
+
   <div class="outputbody">
     <em>The medium-voltage line length per household, only for nodes on the grid</em>
     <br/>
-    {{case.mv_hh|floatformat:2}}
+    {% if case.total_households_on_grid %}
+      {{case.mv_hh|floatformat:2}}
+    {% else %}
+      There are no nodes on the grid in this case!
+    {% endif %}
   </div>
 </div>
 

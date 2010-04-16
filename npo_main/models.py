@@ -121,6 +121,10 @@ class Case(models.Model):
     def years(self):
         return range(self.time_horizon())
 
+    def total_households_on_grid(self):
+        return total_projected_household_count(
+            self.node_output(), system='grid')
+                                               
     def mv_hh(self):
         _val = self.get_output_summary("mv_hh")
         if _val is not None: return _val
