@@ -197,8 +197,10 @@ def lv_per_household(nodes):
         if node.system() != 'grid':
             continue
 
-        val = (node.lv_line_length() / 
-               node.projected_households())
+        households = node.projected_households()
+        if households == 0: continue
+
+        val = node.lv_line_length() / households
             
         if node.is_urban():
             lens['urban'] += val
