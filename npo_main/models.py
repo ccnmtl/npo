@@ -121,6 +121,10 @@ class Case(models.Model):
     def years(self):
         return range(self.time_horizon())
 
+    def total_households_on_grid(self):
+        return total_projected_household_count(
+            self.node_output(), system='grid')
+                                               
     def mv_hh(self):
         _val = self.get_output_summary("mv_hh")
         if _val is not None: return _val
@@ -130,9 +134,9 @@ class Case(models.Model):
             nodes, system='grid')
         mv_length = self.total_mv_line_length()
 
-        # Ethan, we're getting tracebacks of a 
-        # ZeroDivisionError here. 
-        _val = mv_length / count
+        _val = 0
+        if count:
+            _val = mv_length / count
 
         self.set_output_summary("mv_hh", _val)
         return _val
