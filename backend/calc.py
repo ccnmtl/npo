@@ -134,14 +134,12 @@ def nodes_per_system_nongrid(nodes):
 
     return counts
 
-from django.utils.datastructures import SortedDict
-
 def cost_components(nodes):
     component_cost = dict()
     total_cost = dict()
     for system_type in SYSTEM_TYPES:
         components = COST_COMPONENTS[system_type]
-        component_cost[system_type] = SortedDict()
+        component_cost[system_type] = dict()
         for component in components:
             component_cost[system_type][component] = 0
         component_cost[system_type]['recurring costs'] = 0
