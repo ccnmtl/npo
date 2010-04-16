@@ -336,10 +336,7 @@ class Node(object):
             cost_per_year = float(
                 self['system (grid)']['internal system recurring cost per year'])
         
-        time_horizon = self.time_horizon() 
-        time_horizon -= 1 # recurring costs don't kick in until the second year
-
-        return cost_per_year * discount_factor * time_horizon
+        return cost_per_year * discount_factor
 
     def lv_line_length(self):
         assert self.system() in ('mini-grid', 'grid'), \
@@ -368,6 +365,7 @@ class Node(object):
             num_meters = self['metric'][
                 'maximum length of medium voltage line in meters']
             num_meters = float(num_meters)
+
             component_cost = component_cost * num_meters
 
         return component_cost
