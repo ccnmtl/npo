@@ -212,6 +212,18 @@ class Case(models.Model):
         self.set_output_summary("cost_components", results)
         return results
 
+    def mv_infrastructure_costs(self):
+        cost_components = self.cost_components()['components']['grid']
+        mv = cost_components["medium-voltage line cost"]
+        mv += cost_components["transformer cost"]
+        return mv
+
+    def lv_infrastructure_costs(self):
+        cost_components = self.cost_components()['components']['grid']
+        lv = cost_components["low voltage line cost"]
+        lv += cost_components["equipment cost"]
+        return lv
+
     def cost_histograms(self, g_bins, o_bins, m_bins):
         nodes = self.node_output()
 
