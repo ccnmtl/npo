@@ -164,7 +164,11 @@ Total cost histograms
   </h2>
   <div class="outputbody">
     <em>The low-voltage line length per household, only for nodes on the grid</em>
+    {% if case.total_households_on_grid %}
     {% include "npo/output/lv_hh.html" %}
+    {% else %}
+      There are no nodes on the grid in this case!
+    {% endif %}
   </div>
 
   <h2 class="paramsetheader" id="mv-hh">
