@@ -15,16 +15,16 @@ params = defaultdict(defaultdict,
             "peak electrical usage hours per year" : "1460",
             },
         "demand (social infrastructure)" : {
-            "commercial facility count curve points (population and facility count)" : """500 0.12
-1000 0.70
-5000 2.44
-10000 12.76""",
+            "commercial facility count curve points (population and facility count)" : """50.0 0.12
+500.0 1.2
+5000.0 25.0
+10000.0 125.0""",
             "commercial facility count curve type" : "logistic",
             "unit demand per commercial facility in kilowatt-hours per year" : "500",
-            "education facility count curve points (population and facility count)" : """500 0.2
-1000 0.59
-5000 1.53
-10000 2.5""",
+            "education facility count curve points (population and facility count)" : """50.0 0.1
+500.0 1.0
+5000.0 3.0
+10000.0 15.0""",
             "education facility count curve type" : "logistic",
             "unit demand per education facility in kilowatt-hours per year" : "438",
             "demand curve type" : "logistic",
@@ -34,14 +34,14 @@ params = defaultdict(defaultdict,
 10000 3.375""",
             "health facility count curve type" : "logistic",
             "unit demand per health facility in kilowatts per year" : "10000",
-            "health facility count curve points (population and facility count)" : """500 0.16
-1000 0.35
-5000 0.52
-10000 2.00""",
-            "public lighting facility count curve points (population and facility count)" : """500 1
-1000 2.81
-5000 7.31
-10000 25.52""",
+            "health facility count curve points (population and facility count)" : """50.0 0.16
+500.0 1.6
+5000.0 5.0
+10000.0 20.0""",
+            "public lighting facility count curve points (population and facility count)" : """50.0 0.1
+500.0 1.0
+5000.0 7.0
+10000.0 25.0""",
             "public lighting facility count curve type" : "logistic",
             "unit demand per public lighting facility in kilowatt-hours per year" : "102",
             },
