@@ -2,7 +2,7 @@
 
 <div class="parametergroup outputgroup">
 <div class="tabber">
-{% for system, costs in cost_components.items %}
+{% for system, costs in case.cost_components.items %}
 <div class="tabbertab">
 <h3 id="cost-components-{{system}}">{{system}}</h3>
 <table>
@@ -27,7 +27,7 @@
 	{{type}}
       </th>
       <td style="float: right">
-	${{cost|floatformat:2|format}}
+	${{cost|floatformat:2}}
       </td>
       <td>
 	{% with totals|getitem:system as total %}
