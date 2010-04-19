@@ -210,8 +210,10 @@ def lv_per_household(nodes):
         else:
             lens['rural'] += val
             rural_hh += households
-    lens['urban'] /= urban_hh
-    lens['rural'] /= rural_hh
+    if urban_hh > 0:
+        lens['urban'] /= urban_hh
+    if rural_hh > 0:
+        lens['rural'] /= rural_hh
     return lens
 
 def average_cost_per_household(nodes):
