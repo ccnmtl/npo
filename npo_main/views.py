@@ -232,6 +232,12 @@ def case(request,id):
         return dict(case=case)
 
 @login_required
+def recalc(request, id):
+    case = get_object_or_404(Case,id=id)
+    case.populate_summary_cache()
+    return HttpResponseRedirect(case.get_absolute_url())
+
+@login_required
 @rendered_with('npo/case_debug.html')
 def debug_case(request,id):
     case = get_object_or_404(Case,id=id)

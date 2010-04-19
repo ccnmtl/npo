@@ -191,6 +191,8 @@ def total_projected_household_count(nodes, system):
 def lv_per_household(nodes):
     lens = dict(urban=0, rural=0)
 
+    urban_hh = 0
+    rural_hh = 0
     for node in nodes._dict:
         node = nodes[node]
         
@@ -200,12 +202,16 @@ def lv_per_household(nodes):
         households = node.projected_households()
         if households == 0: continue
 
-        val = node.lv_line_length() / households
+        val = node.lv_line_length()
             
         if node.is_urban():
             lens['urban'] += val
+            urban_hh += households
         else:
             lens['rural'] += val
+            rural_hh += households
+    lens['urban'] /= urban_hh
+    lens['rural'] /= rural_hh
     return lens
 
 def average_cost_per_household(nodes):
