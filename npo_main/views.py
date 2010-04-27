@@ -149,6 +149,10 @@ def case_callback(request,id):
     if request.method == "POST":
         # this should be Roy's backend sending us some results
         status = case.status()
+        if case.status() == "complete":
+            # umm. someone's POSTing but it's already complete
+            return HttpResponse("we've already got the output. go away")
+
         if status == "started":
             # save results to stage 1
             case.stage_one_output = request.POST.get('payload','{}')
