@@ -329,7 +329,7 @@
 		  {% with "system (off-grid)" as section %}
 		  {% with "w200" as divwidth %}
 
-		  {% with "Available System Capacities (photovoltaic panel)" as label %}
+		  {% with "Available System Capacities (photovoltaic panel) in kW" as label %}
 		  {% with "" as units %}
 		  {% with "available system capacities (photovoltaic panel)" as key %}
 		  {% with "" as instructions %}
@@ -359,7 +359,7 @@
 		  {% endwith %}{% endwith %}{% endwith %}{% endwith %}
 
 		  {% with "Battery cost per kilowatt-hour" as label %}
-		  {% with "$/kW" as units %}
+		  {% with "$/kWh" as units %}
 		  {% with "photovoltaic battery cost per kilowatt-hour" as key %}
 		  {% with "" as instructions %}
 		  {% include simple_param_block_template %}
@@ -406,7 +406,7 @@
 		  {% include simple_param_block_template %}
 		  {% endwith %}{% endwith %}{% endwith %}{% endwith %}
 
-		  {% with "Available diesel generator system sizes" as label %}
+		  {% with "Available diesel generator system sizes in kW" as label %}
 		  {% with "" as units %}
 		  {% with "available system capacities (diesel generator)" as key %}
 		  {% with "Standard units for diesel generator<br />system sizes are represented in kVA; kVA=kW*Power Factor" as instructions %}
@@ -440,7 +440,7 @@
 		  {% with "system (mini-grid)" as section %}
 		  {% with "w200" as divwidth %}
 
-		  {% with "Available diesel generator system sizes" as label %}
+		  {% with "Available diesel generator system sizes in kW" as label %}
 		  {% with "" as units %}
 		  {% with "available system capacities (diesel generator)" as key %}
 		  {% with "Standard units for diesel generator<br />system sizes are represented in kVA; kVA=kW*Power Factor" as instructions %}
@@ -568,7 +568,7 @@
 		  
 		  <h3 class="smaller">Transformer in Low Voltage Network</h3> 
 
-		  {% with "Available transformer system sizes" as label %}
+		  {% with "Available transformer system sizes in kW" as label %}
 		  {% with "" as units %}
 		  {% with "available system capacities (transformer)" as key %}
 		  {% with "Standard units for transformer<br />system sizes are represented in kVA; kVA=kW*Power Factor" as instructions %}
