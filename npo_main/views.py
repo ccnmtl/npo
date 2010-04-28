@@ -240,7 +240,7 @@ def recalc(request, id=None):
     if id is None:
         # this will be a slow & expensive request,
         # so let's just not let anyone do it
-        if not request.user.is_staff():
+        if not request.user.is_staff:
             return HttpResponseRedirect('/')
         cases = Case.objects.all()
         for case in cases:
