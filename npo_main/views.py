@@ -236,7 +236,17 @@ def case(request,id):
         return dict(case=case)
 
 @login_required
-def recalc(request, id):
+def recalc(request, id=None):
+    if id is None:
+        # this will be a slow & expensive request,
+        # so let's just not let anyone do it
+        if not request.user.is_staff():
+            return HttpResponseRedirect('/')
+        cases = Case.objects.all()
+        for case in cases:
+            case.populate_summary_cache()
+        return HttpResponseRedirect('/')
+
     case = get_object_or_404(Case,id=id)
     case.populate_summary_cache()
     return HttpResponseRedirect(case.get_absolute_url())
