@@ -6,7 +6,7 @@ params = defaultdict(defaultdict,
         "finance" : {
             "economic growth rate per year" : "0.06",
             "elasticity of electricity demand" : "1.5",
-            "yearly interest rate" : "0.10",
+            "interest rate per year" : "0.10",
             "time horizon in years" : "10",
             },
         "demand (peak)" : {
@@ -33,7 +33,7 @@ params = defaultdict(defaultdict,
 5000 2.25
 10000 3.375""",
             "health facility count curve type" : "logistic",
-            "unit demand per health facility in kilowatts per year" : "1000",
+            "unit demand per health facility in kilowatt-hours per year" : "1000",
             "health facility count curve points (population and facility count)" : """50.0 0.16
 500.0 1.6
 5000.0 5.0
@@ -73,7 +73,7 @@ params = defaultdict(defaultdict,
         "distribution" : {
             "low voltage line cost per meter" : "10",
             "low voltage line lifetime in years" : "10",
-            "low voltage line operations and maintenance cost per meter" : "0.10",
+            "low voltage line operations and maintenance cost per meter per year" : "0.10",
             },
         "system (mini-grid)" : {
             "distribution loss per system kilowatt" : "0.15",
@@ -108,10 +108,10 @@ params = defaultdict(defaultdict,
             "photovoltaic balance cost as fraction of photovoltaic panel cost" : "0.5",
             "photovoltaic balance lifetime in years" : "10",
             "photovoltaic battery cost per kilowatt-hour" : "400",
-            "photovoltaic battery kilowatt-hours per photovoltaic system kilowatt" : "5",
+            "photovoltaic battery kilowatt-hours per photovoltaic component kilowatt" : "5",
             "photovoltaic battery lifetime in years" : "3",
-            "photovoltaic operations and maintenance cost per year as fraction of photovoltaic system cost" : "0.05",
-            "photovoltaic panel cost per photovoltaic system kilowatt" : "6000",
+            "photovoltaic component operations and maintenance cost per year as fraction of photovoltaic system cost" : "0.05",
+            "photovoltaic panel cost per photovoltaic component kilowatt" : "6000",
             "diesel generator hours of operation per year" : "2500.0",
             "photovoltaic panel lifetime in years" : "30",
             "available system capacities (photovoltaic panel)" : "0.05 0.075 0.15 0.4 1 1.5",

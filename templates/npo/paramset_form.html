@@ -32,7 +32,7 @@
 
 	    {% with "Annual interest rate" as label %}
 	    {% with "" as units %}
-	    {% with "yearly interest rate" as key %}
+	    {% with "interest rate per year" as key %}
 	    {% with "(e.g. 0.02 for 2%)" as instructions %}
 	    {% include simple_param_block_template %}
 	    {% endwith %}{% endwith %}{% endwith %}{% endwith %}
@@ -195,7 +195,7 @@
 
 		  {% with "Base health unit demand" as label %}
 		  {% with "kWh/year" as units %}
-		  {% with "unit demand per health facility in kilowatts per year" as key %}
+		  {% with "unit demand per health facility in kilowatt-hours per year" as key %}
 		  {% with "(per health facility)" as instructions %}
 		  {% include simple_param_block_template %}
 		  {% endwith %}{% endwith %}{% endwith %}{% endwith %}
@@ -339,7 +339,7 @@
 
 		  {% with "Panel cost per system kilowatt" as label %}
 		  {% with "$/kW" as units %}
-		  {% with "photovoltaic panel cost per photovoltaic system kilowatt" as key %}
+		  {% with "photovoltaic panel cost per photovoltaic component kilowatt" as key %}
 		  {% with "" as instructions %}
 		  {% include simple_param_block_template %}
 		  {% endwith %}{% endwith %}{% endwith %}{% endwith %}
@@ -353,7 +353,7 @@
 
 		  {% with "Battery energy per system kilowatt" as label %}
 		  {% with "kWh/kW" as units %}
-		  {% with "photovoltaic battery kilowatt-hours per photovoltaic system kilowatt" as key %}
+		  {% with "photovoltaic battery kilowatt-hours per photovoltaic component kilowatt" as key %}
 		  {% with "" as instructions %}
 		  {% include simple_param_block_template %}
 		  {% endwith %}{% endwith %}{% endwith %}{% endwith %}
@@ -392,7 +392,7 @@
 
 		  {% with "O&amp;M photovoltaic systems cost factor<br />(as fraction of total Panel System cost)" as label %}
 		  {% with "" as units %}
-		  {% with "photovoltaic operations and maintenance cost per year as fraction of photovoltaic system cost" as key %}
+		  {% with "photovoltaic component operations and maintenance cost per year as fraction of photovoltaic system cost" as key %}
 		  {% with "(e.g. 0.02 for 2%)" as instructions %}
 		  {% include simple_param_block_template %}
 		  {% endwith %}{% endwith %}{% endwith %}{% endwith %}
@@ -713,7 +713,7 @@
 
 		  {% with "Low-voltage O&amp;M cost in dollars per meter" as label %}
 		  {% with "$/m" as units %}
-		  {% with "low voltage line operations and maintenance cost per meter" as key %}
+		  {% with "low voltage line operations and maintenance cost per meter per year" as key %}
 		  {% with "" as instructions %}
 		  {% include simple_param_block_template %}
 		  {% endwith %}{% endwith %}{% endwith %}{% endwith %}
