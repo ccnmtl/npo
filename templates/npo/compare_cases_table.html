@@ -30,6 +30,7 @@
 <tr class="{% cycle 'odd' 'even' %}">
 
 {% with c.case as case %}
+{% ifnotequal c.case.status "started" %}
 {% with c.costs as costs %}
 {% with c.urban as urban %}
 {% with c.rural as rural %}
@@ -57,6 +58,12 @@
 {% endwith %}
 {% endwith %}
 {% endwith %}
+{% else %}
+<th>Case: {{case.name|default:case.pk}}</th>
+<td colspan="8">The case has been submitted to the backend for processing. This
+  could take a few minutes for a small data set or several hours for a
+  large one. Please reload this page in a while to check on the status.</td>
+{% endifnotequal %}
 {% endwith %}
 </tr>
 {% endfor %}
